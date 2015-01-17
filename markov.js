@@ -27,7 +27,7 @@ module.exports = function Markov () {
 
 	 this.train = function(string) {
 	 	string = string.replace(/[\"”“]/g, "");
-		var sentences = string.split(/[!?.]+/).filter(function(x) {return x.length > 0;});
+		var sentences = string.split(/[!?.…]+/).filter(function(x) {return x.length > 0;});
 		sentences.map(trainSentence);
 	};
 
@@ -158,22 +158,9 @@ module.exports = function Markov () {
     		request('https://en.wikipedia.org' + url, function (err, res, html) {
     			var $ = cheerio.load(html);
     			checkDisambiguation($);
-    			// $('.mw-content-ltr').each(function() {
-    			// 	var data = $(this);
-	    		// 	var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
-	    		// 	paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
-	    		// 	($, paragraphs);
-	    		// });
     		});
     	} else {
     		checkDisambiguation($);
-    		// $('.mw-content-ltr').each(function() {
-    		// 	var data = $(this);
-    			// var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
-    			// paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
-    			// checkDisambiguation($, paragraphs);
-
-    		// });
     	}
 		});
 	};
@@ -182,12 +169,12 @@ module.exports = function Markov () {
 
 
 
-// var markov = require("./markov");
-// var m = new markov();
+ var markov = require("./markov");
+ var m = new markov();
 
-// m.pretrainBuzzfeedLists();
+ m.pretrainBuzzfeedLists();
 
 // //m.pretrainHoroscope();
 // m.pretrainWikipediaSubject("pickle", function() {
-// 	console.log(m.generate(10, 10, 4));
+ 	console.log(m.generate(10, 10, 4));
 // });

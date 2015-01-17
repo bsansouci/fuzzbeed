@@ -144,9 +144,9 @@ function findGifUrls(string, callback){
 function assignAuthor(article, author){
   author = author || newAuthor();
   article.username = author.username;
-  article.authorName = author.authorName;
+  article.authorName = author.name;
   article.profileUrl = "/users/" + article.username;
-  article.authorProfilePicture = "/assets/" +
+  article.authorProfilePicture = "/assets/userpics/" +
     ((stringToIntHash(article.username)%274) + 1) + ".jpg";
   return author;
 }
@@ -187,11 +187,15 @@ function createEntireArticle(author, callback){
   article.url = "/users/" + article.username + "/" + article.articleName;
   article.responses = rand(10,600);
   article.elements = [];
+  article.timestamp = Date.now();
 
   var m = new Markov();
   m.pretrainBuzzfeedLists();
 
   findGifUrls(article.subj, function(gifs){
+    if(gifs.length < article.num) {
+      return createEntireArticle(author, callback);
+    }
     for (var i = 0; i < article.num; i++){
       if (i < gifs.length){
         article.elements[i] = {};

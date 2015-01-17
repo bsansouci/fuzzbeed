@@ -89,9 +89,12 @@ app.get('/write-article', function(req, res) {
 app.get('/write-an-article', function(req, res) {
   // Decide to create a new profile or not
   articleGenerator.loadArticleData(function(createArticle) {
-    createArticle(function(article) {
-      firebaseArticles.push(article, function() {
-        res.redirect(article.url);
+    createArticle(function(article, author) {
+      pushProfile(author, function() {
+        firebaseArticles.push(article, function() {
+          console.log("PUSHED", article, author);
+          res.redirect(article.url);
+        });
       });
     });
   });
@@ -102,6 +105,12 @@ app.use(express.static(__dirname + "/views"));
 app.listen(1337);
 console.log('Application Started on http://localhost:1337/');
 
+
+function pushProfile(author, callback) {
+  var obj = {};
+  obj[author.username] = author;
+  firebaseProfiles.update(obj, callback);
+}
 
 function generateArticle() {
   // firebaseArticles.push({

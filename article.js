@@ -230,8 +230,8 @@ function createEntireArticle(author, callback){
         if (i < gifs.data.length){
           article.elements[i] = {};
           article.elements[i].imageUrl = gifs.data[i].images.original.url;
-          article.elements[i].body = m.generate(rand(rand(0, 2),5),10);
-          article.elements[i].title = m.generate(1,10);
+          article.elements[i].body = m.generate(rand(rand(0, 2),5),10, 2);
+          article.elements[i].title = m.generate(1,10, 3);
         } else break;
       }
       callback(article, author);

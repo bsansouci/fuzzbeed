@@ -46,24 +46,25 @@ module.exports = function Markov () {
 		hashMapPut(previousWord, ".");
 	};
 
-	 var generateSentence = function(maxWords) {
+	 var generateSentence = function(maxWords, minWords) {
 		var prev = startWords[rand(startWords.length)];
 		var addedWords = 0;
 		var sentence = "";
 		while (prev !== "."){
 			sentence += prev + " ";
 			prev = hashMap[hash(prev)][rand(hashMap[hash(prev)].length)];
-			if (addedWords++ > maxWords) return generateSentence(maxWords);
+			if (addedWords++ > maxWords) return generateSentence(maxWords, minWords);
 		}
+		if(addedWords < minWords) return generateSentence(maxWords, minWords)
 		sentence = sentence.slice(0,-1) + ".";
 		return sentence;
 	};
 
-	 this.generate = function(sentenceCount, maxWordsPerSentence, filter) {
+	 this.generate = function(sentenceCount, maxWordsPerSentence, minWordsPerSentence, filter) {
 		var numSentences = 0;
 		var allSentences = "";
 		while (numSentences < sentenceCount){
-			var s = generateSentence(maxWordsPerSentence);
+			var s = generateSentence(maxWordsPerSentence, minWordsPerSentence);
 			if (filter === undefined || filter(s)){
 				allSentences += s + "  ";
 				numSentences++;
@@ -90,6 +91,7 @@ module.exports = function Markov () {
 		jsonList.push([ { "property1": "1. Because a Honey BBQ Chicken Strip Sandwich will never stop calling your name at 2:00 AM." }, { "property1": "2. And there’s nothing like accompanying your meal with an ice-cold Lone Star, the best state beer in the country." }, { "property1": "3. Because you can’t get the magical taste of Bluebell (or those little wooden spoons) anywhere else." }, { "property1": "4. Because there’s nothing like the camaraderie of cheering on the Cowboys or your Cotton Bowl team at Jerryworld." }, { "property1": "5. And all football rivalries pale in comparison to A&M and Texas." }, { "property1": "6. Because the “Friday night lights” don’t shine brighter in any other state." }, { "property1": "7. And nobody else understands the insanity of the homecoming mum tradition." }, { "property1": "8. Because there’s nothing like spending those summer nights at the lake." }, { "property1": "9. And other water parks are child’s play compared to Schlitterbahn." }, { "property1": "10. Nothing can beat spending a lazy day floating down Guadalupe River." }, { "property1": "11. Because you can’t get your fried food fix anywhere but the Texas State Fair." }, { "property1": "12. And the Houston Rodeo is the one time where everyone has an excuse to wear their boots for the day." }, { "property1": "13. Because if you need to escape for a little bit, the serenity of West Texas is hard to beat." }, { "property1": "14. Because you’ll be able to get your fill of art no matter where you go…" }, { "property1": "15. … and you’ll find it in the most unique and unexpected places." }, { "property1": "16. Because you wouldn’t mind actually living in Arlen with Hank and the guys." }, { "property1": "17. And you know Walker, Texas Ranger will always have your back." }, { "property1": "18. Because there’s nothing more comforting than staying in and watching Texas thunderstorms." }, { "property1": "19. And the one-of-a-kind bluebonnets are breathtaking reminders of picture-perfect Texas springs." }, { "property1": "20. Because a bottle of the original Dr. Pepper MADE WITH REAL SUGAR is always waiting for you in Dublin." }, { "property1": "21. Because waking up to warm and fresh kolaches from Czech Stop will always be the best breakfast…" }, { "property1": "22. … Unless you pick up the best doughnut in the world at Round Rock Donuts." }, { "property1": "23. Because nobody shares your everlasting love for watching tortillas being hand-rolled at Uncle Julio’s…" }, { "property1": "24. … as well as your skill for creating the perfect BBQ platter." }, { "property1": "25. And although you might forget a few things now and again, you’ll never forget your first field trip to The Alamo." }, { "property1": "26. And let’s not forget the fact that Boyhood will now always be that constant reminder that Texas will forever be home." } ]);
 		jsonList.push([ { "property1": "1. This large breasted cappuccino." }, { "property1": "2. This tree with DAT ASS." }, { "property1": "3. This stawberry with a badonk." }, { "property1": "4. This nipple egg." }, { "property1": "5. This sexy rock pile." }, { "property1": "6. This sensual carrot." }, { "property1": "7. This bro’s butt chest." }, { "property1": "8. This tree with a lot of junk in the trunk." }, { "property1": "9. Whatever this is." }, { "property1": "10. These training balls." }, { "property1": "11. This NSFW yogurt." }, { "property1": "12. This strawberry with weird boobs." }, { "property1": "13. These boob mushrooms." }, { "property1": "14. This naughty box." }, { "property1": "15. This THICK and CREAMY mac and cheese." }, { "property1": "16. This interestingly shaped carrot." }, { "property1": "17. And this dude’s confidence." } ]);
 		jsonList.push([ { "property1": "1. This majestic camouflage armchair." }, { "property1": "2. These pads who finally found their chill." }, { "property1": "3. This cake awaiting Willcome at home." }, { "property1": "4. This sacrificial altar of retail greatness in the bathroom." }, { "property1": "5. This vengeful chicken." }, { "property1": "6. These magical dress shoes that improve exponentially with age." }, { "property1": "7. This bargain to beat all bargains." }, { "property1": "8. This mini-horse, the ultimate finder of bargains." }, { "property1": "9. This meticulously priced lawn furniture." }, { "property1": "10. This shirt, telling the most romantic story ever told." }, { "property1": "11. This carefully engraved bottle of Clorox." }, { "property1": "12. This display of tremendous markdowns." }, { "property1": "13. This most rare and precious hand soap." }, { "property1": "14. These ever-morphing chameleon pails." }, { "property1": "15. This display of the dark side of geometry." }, { "property1": "16. This heartfelt message for the recent graduate." }, { "property1": "17. This insane amount of irony." }, { "property1": "18. These potatoes of mystery and wonder." }, { "property1": "19. And, of course, this perfect gift." } ]);
+		jsonList.push([ { "property1": "1. Choosing which Lion King-themed spoon to use." }, { "property1": "2. And then deciding which cereal you would use your spoon in." }, { "property1": "3. And of course that doesn’t even cover the difficulty of choosing a Lunchables flavor." }, { "property1": "4. Settling on either playing with your Beanie Babies or leaving them on the shelf so that they would be in mint condition to make MILLIONS someday." }, { "property1": "5. Determining what your AOL screen name should be." }, { "property1": "6. And then trying to figure out WHAT THE HELL your away message was going to say." }, { "property1": "7. Choosing a boy band to pledge lifetime allegiance to." }, { "property1": "8. Trying to make a final decision on what color gel pen you were going to use to write a note to your BFFL." }, { "property1": "9. Choosing which part of the Wonder Ball you would devour first." }, { "property1": "10. Whether you would chew a piece of Fruit Stripe gum or chew a piece of gum that would actually remain flavorful longer than three minutes." }, { "property1": "11. Deciding whether or not you wanted to watch the second tape of Titanic on VHS." }, { "property1": "12. Whether you would purchase school supplies that were useful, or spend your money on Lisa Frank because it was FUNKY." }, { "property1": "13. If you would spend your allowance at the Scholastic Book Fair or save up for moon shoes." }, { "property1": "14. Trying to decide whether to play Oregon Trail or watch TRL." }, { "property1": "15. Deciding whether you should buy a Furby or be able to sleep at night." }, { "property1": "16. Rewinding your VHS tape or leaving it as a problem for your future self to deal with." }, { "property1": "17. And, of course, the insanely difficult task of trying to choose what movies you would rent from Blockbuster." } ]);
 		for (var i = jsonList.length - 1; i >= 0; i--) {
 			var json = jsonList[i];
 			for (var j = json.length - 1; j >= 0; j--) {
@@ -139,7 +141,7 @@ var m = new markov();
 m.pretrainBuzzfeedLists();
 
 m.pretrainWikipediaSubject("Beyonce", function() {
-	console.log(m.generate(10, 10));
+	console.log(m.generate(10, 10, 4));
 });
 */
 //console.log(m.generate(10, 10));

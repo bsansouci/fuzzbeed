@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=" js svg inlinesvg" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# buzzfeed: http://ogp.me/ns/fb/buzzfeed#">
+<html class=" js svg inlinesvg" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# buzzfeed: http://ogp.me/ns/fb/feed#">
 
   <title>{{title}}</title>
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
@@ -200,7 +200,7 @@
 	<meta property="article:section" content="Culture">
 
 
-	<meta property="article:publisher" content="https://www.facebook.com/BuzzFeed">
+	<meta property="article:publisher" content="https://www.facebook.com/Feed">
 
 
 
@@ -260,9 +260,9 @@
 	<meta name="twitter:title" content="{{title}}">
 	<meta name="twitter:description" content="*Converses with you in total silence.*">
 	<meta name="twitter:app:id:iphone" content="352969997">
-	<meta name="twitter:app:url:iphone" content="buzzfeed://buzz/alexalvarez/quietly-judging-all-of-you">
+	<meta name="twitter:app:url:iphone" content="buzzfeed:///alexalvarez/quietly-judging-all-of-you">
 	<meta name="twitter:app:id:ipad" content="352969997">
-	<meta name="twitter:app:url:ipad" content="buzzfeed://buzz/alexalvarez/quietly-judging-all-of-you">
+	<meta name="twitter:app:url:ipad" content="buzzfeed:///alexalvarez/quietly-judging-all-of-you">
 	<meta name="twitter:app:id:googleplay" content="com.buzzfeed.android">
 	<meta name="twitter:app:url:googleplay" content="http://www.buzzfeed.com/alexalvarez/quietly-judging-all-of-you">
 
@@ -300,12 +300,12 @@
 	<link rel="stylesheet" href="/assets/sidebar_002.css" type="text/css">
 	<link rel="stylesheet" href="/assets/homepage2.css" type="text/css">
 	<link rel="stylesheet" href="/assets/vertical.css" type="text/css">
-	<link rel="stylesheet" href="/assets/buzzfeed3.css" type="text/css">
+	<link rel="stylesheet" href="/assets/feed3.css" type="text/css">
 	<link rel="stylesheet" href="/assets/header_buzz_hoton.css" type="text/css">
 	<link rel="stylesheet" href="/assets/bf_ui.css" type="text/css">
 	<link rel="stylesheet" href="/assets/yes_no_toggle.css" type="text/css">
 <link rel="stylesheet" href="/assets/permalink.css" type="text/css">
-	<link rel="stylesheet" href="/assets/buzz.css" type="text/css">
+	<link rel="stylesheet" href="/assets/.css" type="text/css">
 
 	<link rel="stylesheet" href="/assets/ytpl.css" type="text/css">
 
@@ -319,8 +319,8 @@
 
 
 
-<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
-<!--[if lte IE 7]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
+<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/feed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
+<!--[if lte IE 7]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/feed-ie.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
 
 
 
@@ -699,16 +699,16 @@ var BF_STATIC = {
 };
 
 
-BF_STATIC.socket_server = "http://buzzsockets.buzzfeed.com:80";
+BF_STATIC.socket_server = "http://sockets.buzzfeed.com:80";
 
 
 var Cloud = {
 	"servers": ['newbuzz-collection-1925855828.us-east-1.elb.amazonaws.com'],
-	"report": 'http://wac.09fc.edgecastcdn.net/8009FC/dg-stats/_stats/buzz',
+	"report": 'http://wac.09fc.edgecastcdn.net/8009FC/dg-stats/_stats/',
 	"staging" : {server:'ec2-50-16-13-235.compute-1.amazonaws.com',sample:0}
 };
 
-BF_server = "/buzzzfeed/";
+BF_server = "/zfeed/";
 
 if (!window.console) {window.console = {};}
 
@@ -842,7 +842,7 @@ try {
 		var country = (BFW_Util.getCookie("country") != null && BFW_Util.getCookie("country") != 'us' ? BFW_Util.getCookie("country") : 'us');
 		_gaq.push(['_trackPageview', '/_ga/' + country + window.location.pathname]);
 	}
-	_gaq.push(['_trackPageview', '/_ga/buzz' + window.location.pathname]);
+	_gaq.push(['_trackPageview', '/_ga/' + window.location.pathname]);
 
 
 	_satellite.pageBottom();
@@ -2277,7 +2277,7 @@ var pxhRnd = (Math.random()*100000000000000000);
 							<span><a href="http://www.buzzfeed.com/news" rel:gt_act="news">News</a></span>
 						</div>
 						<div id="menu-buzz" class="menu-item ">
-							<span><a href="http://www.buzzfeed.com/buzz" rel:gt_act="buzz">Buzz</a></span>
+							<span><a href="/" rel:gt_act="buzz">Buzz</a></span>
 						</div>
 						<div id="menu-life" class="menu-item ">
 							<span><a href="http://www.buzzfeed.com/life" rel:gt_act="life">Life</a></span>
@@ -3251,7 +3251,7 @@ var widget_init = function() {
 
 
 
-    <p class="print c"><a href="http://buzzfeed.com/"><b>Check out more articles on BuzzFeed.com!</b></a></p>
+    <p class="print c"><a href="http://feed.com/"><b>Check out more articles on BuzzFeed.com!</b></a></p>
 
 
 
@@ -4226,7 +4226,7 @@ parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%25
   </h4>
 
 
-  <a href="http://www.facebook.com/BuzzFeed" class="btn btn--c-facebook" rel:gt_act="share/facebook/like">
+  <a href="http://www.facebook.com/Feed" class="btn btn--c-facebook" rel:gt_act="share/facebook/like">
     <svg viewBox="0 0 512 512" class="connect-widget__btn-svg svg-fallback--facebook_logo_white_20">
       <use xlink:href="#facebook"></use>
     </svg>
@@ -4235,7 +4235,7 @@ parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%25
 
 
 
-  <a href="http://www.pinterest.com/buzzfeed/" class="btn btn--c-pinterest" rel:gt_act="share/pinterest/follow">
+  <a href="http://www.pinterest.com/feed/" class="btn btn--c-pinterest" rel:gt_act="share/pinterest/follow">
     <svg viewBox="0 0 512 512" class="connect-widget__btn-svg svg-fallback--pinterest_logo_white_20">
       <use xlink:href="#pinterest"></use>
     </svg>

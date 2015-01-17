@@ -7,7 +7,7 @@ module.exports = function Markov () {
 	var startWords = [];
 
 	var hashMap = {};
-	
+
 
 
 	 var hash = function(word) {
@@ -108,57 +108,82 @@ module.exports = function Markov () {
 		var singularizedSubject = "";
 		for (var i = 0; i < words.length; i++) {
 			singularizedSubject += inflect.singularize(words[i]);
-			if (i < words.length - 1) {singularizedSubject += " "};
+			if (i < words.length - 1) singularizedSubject += " ";
 		}
 		return singularizedSubject;
-	}
+	};
 
 	this.pretrainWikipediaSubject = function(subject, callback) {
 		subject = singularizeSubject(subject);
 		var train = this.train;
-		request('https://en.wikipedia.org/wiki/Special:Search/'+subject, function(err, res, html) {
-	    	if (err) {return console.log(err)}
-	    	var $ = cheerio.load(html);
-	    	if(res.request.path.indexOf("Special:Search") !== -1) {
-	    		var a = $('.mw-search-results a');
-	    		var url = a.first().attr("href");
-	    		request('https://en.wikipedia.org' + url, function (err, res, html) {
-	    			var $ = cheerio.load(html);
-	    			$('.mw-content-ltr').each(function() {
-	    				var data = $(this);
-		    			var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
-		    			paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
-		    			train(paragraphs);
-		    		});	
-		    		if(callback) callback();
-	    		});
-	    	} else {
-	    		$('.mw-content-ltr').each(function() {
-	    			var data = $(this);
-	    			var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
+
+		var checkDisambiguation = function($) {
+			var disambigbox = $("#disambigbox");
+			if(disambigbox.length > 0) {
+				var a = $('#mw-content-text ul a');
+	    	var url = a.first().attr("href");
+
+	    	request('https://en.wikipedia.org' + url, function (err, res, html) {
+    			var $ = cheerio.load(html);
+    			$('.mw-content-ltr').each(function() {
+    				var data = $(this);
+	    			var paragraphs = data.find('p').text().trim().replace(/\[[a-zA-Z0-9]*\]/g, "");
 	    			paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
 	    			train(paragraphs);
+	    			if(callback) callback();
 	    		});
-	    		if(callback) callback();
-	    	}
+    		});
+			} else {
+				$('.mw-content-ltr').each(function() {
+					var data = $(this);
+	  			var paragraphs = data.find('p').text().trim().replace(/\[[a-zA-Z0-9]*\]/g, "");
+	  			paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
+	  			train(paragraphs);
+	  			if(callback) callback();
+	  		});
+			}
+		};
+
+		request('https://en.wikipedia.org/wiki/Special:Search/'+subject, function(err, res, html) {
+    	if (err) return console.log(err);
+
+    	var $ = cheerio.load(html);
+    	if(res.request.path.indexOf("Special:Search") !== -1) {
+    		var a = $('.mw-search-results a');
+    		var url = a.first().attr("href");
+    		request('https://en.wikipedia.org' + url, function (err, res, html) {
+    			var $ = cheerio.load(html);
+    			checkDisambiguation($);
+    			// $('.mw-content-ltr').each(function() {
+    			// 	var data = $(this);
+	    		// 	var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
+	    		// 	paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
+	    		// 	($, paragraphs);
+	    		// });
+    		});
+    	} else {
+    		checkDisambiguation($);
+    		// $('.mw-content-ltr').each(function() {
+    		// 	var data = $(this);
+    			// var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
+    			// paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
+    			// checkDisambiguation($, paragraphs);
+
+    		// });
+    	}
 		});
-	}
+	};
 };
 
 
 
 
-var markov = require("./markov");
-var m = new markov();
+// var markov = require("./markov");
+// var m = new markov();
 
-m.pretrainBuzzfeedLists();
+// m.pretrainBuzzfeedLists();
 
-//m.pretrainHoroscope();
-m.pretrainWikipediaSubject("spoons", function() {
-	console.log(m.generate(10, 10, 4));
-});
-
-
-
-
-
+// //m.pretrainHoroscope();
+// m.pretrainWikipediaSubject("pickle", function() {
+// 	console.log(m.generate(10, 10, 4));
+// });

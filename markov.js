@@ -111,12 +111,12 @@ module.exports = function Markov () {
 	// }
 };
 
-var m = new Markov();
+//var m = new Markov();
 
 // Ted Moseby
 //m.train("Ted is prone to socially questionable romantic gestures; in the pilot episode, for example, he steals a blue French horn (nicknamed \"The Smurf Penis\") that was a topic of conversation in his first date with Robin, and then scares Robin off by telling her he is in love with her. In a similar vein, he dresses up as a \"hanging chad\" every year for Halloween, in the hopes of meeting \"The Slutty Pumpkin,\" a woman dressed as a jack-o'-lantern (complete with strategically placed holes) whom he once met at a Halloween party. Ted describes himself as \"half-Jewish.\" He is seen cheering for the Cleveland Indians when they play the New York Yankees at a baseball game in the episode \"Where Were We?\". He and Marshall were randomly assigned as freshman year roommates at Wesleyan, and became best friends on a long, ill-fated road trip. This story was told in \"Arrivederci, Fiero\". In several episodes Ted's claim of being \"vomit-free since '93\" is mentioned, although it is untrue. Ted knows French and sign language, and has a strong tendency to correct everything that people around him say. As a child, he had a detective club called \"The Mosby Boys\". He also speaks and reads Spanish, albeit clumsily. Pablo Neruda is one of his favorite writers.");
 
-m.pretrainWikipediaSubject("");
+//m.pretrainWikipediaSubject("");
 
 //m.pretrainBuzzfeedLists();
 //console.log(m.generate(10, 10));

@@ -1,0 +1,895 @@
+body.non_english,body.Fashion, body.Breaking, body.Ideas, body.Longform { background-color: #fff; background-image: none; }
+
+.rewind-bg { position: absolute; height:1157px; width:1500px; left:-220px; z-index:-9; background:url(/static/images/public/verticals/rewind-bg.png?v=201501161526) no-repeat;}
+/*.Rewind .PageContainer {background: none;}*/
+/* VERTICAL POSTS */
+.post h2 a {color:#000;}
+h2.bf-item-title a {color: #07e;}
+
+.BuzzPage.Community, .BuzzPage.QuickPost  { background:url(/static/images/community/community-noise.png?v=201501161526); }
+
+.Column2 .post h2 a {color:  #07e;}
+.VerticalSection.Community .post h2 a {color: #0077EE;}
+.VerticalSection.Community .post h2 a:hover {color: #EE3322;}
+.Politics .Column2 h2 a {color:#000;}
+.VerticalSection .post header hgroup h2, .VerticalSection .bf-item-title{font-family:"ProximaNovaSemiBold",Arial,Helvetica, sans-serif !important; line-height:1.1}
+.large-image .facebook-share, .large-image .twitter-share, .large-image .read-more { float:left; font-size:10px; color:#aaa }
+.large-image .read-more{margin:0px 2px 0px 15px;}
+.std-posts p.description{padding-right:0px;}
+.PageFooter ul li { float: none; line-height: 170%;}
+.PageFooter li .footer-hiring-image { 
+  vertical-align: -5px; 
+  display: inline-block;
+  width: 107px;
+  height: 29px;
+}
+.PageFooter .last-left-item { margin-right: 48px; }
+
+
+
+/* VERTICAL STYLES */
+.Politics .Column2 .twtr-doc{width:323px !important; margin-left:15px;}
+
+.linkblog .quicklink .thumb-unit{width:125px; height:10px;} /* used to be handled by: background:url(/static/images/public/verticals/quicklink_sprite.png?v=201501161526) no-repeat right top;  */
+.Posts .thumb-unit { background: none;}
+.quicklink hgroup h2{margin-bottom: 2px; }
+.quicklink small{display:block;font-size:12px; margin-bottom:10px; } /* margin bottom more than typical post to account h2 line-height differences */
+.quicklink small a {color:#aaa;}
+.quicklink p { margin: 0 0 10px 0;}
+
+.Tech .Column2 a.button2, .Politics .Column2 a.button2{display:none !important;}
+
+.Tech .HotHead .unit a:hover span.title{background:#333;/* backup for IE */ background:rgba(35,35,35,0.9);}
+
+.Community .vertical-header .vertical-social { 
+	right: 210px;
+	width: 122px;	
+	top: 42px;
+}
+.Community .vertical-header .community-submit {
+	position: absolute;
+	right: 0px;
+	top: 50px;
+	width:200px;
+}
+.community-submit .button2 {
+	font-size: 24px;
+	display:block;
+	width:100%;
+	text-align:center;
+	margin-bottom:10px;
+	padding:0px;
+}
+.Community .vertical-header .community-submit span {font-family:"ProximaNovaRegular",Arial,Helvetica, sans-serif;}
+
+.community-note {background: #d5eef0; color: #444; padding:10px; margin-top:5px;}
+.community-note a {color:#07e;}
+a.close_community_note {float:right; margin-top:-2px; font-size:14px; color:#666;}
+a.close_community_note:hover {color:#07e;}
+/* SMALL META BYLINE */
+p.small-meta {width: 355px; float:left; font-size: 10px; margin-bottom: 0px;}
+p.small-meta.small-meta--full-width { width: 100%; }
+p.small-meta span { white-space: nowrap; }
+p.small-meta .icon { background:url(/static/images/global/unified_sprite.png?v=201501161526) -519px -457px;  width:12px !important; height:12px; float:left; margin:1px 5px 0px 15px;}
+p.small-meta .generic-image{margin:1px 5px 0px 0px;}
+p.small-meta .response-image{background-position:-519px -481px;}
+p.small-meta .time-image{background-position:-519px -469px;}
+p.small-meta > * {float: left; font-size: 10px; color:#aaa; } /* float all the elements of the byline left */
+.user p.small-meta > * {color:#31b510; }
+.partner p.small-meta > * {color:#777777; }
+.editor p.small-meta > * {color:#4488EE; }
+p.small-meta a{color:#aaa;}
+p.small-meta a:hover{color:#222;}
+p.small-meta .tw-share-icon{background-position:-519px -493px; margin-right: 0px;}
+p.small-meta .twitter-share{padding-left: 5px;}
+p.small-meta a:hover .twitter-share {color: #222 !important;}
+p.small-meta .fb-share-icon{background-position:-519px -505px; margin-right: 0px;}
+p.small-meta .facebook-share{padding-left: 5px;}
+p.small-meta a:hover .facebook-share {color: #222 !important;}
+
+
+/* NEW STYLES FOR UNIFIED */
+.vertical-sidebar-info { float:left; width:336px; }
+.vertical-social-icons { height:100px; margin:15px 0px 15px 0px;}
+.social-icon { background:url(/static/images/global/unified_sprite.png?v=201501161526); width: 38px; height: 38px; float:left; margin: 0 18px 10px 0; text-indent:-9999em; }
+.social-icon.icon-facebook{ background-position: 0px -467px;}
+.social-icon.icon-facebook:hover{ background-position: 0px -505px;}
+.social-icon.icon-twitter {background-position: -38px -467px;}
+.social-icon.icon-twitter:hover {background-position: -38px -505px;}
+.social-icon.icon-tumblr {background-position: -76px -467px;}
+.social-icon.icon-tumblr:hover {background-position: -76px -505px;}
+.social-icon.icon-pinterest {background-position: -114px -467px;}
+.social-icon.icon-pinterest:hover {background-position: -114px -505px;}
+.social-icon.icon-apps {background-position: -228px -467px;}
+.social-icon.icon-apps:hover {background-position: -228px -505px;}
+.social-icon.icon-rss {background-position: -152px -467px;}
+.social-icon.icon-rss:hover {background-position: -152px -505px;}
+.social-icon.icon-youtube { background-position: -266px -467px !important; }
+.social-icon.icon-youtube:hover { background-position: -266px -505px; }
+.social-icon.icon-newsletter { background-position: -342px -467px; }
+.social-icon.icon-newsletter:hover { background-position: -342px -505px; }
+.vertical-email .email-promo-box { border: none;}
+.vertical-email form input.email_field { width: 220px !important;}
+
+/* ####### IDEAS VERTICAL ################################ */
+.VerticalSection.Ideas .splash .Column1 .std-posts .post header hgroup h2, .VerticalSection.Ideas .Column1 .bf-item-title, .VerticalSection.Ideas .splash .Column1 .std-posts .post h2.bf-item-title { font-size: 26px; font-family:"ProximaNovaRegular",Arial,Helvetica, sans-serif !important; line-height: 32px; margin-bottom: 8px; }
+.VerticalSection.Ideas .Column1 .post header hgroup h2 { font-size: 22px; font-family:"ProximaNovaRegular", Arial, Helvetica, sans-serif !important; line-height: 26px; margin: 0 0 5px; }
+.VerticalSection.Ideas p.small-meta .icon, .VerticalSection.Ideas p.small-meta .time-ago, .VerticalSection.Ideas p.small-meta .responses, .HomeSection.VerticalSection.Ideas .vertical-info-banner .notch { display: none; }
+.VerticalSection.Ideas .std-posts p.description { font-size: 15px; font-family:"ProximaNovaRegular", Arial, Helvetica, sans-serif; line-height: 19px; }
+.VerticalSection.Ideas .std-posts p.description b, .VerticalSection.Ideas .std-posts p.description strong { font-family:"ProximaNovaSemibold", Helvetica, Arial, sans-serif; font-weight: normal; }
+.HomeSection.VerticalSection.Ideas .vertical-info-banner { background: none; font-family:"ProximaNovaBold",Arial,Helvetica, sans-serif; font-size: 24px; color: #ff382e; border-bottom: 1px solid #ff382e; text-transform: uppercase; padding-bottom: 12px; padding-left: 0; }
+.VerticalSection.Ideas a.button2:hover { opacity: 0.85; -moz-opacity: 0.85; filter: alpha(opacity=85); }
+.VerticalSection.Ideas  .vertical-social ul li a.social-icon.icon-facebook { background-position: -556px -191px; width: 34px; height: 34px; }
+.VerticalSection.Ideas  .vertical-social ul li a.social-icon.icon-twitter { background-position: -595px -190px; width: 41px; height: 34px; }
+.VerticalSection.Ideas  .vertical-social ul li { margin: 0 0 0 5px; }
+
+/* Large IMAGE Layout*/
+.description a.mo { background:#e9e9e9; color:#333!important; padding:1px 4px; font-weight:bold; font-size:9px; text-transform:uppercase; }
+.description a.mo:hover { background:#333; color:#e9e9e9!important; }
+.large-image .thumb-unit{display:none !important; }
+.large-image header,.large-image header hgroup {width:625px; text-align:left; margin-left:0; }
+.large-image.has_badges header, .large-image.has_badges header hgroup { width: 570px !important; }
+.large-image .description{ line-height:1.45em; }
+.large-image .buzz_superlist_item{display:block !important;}
+.large-image .buzz_superlist_item h1{display:none;}
+.large-image .small-meta{width:625px !important; }
+.std-posts .large-image { padding-left:0; width:625px; }
+.std-posts .large-image article { position: relative; }
+.large-image.has_badges .description { width: 570px !important; }
+
+/* Badges */
+.post header hgroup .badges { position: absolute; left: -10px; top: 5px;}
+.post.first header hgroup .badges {}
+.post.large-image .badges { position:absolute; right:-15px; top: -15px; }
+.large-image.has_badges .badges { right: 0; left: auto; }
+
+
+/* Pop up Email Signup Box */
+.vertical-social #popup-email {background-color:#EEEEEE; z-index:999; position:absolute; top:0px; padding:8px; width:280px; height:80px;}
+.vertical-social #popup-email form {float:left;}
+.vertical-social #popup-email p {color:black; font-weight:normal; font-size:14px; }
+.vertical-social #popup-email a {background: url('/static/images/public/buttons/x-out.png') no-repeat -1px -1px; width: 12px; height: 12px; float:right; display:block;text-indent:9999px; overflow:hidden;}
+ .error-border {border-color:#E32!important;}
+
+/* Inline Email Signup Box */
+.vertical-social ul.email-unit {margin-top:-10px;}
+.header-email-promo {padding-left:5px; margin-top:5px}
+.header-email-promo form {float:left;}
+.header-email-promo p {font-size:12px; margin:0 0 2px;}
+.header-email-promo #sailthru_email-1 {width:300px;}
+.header-email-promo #sailthru_email_form-1 {width:155px; font-size:12px; padding:3px; margin-right:5px; border-style:solid; border-width:1px; border-color:#CCC;}
+.header-email-promo .error-border {border-color:#E32!important;}
+
+/* LINK BLOG */
+.linkblog { xxxmin-height: 300px; width: 305px; margin: 0 0 20px 0; background: white; position: relative;}
+.linkblog h1 {font-size:24px; margin: 0 0 0 2px; font-family:"ProximaNovaSemiBold","Helvetica Neue",arial,sans-serif;font-weight:600}
+.linkblog .vertical-info-banner .text span { padding-left:5px; font:normal 12px Arial,Helvetica,sans-serif;  }
+.linkblog ul {margin:0 0 0; padding:0 0 0; background:none; float:left; width: 305px; }
+.linkblog .item { padding: 15px 0 10px 0; margin: 0; position: relative; float: left; width: 300px; height: auto;  }
+.linkblog .item.small-posts{margin:0px; padding-top:0px;}
+.linkblog .item.first { border-top:0; padding-top:0; }
+.linkblog .small-posts h2 {margin: 0 0 6px; top:0px; background:none !important;}
+.linkblog .small-posts h2 a{ color:#222 !important; float:left; width:260px; margin-left:0px; line-height:1.5em; font: bold 14px/1.3 Arial,Helvetica,sans-serif;}
+.linkblog .small-posts h2 a:hover{color:#888 !important;}
+.linkblog .small-posts h2 span { display:inline; font-size:12px; font-weight:normal; color:#ccc; padding-left:2px; }
+.linkblog .item .thumb-unit{margin:0px 15px 0px 5px; width:10px; background-position:0px -10px;}
+.linkblog small{display:none;}
+.linkblog p{display:none;}
+.linkblog header.quicklink hgroup{float:left;}
+.linkblog img.thumb { display: none;}
+
+/* b-PAGE */
+.VerticalSection .header  { float:left; margin-bottom:15px; padding:2px 0 5px; }
+.VerticalSection .big-header {margin-left:10px;}
+.Tech .pick-button{margin-right:40px !important;}
+.Tech .vertical-share-buttons .pick-button { margin-right: inherit !important; }
+.PermalinkPage .Politics .rcp_widget, .Politics .rcp_widget{margin-left:0px !important; margin-bottom: 20px; }
+.PageContent.Tech, .PageContent.Politics{margin-left:0px; }
+
+.PageContent.Tech header hgroup h1{font-family:"ProximaNovaSemiBold","Helvetica Neue",arial,sans-serif; font-weight:normal; font-size:36px; line-height:1.1}
+.WideContent hgroup{padding-left:10px; margin-top: 15px;}
+.Tech article.c p, .Politics article.c p, .Politics .sub_buzz_content p {padding-right:5px !important;}
+.PermalinkPage .Column2 { padding-top:0; }
+.WideContent .buzz hgroup {padding-left:10px;}
+.WideContent .buzz hgroup, .WideContent .buzz .custom_header_shares .upper-share-buttons{ padding-left: 0px; padding-bottom: 30px; }
+
+
+/*.Sports .WideContent .buzz hgroup, .Shift .WideContent .buzz hgroup, .Shift .WideContent .buzz .upper-share-buttons, .Sports .WideContent .buzz .upper-share-buttons,.Sports .WideContent .buzz #buzz_sub_buzz, .Shift .WideContent .buzz #buzz_sub_buzz , .WideContent p{padding-left:10px;}*/
+.Sports .Content, .Shift .Content{padding: 0 0px 10px 10px !important; margin-right:0px;}
+
+.ie8 .WideContent ~ .Column2.viral_buzz { /* wide post sidebar needs to float below article */
+    position: static;
+}
+
+
+/* SHIFT STYLES */
+.Shift .buzz_superlist_item .vertical-share-buttons span.word{color:#fff;}
+
+
+
+.VerticalSection .sidebar_featured_unit, .PermalinkPage .sidebar_featured_unit { background:0; box-shadow:none; margin-top:0px; }
+.VerticalSection .sidebar_featured_unit h2, .PermalinkPage .sidebar_featured_unit h2, 
+.VerticalSection .sidebar_featured_unit .buttons, .PermalinkPage .sidebar_featured_unit .buttons { display:none; }
+.VerticalSection .sidebar_featured_unit .item img, .PermalinkPage  .sidebar_featured_unit .item img { width:325px;height:auto; }
+.VerticalSection .sidebar_featured_unit .item h3 a span, .PermalinkPage .sidebar_featured_unit .item h3 a span { max-width:310px }
+
+.bfTwitterWidget {overflow-y: scroll; overflow-x: hidden;}
+.bfTwitterWidget .tweet {margin: 10px 5px;border: 1px solid #aaa;border-bottom: 2px solid #aaa;padding: 10px 5px;font-size: 14px;background: #eee;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ddd', endColorstr='#fff');background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#fff));background: -moz-linear-gradient(top,  #ddd,  #fff);}
+.bfTwitterWidget .tweet:hover {background: #fff;}
+.bfTwitterWidget .tweet.link {cursor:pointer;}
+.bfTwitterWidget .tweet .tweet_img, .bfTwitterWidget .tweet .tweet_Handle, .bfTwitterWidget .tweet .tweet_message {display: inline;}
+.bfTwitterWidget .tweet .tweet_Handle {font-weight: bold;}
+.bfTwitterWidget .tweet .tweet_details {font-size: 10px; color: #aaa; margin-top: 5px;}
+
+.animated-gif { position:relative; }
+.animated-gif a { position:absolute; left:0; top:0; width:100%; height:100%; overflow:hidden; text-indent:-9999px; background:url(/static/images/public/video-lightbox/play.png?v=201501161526) center center no-repeat; }
+.animated-spinner a { background:url(data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==) center center no-repeat; }
+.animated-gif a:hover { cursor:pointer !important; background: url(/static/images/public/video-lightbox/play_hover.png?v=201501161526) center center no-repeat; }
+
+/* new reaction button */
+.user-reaction {margin: 10px 0 0 0px;}
+.community-not-inline .user-reaction-social .share-icon{ margin: 2px 0 0 1px;}
+.hide-user-reaction {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)"; filter: alpha(opacity=35); -moz-opacity: 0.35; -khtml-opacity: 0.35; opacity: 0.35;}
+.post:hover .hide-user-reaction {opacity:100;}
+.community-not-inline .reaction-btn-wrap {margin: 1px 2px 0 0;}
+.reaction-btn-wrap {display: inline-block; margin: 1px 3px 0 0; float: left;}
+.reaction-btn, .comment-btn {display: inline-block; border-bottom: 1px solid #b2b382; border-right: 1px solid #d9d9a0; padding: 1px 9px 1px; font: 13px/22px 'ProximaNovaBold', Arial, Helvetica, sans-serif; color: #222; text-align: center; text-transform: uppercase; background: #FE0; border-radius: 3px; letter-spacing:0px; text-decoration: none; vertical-align: top;}
+.reaction-btn:hover, .comment-btn:hover {color: #ffffff; background: #07e;}
+.reaction-btn.already-reacted {background: #adadad; color: #333;}
+.love .reaction-btn, .hate .reaction-btn, .comment .comment-btn {font-size: 0; line-height: 0; padding: 4px 9px 4px;}
+.love .reaction-btn .icon, .hate .reaction-btn .icon {display: inline-block; width: 16px; height: 16px; background: url(/static/images/public/verticals/new-reaction-icons-16px.png?v=201501161526) no-repeat 0 0;}
+.comment .comment-btn .icon {display: inline-block; width: 16px; height: 16px; background: url(/static/images/public/verticals/new-reaction-icons-16px.png?v=201501161526) no-repeat -32px 0px;}
+.hate .reaction-btn .icon {background-position: -16px 0px; width: 16px;}
+.reaction-btn-count {text-align: center; font: bold 12px arial,sans-serif; padding-top: 4px; color: #888;}
+.reaction-loading {background: url("/static/images/public/spinners/small_on_white.gif?v=201501161526") left top no-repeat; padding: 0 0 0 22px; line-height: 16px; margin: 5px 0 5px 0px;}
+.reaction-message {font:normal 20px Arial,helvetica,sans-serif; border-radius: 3px; margin: 5px 0 5px 0px; padding: 3px 5px;}
+.reaction-message span {font-weight: bold;}
+.reaction-message-success_voted {background: #e5ffe7;}
+.reaction-message-already_voted, .reaction-message-reaction_count_exceeded {background: #ffe5e5;}
+.user-reaction-social {float: left; overflow: hidden;}
+.user-reaction-social .share-icon {width:24px; height:24px; float:left; margin:2px 0 0 7px; background:url("/static/images/public/icons/large-share-sprite24x24.png?v=201501161526") no-repeat;}
+.user-reaction-social .share-icon:hover {opacity: 0.65; filter: alpha(opacity=65); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)"; -moz-opacity: 0.65; -khtml-opacity: 0.65;}
+.user-reaction-social .buzz-facebook-share {background-position:0px -24px;}
+.user-reaction-social .buzz-twitter-share {background-position:0px -48px;}
+.user-reaction-social .buzz-pinterest-share {background-position:0px -96px;}
+/* end new reaction button */
+
+/*Vertical Tabs*/
+.vertical-tabs {
+	border-bottom: solid 10px #fff;
+}
+.vertical-tabs li{
+	display:inline-block;
+}
+.vertical-tabs li:hover{
+	background: #dad9d7;
+}
+.vertical-tabs li.active, .vertical-tabs li.active:hover {
+	background:#fff;
+}
+.vertical-tabs a {
+	display:block;
+	padding: 10px 20px;
+	color:#333;
+	font-family: "ProximaNovaRegular",Arial,Helvetica, sans-serif;
+	font-size: 18px;
+}
+.vertical-tabs li:hover a {
+	color:#333;
+}
+
+
+.community-about img {
+  max-width: 625px;
+  margin: 10px 0 5px;
+}
+.community-about .page-header {
+	font-size: 36px;
+	font-weight: normal;
+	line-height: 38px;
+	font-family: "ProximaNovaSemibold", Helvetica, Arial, sans-serif;
+	margin-bottom: 5px;
+	margin: 10px 0px 10px 0px;
+	color: #333333;
+}
+.community-about p {
+	font: 17px/23px "ProximaNovaRegular",arial,helvetica,sans-serif;
+	color: #222;
+	margin-bottom: 23px;
+}
+.community-about .list-head {
+	font: 26px/28px "ProximaNovaSemibold", Helvetica, Arial;
+	font-weight: normal;
+	color: #121212;
+	padding: 0 0 8px 0;
+	margin: 0;
+}
+.community-about .sub-buzz {
+	padding:  0 0 20px;
+}
+.community-about img {
+  max-width: 625px;
+  margin: 10px 0;
+}
+
+.community-about .source {
+	font-family: "ProximaNovaRegular", Helvetica, Arial, sans-serif;
+	display: block;
+	padding: 0;
+	margin: 0 0 10px;
+	color: #999;
+	font-size: 10px;
+	font-style: italic;
+}
+
+.community-about .source a {
+	color:#999;
+}
+
+/* geek week styling */
+.geek_week_header { position: relative; width: 1020px; height: 440px; background: url(/static/images/partner/youtube/gw_bgs/grey_bg.png?v=201501161526); margin-left: -15px; }
+.geek_week_water_bg { position: absolute; top: 77px; left: 0px; background: #4fc4fc; height: 305px; width: 980px; overflow:hidden; }
+.gwImageMapScreen { position: absolute; top: 77px; left: 0px; z-index: 3; }
+.geek_week_geeky_logo { position: absolute; height: 110px; width: 279px; background-position: 0 -75px; top: 5px; left:  10px; -webkit-transition: all 5ms ease; -moz-transition: all 5ms ease; -ms-transition: all 5ms ease; -o-transition: all 5ms ease; transition: all 5ms ease;  }
+
+
+.gw_custom_share { position: absolute; width: 182px; height: 44px; z-index: 4;  bottom: 5px; right: 30px;  background: url(/static/images/partner/youtube/gw_bgs/share_box.png?v=201501161526);  share_box.png}
+
+.gw_logo_sprite { background-image: url(/static/images/partner/youtube/gw_logos/gw_logo_sprite.png?v=201501161526); background-repeat: no-repeat; text-indent: -9999px;}
+.gw_custom_share_title { float: left; width: 63px; height: 21px; background-position: 0 0;  text-indent: -9999px;}
+.gw_custom_share_button { float: left; width: 20px; height: 20px; margin-left: 7px; margin-top: 9px; }
+.gw_custom_share_fb { background-position: -99px 0;}
+.gw_custom_share_su { background-position: -68px 0;}
+.gw_custom_share_gp { background-position: -131px 0;}
+.gw_custom_share_tw { background-position: -162px 0;}
+
+
+.gw_world { position: absolute; width: 100px; z-index: 1; }		
+.gw_world.hover { z-index: 2; }		
+.gw_world img { -webkit-backface-visibility: hidden; position: absolute; z-index: 1;  -webkit-transition: all .5s; transition: all .5s;  max-width: 100%; height: auto;  image-rendering: -o-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: optimize-contrast; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges;  image-rendering: optimizeSpeed; -ms-interpolation-mode: nearest-neighbor; }
+.gw_world.hover img { position: relative; -moz-transform: scale(1.2); -webkit-transform: scale(1.2); -o-transform: scale(1.2); -ms-transform: scale(1.2); transform: scale(1.2);   }
+.gw_world.active img { max-width: 100%; display: block; }
+.gwblockbuster { top: 62px; left: 121px; width: 190px; }
+.gwglobalgeek { top: 70px; left: 470px; width: 270px; }
+.gwbrainiac { top: 65px; left: 300px; width: 208px;  }
+.gwsuper { top: 280px; left: 284px; width: 365px; }
+.gwgaming { top: 177px; left: 233px; width: 348px; }
+.gwfanday { top: 228px; left: 90px; width: 160px; }
+.gw_title_hover { position: absolute; width: 170px; height: 53px; background-image: url(/static/images/partner/youtube/gw_menu/menu_sm_sprite.png?v=201501161526); background-repeat: no-repeat; z-index: 2;  opacity: 0; text-indent: -9999px; }
+.gwblockbuster .gw_title_hover { background-position: right 0px;  bottom: 0; }
+.gwglobalgeek .gw_title_hover { background-position: right -200px;  left: 130px; bottom: 20px;}
+.gwbrainiac .gw_title_hover { background-position: right -50px; left: 0px; bottom: 25px;}
+.gwsuper .gw_title_hover { background-position: right -250px;  left: 40px; bottom: 20px; }
+.gwgaming  .gw_title_hover { background-position: right -150px;  bottom: 0px; left: 140px; }
+.gwfanday .gw_title_hover { background-position: right -100px;  bottom: 30px; }
+
+.gw_world.hover .gw_title_hover { opacity: 1; -webkit-transition: opacity .3s; transition: opacity .3s;}
+.ie8 .gw_world .gw_title_hover  { display: none; }
+.ie8 .gw_world.hover .gw_title_hover  { display: block; }
+.ie8 .gw_world.hover  img  { top: -20px; left: -20px;  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.2, M12=0, M21=0, M22=1.2, SizingMethod='auto expand')";  }
+
+
+.geekweek_subfeed .gw_world.active {  z-index: 2;  }
+.geekweek_subfeed .gw_world .gw_title_hover { display: none !important; }
+
+/*blockbuster state*/
+.gwblockbuster_state .gw_world.gwblockbuster { top: 25px; left: 263px; width: 390px; }
+.gwblockbuster_state .gw_world.gwglobalgeek { top: 70px; left: 610px; width: 190px;  }
+.gwblockbuster_state .gw_world.gwbrainiac { left: 120px; width: 180px; }
+.gwblockbuster_state .gw_world.gwsuper { top: 300px; left: 80px; width: 245px; }
+.gwblockbuster_state .gw_world.gwgaming { top: 217px; left: 633px;  width: 250px; }
+.gwblockbuster_state .gw_world.gwfanday { top: 176px; left: 60px; width: 130px; }
+
+/* global geek state */
+.gwglobalgeek_state .gw_world.gwglobalgeek { top: 75px; left: 275px; width: 400px; }
+.gwglobalgeek_state .gw_world.gwblockbuster { top: 70px; left: 670px; width: 190px;  }
+.gwglobalgeek_state .gw_world.gwbrainiac { left: 120px; width: 180px; }
+.gwglobalgeek_state .gw_world.gwsuper { top: 300px; left: 80px; width: 245px; }
+.gwglobalgeek_state .gw_world.gwgaming { top: 237px; left: 663px;width: 250px;  }
+.gwglobalgeek_state .gw_world.gwfanday {  top: 176px; left: 80px; width: 130px;  }		
+
+/* brainiac  state */
+.gwbrainiac_state .gw_world.gwbrainiac { top: 45px; left: 290px; width: 410px; }
+.gwbrainiac_state .gw_world.gwblockbuster { top: 70px; left: 670px; width: 190px;  }
+.gwbrainiac_state .gw_world.gwglobalgeek { left: 120px; width: 180px; }
+.gwbrainiac_state .gw_world.gwsuper { top: 300px; left: 80px; width: 245px; }
+.gwbrainiac_state .gw_world.gwgaming { top: 237px; left: 663px; width: 250px;  }
+.gwbrainiac_state .gw_world.gwfanday {  top: 176px; left: 80px; width: 130px;   }		
+
+/* superhero state */
+.gwsuper_state .gw_world.gwsuper {top: 145px; left: 229px; width: 512px; }
+.gwsuper_state .gw_world.gwblockbuster { top: 70px; left: 670px; width: 190px;  }
+.gwsuper_state .gw_world.gwglobalgeek { left: 120px; width: 180px; top: 280px; }
+.gwsuper_state .gw_world.gwbrainiac { top: 55px; left: 420px; width: 170px; }
+.gwsuper_state .gw_world.gwgaming { top: 237px; left:  693px; width: 250px;  }
+.gwsuper_state .gw_world.gwfanday { top: 86px; left: 100px; width: 130px; }
+
+/* fanday state */
+.gwfanday_state .gw_world.gwfanday { top: 55px; left: 320px; width: 542px;}
+.gwfanday_state .gw_world.gwblockbuster { top: 70px; left: 670px; width: 190px;  }
+.gwfanday_state .gw_world.gwglobalgeek { left: 120px; width: 180px; top: 280px; }
+.gwfanday_state .gw_world.gwbrainiac { top: 55px; left: 180px; width: 170px; }
+.gwfanday_state .gw_world.gwgaming { top: 237px; left:  693px; width: 250px; }
+.gwfanday_state .gw_world.gwsuper { top: 175px; left: 60px; width: 240px; }
+
+/* gaming state */
+.gwgaming_state .gw_world.gwgaming { top: 115px; left: 270px; width: 542px; }
+.gwgaming_state .gw_world.gwblockbuster { top: 60px; left: 730px; width: 160px;  }
+.gwgaming_state .gw_world.gwglobalgeek { left: 120px; width: 180px; top: 280px; }
+.gwgaming_state .gw_world.gwbrainiac { top: 55px; left: 180px; width: 170px; }
+.gwgaming_state .gw_world.gwfanday { top: 237px; left: 773px; width: 139px; }
+.gwgaming_state .gw_world.gwsuper { top: 175px; left: 60px; width: 240px; }
+
+
+.gw_related_post_container, .gw_subfeed_nav_container {  position: absolute;  }
+.gw_related_post_container { background: url(/static/images/partner/youtube/gw_bgs/red_box.png?v=201501161526); width: 182px; height: 335px; top: 50px; right: 30px;}
+.gw_related_default_message { position: absolute; top: 14px; left: 12px; width: 159px; height: 306px; background: url(/static/images/partner/youtube/gw_menu/related_post_default.png?v=201501161526) no-repeat; }
+.gw_related_default_message a { position: absolute; height: 90px; width: 160px; top: 210px; left: 0px; }
+.gw_related_post_box { position: absolute; top: 10px; left: 20px;}
+.gw_related_post_box li { width: 125px; height: 83px; padding: 7px 15px; position: relative; margin: 0 auto;}
+.gw_related_post_box li .thumb { width: 125px; height: 83px; display: block; }
+.gw_related_post_box li .partner-sash { position: absolute;  z-index: 2; top: -10px; left: -7px; width: 50px; height: 50px; background: url(/static/images/global/unified_sprite.png?v=201501161526) no-repeat -177px -612px;}
+.gw_related_post_box li a { position: relative; display: block; }
+.gw_related_post_box li.gw_post_sponsored { background: #fcf6e3;  padding: 15px;  }
+.gw_post_title { position: absolute;  z-index: 1; display: block; color: #FFF; width: 115px; background: #07e; bottom: 0px; left: 0; padding: 5px; cursor: pointer; overflow: hidden; font: 12px "Lucida Grande",sans-serif; -webkit-transition: all 1s; transition: all 1s; } 		
+.gw_related_post_box.hidden .gw_post_title  { opacity: 0;  }
+.gw_related_post_box.active  .gw_post_title { opacity: 1; }
+
+.gw_subfeed_nav_container { width: 230px; right: 28px; top: 60px;  z-index: 3;}
+.gw_subfeed_nav_item { margin: -20px 0; }
+.gw_subfeed_nav_item a { display: block; width: 230px; height: 70px; text-indent: -9999px; background-image: url(/static/images/partner/youtube/gw_menu/menu_sprite.png?v=201501161526); background-repeat: no-repeat; }
+.gw_subfeed_nav_item.active { position: absolute; top: 260px; right: 420px; }
+.gw_subfeed_nav_item.gwgaming_subfeed.active { top: 220px; right: 420px; }
+
+.gwblockbuster_subfeed a {  background-position: right 0px;}
+.gwblockbuster_subfeed.active a, .gwblockbuster_subfeed a:hover {  background-position: right -70px; }
+.gwbrainiac_subfeed a {  background-position: right -140px; }
+.gwbrainiac_subfeed.active a, .gwbrainiac_subfeed a:hover {  background-position: right -210px; }
+.gwfanday_subfeed a {  background-position: right -280px; }
+.gwfanday_subfeed.active a, .gwfanday_subfeed a:hover { background-position: right -350px; }
+.gwgaming_subfeed a {  background-position: right -420px;  }
+.gwgaming_subfeed.active a, .gwgaming_subfeed a:hover { background-position: right -490px; }
+.gwglobalgeek_subfeed a { background-position: right -560px; }
+.gwglobalgeek_subfeed.active a, .gwglobalgeek_subfeed a:hover {  background-position: right -630px; }
+.gwsuper_subfeed a { background-position: right -700px; }
+.gwsuper_subfeed.active a, .gwsuper_subfeed a:hover {  background-position: right -770px }
+
+.geeky_subfeed { margin-top: 30px; }
+.geeky_subfeed a { background-position: right -840px; }
+.geeky_subfeed.active a, .geeky_subfeed a:hover { background-position: right -910px; }
+
+.cloud_container {  height: 305px; width: 1960px; position: absolute; top: 0px; left: 0px; }
+.cloud_panel {  height: 305px; width: 980px; float: left; position: relative; }
+.large_clouds .cloud { display: block; position: absolute; width: 36px; height: 15px;  background: url(/static/images/partner/youtube/gw_islands/cloud_larger.png?v=201501161526); }
+.small_clouds .cloud { display: block; position: absolute; width: 21px; height: 9px;  background: url(/static/images/partner/youtube/gw_islands/cloud_smaller.png?v=201501161526); }
+
+/* large cloud positions */
+.large_clouds .cloud_a { top: 50px; left: 50px; }
+.large_clouds .cloud_b { top: 260px; left: 130px; }
+.large_clouds .cloud_c { top: 120px; left: 250px; }
+.large_clouds .cloud_d { top: 30px; left: 340px; }
+.large_clouds .cloud_e { top: 100px; left: 800px; }
+.large_clouds .cloud_f { top: 190px; left: 300px; }
+.large_clouds .cloud_g { top: 175px; left: 595px; }
+.large_clouds .cloud_h { top: 10px; left: 920px; }
+.large_clouds .cloud_i { top: 230px; left: 775px; }
+
+/* large cloud positions */
+.small_clouds .cloud_a { top: 80px; left: 30px; }
+.small_clouds .cloud_b { top: 40px; left: 200px; }
+.small_clouds .cloud_c { top: 240px; left: 100px; }
+.small_clouds .cloud_d { top: 200px; left: 400px; }
+.small_clouds .cloud_e { top: 280px; left: 520px; }
+.small_clouds .cloud_f { top: 20px; left: 570px; }
+.small_clouds .cloud_g { top: 30px; left: 770px; }
+.small_clouds .cloud_h { top: 70px; left: 600px; }
+.small_clouds .cloud_i { top: 280px; left: 890px; }
+
+.gw_presentedby_container {position: absolute; display: block; top: 31px; right: 224px; width: 259px; height: 35px;  background-position: 0 -30px;}
+.geeky_state .gw_presentedby_container {z-index: 5;}
+
+.geekweek_video_container .content { background: #fdf6e4; }
+.geekweek_video_sponsored_box .big_meta { padding-bottom: 0; padding-top: 3px; line-height: 13px;}
+.geekweek_video_sponsored_box .big_meta a { font-weight: bold; }
+.geekweek_video_sponsored_box .bf-user-info { width: 210px !important; }
+.geekweek_video_sponsored_box .bf-user-info img  {float: left; margin: 2px 5px 0 20px; padding-bottom: 10px; }
+.geekweek_video_sponsored_box .bf-byline_prefix { display: block; margin: 3px 0 3px; font: 10px/14px "Lucida Grande"; font-weight: bold; text-transform: uppercase; color: #888; float: none !important; width: auto !important; }
+.geekweek_video_sponsored_box .username {overflow: visible; font-size: 15px; font-weight: bold; width: 320px;} 
+.geekweek_video_sponsored_box .video-embed-sidebar_sponsored {  padding: 10px 20px;  }
+.geekweek_video_sponsored_box .bf-partner-label { float: right; padding: 0 20px 10px 2px; font-size: 9px;color: #999; text-transform: uppercase; }
+
+.cloudsMoveFast {
+
+    -webkit-animation-name: cloudsMove;
+    -webkit-animation-duration: 20s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+	
+    -moz-animation-name: cloudsMove;
+    -moz-animation-duration: 20s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+	
+    -o-animation-name: cloudsMove;
+    -o-animation-duration: 20s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+	
+    animation-name: cloudsMove;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+	
+}
+
+.cloudsMoveSlow {
+
+    -webkit-animation-name: cloudsMove;
+    -webkit-animation-duration: 35s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+	
+    -moz-animation-name: cloudsMove;
+    -moz-animation-duration: 35s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+	
+    -o-animation-name: cloudsMove;
+    -o-animation-duration: 35s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+	
+    animation-name: cloudsMove;
+    animation-duration: 35s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+	
+}
+
+
+
+@-webkit-keyframes cloudsMove {
+	from {-webkit-transform:translate(0px, 0px);}
+	to {-webkit-transform:translate(-980px, 0px);}
+}
+
+
+
+@-moz-keyframes cloudsMove {
+	from {-moz-transform:translate(0px, 0px);}
+	to {-moz-transform:translate(-980px, 0px);}
+}
+
+
+
+@-o-keyframes cloudsMove {
+	from {-o-transform:translate(0px, 0px);}
+	to {-o-transform:translate(-980px, 0px);}
+}
+
+
+
+@keyframes cloudsMove {
+	from {transform:translate(0px, 0px);}
+	to {transform:translate(-980px, 0px);}
+}
+
+
+
+.floating_gwglobalgeek {
+
+
+    -webkit-animation-name: islandsFloatUpDown;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate-reverse;
+
+    -moz-animation-name: islandsFloatUpDown;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-direction: alternate-reverse;
+
+    -o-animation-name: islandsFloatUpDown;
+    -o-animation-duration: 1s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-direction: alternate-reverse;
+
+    animation-name: islandsFloatUpDown;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+
+
+}
+
+.floating_gwfanday {
+
+
+    -webkit-animation-name: islandsFloatUpDown;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate-reverse;
+
+    -moz-animation-name: islandsFloatUpDown;
+    -moz-animation-duration: .5s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-direction: alternate-reverse;
+
+    -o-animation-name: islandsFloatUpDown;
+    -o-animation-duration: .5s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-direction: alternate-reverse;
+
+    animation-name: islandsFloatUpDown;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+
+
+}
+.floating_gwblockbuster {
+
+
+    -webkit-animation-name: islandsFloatUpDown;
+    -webkit-animation-duration: .7s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate-reverse;
+
+    -moz-animation-name: islandsFloatUpDown;
+    -moz-animation-duration: .7s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-direction: alternate-reverse;
+
+    -o-animation-name: islandsFloatUpDown;
+    -o-animation-duration: .7s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-direction: alternate-reverse;
+
+    animation-name: islandsFloatUpDown;
+    animation-duration: .7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+
+
+}
+
+.floating_gwsuper {
+
+
+    -webkit-animation-name: islandsFloatUpDown;
+    -webkit-animation-duration: .7s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate-reverse;
+
+    -moz-animation-name: islandsFloatUpDown;
+    -moz-animation-duration: .7s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-direction: alternate-reverse;
+
+    -o-animation-name: islandsFloatUpDown;
+    -o-animation-duration: .7s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-direction: alternate-reverse;
+
+    animation-name: islandsFloatUpDown;
+    animation-duration: .7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+
+    animation-delay:1s;
+	-webkit-animation-delay:1s; /* Safari and Chrome */
+}
+
+.floating_gwbrainiac {
+
+
+    -webkit-animation-name: islandsFloatUpDown;
+    -webkit-animation-duration: .9s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate-reverse;
+
+    -moz-animation-name: islandsFloatUpDown;
+    -moz-animation-duration: .9s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-direction: alternate-reverse;
+
+    -o-animation-name: islandsFloatUpDown;
+    -o-animation-duration: .9s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-direction: alternate-reverse;
+
+    animation-name: islandsFloatUpDown;
+    animation-duration: .9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+
+
+    animation-delay:1.5s;
+	-webkit-animation-delay:1.5s; /* Safari and Chrome */
+
+}
+
+.floating_gwgaming {
+
+
+    -webkit-animation-name: islandsFloatUpDown;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate-reverse;
+
+    -moz-animation-name: islandsFloatUpDown;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-direction: alternate-reverse;
+
+    -o-animation-name: islandsFloatUpDown;
+    -o-animation-duration: 1s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-direction: alternate-reverse;
+
+    animation-name: islandsFloatUpDown;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+
+
+		animation-delay:.75s;
+	-webkit-animation-delay:.75s; /* Safari and Chrome */
+
+}
+
+
+@-webkit-keyframes islandsFloatUpDown{
+	from {-webkit-transform:translate(0, 4px);}
+	to {-webkit-transform: translate(0, 0px);}
+}
+
+@-moz-keyframes islandsFloatUpDown{
+	from {-moz-transform:translate(0, 4px);}
+	to {-moz-transform: translate(0, 0px);}
+}
+
+@-o-keyframes islandsFloatUpDown{
+	from {-o-transform:translate(0, 4px);}
+	to {-o-transform: translate(0, 0px);}
+}
+
+@keyframes islandsFloatUpDown{
+	from {transform:translate(0, 4px);}
+	to {transform: translate(0, 0px);}
+}
+
+
+
+@-webkit-keyframes islandsSideToSide{
+	from {-webkit-transform:translate(4px, 0);}
+	to {-webkit-transform: translate(0px, 0px);}
+}
+
+@-moz-keyframes islandsSideToSide{
+	from {-moz-transform:translate(4px, 0);}
+	to {-moz-transform: translate(0px, 0px);}
+}
+
+@-o-keyframes islandsSideToSide{
+	from {-o-transform:translate(4px, 0);}
+	to {-o-transform: translate(0px, 0px);}
+}
+
+@keyframes islandsSideToSide{
+	from {transform:translate(4px, 0);}
+	to {transform: translate(0px, 0px);}
+}
+/* end geekweek styling */
+
+/* go watch it */
+.Sidebar.Column2.nobanner .section.block.gowatchit_video_container { margin-top: 20px; margin-bottom: 20px; }
+
+/* New Design for Connect with BuzzFeed module on DIY, FOOD, STYLE B-Pages */
+.sidebar-connect-module {margin: 15px 0;}
+.sidebar-connect-module .connect-headline {clear: both; text-align: center; padding: 10px 0; overflow: hidden;}
+.sidebar-connect-module .connect-headline span {display: inline-block; vertical-align: top;}
+.sidebar-connect-module .connect-headline span.vertical-icon {background: transparent url("/static/images/global/unified_sprite.png?v=201501161526") no-repeat scroll 0 0;}
+.sidebar-connect-module .connect-headline span.connect-headline-text {color: #666666; font: 16px/20px ProximaNovaSemibold,Helvetica,Arial; padding: 20px 10px 0;}
+.sidebar-connect-module .connect-headline span.pinterest-logo {background: transparent url("/static/images/global/new-connect-widget/pinterest-logo.png") no-repeat scroll 0 0; width: 153px; height: 39px;}
+.sidebar-connect-module .pinterest-follow-btn, .sidebar-connect-module .youtube-follow-btn {float: none; width: 259px; height: 39px; text-align: center; display: block; color: #666666; font: 16px/39px ProximaNovaSemibold,Helvetica,Arial; white-space:nowrap; margin: 0 auto;}
+.sidebar-connect-module .youtube-follow-btn {float:left; margin-bottom:15px; padding: 0px 15px;}
+.sidebar-connect-module .pinterest-follow-btn span.pinterest-follow-btn-icon {font-size: 22px; color: #cb202a; padding: 0 5px 0 0; vertical-align: middle;}
+.sidebar-connect-module .youtube-follow-btn span.youtube-follow-btn-icon {font-size: 22px; color: #cb202a; padding: 0 5px 0 0; vertical-align: middle;}
+
+.sidebar-connect-module .follow-links {background-color: #efefef; margin: 25px 0 0; padding: 20px 20px; overflow: hidden; width:296px; float:left;}
+.sidebar-connect-module .follow-links .facebook-follow-link {float: left; padding: 0 0 0 37px;}
+.sidebar-connect-module .follow-links .facebook-follow-link-icon {font-size: 35px; color: #3b5998; position: absolute; left: 0; top: -2px;}
+.sidebar-connect-module .follow-links .twitter-follow-link {padding: 0 0 0 38px; float: right;}
+.sidebar-connect-module .follow-links .twitter-follow-link-icon  {font-size: 37px; color: #5fabdb; position: absolute; left: 0; top: -2px;}
+.sidebar-connect-module .follow-links .facebook-follow-link, .follow-links .twitter-follow-link {display: block; font: 14px/16px ProximaNovaSemibold,Helvetica,Arial; position: relative;}
+.diy-connect .connect-headline span.vertical-icon {background-position: -531px -2px; height: 42px; width: 65px;}
+.food-connect .connect-headline span.vertical-icon {background-position: -371px -1px; height: 45px; width: 146px;}
+.food-connect .connect-headline span.connect-headline-text {padding: 20px 5px 0;}
+.food-connect .connect-headline span.pinterest-logo {margin: 5px 0 0;}
+.style-connect .connect-headline span.vertical-icon {background-position: -397px -179px; height: 48px; width: 121px;}
+
+/* New Design for Connect with BuzzFeed module on LONGFORM vertical */
+.vertical-email .vertical-email-headline {clear: both; text-align: center; padding: 10px 0 0; overflow: hidden;}
+.vertical-email .vertical-email-headline span.vertical-icon {display: inline-block; vertical-align: top; background: transparent url("/static/images/global/unified_sprite.png?v=201501161526") no-repeat scroll -373px -56px; width: 225px; height: 40px;}
+.vertical-email .email-promo-box {float: none; width: 100%!important}
+.vertical-email .email-promo-box .sailthru_email_signup {width: 228px; margin: 15px auto 0;}
+.vertical-email .email-promo-box .sailthru_email_success, .vertical-email .email-promo-box .sailthru_email_failure {width: 280px; margin: 10px auto 0; text-align: center;}
+.vertical-email .email-promo-box .sailthru_email_success:before, .vertical-email .email-promo-box .sailthru_email_failure:before {vertical-align: top;}
+.vertical-email .email-signup-btn {display: block; width: 226px; height: 39px; border: 1px solid #CCCCCC; text-align: center; color: #666666; font: 16px/39px ProximaNovaSemibold,Helvetica,Arial; white-space:nowrap; 
+-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; background: #eee; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfd', endColorstr='#e0e0e0');
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#e0e0e0));}
+.vertical-email .email-signup-btn-icon {background: transparent url("/static/images/global/unified_sprite.png?v=201501161526") no-repeat scroll -36px -543px; display: inline-block; height: 11px; width: 16px; padding: 0 10px 0 0;}
+.vertical-email .sailthru_email_spinner {left: 235px; top: 46px;}
+/* Animals styles */
+.vertical-email.animals-vertical-email .vertical-email-headline span.vertical-icon {background-position: 0 -329px; height: 42px; width: 193px;}
+/* Books styles */
+.vertical-email.books-vertical-email .vertical-email-headline span.vertical-icon {width: 119px; height: 42px; background-position: -240px 0;}
+/* UK styles */
+.vertical-email.uk-vertical-email .email-promo-box {margin: 9px auto 0;}
+.vertical-email.uk-vertical-email .vertical-email-headline {padding: 0;}
+.vertical-email.uk-vertical-email .vertical-email-headline span.vertical-icon {background: transparent url("/static/images/global/connect-modules.png?v=201501161526") no-repeat 0 0; height: 150px; width: 263px;}
+/* Brasil styles */
+.vertical-email.brasil-vertical-email .vertical-email-headline span.vertical-icon {background: transparent url("/static/images/global/brasil-connect-modules.jpg?v=201501161526") no-repeat 0 0; height: 150px; width: 271px;}
+/* Music styles */
+.vertical-email.music-vertical-email .vertical-email-headline span.vertical-icon {width: 175px; height: 44px; background-position: -237px -243px;}
+
+/* VIdeo Vertical Styles */
+.Videos, .Videos .vertical-header {background:none;}
+.Videos .vertical-header{padding: 11px 0px; width: 990px; margin-left: 0px;}
+.video-splash-wrapper {margin-top:6px;}
+.video-splash-share {display: inline-block;}
+.video-splash-title {font: 34px "ProximaNovaSemibold",arial, sans-serif;}
+.video-splash-title a {color: #333333;}
+.video-splash-description {color: #333333; font-family: "ProximaNovaRegular",Helvetica,Arial,sans-serif; font-size: 17px; line-height: 23px;}
+.video-splash-description b, .video-splash-description strong {font-family: "ProximaNovaSemibold", Helvetica, Arial, sans-serif; font-weight: normal;}
+.video-splash-title, .video-splash-description, .video-splash-meta, .video-splash-share {margin:20px 0px 0px 0px;}
+.most-viewed {width: 100%; float: left; margin-top:25px;}
+.most-viewed__heading {font:28px "ProximaNovaBold",arial,sans-serif; color:#ee3322; margin-bottom:15px;}
+.most-viewed .most-viewed-card {float: left; width: 320px; min-height: 324px; margin-right: 10px; position: relative; display: inline-block; margin-bottom: 46px;}
+.most-viewed .most-viewed-card:hover .most-viewed-card__title a {color:#e32;}
+.most-viewed .most-viewed-card:hover .most-viewed-card__thumb {border-bottom:3px solid #e32;}
+.most-viewed .most-viewed-card__thumb{width: 320px; height: 211px; position:relative; border-bottom:3px solid #fff;}
+.most-viewed .most-viewed-card .most-viewed-card__title {font:20px "ProximaNovaSemibold",arial,sans-serif; color:#000; margin: 9px 0px 0px 0px;}
+.most-viewed .most-viewed-card .most-viewed-card__title a {color:#000;}
+.most-viewed .most-viewed-card .most-viewed-card__meta {font: 10px "Lucida Grande", arial,sans-serif;color:#b9b9b9; margin:10px 0px 0px 0px;}
+.most-viewed .most-viewed-card .most-viewed-card__meta a {color:#b9b9b9;}
+.most-viewed .most-viewed-card .most-viewed-card__meta a:hover {color:#000;}
+.most-viewed .most-viewed-card .most-viewed-card__meta .usericon , .most-viewed .most-viewed-card .most-viewed-card__meta .watchicon {margin-right:5px;}
+.most-viewed .most-viewed-card .most-viewed-card__meta .watchicon {margin-left:10px;}
+.most-viewed .most-viewed-card .duration-string, .featured-video-thumb .thumb-duration, .sidebar_featured_videos .small-posts .duration-string { color: white; background: black; position: absolute; bottom: 5px; right: 5px; padding: 2px 3px; opacity: .7; border-radius: 4px; font-family: "Helvetica",arial,sans-serif;}
+.featured-video-thumb .thumb-duration {bottom:9px;}
+.sidebar_featured_videos .small-posts .duration-string {top: 82px; bottom:inherit;}
+.video-splash-overlay {position: absolute; color: #fff; width: 605px; background: #000; opacity: .8; font: 18px "ProximaNovaSemibold"; padding: 10px;}
+.video-lower .Column2 {margin-top: 90px;}
+
+
+
+.Video .vert-fb, .Videos .vert-fb, .Videos .twitter-follow-button {display: none;}
+.Videos .vertical-header {padding:11px 0px;}
+.Videos .vertical-header img {width:111px; height:48px; margin: 2px 0px 0px 0px;}
+.Videos .vertical-social {right: -10px; top:5px; width: 220px;}

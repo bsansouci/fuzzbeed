@@ -20,6 +20,7 @@
     "express": "^4.11.0",
     "firebase": "^2.1.1",
     "swig": "^1.4.2",
-    "giphy": "0.0.4"
+    "giphy": "0.0.4",
+    "fake-identity": "~1.0.6"
   }
 }

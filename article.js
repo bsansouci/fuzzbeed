@@ -1,5 +1,7 @@
 var fs = require('fs');
 var giphy = require("giphy")("dc6zaTOxFJmzC");
+var Identity = require('fake-identity');
+var Markov = require("./markov");
 
 
 //Syntax:
@@ -131,19 +133,32 @@ function findGifUrls(string, callback){
       return console.error("ERROR: ", err);
     }
     var ret = [];
+    //console.log(response);
     for (var i = 0; i < response.data.length; i++){
-      ret.push(response.data[i].embed_url);
+      ret.push(response.data[i].images.original.url);
     }
     callback(ret);
   });
 }
 
-function assignAuthor(article){
-  article.username = "alexalvarez";
-  article.authorName = "Alex Alvarez";
+function assignAuthor(article, author){
+  author = author || newAuthor();
+  article.username = author.username;
+  article.authorName = author.authorName;
   article.profileUrl = "/users/" + article.username;
   article.authorProfilePicture = "/assets/" +
     ((stringToIntHash(article.username)%274) + 1) + ".jpg";
+  return author;
+}
+
+function newAuthor(){
+  var id = Identity.generate();
+  var author = {};
+  author.name = id.firstName + " " + id.lastName;
+  author.username= id.firstName.toLowerCase() + id.lastName.toLowerCase();
+  author.email = id.emailAddress;
+  author.profileUrl = "/users/" + author.username;
+  return author;
 }
 
 function stringToIntHash(str){
@@ -154,38 +169,50 @@ function stringToIntHash(str){
     hash = ((hash<<5)-hash)+char;
     hash = hash & hash; // Convert to 32bit integer
   }
-  return hash;
+  return (hash > 0)? hash : -hash;
 }
+
 
 /////////////////////////////////////
 // Entry point to Article Creation //
 /////////////////////////////////////
-function createEntireArticle(callback){
+function createEntireArticle(author, callback){
+  if(typeof author === "function") {
+    callback = author;
+    author = null;
+  }
   var article = generateArticleName();
-  assignAuthor(article);
+  author = assignAuthor(article, author);
+
   article.url = "/users/" + article.username + "/" + article.articleName;
   article.responses = rand(10,600);
   article.elements = [];
+
+  var m = new Markov();
+  m.pretrainBuzzfeedLists();
 
   findGifUrls(article.subj, function(gifs){
     for (var i = 0; i < article.num; i++){
       if (i < gifs.length){
         article.elements[i] = {};
         article.elements[i].imageUrl = gifs[i];
-        article.elements[i].body = "Default item body.";
-        article.elements[i].title = "Default Item Title";
+        article.elements[i].body = m.generate(1,10);
+        article.elements[i].title = m.generate(rand(0,3),10);
       } else break;
     }
-    callback(article);
+    callback(article, author);
   });
 }
 
-module.exports = loadData;
+module.exports = {
+  loadArticleData: loadData,
+  newAuthor: newAuthor
+};
 
 //// Test function
 // loadData(function () {
 //   var f = function (article) {console.log(article);};
-//   for (var i = 0; i < 5; i++){
+//   for (var i = 0; i < 1; i++){
 //     createEntireArticle(f);
 //   }
 // });

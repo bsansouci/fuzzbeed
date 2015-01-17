@@ -88,7 +88,7 @@ app.get('/write-article', function(req, res) {
 
 app.get('/write-an-article', function(req, res) {
   // Decide to create a new profile or not
-  articleGenerator(function(createArticle) {
+  articleGenerator.loadArticleData(function(createArticle) {
     createArticle(function(article) {
       firebaseArticles.push(article, function() {
         res.redirect(article.url);

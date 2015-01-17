@@ -142,7 +142,7 @@ function genFromTemplate(template){
 function generateArticleName(){
   var template = templates[rand(0,templates.length)];
   var ret = genFromTemplate(template);
-  ret.articleName = encodeURIComponent(ret.title.toLowerCase().replace(/ /g, "-"));
+  ret.articleName = ret.title.toLowerCase().replace(/ /g, "-").replace(/[\"\']/g, "");
   return ret;
 }
 

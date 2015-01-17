@@ -157,6 +157,8 @@ function addAwards(profile) {
 }
 
 function injectSideStuff(obj, callback) {
+  if(!obj) return console.error("injectSideStuff obj was null");
+
   firebaseArticles.once("value", function(snapshot) {
     var v = snapshot.val();
     if(!v) {

@@ -223,6 +223,10 @@ function createEntireArticle(author, callback){
   m.pretrainWikipediaSubject(article.subj, function() {
 
     findGifUrls(article.subj, function(gifs){
+      gifs.data = gifs.data.filter(function(v, i) {
+        return gifs.data.indexOf(v) === i;
+      });
+
       if(gifs.data.length < article.num) {
         return createEntireArticle(author, callback);
       }
@@ -237,9 +241,22 @@ function createEntireArticle(author, callback){
       }
       callback(article, author);
     });
-
   });
+}
 
+function contains(coll, el, f) {
+  return find(coll, el, f) !== null;
+}
+
+function find(coll, el, f) {
+  var max = coll.length;
+  for (var i = 0; i < max; ++i){
+    if(f(coll[i], el)) {
+      return coll[i];
+    }
+  }
+
+  return null;
 }
 
 module.exports = {

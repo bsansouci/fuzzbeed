@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var swig = require('swig');
 var Firebase = require("firebase");
+var articleGenerator = require("./article");
 
 var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
 var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");
@@ -46,6 +47,8 @@ app.param('username', function(req, res, next, username) {
 app.param('articleName', function(req, res, next, articleName) {
   firebaseArticles.orderByChild("articleName").equalTo(articleName).once("value", function(snapshot) {
     var v = snapshot.val();
+    if(!v) return next();
+
     for (var prop in v) {
       if(v.hasOwnProperty(prop)) {
         req.article = v[prop];
@@ -77,6 +80,21 @@ app.get('/users/:username/:articleName', function(req, res) {
 
 app.get('/users/:username', function(req, res) {
   res.render('profile-view', req.profile);
+});
+
+app.get('/write-article', function(req, res) {
+  res.render('write-article-view', {});
+});
+
+app.get('/write-an-article', function(req, res) {
+  // Decide to create a new profile or not
+  articleGenerator(function(createArticle) {
+    createArticle(function(article) {
+      firebaseArticles.push(article, function() {
+        res.redirect(article.url);
+      });
+    });
+  });
 });
 
 app.use(express.static(__dirname + "/views"));

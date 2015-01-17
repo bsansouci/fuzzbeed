@@ -39,6 +39,7 @@ var templates = [
   "[[t-num]] [[p-subj]] Who Completely Screwed Up Their One Job",
   "[[t-num]] [[p-subj]] Who Are Having A Really Rough Day",
   "[[t-num]] [[subj]] That Scream World Domination",
+  "[[num]] Times [[subj]] Are The Worst And You Just Can't Even"
 ];
 
 
@@ -54,7 +55,7 @@ function loadData(callback){
       loadFile("subj", "wordlists/nouns.txt", function () {
         loadFile("people", "wordlists/people-nouns.txt", function () {
           loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-            callback();
+            callback(createEntireArticle);
           });
         });
       });
@@ -106,7 +107,7 @@ function genFromTemplate(template){
   return ret;
 }
 
-function generateArticleName(){ 
+function generateArticleName(){
   var template = templates[rand(0,templates.length)];
   var ret = genFromTemplate(template);
   ret.articleName = encodeURIComponent(ret.title.toLowerCase().replace(/ /g, "-"));
@@ -119,7 +120,7 @@ function rand(min, max){
 
 function replaceMatch(fullString, match, substitute){
   var start = fullString.indexOf(match);
-  var newStr = fullString.slice(0,start) + substitute + 
+  var newStr = fullString.slice(0,start) + substitute +
         fullString.slice(start + match.length, fullString.length);
   return newStr;
 }
@@ -138,7 +139,7 @@ function findGifUrls(string, callback){
 }
 
 function assignAuthor(article){
-  article.username = "alexalvares";
+  article.username = "alexalvarez";
   article.authorName = "Alex Alvarez";
   article.profileUrl = "/users/" + article.username;
   article.authorProfilePicture = "/assets/" +
@@ -163,7 +164,7 @@ function createEntireArticle(callback){
   var article = generateArticleName();
   assignAuthor(article);
   article.url = "/users/" + article.username + "/" + article.articleName;
-  article.responses = rand(10,600); 
+  article.responses = rand(10,600);
   article.elements = [];
 
   findGifUrls(article.subj, function(gifs){
@@ -179,10 +180,12 @@ function createEntireArticle(callback){
   });
 }
 
+module.exports = loadData;
+
 //// Test function
-loadData(function () {
-  var f = function (article) {console.log(article);};
-  for (var i = 0; i < 5; i++){
-    createEntireArticle(f);
-  }
-});
+// loadData(function () {
+//   var f = function (article) {console.log(article);};
+//   for (var i = 0; i < 5; i++){
+//     createEntireArticle(f);
+//   }
+// });

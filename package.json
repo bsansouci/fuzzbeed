@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/bsansouci/fuzzbeed",
   "dependencies": {
+    "cheerio": "^0.18.0",
     "express": "^4.11.0",
     "firebase": "^2.1.1",
-    "swig": "^1.4.2",
-    "giphy": "0.0.4"
+    "giphy": "0.0.4",
+    "request": "^2.51.0",
+    "swig": "^1.4.2"
   }
 }

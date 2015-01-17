@@ -71,8 +71,12 @@ app.get('/', function (req, res) {
         v[prop].timeAgo = timeAgo(v[prop].timestamp);
       }
     }
-    res.render('index', {
+    var obj = {
       articles: v
+    };
+    injectSideStuff(obj, function() {
+      obj.topBuzz = obj.__sideArticles[0];
+      res.render('index', obj);
     });
   });
 });

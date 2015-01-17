@@ -2939,11 +2939,11 @@ var widget_init = function() {
 
 
       <a name="post-title"></a>
-		  <h1 id="post-title">22 Confessions Shy People Will Never Tell&nbsp;You</h1>
+		  <h1 id="post-title">{{title}}</h1>
 		  <p class="description">
 
 
-				<b>*Converses with you in total silence.*</b>
+				<b>{{subtitle}}</b>
 
 
 			</p>
@@ -3000,13 +3000,13 @@ var widget_init = function() {
 
             ">
 
-  <a href={{authorProfileUrl}} rel:gt_act="user/avatar" rel:gt_label="editor/alexalvarez">
-    <img nopin="nopin" src={{authorProfilePicture}} class="byline__avatar" alt="Alex Alvarez">
+  <a href={{profileUrl}} rel:gt_act="user/avatar" rel:gt_label="editor/alexalvarez">
+    <img nopin="nopin" src="{{authorProfilePicture}}" class="byline__avatar" alt="{{authorName}}">
   </a>
 
 
   <div class="byline__body">
-    <a href={{authorProfileUrl}} class="byline__author" rel:gt_act="user/username" rel:gt_label="editor/alexalvarez">Alex Alvarez</a>
+    <a href="{{profileUrl}}" class="byline__author" rel:gt_act="user/username" rel:gt_label="editor/alexalvarez">{{authorName}}</a>
     <div class="byline__title">BuzzFeed Staff</div>
   </div>
 </div>
@@ -3212,13 +3212,13 @@ var widget_init = function() {
 
 {% for something in elements %}
 <div class="buzz_superlist_item buzz_superlist_item_image  buzz_superlist_item_wide image_hit  " id="superlist_3577178_4688570" rel:buzz_num="1">
-  <h2><span class="buzz_superlist_number_inline">{{something.num}}.</span> {{something.title}}</h2>
+  <h2><span class="buzz_superlist_number_inline">{{loop.index}}.</span> {{something.title}}</h2>
   <div class="sub_buzz_content">
   <div class="share-box bf_dom share-box-reset-left">
       <img src="/article-view_files/sharing2.png" />
     </div>
     <div class="rubbable-container">
-      <img src={{something.imageUrl}} rel:fake_photorow="1" style="width: 625px; height: 280px; left: 0px; top: 0px" rel:bf_image_src="http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif" rel:version="201501161526" class="bf_dom" rel:bf_bucket="progload" alt="22 Confessions Shy People Will Never Tell You" height="280" width="625">
+      <img src="{{something.imageUrl}}" rel:fake_photorow="1" style="width: 625px; height: 280px; left: 0px; top: 0px" rel:bf_image_src="http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif" rel:version="201501161526" class="bf_dom" rel:bf_bucket="progload" alt="{{something.title}}" height="280" width="625">
       <a class="animatedgifs button-rubbable bf_dom" rel:gt_act="rub/list-item:1" rel:gt_label="/static/2015-01/16/13/enhanced/webdr03/anigif_enhanced-3238-1421434742-19.gif" rel:bf_bucket="animatedgifs"></a>
       <div class="pinit" style="left: 542px; top: 232px;">
         <a class="pin sub-buzz-pinterest-share bf_dom" href="javascript:;" rel:gt_act="share/pinterest/pin/list-item:1" rel:bf_bucket_data="{'pin-share':{'id':'3577178_4688570','not_a_sub':true}}" rel:sub_title="">

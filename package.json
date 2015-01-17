@@ -18,6 +18,7 @@
   "homepage": "https://github.com/bsansouci/fuzzbeed",
   "dependencies": {
     "express": "^4.11.0",
+    "firebase": "^2.1.1",
     "swig": "^1.4.2"
   }
 }

@@ -2318,18 +2318,18 @@ var widget_init = function() {
       <p class="lede__kicker"><b>{{something.subtitle}}</b></p>
       <div class="lede__meta">
         <div class="lede__meta__item">
-          <span class="fa fa-user"></span>
-          <a href={{something.userPage}} rel:gt_act="username">{{something.authorName}}</a>
+          <span class="fa"><img style="position:relative;top:3px;" src="/BuzzFeed Buzz_files/author-dude.png" /></span>
+          <a href={{something.profileUrl}} rel:gt_act="username">{{something.authorName}}</a>
         </div>
         <div class="lede__meta__item lede__timestamp">
-          <span class="fa fa-clock-o"></span>
+          <span class="fa"><img style="position:relative;top:3px;left:5px;" src="/BuzzFeed Buzz_files/time-clock.png" /></span>
           <time class="lede__meta__item">
             {{something.timeAgo}}
           </time>
         </div>
         <div class="lede__meta__item">
-          <span class="fa fa-comment"></span>
-          <a href={{something.url + "#responses"}} rel:gt_act="responses">{{something.responses}}</a>
+          <span class="fa"><img style="position:relative;top:4px" src="/BuzzFeed Buzz_files/bubble-trouble.png" /></span>
+          <a href={{something.url + "#responses"}} rel:gt_act="responses">{{something.responses}} responses</a>
         </div>
       </div>
     </div>

@@ -1,7 +1,10 @@
-var express = require('express'),
-  app = express(),
-  swig = require('swig'),
-  people;
+var express = require('express');
+var app = express();
+var swig = require('swig');
+var Firebase = require("firebase");
+
+var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
+var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");
 
 // This is where all the magic happens!
 app.engine('html', swig.renderFile);
@@ -18,82 +21,103 @@ swig.setDefaults({ cache: false });
 
 
 app.param('username', function(req, res, next, username) {
-  // typically we might sanity check that user_id is of the right format
-  // UserDatabase.find(user_id, function(err, user) {
-  //   if (err) return next(err);
-  //   if (!user) return next(...create a 404 error...);
-
-  //   req.user = user;
-  //   next()
-  // });
-  console.log("username", username);
-  req.username = username;
-  next();
+  firebaseProfiles.child(username).once("value", function(snapshot) {
+    var v = snapshot.val();
+    if(v) {
+      req.profile = v;
+      firebaseArticles.orderByChild("username").equalTo(username).once("value", function(snapshot) {
+        var vv = snapshot.val();
+        for (var prop in vv) {
+          if(vv.hasOwnProperty(prop)) {
+            vv[prop].timeAgo = timeAgo(vv[prop].timestamp);
+          }
+        }
+        req.profile.articles = vv;
+        next();
+      });
+    } else {
+      console.error("HACKER");
+      return;
+    }
+  });
 });
 
 app.param('articleName', function(req, res, next, articleName) {
-  console.log("articleName", articleName);
-  req.articleName = articleName;
-  next();
+  firebaseArticles.orderByChild("articleName").equalTo(articleName).once("value", function(snapshot) {
+    var v = snapshot.val();
+    for (var prop in v) {
+      if(v.hasOwnProperty(prop)) {
+        req.article = v[prop];
+        req.article.timestamp = new Date(req.article.timestamp).toGMTString();
+        next();
+        return;
+      }
+    }
+  });
 });
 
-var articles = [{
-  title: "22 Confessions Shy People Will Never Tell You",
-  subtitle: "*Converses with you in total silence.*",
-  authorName: "Alex Alvarez",
-  username: "alexalvarez",
-  userPage: "users/alexalvarez",
-  timeAgo: timeAgo(Date.now()),
-  responses: "66 responses",
-  previewUrl: "/BuzzFeed%20Buzz_files/22-confessions-shy-people-will-never-tell-you-2-11223-142146.jpg",
-  url: "/users/alexalvarez/quietly-judging-all-of-you"
-}];
-
-var article1 = {
-  elements: [{
-    num: 1,
-    title: "You should know that being quiet doesn’t mean we’re judging you.",
-    imageUrl: "http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif",
-    body: "I mean. Unless we are."
-  }],
-  authorProfileUrl: "/users/alexalvarez",
-  authorProfilePicture: "/article-view_files/alexalvarez-3154-1405446917-2_large.jpg",
-  timestamp: new Date().toGMTString()
-};
-
-var profile1 = {
-  authorName: "Alex Alvarez",
-  authorDescription: "LOL but also WTF. Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@buzzfeed.com.",
-  authorEmail: "alex.alvarez@buzzfeed.com",
-  authorProfileUrl: "/users/alexalvarez",
-  articles: [{
-    title: "22 Confessions Shy People Will Never Tell You",
-    subtitle: "*Converses with you in total silence.*",
-    url: "/users/alexalvarez/quietly-judging-all-of-you",
-    numberOfComments: 333,
-    timeAgo: timeAgo(Date.now())
-  }]
-};
-
 app.get('/', function (req, res) {
-  res.render('index', {
-    articles: articles
+  firebaseArticles.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
+    var v = snapshot.val();
+    for (var prop in v) {
+      if(v.hasOwnProperty(prop)) {
+        v[prop].timeAgo = timeAgo(v[prop].timestamp);
+      }
+    }
+    res.render('index', {
+      articles: v
+    });
   });
 });
 app.get('/users/:username/:articleName', function(req, res) {
-  console.log(req.params);
-  res.render('article-view', article1);
+  console.log(req.article);
+  res.render('article-view', req.article);
 });
 
 app.get('/users/:username', function(req, res) {
-  console.log(req.params, req.username);
-  res.render('profile-view', profile1);
+  res.render('profile-view', req.profile);
 });
 
 app.use(express.static(__dirname + "/views"));
 
 app.listen(1337);
 console.log('Application Started on http://localhost:1337/');
+
+
+function generateArticle() {
+  // firebaseArticles.push({
+  //   elements: [{
+  //     num: 1,
+  //     title: "You should know that being quiet doesn’t mean we’re judging you.",
+  //     imageUrl: "http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif",
+  //     body: "I mean. Unless we are."
+  //   }],
+  //   username: "alexalvarez",
+  //   title: "22 Confessions Shy People Will Never Tell You",
+  //   subtitle: "*Converses with you in total silence.*",
+  //   authorName: "Alex Alvarez",
+  //   profileUrl: "/users/alexalvarez",
+  //   authorProfilePicture: "/article-view_files/alexalvarez-3154-1405446917-2_large.jpg",
+  //   timestamp: Date.now(),
+  //   responses: Math.floor(Math.random() * 1000),
+  //   previewUrl: "/BuzzFeed%20Buzz_files/22-confessions-shy-people-will-never-tell-you-2-11223-142146.jpg",
+  //   articleName: "quietly-judging-all-of-you",
+  //   url: "/users/alexalvarez/quietly-judging-all-of-you"
+  // });
+}
+
+function generateProfile() {
+  // var profile1 = {
+  //   authorName: "Alex Alvarez",
+  //   authorDescription: "LOL but also WTF. Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@buzzfeed.com.",
+  //   authorEmail: "alex.alvarez@buzzfeed.com",
+  //   profileUrl: "/users/alexalvarez",
+  //   username: "alexalvarez"
+  // };
+  // var obj = {};
+  // obj[profile1.username] = profile1;
+  // firebaseProfiles.update(obj);
+}
 
 function timeAgo(time){
   var units = [

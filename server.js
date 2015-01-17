@@ -39,41 +39,55 @@ app.param('articleName', function(req, res, next, articleName) {
 
 var articles = [{
   title: "22 Confessions Shy People Will Never Tell You",
-  weird: "*Converses with you in total silence.*",
+  subtitle: "*Converses with you in total silence.*",
   authorName: "Alex Alvarez",
   username: "alexalvarez",
   userPage: "users/alexalvarez",
-  timestamp: timeAgo(Date.now()),
+  timeAgo: timeAgo(Date.now()),
   responses: "66 responses",
   previewUrl: "/BuzzFeed%20Buzz_files/22-confessions-shy-people-will-never-tell-you-2-11223-142146.jpg",
-  link: "/users/alexalvarez/quietly-judging-all-of-you"
+  url: "/users/alexalvarez/quietly-judging-all-of-you"
 }];
+
+var article1 = {
+  elements: [{
+    num: 1,
+    title: "You should know that being quiet doesn’t mean we’re judging you.",
+    imageUrl: "http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif",
+    body: "I mean. Unless we are."
+  }],
+  authorProfileUrl: "/users/alexalvarez",
+  authorProfilePicture: "/article-view_files/alexalvarez-3154-1405446917-2_large.jpg",
+  timestamp: new Date().toGMTString()
+};
+
+var profile1 = {
+  authorName: "Alex Alvarez",
+  authorDescription: "LOL but also WTF. Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@buzzfeed.com.",
+  authorEmail: "alex.alvarez@buzzfeed.com",
+  authorProfileUrl: "/users/alexalvarez",
+  articles: [{
+    title: "22 Confessions Shy People Will Never Tell You",
+    subtitle: "*Converses with you in total silence.*",
+    url: "/users/alexalvarez/quietly-judging-all-of-you",
+    numberOfComments: 333,
+    timeAgo: timeAgo(Date.now())
+  }]
+};
 
 app.get('/', function (req, res) {
   res.render('index', {
     articles: articles
   });
 });
-
-
-var article1 = [{
-  num: 1,
-  title: "You should know that being quiet doesn’t mean we’re judging you.",
-  imageUrl: "http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif",
-  body: "I mean. Unless we are."
-}];
 app.get('/users/:username/:articleName', function(req, res) {
   console.log(req.params);
-  res.render('article-view', {
-    elements: article1
-  });
+  res.render('article-view', article1);
 });
 
 app.get('/users/:username', function(req, res) {
   console.log(req.params, req.username);
-  res.render('index', {
-    articles: articles
-  });
+  res.render('profile-view', profile1);
 });
 
 app.use(express.static(__dirname + "/views"));
@@ -98,7 +112,7 @@ function timeAgo(time){
   while (unit = units[i++]) {
     if (diff < unit.limit || !unit.limit){
       var diff2 =  Math.floor(diff / unit.in_seconds);
-      return diff2 + " " + unit.name + (diff2>1 ? "s" : "");
+      return diff2 + " " + unit.name + (diff2>1 ? "s" : "") + " ago";
     }
   }
 }

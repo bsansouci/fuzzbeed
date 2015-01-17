@@ -1,0 +1,40 @@
+.yes_no_toggle {
+	display: inline-block;
+	position: relative;
+	width: 100px;
+	border: 1px solid #828282;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.yes_no_toggle .option_mask {
+	position: absolute;
+	width: 50px;
+	height: 20px;
+	background-color: #EFEFEF;
+	z-index: 2;
+	border: 1px solid #828282;
+	border-radius: 4px;
+}
+
+.yes_no_toggle.checked .option_mask {
+	left: 50px;
+}
+
+.yes_no_toggle .option {
+	position: relative;
+	width: 50px;
+	float: left;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: bold;
+	line-height: 22px;
+}
+
+.yes_no_toggle .option.yes {
+	background-color: #019052;
+}
+
+.yes_no_toggle .option.no {
+	background-color: #9B9B9B;
+}

@@ -11,27 +11,27 @@ module.exports = function Markov () {
 
 	 var hash = function(word) {
 		return "-hashed-" + word;
-	}
+	};
 
 	 var hashMapPut = function (key, value) {
 		if (!hashMap[hash(key)]) // if word's not in the map yet
 			hashMap[hash(key)] = [];
 		hashMap[hash(key)].push(value);
-	}
+	};
 
 	 var rand = function(max){
 		return Math.floor(Math.random() * max);
-	}
+	};
 
 
 	 this.train = function(string) {
 	 	string = string.replace(/[\"”“]/g, "");
-		var sentences = string.split(/[!?.]+/).filter(function(x) {return x.length > 0});
+		var sentences = string.split(/[!?.]+/).filter(function(x) {return x.length > 0;});
 		sentences.map(trainSentence);
-	}
+	};
 
 	 var trainSentence = function(sentence) {
-		var wordList = sentence.split(/[ \t\n]+/).filter(function(x) {return x.length > 0});
+		var wordList = sentence.split(/[ \t\n]+/).filter(function(x) {return x.length > 0;});
 		// representing beginning of sentence
 		var previousWord = null;
 		for (var i = 0; i < wordList.length; i++) {
@@ -42,9 +42,9 @@ module.exports = function Markov () {
 				hashMapPut(previousWord, wordList[i]);
 			}
 			previousWord = wordList[i];
-		};
+		}
 		hashMapPut(previousWord, ".");
-	}
+	};
 
 	 var generateSentence = function(maxWords) {
 		var prev = startWords[rand(startWords.length)];
@@ -57,7 +57,7 @@ module.exports = function Markov () {
 		}
 		sentence = sentence.slice(0,-1) + ".";
 		return sentence;
-	}
+	};
 
 	 this.generate = function(sentenceCount, maxWordsPerSentence, filter) {
 		var numSentences = 0;
@@ -70,7 +70,7 @@ module.exports = function Markov () {
 			}
 		}
 		return allSentences;
-	}
+	};
 
 	this.pretrainHoroscope = function() {
 		this.train("Intuition plays a large part in your work. You're apt to sense what others want or need and foresee the consequences of one course of action over another. This is definitely going to make a positive difference in what you accomplish. You're likely to be quite pleased with what you do. Exercise this intuition today so it will stay with you in the future.");
@@ -82,7 +82,7 @@ module.exports = function Markov () {
 		this.train("You probably feel especially optimistic about this. You're looking forward to new opportunities that may come your way. Your intuition is high, so you're likely to be able to separate the wheat from the chaff where opportunities are concerned. Go for it.");
 		this.train("Don't hesitate. Have a great day.");
 		this.train("You feel especially optimistic and enthusiastic, although you may not know why.");
-	}
+	};
 
 	this.pretrainBuzzfeedLists = function() {
 		var jsonList = [];
@@ -93,12 +93,12 @@ module.exports = function Markov () {
 		for (var i = jsonList.length - 1; i >= 0; i--) {
 			var json = jsonList[i];
 			for (var j = json.length - 1; j >= 0; j--) {
-				var listItem = json[j]["property1"]
+				var listItem = json[j]["property1"];
 				listItem = listItem.replace(/^[0-9]+\./g, "");
-				m.train(listItem);
-			};
-		};
-	}
+				this.train(listItem);
+			}
+		}
+	};
 
 	// this.pretrainWikipediaSubject = function(subject) {
 	// 	var scraper = require('scraper');

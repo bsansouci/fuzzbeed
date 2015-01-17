@@ -226,14 +226,14 @@ function createEntireArticle(author, callback){
   var m = new Markov();
   m.pretrainBuzzfeedLists();
   m.pretrainWikipediaSubject(article.subj, function() {
-
     findGifUrls(article.subj, function(gifs){
       gifs.data = gifs.data.filter(function(v, i) {
         return gifs.data.indexOf(v) === i;
       });
 
+      if(gifs.data.length > 0) article.previewUrl = gifs.data[0].images.original_still.url;
+
       if(gifs.data.length < article.num) {
-        article.previewUrl = gifs.data[0].images.original_still.url;
         var arr = [];
         for (var i = 0; i < gifs.data.length; i++) {
           arr.push({
@@ -244,6 +244,8 @@ function createEntireArticle(author, callback){
         }
         findPictures(article.subj, function(allPics) {
           var diffPictures = allPics.slice(0, article.num - gifs.data.length);
+          if(!article.previewUrl) article.previewUrl = diffPictures[0];
+
           for (var i = 0; i < diffPictures.length; i++) {
             arr.push({
               imageUrl: diffPictures[i],
@@ -255,23 +257,21 @@ function createEntireArticle(author, callback){
           article.elements = arr;
           callback(article, author);
         });
-        return;
-        // return createEntireArticle(author, callback);
+      } else {
+        var arr = [];
+        for (var i = 0; i < article.num; i++){
+          if (i < gifs.data.length){
+            arr.push({
+              imageUrl: gifs.data[i].images.original.url,
+              body: m.generate(rand(rand(0, 2),5),10, 2),
+              title: m.generate(1,10, 3)
+            });
+          } else break;
+        }
+        arr = shuffle(arr);
+        article.elements = arr;
+        callback(article, author);
       }
-      article.previewUrl = gifs.data[0].images.original_still.url;
-      var arr = [];
-      for (var i = 0; i < article.num; i++){
-        if (i < gifs.data.length){
-          arr.push({
-            imageUrl: gifs.data[i].images.original.url,
-            body: m.generate(rand(rand(0, 2),5),10, 2),
-            title: m.generate(1,10, 3)
-          });
-        } else break;
-      }
-      arr = shuffle(arr);
-      article.elements = arr;
-      callback(article, author);
     });
   });
 }

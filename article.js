@@ -154,7 +154,8 @@ function newAuthor(){
   var author = {};
   author.name = id.firstName + " " + id.lastName;
   author.username= id.firstName.toLowerCase() + id.lastName.toLowerCase();
-  author.email = id.emailAddress;
+  author.email = id.firstName.toLowerCase()+[".","","-","_"][rand(0,3)]+id.lastName.toLowerCase() + "@" +
+    ["hotmail.com","gmail.com","fuzzbeed.com","yahoo.com","live.com","outlook.com"][rand(0,5)];
   author.profileUrl = "/users/" + author.username;
   author.authorProfilePicture = "/assets/userpics/" +
     ((stringToIntHash(article.username)%274) + 1) + ".jpg";

@@ -13,6 +13,7 @@ Earliest
 Easiest
 Fastest
 Friendliest
+Funniest
 Healthiest
 Highest
 Hottest
@@ -20,18 +21,20 @@ Hungriest
 Largest
 Longest
 Loveliest
-Most boring
-Most comfortable
-Most common
-Most dangerous
-Most difficult
-Most expensive
-Most famous
-Most generous
-Most immense
-Most interesting
-Most perfect
-Most popular
+Most Arrogant
+Most Boring
+Most Comfortable
+Most Common
+Most Dangerous
+Most Difficult
+Most Expensive
+Most Famous
+Most Fun
+Most Generous
+Most Immense
+Most Interesting
+Most Perfect
+Most Popular
 Oldest
 Prettiest
 Quickest

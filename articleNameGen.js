@@ -2,22 +2,39 @@ fs = require('fs');
 
 
 //Syntax:
-//num:      Just a number
-//t-num:    Number optionally preceded by "The"
-//x-num:    Random number that the system doesn't care about
-//sup-adj:  Superlative adjective
-//adj:      Regular adjective
-//subj:     plural noun
-//people:   plural noun describing a group of people (eg. "Children")
+//num:         Just a number
+//t-num:       Number optionally preceded by "The"
+//x-num:       Random number that the system doesn't care about
+//sup-adj:     Superlative adjective
+//adj:         Regular adjective
+//subj:        plural noun
+//noun:        plural noun not used as subject
+//people:      plural noun describing a group of people (eg. "Children")
+//p-subj:      same as people noun, but used instead of subj
+//crazy:       adjectives expressing craziness
 //
-//Every template must contain [[subj]] and either [[num]] or [[t-num]]
+//Every template must contain [[subj]] or [[p-subj]]and either [[num]] or [[t-num]]
 
 var templates = [
-"The [[num]] [[sup-adj]] [[subj]] Only [[people]] Will Understand",
-"The [[num]] [[sup-adj]] [[subj]] You Probably Didn't Know",
-"[[t-num]] [[adj]] [[subj]] You Probably Didn't Know",
-"The [[num]] [[sup-adj]] [[subj]] That Will Make You Laugh Every Time",
-"The [[num]] [[sup-adj]] [[subj]] Of The Last [[x-num]] Years"
+  "The [[num]] [[sup-adj]] [[subj]] In The World",
+  "The [[num]] [[sup-adj]] [[subj]] Of Last Summer",
+  "The [[num]] [[sup-adj]] [[subj]] Of The 90's",
+  "The [[num]] [[sup-adj]] [[subj]] Of The Last [[x-num]] Years",
+  "The [[num]] [[sup-adj]] [[subj]] Of This Century",
+  "The [[num]] [[sup-adj]] [[subj]] Only [[people]] Will Understand",
+  "The [[num]] [[sup-adj]] [[subj]] That Will Make You Laugh Every Time",
+  "The [[num]] [[sup-adj]] [[subj]] You Probably Didn't Know",
+  "[[num]] [[noun]] For [[p-subj]] That Should Really Exist",
+  "[[t-num]] Things [[p-subj]] Know To Be True",
+  "[[t-num]] [[adj]] [[subj]] That Will Make You Ask \"Why?\"",
+  "[[t-num]] [[adj]] [[subj]] You Probably Didn't Know",
+  "[[t-num]] [[crazy]] Things [[p-subj]] Know To Be True",
+  "[[t-num]] [[p-subj]] Who Are Too Clever For Their Own Good",
+  "[[t-num]] [[p-subj]] Who Have Performed For [[people]]",
+  "[[t-num]] [[p-subj]] Who Need To Be Banned From Celebrating Halloween",
+  "[[t-num]] [[p-subj]] Who Will Make You Feel Like A Genius",
+  "[[t-num]] [[subj]] That Scream World Domination",
+  "[[t-num]] [[subj]] Who Are Clearly Being Raised [[adj]]",
 ];
 
 
@@ -32,7 +49,9 @@ function loadData(callback){
     loadFile("adj", "wordlists/adj.txt", function () {
       loadFile("subj", "wordlists/nouns.txt", function () {
         loadFile("people", "wordlists/people-nouns.txt", function () {
-          callback();
+          loadFile("crazy", "wordlists/crazy-adj.txt", function () {
+            callback();
+          });
         });
       });
     });
@@ -64,7 +83,15 @@ function genFromTemplate(template){
       template = replaceMatch(template, match, "The "+ret.num);
     } else if (inner === "x-num"){
       template = replaceMatch(template, match, ""+rand(minNum,maxNum));
+    } else if (inner === "noun"){
+      inner = "subj";
+      var n = dicts[inner][rand(0,dicts[inner].length)];
+      template = replaceMatch(template, match, n);
     } else if (inner === "subj"){
+      ret.subj = dicts[inner][rand(0,dicts[inner].length)];
+      template = replaceMatch(template, match, ret.subj);
+    } else if (inner === "p-subj"){
+      inner = "people";
       ret.subj = dicts[inner][rand(0,dicts[inner].length)];
       template = replaceMatch(template, match, ret.subj);
     } else {

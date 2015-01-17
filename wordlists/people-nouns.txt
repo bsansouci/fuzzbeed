@@ -49,6 +49,8 @@ Dentists
 Dermatologists
 Designers
 Directors
+Disney Princes
+Disney Princesses
 Doctors
 Dons
 Drummers
@@ -62,6 +64,7 @@ Foresters
 Frenchmen
 Friends
 Gamblers
+Game of Thrones Characters
 Generals
 Geneticists
 Geologists
@@ -71,14 +74,14 @@ Girl Guides
 Girls
 Golfers
 Goons
-Gossip columnists
+Gossip Columnists
 Gossips
 Governesses
-Graduate students
+Graduate Students
 Grammarians
 Grandparents
 Groupies
-Gym instructors
+Gym Instructors
 Gymnasts
 Gynaecologists
 Gypsies
@@ -139,6 +142,7 @@ Musicians
 Narcissists
 Natives
 Nazis
+News Anchors
 Nieces
 Northerners
 Nuns
@@ -176,7 +180,7 @@ Programmers
 Prostitutes
 Psychoanalysts
 Psychologists
-Public speakers
+Public Speakers
 Pyromaniacs
 Radiologists
 Refugees
@@ -197,6 +201,7 @@ Shoemakers
 Shoppers
 Singers
 Smokers
+Smurfs
 Soldiers
 Students
 Subalterns
@@ -207,7 +212,7 @@ Teachers
 Teenagers
 Thieves
 Tourists
-Tree surgeons
+Tree Surgeons
 Trustees
 Undertakers
 Vegetarians

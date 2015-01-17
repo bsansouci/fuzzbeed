@@ -1,7 +1,3 @@
-cDs
-dVD players
-dVDs
-tVs
 Acoustics
 Actions
 Activities
@@ -14,14 +10,14 @@ Answers
 Apparels
 Apples
 Appliances
-Baking trays
+Baking Trays
 Balloons
 Balls
 Bananas
 Baseballs
 Basketballs
 Baskets
-Bathroom scales
+Bathroom Scales
 Baths
 Bats
 Beans
@@ -43,9 +39,10 @@ Bubbles
 Buckets
 Buns
 Bushes
+CDs
 Cabbages
 Cactuses
-Cake tins
+Cake Tins
 Cakes
 Calculators
 Calendars
@@ -65,7 +62,7 @@ Circles
 Classes
 Clocks
 Clothes
-Clothes hangers
+Clothes Hangers
 Cloths
 Clubs
 Coasters
@@ -79,6 +76,8 @@ Crows
 Cups
 Curtains
 Cushions
+DVD players
+DVDs
 Days
 Desks
 Dinners
@@ -92,8 +91,10 @@ Drugs
 Drums
 Dusters
 Earthquakes
+Easter Eggs
 Eggnogs
 Elbows
+Emojis
 Families
 Father
 Faucets
@@ -102,10 +103,9 @@ Feathers
 Feet
 Flavors
 Foods
-Foods
 Forks
 Frogs
-Fruit bowls
+Fruit Bowls
 Fruits
 Games
 Garbages
@@ -126,12 +126,11 @@ Islands
 Jails
 Jeans
 Jellyfishes
-Jewellery
 Jokes
 Jugs
 Juices
 Kettles
-Kitchen scales
+Kitchen Scales
 Kites
 Kittens
 Knives
@@ -149,7 +148,7 @@ Marbles
 Masks
 Mirrors
 Mittens
-Mixing bowls
+Mixing Bowls
 Mugs
 Notebooks
 Oceans
@@ -163,7 +162,7 @@ Pickles
 Pictures
 Pies
 Pigs
-Pillow cases
+Pillow Cases
 Pillows
 Placemats
 Planes
@@ -180,7 +179,7 @@ Rivers
 Roads
 Rocks
 Roses
-Rubbish bins
+Rubbish Bins
 Rugs
 Saucepans
 Scarecrows
@@ -209,13 +208,14 @@ Stews
 Streets
 Suits
 Sweaters
+TVs
 Tables
 Tents
 Textures
 Tigers
 Tins
 Toasters
-Toilet rolls
+Toilet Rolls
 Toiletries
 Toothbrushes
 Toothpastes
@@ -224,11 +224,13 @@ Toys
 Treatments
 Trees
 Turkeys
+Tweets
 Twigs
 Vaccums
 Vases
 Vegetables
 Volcanos
 Volleyballs
-Washing powders
+Washing Powders
+Ways To Eat A Burrito
 Zebras

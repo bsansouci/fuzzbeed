@@ -5,7 +5,7 @@ Anxious
 Arctic
 Awful
 Bad
-Beautiful 
+Beautiful
 Benevolent
 Big
 Bitter
@@ -17,7 +17,7 @@ Brawny
 Brazen
 Brilliant
 Bucolic
-Bulky 
+Bulky
 Calm
 Carefree
 Caring
@@ -34,7 +34,7 @@ Crawling
 Creative
 Creeping
 Crispy
-Cruel 
+Cruel
 Curious
 Dangerous
 Dawdling
@@ -46,7 +46,7 @@ Demanding
 Difficult
 Diminutive
 Dreadful
-Dreadful 
+Dreadful
 Dynamite
 Easy
 Ecstatic
@@ -69,9 +69,9 @@ Foul
 Freezing
 Frosty
 Generous
-Gentle 
+Gentle
 Ghastly
-Ghastly 
+Ghastly
 Gigantic
 Gilded
 Glowing
@@ -83,7 +83,7 @@ Greedy
 Grimy
 Gullible
 Happy
-Hard 
+Hard
 Hardworking
 Hasty
 Heavy
@@ -109,9 +109,9 @@ Lively
 Lousy
 Lovely
 Marvelous
-Massive 
+Massive
 Meandering
-Menacing 
+Menacing
 Miniscule
 Minute
 Miserable
@@ -131,7 +131,7 @@ Profound
 Puny
 Quick
 Quiet
-Rambunctious 
+Rambunctious
 Rancid
 Rapid
 Relaxed

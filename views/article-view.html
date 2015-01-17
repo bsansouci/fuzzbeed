@@ -285,7 +285,7 @@
 
 
 
-  <link rel="alternate" href="android-app://com.buzzfeed.android/http/www.buzzfeed.com/alexalvarez/quietly-judging-all-of-you?utm_source=google&amp;utm_medium=appindex&amp;utm_campaign=appindex">
+  <link rel="alternate" href="android-app://com.buzzfeed.androidhttp/www.buzzfeed.com/alexalvarez/quietly-judging-all-of-you?utm_source=google&amp;utm_medium=appindex&amp;utm_campaign=appindex">
 
 
 
@@ -319,7 +319,7 @@
 
 
 
-<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="/http://s3-ak.buzzfed.com/static/css/buzzfeed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
+<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
 <!--[if lte IE 7]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
 
 
@@ -329,7 +329,7 @@
 <!-- TO DO - This should be done by adding the class with Javascript -->
 
 
-<link rel="stylesheet" href="article-view_files/reactions.css" type="text/css">
+<link rel="stylesheet" href="assets/reactions.css" type="text/css">
 	<script src="/assets/fbds.js" async=""></script><script async="" src="/assets/cbgapi.js"></script><script id="undefined" src="/assets/inpage_linkid.js" async="" type="text/javascript"></script><script gapi_processed="true" src="/assets/clientplusone.js" type="text/javascript"></script><script gapi_processed="true" src="/assets/clientplusone.js" type="text/javascript"></script><script>var rerankable = '';</script>
 
 	<script>var bf_start_site_time = new Date().getTime();</script>
@@ -535,7 +535,7 @@ function local_ad_call( wid, uparam, extra_params ) {
 
 	(function( ){
 	 var BF_WIDGET_JS=document.createElement('script'); BF_WIDGET_JS.type="text/javascript"; BF_WIDGET_JS.async=true;
-	 var BF_WIDGET_SRC="/http://ct.buzzfeed.com/wd/UserWidget?u=" + uparam + "&network=buzzfeed&uo=1&or=v&ct=1&cs=1&wid=" + wid + extra_params + "&cb=" + (new Date()).getTime();
+	 var BF_WIDGET_SRC="http://ct.buzzfeed.com/wd/UserWidget?u=" + uparam + "&network=buzzfeed&uo=1&or=v&ct=1&cs=1&wid=" + wid + extra_params + "&cb=" + (new Date()).getTime();
 	 setTimeout(function() {document.getElementById('BF_WIDGET_' + wid ).appendChild(BF_WIDGET_JS);BF_WIDGET_JS.src=BF_WIDGET_SRC},1);
 	})();
 }
@@ -580,7 +580,7 @@ var cookieBarVerticalBpageMessage = {
 </script>
 
 <!--[if lte IE 8]>
-	<script src="/http://s3-ak.buzzfed.com/static/js/public/html5shiv.js?v=201501161526"></script>
+	<script src="http://s3-ak.buzzfed.com/static/js/public/html5shiv.js?v=201501161526"></script>
     <script> document.createElement('svg');</script>
 <![endif]-->
 
@@ -2551,7 +2551,7 @@ var widget_init = function() {
         BF_WIDGET_DOMAIN = 'stagedr01.buzzfeed.com';
 
     var BF_WIDGET_JS=document.createElement('script'); BF_WIDGET_JS.type="text/javascript"; BF_WIDGET_JS.async=true;
-    var BF_WIDGET_SRC="/http://" + BF_WIDGET_DOMAIN + "/wd/UserWidget?network=buzzfeed&uo=1&or=v&ct=1&cs=1&bids=3554709&u=buzz" + '&wid=10';
+    var BF_WIDGET_SRC="http://" + BF_WIDGET_DOMAIN + "/wd/UserWidget?network=buzzfeed&uo=1&or=v&ct=1&cs=1&bids=3554709&u=buzz" + '&wid=10';
     parent.document.getElementById("BF_WIDGET_10").appendChild(BF_WIDGET_JS);
     if(typeof(parent.BF_MOBILE_PAGE_INIT) == 'undefined' || parent.BF_MOBILE_PAGE_INIT == true) {
         BF_WIDGET_JS.src=BF_WIDGET_SRC;
@@ -2602,9 +2602,12 @@ var widget_init = function() {
 			<a rel:gt_act="post/thumb/video:2" rel:gt_label="editor/chantelhouston" rel:buzz_id="3578555" class="thumbbb bf_dom" rel:bf_bucket="abtrack" href="http://www.buzzfeed.com/chantelhouston/6-struggles-of-not-being-a-good-dancer">
 							<script type="text/javascript">
 					document.write('<span class="title">' + sel_promo.title + '</span>');
-					document.write('<img src="/http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
-				</script><span class="title">6 Truths Of People Who Can't Dance</span><img nopin="nopin" src="/assets/6-struggles-of-not-being-a-good-dancer-2-18603-1421460806-19.jpg" alt="" height="79" width="119">
-
+					document.write('<img src="http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
+				</script>
+        
+        <!--
+        <span class="title">6 Truths Of People Who Can't Dance</span><img nopin="nopin" src="/assets/6-struggles-of-not-being-a-good-dancer-2-18603-1421460806-19.jpg" alt="" height="79" width="119">
+        -->
 					<span class="video-play-icon"></span>
 
 						</a>
@@ -2637,9 +2640,11 @@ var widget_init = function() {
 			<a rel:gt_act="post/thumb:3" rel:gt_label="editor/briangalindo" rel:buzz_id="3578368" class="thumbbb bf_dom" rel:bf_bucket="abtrack" href="http://www.buzzfeed.com/briangalindo/15-play-sets-from-the-80s-that-are-now-worth-bank">
 							<script type="text/javascript">
 					document.write('<span class="title">' + sel_promo.title + '</span>');
-					document.write('<img src="/http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
-				</script><span class="title">15 Play Sets From The '80s That Are Now Worth Some Serious Money</span><img nopin="nopin" src="/assets/15-play-sets-from-the-80s-that-are-now-worth-bank-2-809-_002.jpg" alt="" height="79" width="119">
-
+					document.write('<img src="http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
+				</script>
+        <!--
+        <span class="title">15 Play Sets From The '80s That Are Now Worth Some Serious Money</span><img nopin="nopin" src="/assets/15-play-sets-from-the-80s-that-are-now-worth-bank-2-809-_002.jpg" alt="" height="79" width="119">
+        -->
 						</a>
 
 
@@ -2714,8 +2719,11 @@ var widget_init = function() {
 			<a rel:gt_act="post/thumb:6" rel:gt_label="editor/emilyorley" rel:buzz_id="3574517" class="thumbbb bf_dom" rel:bf_bucket="abtrack" href="http://www.buzzfeed.com/emilyorley/reasons-you-should-be-watching-jane-the-virgin">
 							<script type="text/javascript">
 					document.write('<span class="title">' + sel_promo.title + '</span>');
-					document.write('<img src="/http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
-				</script><span class="title">17 Reasons "Jane The Virgin" Should Be Your Favorite Show</span><img nopin="nopin" src="/assets/reasons-you-should-be-watching-jane-the-virgin-2-2334-142144.jpg" alt="" height="79" width="119">
+					document.write('<img src="http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
+				</script>
+        <!--
+        <span class="title">17 Reasons "Jane The Virgin" Should Be Your Favorite Show</span><img nopin="nopin" src="/assets/reasons-you-should-be-watching-jane-the-virgin-2-2334-142144.jpg" alt="" height="79" width="119">
+        -->
 
 						</a>
 
@@ -2747,7 +2755,7 @@ var widget_init = function() {
 			<a rel:gt_act="post/thumb:7" rel:gt_label="editor/arabellesicardi" rel:buzz_id="3568944" class="thumbbb bf_dom" rel:bf_bucket="abtrack" href="http://www.buzzfeed.com/arabellesicardi/21-obscenely-pretty-beauty-products-that-should-be-in-a-muse">
 							<script type="text/javascript">
 					document.write('<span class="title">' + sel_promo.title + '</span>');
-					document.write('<img src="/http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
+					document.write('<img src="http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
 				</script><span class="title">21 Pieces Of Makeup Porn That Will Haunt Your Dreams</span><img nopin="nopin" src="/assets/21-obscenely-pretty-beauty-products-that-should-b-2-6328-142.jpg" alt="" height="79" width="119">
 
 						</a>
@@ -2780,8 +2788,11 @@ var widget_init = function() {
 			<a rel:gt_act="post/thumb:8" rel:gt_label="editor/lyapalater" rel:buzz_id="3577991" class="thumbbb bf_dom" rel:bf_bucket="abtrack" href="http://www.buzzfeed.com/lyapalater/john-krasinski-runs-from-backstage-to-hug-emily-blunt-after">
 							<script type="text/javascript">
 					document.write('<span class="title">' + sel_promo.title + '</span>');
-					document.write('<img src="/http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
-				</script><span class="title">John Krasinski Runs From Backstage To Hug Emily Blunt After She Wins An Award</span><img nopin="nopin" src="/assets/john-krasinski-runs-from-backstage-to-hug-emily-b-2-25178-14.jpg" alt="" height="79" width="119">
+					document.write('<img src="http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
+				</script>
+        <!--
+        <span class="title">John Krasinski Runs From Backstage To Hug Emily Blunt After She Wins An Award</span><img nopin="nopin" src="/assets/john-krasinski-runs-from-backstage-to-hug-emily-b-2-25178-14.jpg" alt="" height="79" width="119">
+        -->
 
 						</a>
 
@@ -2813,7 +2824,7 @@ var widget_init = function() {
 			<a rel:gt_act="post/thumb:9" rel:gt_label="editor/mollyhensleyclancy" rel:buzz_id="3578387" class="thumbbb bf_dom" rel:bf_bucket="abtrack" href="http://www.buzzfeed.com/mollyhensleyclancy/heres-how-to-see-what-college-admissions-officers-wrote-abou">
 							<script type="text/javascript">
 					document.write('<span class="title">' + sel_promo.title + '</span>');
-					document.write('<img src="/http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
+					document.write('<img src="http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
 				</script><span class="title">Want To See What College Admissions Officers Wrote About You? Here's How</span><img nopin="nopin" src="/assets/heres-how-to-see-what-college-admissions-officers-2-10151-14.jpg" alt="" height="79" width="119">
 
 						</a>
@@ -3304,7 +3315,7 @@ var widget_init = function() {
 				<li id="next_on_1" rel:buzz_id="3577781">
 					<div class="leftPage">
 						<a href="http://www.buzzfeed.com/ryanhatesthis/manchas-slay-mama" rel:gt_act="post/thumb" rel:gt_label="user/ryanhatesthis">
-							<img nopin="nopin" class="bf_dom" rel:bf_bucket="progload" src="/assets/you-will-never-love-your-job-as-much-as-the-perso-2-540-1421.jpg" rel:bf_image_src="/http://s3-static-ak.buzzfed.com/static/2015-01/16/10/campaign_images/webdr02/you-will-never-love-your-job-as-much-as-the-perso-2-540-1421422999-21_wide.jpg" alt="">
+							<img nopin="nopin" class="bf_dom" rel:bf_bucket="progload" src="/assets/you-will-never-love-your-job-as-much-as-the-perso-2-540-1421.jpg" rel:bf_image_src="http://s3-static-ak.buzzfed.com/static/2015-01/16/10/campaign_images/webdr02/you-will-never-love-your-job-as-much-as-the-perso-2-540-1421422999-21_wide.jpg" alt="">
 						</a>
 
 						<a rel:gt_act="vertical/logo" href="http://www.buzzfeed.com/videos" class="vertical_title_sprite">&nbsp;</a>
@@ -3323,7 +3334,7 @@ var widget_init = function() {
 				<li id="next_on_2" style="display:none;" rel:buzz_id="3576682">
 					<div class="leftPage">
 						<a href="http://www.buzzfeed.com/maycie/watch-100-years-of-black-hairstyles-in-less-than-a-minute" rel:gt_act="post/thumb" rel:gt_label="user/maycie">
-							<img nopin="nopin" class="bf_dom" rel:bf_bucket="progload" src="/assets/watch-100-years-of-black-hairstyles-in-less-than--2-10171-14.jpg" rel:bf_image_src="/http://s3-static-ak.buzzfed.com/static/2015-01/15/17/campaign_images/webdr06/watch-100-years-of-black-hairstyles-in-less-than--2-10171-1421360038-21_wide.jpg" alt="">
+							<img nopin="nopin" class="bf_dom" rel:bf_bucket="progload" src="/assets/watch-100-years-of-black-hairstyles-in-less-than--2-10171-14.jpg" rel:bf_image_src="http://s3-static-ak.buzzfed.com/static/2015-01/15/17/campaign_images/webdr06/watch-100-years-of-black-hairstyles-in-less-than--2-10171-1421360038-21_wide.jpg" alt="">
 						</a>
 
 						<a rel:gt_act="vertical/logo" href="http://www.buzzfeed.com/videos" class="vertical_title_sprite">&nbsp;</a>
@@ -3711,7 +3722,7 @@ var widget_init = function() {
         BF_WIDGET_DOMAIN = 'stagedr01.buzzfeed.com';
 
     var BF_WIDGET_JS=document.createElement('script'); BF_WIDGET_JS.type="text/javascript"; BF_WIDGET_JS.async=true;
-    var BF_WIDGET_SRC="/http://" + BF_WIDGET_DOMAIN + "/wd/UserWidget?network=buzzfeed&uo=1&or=v&ct=1&cs=1&bids=3573401&u=buzz" + '&wid=9';
+    var BF_WIDGET_SRC="http://" + BF_WIDGET_DOMAIN + "/wd/UserWidget?network=buzzfeed&uo=1&or=v&ct=1&cs=1&bids=3573401&u=buzz" + '&wid=9';
     parent.document.getElementById("BF_WIDGET_9").appendChild(BF_WIDGET_JS);
     if(typeof(parent.BF_MOBILE_PAGE_INIT) == 'undefined' || parent.BF_MOBILE_PAGE_INIT == true) {
         BF_WIDGET_JS.src=BF_WIDGET_SRC;
@@ -4291,7 +4302,7 @@ parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%25
   <div class="content c">
 
     <div class="post sidebar-post sidebar-post-wide  top bf_dom" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7EWLE37&quot;,&quot;u&quot;:&quot;75B3M87&quot;,&quot;buzz&quot;:&quot;whats-the-best-relationship-advice-youve-ever-gotten&quot;,&quot;user&quot;:&quot;jessicaprobus&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}">
-		<a href="http://www.buzzfeed.com/jessicaprobus/whats-the-best-relationship-advice-youve-ever-gotten" rel:gt_act="post/thumb" rel:buzz_id="3576470"><img nopin="nopin" src="/assets/whats-the-best-relationship-advice-youve-ever-got-2-18287-14.jpg" rel:bf_image_src="/http://s3-static-ak.buzzfed.com/static/2015-01/15/13/campaign_images/webdr05/whats-the-best-relationship-advice-youve-ever-got-2-18287-1421348085-16_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt=""></a>
+		<a href="http://www.buzzfeed.com/jessicaprobus/whats-the-best-relationship-advice-youve-ever-gotten" rel:gt_act="post/thumb" rel:buzz_id="3576470"><img nopin="nopin" src="/assets/whats-the-best-relationship-advice-youve-ever-got-2-18287-14.jpg" rel:bf_image_src="http://s3-static-ak.buzzfed.com/static/2015-01/15/13/campaign_images/webdr05/whats-the-best-relationship-advice-youve-ever-got-2-18287-1421348085-16_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt=""></a>
       <a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3576470&quot;}"></a>
     <h2><a href="http://www.buzzfeed.com/jessicaprobus/whats-the-best-relationship-advice-youve-ever-gotten" rel:gt_act="post/title" rel:buzz_id="3576470">What’s The Best Relationship Advice You’ve Ever Gotten?    </a></h2>
 
@@ -4303,7 +4314,7 @@ parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%25
    </div>
 
     <div class="post sidebar-post sidebar-post-wide  bf_dom" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7ETZ9I7&quot;,&quot;u&quot;:&quot;72WI5R7&quot;,&quot;buzz&quot;:&quot;whats-the-worst-thing-that-ever-happened-to-you-on-new-years&quot;,&quot;user&quot;:&quot;krystieyandoli&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}">
-		<a href="http://www.buzzfeed.com/krystieyandoli/whats-the-worst-thing-that-ever-happened-to-you-on-new-years" rel:gt_act="post/thumb" rel:buzz_id="3559043"><img nopin="nopin" src="/assets/whats-the-worst-thing-that-ever-happened-to-you-o-2-30160-14.jpg" rel:bf_image_src="/http://s3-static-ak.buzzfed.com/static/2014-12/28/13/campaign_images/webdr12/whats-the-worst-thing-that-ever-happened-to-you-o-2-30160-1419790031-7_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt=""></a>
+		<a href="http://www.buzzfeed.com/krystieyandoli/whats-the-worst-thing-that-ever-happened-to-you-on-new-years" rel:gt_act="post/thumb" rel:buzz_id="3559043"><img nopin="nopin" src="/assets/whats-the-worst-thing-that-ever-happened-to-you-o-2-30160-14.jpg" rel:bf_image_src="http://s3-static-ak.buzzfed.com/static/2014-12/28/13/campaign_images/webdr12/whats-the-worst-thing-that-ever-happened-to-you-o-2-30160-1419790031-7_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt=""></a>
       <a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3559043&quot;}"></a>
     <h2><a href="http://www.buzzfeed.com/krystieyandoli/whats-the-worst-thing-that-ever-happened-to-you-on-new-years" rel:gt_act="post/title" rel:buzz_id="3559043">What’s The Worst Thing That Ever Happened To You On New Year’s Eve?    </a></h2>
 
@@ -4412,7 +4423,7 @@ parent.BF_DFP_REDIRECTS['5'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%253
 	parent.BF_WIDGET_DOMAIN = 'stagedr01.buzzfeed.com';
 
  var BF_WIDGET_JS=document.createElement('script'); BF_WIDGET_JS.type="text/javascript"; BF_WIDGET_JS.async=true;
- var BF_WIDGET_SRC="/http://ct-ak.buzzfed.com/wd/UserWidget?u=partner&u=&co=&flex_medium=&network=buzzfeed&bids=&tame=1&uo=1&or=v&ct=1&cs=1&wid=5&cb=" + (new Date()).getTime();
+ var BF_WIDGET_SRC="http://ct-ak.buzzfed.com/wd/UserWidget?u=partner&u=&co=&flex_medium=&network=buzzfeed&bids=&tame=1&uo=1&or=v&ct=1&cs=1&wid=5&cb=" + (new Date()).getTime();
 setTimeout(function() {parent.document.getElementById('BF_WIDGET_5').appendChild(BF_WIDGET_JS);BF_WIDGET_JS.src=BF_WIDGET_SRC},1);
 })();
 </script>
@@ -4459,7 +4470,7 @@ setTimeout(function() {parent.document.getElementById('BF_WIDGET_5').appendChild
             <li class="post sidebar-post  top bf_dom nsfw sidebar-post-wide" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7EWU1S7&quot;,&quot;u&quot;:&quot;72KY7&quot;,&quot;buzz&quot;:&quot;facts-about-the-woman-with-the-largest-augmented-breasts&quot;,&quot;user&quot;:&quot;mjs538&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" id="promoted-facts-about-the-woman-with-the-largest-augmented-breasts">
 													<a href="http://www.buzzfeed.com/mjs538/facts-about-the-woman-with-the-largest-augmented-breasts" rel:gt_act="buzzing/thumb" rel:buzz_id="3578073">
 								<div style="float:left; position:relative;">
- 									<img nopin="nopin" src="/assets/26-truly-interesting-facts-about-the-woman-with-t-2-26393-14.jpg" rel:bf_image_src="/http://s3-static-ak.buzzfed.com/static/2015-01/16/15/campaign_images/webdr05/26-truly-interesting-facts-about-the-woman-with-t-2-26393-1421441100-13_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">
+ 									<img nopin="nopin" src="/assets/26-truly-interesting-facts-about-the-woman-with-t-2-26393-14.jpg" rel:bf_image_src="http://s3-static-ak.buzzfed.com/static/2015-01/16/15/campaign_images/webdr05/26-truly-interesting-facts-about-the-woman-with-t-2-26393-1421441100-13_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">
 
 								</div>
 							</a>
@@ -4564,7 +4575,7 @@ parent.BF_DFP_REDIRECTS['6'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%253
 	parent.BF_WIDGET_DOMAIN = 'stagedr01.buzzfeed.com';
 
  var BF_WIDGET_JS=document.createElement('script'); BF_WIDGET_JS.type="text/javascript"; BF_WIDGET_JS.async=true;
- var BF_WIDGET_SRC="/http://ct-ak.buzzfed.com/wd/UserWidget?u=partner&u=&co=&flex_medium=&network=buzzfeed&bids=&tame=1&uo=1&or=v&ct=1&cs=1&wid=6&cb=" + (new Date()).getTime();
+ var BF_WIDGET_SRC="http://ct-ak.buzzfed.com/wd/UserWidget?u=partner&u=&co=&flex_medium=&network=buzzfeed&bids=&tame=1&uo=1&or=v&ct=1&cs=1&wid=6&cb=" + (new Date()).getTime();
 setTimeout(function() {parent.document.getElementById('BF_WIDGET_6').appendChild(BF_WIDGET_JS);BF_WIDGET_JS.src=BF_WIDGET_SRC},1);
 })();
 </script>
@@ -4590,7 +4601,7 @@ setTimeout(function() {parent.document.getElementById('BF_WIDGET_6').appendChild
 							document.write('\
 								<a href="/javiermoreno/whats-your-actual-personality-type" rel:gt_act="buzzing/thumb" rel:buzz_id="3576883">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -4599,7 +4610,7 @@ setTimeout(function() {parent.document.getElementById('BF_WIDGET_6').appendChild
 									<a href="/javiermoreno/whats-your-actual-personality-type" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/javiermoreno/whats-your-actual-personality-type" rel:gt_act="buzzing/thumb" rel:buzz_id="3576883">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/whats-your-actual-personality-type-2-23554-1421452413-9_wide.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/18/campaign_images/webdr06/whats-your-actual-personality-type-2-23554-1421452413-9_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3576883&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/javiermoreno/whats-your-actual-personality-type" rel:gt_act="buzzing/title">What's Your Actual Personality Type?</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/javiermoreno/whats-your-actual-personality-type" rel:gt_act="buzzing/thumb" rel:buzz_id="3576883">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/whats-your-actual-personality-type-2-23554-1421452413-9_wide.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/18/campaign_images/webdr06/whats-your-actual-personality-type-2-23554-1421452413-9_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3576883&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/javiermoreno/whats-your-actual-personality-type" rel:gt_act="buzzing/title">What's Your Actual Personality Type?</a>								</h2>
 						            </li>
 
 
@@ -4620,7 +4631,7 @@ setTimeout(function() {parent.document.getElementById('BF_WIDGET_6').appendChild
 							document.write('\
 								<a href="/rachelzarrell/alpha-chi-omega-sorority-email-says-wear-spanx" rel:gt_act="buzzing/thumb" rel:buzz_id="3577981">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -4629,7 +4640,7 @@ setTimeout(function() {parent.document.getElementById('BF_WIDGET_6').appendChild
 									<a href="/rachelzarrell/alpha-chi-omega-sorority-email-says-wear-spanx" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/rachelzarrell/alpha-chi-omega-sorority-email-says-wear-spanx" rel:gt_act="buzzing/thumb" rel:buzz_id="3577981">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/alpha-chi-omega-sorority-email-says-wear-spanx-2-2656-142143.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/13/campaign_images/webdr03/alpha-chi-omega-sorority-email-says-wear-spanx-2-2656-1421431737-15_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3577981&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/rachelzarrell/alpha-chi-omega-sorority-email-says-wear-spanx" rel:gt_act="buzzing/title">USC Sorority Bans Wavy Hair, Requires Members To Wear Spanx</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/rachelzarrell/alpha-chi-omega-sorority-email-says-wear-spanx" rel:gt_act="buzzing/thumb" rel:buzz_id="3577981">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/alpha-chi-omega-sorority-email-says-wear-spanx-2-2656-142143.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/13/campaign_images/webdr03/alpha-chi-omega-sorority-email-says-wear-spanx-2-2656-1421431737-15_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3577981&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/rachelzarrell/alpha-chi-omega-sorority-email-says-wear-spanx" rel:gt_act="buzzing/title">USC Sorority Bans Wavy Hair, Requires Members To Wear Spanx</a>								</h2>
 						            </li>
 
 
@@ -4650,8 +4661,8 @@ setTimeout(function() {parent.document.getElementById('BF_WIDGET_6').appendChild
 							document.write('\
 								<a href="/lizzwarner/9-struggles-all-hungry-girls-understand" rel:gt_act="buzzing/thumb/video" rel:buzz_id="3572077">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
-										<img style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="/http://s3-ak.buzzfeed.com/static/images/public/play_icon.png" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="http://s3-ak.buzzfeed.com/static/images/public/play_icon.png" alt="" />\
 									</div>\
 								</a>\
 								<a class="qe editor-admin" style="display:none"  rel:data=\'{"buzz_id":"3572077"}\'></a>\
@@ -4659,7 +4670,7 @@ setTimeout(function() {parent.document.getElementById('BF_WIDGET_6').appendChild
 									<a href="/lizzwarner/9-struggles-all-hungry-girls-understand" rel:gt_act="buzzing/title/video">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/lizzwarner/9-struggles-all-hungry-girls-understand" rel:gt_act="buzzing/thumb/video" rel:buzz_id="3572077">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/9-struggles-every-hungry-girl-knows-too-well-2-8505-14209240.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/10/16/campaign_images/webdr12/9-struggles-every-hungry-girl-knows-too-well-2-8505-1420924022-8_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">										<img nopin="nopin" style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="/assets/play_icon.png" alt="">									</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3572077&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/lizzwarner/9-struggles-all-hungry-girls-understand" rel:gt_act="buzzing/title/video">9 Struggles All Hungry Girls Understand</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/lizzwarner/9-struggles-all-hungry-girls-understand" rel:gt_act="buzzing/thumb/video" rel:buzz_id="3572077">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/9-struggles-every-hungry-girl-knows-too-well-2-8505-14209240.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/10/16/campaign_images/webdr12/9-struggles-every-hungry-girl-knows-too-well-2-8505-1420924022-8_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">										<img nopin="nopin" style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="/assets/play_icon.png" alt="">									</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3572077&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/lizzwarner/9-struggles-all-hungry-girls-understand" rel:gt_act="buzzing/title/video">9 Struggles All Hungry Girls Understand</a>								</h2>
 						            </li>
 	            <li class="bf-widget post sidebar-post bf_cts bf_cts-4-1 bf_dom lede--stacked script" rel:bf_cts="4:4:0:adslot" style="display: block;" id="BF_WIDGET_7" rel:bf_ad_position="6">
 	<div id="bf-item-7-1" class="bf-item lede preview-3483643 f_ad">
@@ -4784,7 +4795,7 @@ var widget_init = function() {
         BF_WIDGET_DOMAIN = 'stagedr01.buzzfeed.com';
 
     var BF_WIDGET_JS=document.createElement('script'); BF_WIDGET_JS.type="text/javascript"; BF_WIDGET_JS.async=true;
-    var BF_WIDGET_SRC="/http://" + BF_WIDGET_DOMAIN + "/wd/UserWidget?network=buzzfeed&uo=1&or=v&ct=1&cs=1&bids=3483643&u=buzz" + '&wid=7';
+    var BF_WIDGET_SRC="http://" + BF_WIDGET_DOMAIN + "/wd/UserWidget?network=buzzfeed&uo=1&or=v&ct=1&cs=1&bids=3483643&u=buzz" + '&wid=7';
     parent.document.getElementById("BF_WIDGET_7").appendChild(BF_WIDGET_JS);
     if(typeof(parent.BF_MOBILE_PAGE_INIT) == 'undefined' || parent.BF_MOBILE_PAGE_INIT == true) {
         BF_WIDGET_JS.src=BF_WIDGET_SRC;
@@ -4827,7 +4838,7 @@ var widget_init = function() {
 							document.write('\
 								<a href="/briangalindo/15-play-sets-from-the-80s-that-are-now-worth-bank" rel:gt_act="buzzing/thumb" rel:buzz_id="3578368">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -4836,7 +4847,7 @@ var widget_init = function() {
 									<a href="/briangalindo/15-play-sets-from-the-80s-that-are-now-worth-bank" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/briangalindo/15-play-sets-from-the-80s-that-are-now-worth-bank" rel:gt_act="buzzing/thumb" rel:buzz_id="3578368">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/15-play-sets-from-the-80s-that-are-now-worth-bank-2-809-1421.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/19/campaign_images/webdr11/15-play-sets-from-the-80s-that-are-now-worth-bank-2-809-1421454225-14_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578368&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/briangalindo/15-play-sets-from-the-80s-that-are-now-worth-bank" rel:gt_act="buzzing/title">15 Play Sets From The '80s That Are Now Worth Some Serious Money</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/briangalindo/15-play-sets-from-the-80s-that-are-now-worth-bank" rel:gt_act="buzzing/thumb" rel:buzz_id="3578368">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/15-play-sets-from-the-80s-that-are-now-worth-bank-2-809-1421.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/19/campaign_images/webdr11/15-play-sets-from-the-80s-that-are-now-worth-bank-2-809-1421454225-14_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578368&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/briangalindo/15-play-sets-from-the-80s-that-are-now-worth-bank" rel:gt_act="buzzing/title">15 Play Sets From The '80s That Are Now Worth Some Serious Money</a>								</h2>
 						            </li>
 
 
@@ -4857,7 +4868,7 @@ var widget_init = function() {
 							document.write('\
 								<a href="/krystieyandoli/this-couples-bookstore-proposal-is-every-book-lovers-dream" rel:gt_act="buzzing/thumb" rel:buzz_id="3578181">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -4866,7 +4877,7 @@ var widget_init = function() {
 									<a href="/krystieyandoli/this-couples-bookstore-proposal-is-every-book-lovers-dream" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/krystieyandoli/this-couples-bookstore-proposal-is-every-book-lovers-dream" rel:gt_act="buzzing/thumb" rel:buzz_id="3578181">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/this-couples-bookstore-proposal-is-every-book-lov-2-18284-14.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/15/campaign_images/webdr11/this-couples-bookstore-proposal-is-every-book-lov-2-18284-1421441464-2_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578181&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/krystieyandoli/this-couples-bookstore-proposal-is-every-book-lovers-dream" rel:gt_act="buzzing/title">This Couple’s Bookstore Proposal Was Something Out Of A Fairytale</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/krystieyandoli/this-couples-bookstore-proposal-is-every-book-lovers-dream" rel:gt_act="buzzing/thumb" rel:buzz_id="3578181">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/this-couples-bookstore-proposal-is-every-book-lov-2-18284-14.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/15/campaign_images/webdr11/this-couples-bookstore-proposal-is-every-book-lov-2-18284-1421441464-2_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578181&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/krystieyandoli/this-couples-bookstore-proposal-is-every-book-lovers-dream" rel:gt_act="buzzing/title">This Couple’s Bookstore Proposal Was Something Out Of A Fairytale</a>								</h2>
 						            </li>
 
 
@@ -4887,7 +4898,7 @@ var widget_init = function() {
 							document.write('\
 								<a href="/candacelowry/thoughts-everyone-has-on-instagram" rel:gt_act="buzzing/thumb" rel:buzz_id="3578357">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -4896,7 +4907,7 @@ var widget_init = function() {
 									<a href="/candacelowry/thoughts-everyone-has-on-instagram" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/candacelowry/thoughts-everyone-has-on-instagram" rel:gt_act="buzzing/thumb" rel:buzz_id="3578357">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/thoughts-everyone-has-on-instagram-2-19643-1421444125-33_wid.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/16/campaign_images/webdr02/thoughts-everyone-has-on-instagram-2-19643-1421444125-33_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578357&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/candacelowry/thoughts-everyone-has-on-instagram" rel:gt_act="buzzing/title">42 Thoughts Everyone Has On Instagram</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/candacelowry/thoughts-everyone-has-on-instagram" rel:gt_act="buzzing/thumb" rel:buzz_id="3578357">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/thoughts-everyone-has-on-instagram-2-19643-1421444125-33_wid.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/16/campaign_images/webdr02/thoughts-everyone-has-on-instagram-2-19643-1421444125-33_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578357&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/candacelowry/thoughts-everyone-has-on-instagram" rel:gt_act="buzzing/title">42 Thoughts Everyone Has On Instagram</a>								</h2>
 						            </li>
 
 
@@ -4917,7 +4928,7 @@ var widget_init = function() {
 							document.write('\
 								<a href="/lyapalater/john-krasinski-runs-from-backstage-to-hug-emily-blunt-after" rel:gt_act="buzzing/thumb" rel:buzz_id="3577991">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -4926,7 +4937,7 @@ var widget_init = function() {
 									<a href="/lyapalater/john-krasinski-runs-from-backstage-to-hug-emily-blunt-after" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/lyapalater/john-krasinski-runs-from-backstage-to-hug-emily-blunt-after" rel:gt_act="buzzing/thumb" rel:buzz_id="3577991">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/john-krasinski-runs-from-backstage-to-hug-emily-b-2-2517_002.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/12/campaign_images/webdr10/john-krasinski-runs-from-backstage-to-hug-emily-b-2-25178-1421430858-5_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3577991&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/lyapalater/john-krasinski-runs-from-backstage-to-hug-emily-blunt-after" rel:gt_act="buzzing/title">John Krasinski Runs From Backstage To Hug Emily Blunt After She Wins An Award</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/lyapalater/john-krasinski-runs-from-backstage-to-hug-emily-blunt-after" rel:gt_act="buzzing/thumb" rel:buzz_id="3577991">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/john-krasinski-runs-from-backstage-to-hug-emily-b-2-2517_002.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/12/campaign_images/webdr10/john-krasinski-runs-from-backstage-to-hug-emily-b-2-25178-1421430858-5_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3577991&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/lyapalater/john-krasinski-runs-from-backstage-to-hug-emily-blunt-after" rel:gt_act="buzzing/title">John Krasinski Runs From Backstage To Hug Emily Blunt After She Wins An Award</a>								</h2>
 						            </li>
 
 
@@ -4938,7 +4949,7 @@ var widget_init = function() {
             <li class="post sidebar-post  bf_dom sidebar-post-wide" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7EWWCT7&quot;,&quot;u&quot;:&quot;775TSM7&quot;,&quot;buzz&quot;:&quot;things-women-are-tired-of-hearing-about-their-bodies&quot;,&quot;user&quot;:&quot;dayshavedewi&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" id="promoted-things-women-are-tired-of-hearing-about-their-bodies">
 													<a href="http://www.buzzfeed.com/dayshavedewi/things-women-are-tired-of-hearing-about-their-bodies" rel:gt_act="buzzing/thumb/video" rel:buzz_id="3578500">
 								<div style="float:left; position:relative;">
- 									<img nopin="nopin" src="/assets/things-women-are-tired-of-hearing-about-their-bod-2-6547-142.jpg" rel:bf_image_src="/http://s3-static-ak.buzzfed.com/static/2015-01/16/20/campaign_images/webdr10/things-women-are-tired-of-hearing-about-their-bod-2-6547-1421456409-16_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">
+ 									<img nopin="nopin" src="/assets/things-women-are-tired-of-hearing-about-their-bod-2-6547-142.jpg" rel:bf_image_src="http://s3-static-ak.buzzfed.com/static/2015-01/16/20/campaign_images/webdr10/things-women-are-tired-of-hearing-about-their-bod-2-6547-1421456409-16_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">
 									<img nopin="nopin" style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="/assets/play_icon.png" alt="">
 								</div>
 							</a>
@@ -4964,8 +4975,8 @@ var widget_init = function() {
 							document.write('\
 								<a href="/caitlincowie/things-women-dont-know-about-their-underwear" rel:gt_act="buzzing/thumb/video" rel:buzz_id="3575802">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
-										<img style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="/http://s3-ak.buzzfeed.com/static/images/public/play_icon.png" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="http://s3-ak.buzzfeed.com/static/images/public/play_icon.png" alt="" />\
 									</div>\
 								</a>\
 								<a class="qe editor-admin" style="display:none"  rel:data=\'{"buzz_id":"3575802"}\'></a>\
@@ -4973,7 +4984,7 @@ var widget_init = function() {
 									<a href="/caitlincowie/things-women-dont-know-about-their-underwear" rel:gt_act="buzzing/title/video">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/caitlincowie/things-women-dont-know-about-their-underwear" rel:gt_act="buzzing/thumb/video" rel:buzz_id="3575802">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/things-women-dont-know-about-their-underwear-2-3162-14212746.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/14/17/campaign_images/webdr10/things-women-dont-know-about-their-underwear-2-3162-1421274676-2_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">										<img nopin="nopin" style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="/assets/play_icon.png" alt="">									</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3575802&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/caitlincowie/things-women-dont-know-about-their-underwear" rel:gt_act="buzzing/title/video">8 Things Women Don't Know About Their Underwear</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/caitlincowie/things-women-dont-know-about-their-underwear" rel:gt_act="buzzing/thumb/video" rel:buzz_id="3575802">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/things-women-dont-know-about-their-underwear-2-3162-14212746.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/14/17/campaign_images/webdr10/things-women-dont-know-about-their-underwear-2-3162-1421274676-2_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">										<img nopin="nopin" style="width:18px; height:18px; position:absolute; margin:0px; padding:0px; left:0px; bottom:7px" src="/assets/play_icon.png" alt="">									</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3575802&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/caitlincowie/things-women-dont-know-about-their-underwear" rel:gt_act="buzzing/title/video">8 Things Women Don't Know About Their Underwear</a>								</h2>
 						            </li>
 
 
@@ -4994,7 +5005,7 @@ var widget_init = function() {
 							document.write('\
 								<a href="/rachelzarrell/play-play-play-play-play" rel:gt_act="buzzing/thumb" rel:buzz_id="3578271">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -5003,7 +5014,7 @@ var widget_init = function() {
 									<a href="/rachelzarrell/play-play-play-play-play" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/rachelzarrell/play-play-play-play-play" rel:gt_act="buzzing/thumb" rel:buzz_id="3578271">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/play-play-play-play-play-2-9180-1421447459-10_wide.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/17/campaign_images/webdr06/play-play-play-play-play-2-9180-1421447459-10_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578271&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/rachelzarrell/play-play-play-play-play" rel:gt_act="buzzing/title">This 2-Year-Old Girl Excitedly Singing "Shake It Off" Is Literal Joy</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/rachelzarrell/play-play-play-play-play" rel:gt_act="buzzing/thumb" rel:buzz_id="3578271">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/play-play-play-play-play-2-9180-1421447459-10_wide.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/17/campaign_images/webdr06/play-play-play-play-play-2-9180-1421447459-10_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578271&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/rachelzarrell/play-play-play-play-play" rel:gt_act="buzzing/title">This 2-Year-Old Girl Excitedly Singing "Shake It Off" Is Literal Joy</a>								</h2>
 						            </li>
 
 
@@ -5024,7 +5035,7 @@ var widget_init = function() {
 							document.write('\
 								<a href="/samstryker/dole-whips-are-the-best-part-of-disney" rel:gt_act="buzzing/thumb" rel:buzz_id="3578367">\
 									<div style="float:left; position:relative;">\
-										<img src="/" rel:bf_image_src="/http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
+										<img src="/" rel:bf_image_src="http://s3-ak.buzzfeed.com' + sel_promo.image_wide + '" class="bf_dom thumb" rel:bf_bucket="progload" alt="" />\
 										\
 									</div>\
 								</a>\
@@ -5033,7 +5044,7 @@ var widget_init = function() {
 									<a href="/samstryker/dole-whips-are-the-best-part-of-disney" rel:gt_act="buzzing/title">' + sel_promo.title + '</a>\
 								</h2>\
 								');
-						</script>								<a href="http://www.buzzfeed.com/samstryker/dole-whips-are-the-best-part-of-disney" rel:gt_act="buzzing/thumb" rel:buzz_id="3578367">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/dole-whips-are-the-best-part-of-disney-2-1281-1421447430-40_.jpg" rel:bf_image_src="/http://s3-ak.buzzfeed.com/static/2015-01/16/17/campaign_images/webdr03/dole-whips-are-the-best-part-of-disney-2-1281-1421447430-40_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578367&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/samstryker/dole-whips-are-the-best-part-of-disney" rel:gt_act="buzzing/title">FYI, Dole Whips Are The Best Damn Treat You Can Get At Disney</a>								</h2>
+						</script>								<a href="http://www.buzzfeed.com/samstryker/dole-whips-are-the-best-part-of-disney" rel:gt_act="buzzing/thumb" rel:buzz_id="3578367">									<div style="float:left; position:relative;">										<img nopin="nopin" src="/assets/dole-whips-are-the-best-part-of-disney-2-1281-1421447430-40_.jpg" rel:bf_image_src="http://s3-ak.buzzfeed.com/static/2015-01/16/17/campaign_images/webdr03/dole-whips-are-the-best-part-of-disney-2-1281-1421447430-40_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">																			</div>								</a>								<a class="qe editor-admin" style="display:none" rel:data="{&quot;buzz_id&quot;:&quot;3578367&quot;}"></a>								<h2>									<a href="http://www.buzzfeed.com/samstryker/dole-whips-are-the-best-part-of-disney" rel:gt_act="buzzing/title">FYI, Dole Whips Are The Best Damn Treat You Can Get At Disney</a>								</h2>
 						            </li>
 
 
@@ -5045,7 +5056,7 @@ var widget_init = function() {
             <li class="post sidebar-post  bf_dom sidebar-post-wide" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7EG13M7&quot;,&quot;u&quot;:&quot;71CPGG7&quot;,&quot;buzz&quot;:&quot;things-that-definitely-should-not-turn-you-on&quot;,&quot;user&quot;:&quot;mjkiebus&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" id="promoted-extra-hidden" style="display: none;">
 													<a href="http://www.buzzfeed.com/mjkiebus/things-that-definitely-should-not-turn-you-on" rel:gt_act="buzzing/thumb" rel:buzz_id="3466071">
 								<div style="float:left; position:relative;">
- 									<img nopin="nopin" src="/assets/17-things-that-definitely-should-not-turn-you-on-2-1349-1421.jpg" rel:bf_image_src="/http://s3-static-ak.buzzfed.com/static/2015-01/16/16/campaign_images/webdr03/17-things-that-definitely-should-not-turn-you-on-2-1349-1421444937-26_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">
+ 									<img nopin="nopin" src="/assets/17-things-that-definitely-should-not-turn-you-on-2-1349-1421.jpg" rel:bf_image_src="http://s3-static-ak.buzzfed.com/static/2015-01/16/16/campaign_images/webdr03/17-things-that-definitely-should-not-turn-you-on-2-1349-1421444937-26_wide.jpg" class="bf_dom thumb" rel:bf_bucket="progload" alt="">
 
 								</div>
 							</a>
@@ -5435,7 +5446,7 @@ var widget_init = function() {
 
 
 
-<noscript><img src="/http://b.scorecardresearch.com/p?c1=2&c2=6768151&c4=buzzfeed.com/alexalvarez/quietly-judging-all-of-you"/></noscript>
+<noscript><img src="http://b.scorecardresearch.com/p?c1=2&c2=6768151&c4=buzzfeed.com/alexalvarez/quietly-judging-all-of-you"/></noscript>
 <noscript><img src='http://pixel.quantserve.com/pixel/p-3aud4J6uA4Z6Y.gif' height='1' width='1' alt='Quantcast'/></noscript>
 <div id="FB_HiddenContainer" style="position:absolute; top:-10000px; left:-10000px; width:0px; height:0px;"></div>
 
@@ -5497,7 +5508,7 @@ var widget_init = function() {
   (function(){window._fbds=window._fbds||{};_fbds.pixelId=224284281076687;var e=document.createElement("script");e.async=true;e.src=("https:"==document.location.protocol?"https:":"http:")+"//connect.facebook.net/en_US/fbds.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();window._fbq=window._fbq||[];window._fbq.push(["track","PixelInitialzed",{}])
 
   </script>
-  <noscript><img height="1" width="1" border="0" alt="" style="display:none" src="/https://www.facebook.com/tr?id=224284281076687&amp;ev=NoScript" /></noscript>
+  <noscript><img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=224284281076687&amp;ev=NoScript" /></noscript>
 
 
 

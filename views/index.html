@@ -2166,126 +2166,12 @@ function QuantPageLoad() {
 		</script>
 		<div id="div-gpt-ad-13" style="display:none;position:absolute;overflow:hidden;top:0;left:0;z-index:-1"></div>
 
-		<script type="text/javascript">
-
-			if (AD_DESIGN == 'gpt'){ loadGPTAd({ 'wid': 13 }); }
-
-
-
-		if (AD_DESIGN != 'gpt') {
-
-				if(! window['win8AdCall']) {
-					window['win8AdCall'] = function() { /* do nothing */ };
-				}
-				var ad_tag = 'http://ad.doubleclick.net/N6556/adj/' + BF_DFP_SITE + BF_DFP_ZONE + ';wid=13;page=1;sz=300x250;pos=bigstory;tile=13;flex_medium=bigstory;' + BF_DFP_KVS + ';' + BF_TAG + win8AdCall() +  '';
-				if (typeof AD_DESIGN != 'undefined') { ad_tag += ';abtest=' + AD_DESIGN + ';' }
-
-				//Loreal MUC channel
-				if(window.location.search.match('loreal_feed=1') && BF_STATIC.tt_page === "Buzz"){
-					ad_tag += 'loreal_feed=1;'
-				}
-
-				ad_tag += 'poe=' + BF_REFERER + ';';
-				ad_tag += 'ord=' + BF_DFP_ORD + '?';
-
-
-
-				if (ad_tag && !BF_DISABLE_SITEWIDEWEEKEND_AD) {
-					if (!('wid=13;page=1;sz=300x250;pos=bigstory;tile=13;flex_medium=bigstory').match(/pos=300x250/) && null !== window.location.search.match("skipdfp")) {
-						window.addEventListener('load', function(){
-							var query = (typeof String.prototype.toQueryParams != 'undefined') ? window.location.search.toQueryParams() : $.deparam.querystring();
-							var ad_user = (query['skipdfp']) ? query['skipdfp'] : 'boost';
-							var extra_params = (/bigstory/.test('wid=13;page=1;sz=300x250;pos=bigstory;tile=13;flex_medium=bigstory')) ? '&flex_medium=bigstory' : '';
-							local_ad_call( 13, ad_user, extra_params );
-						})
-					} else {
-						if(!BF_STATIC.bf_test_mode || document.cookie.match('sel2_ad') !== null ) {
-							document.write('<'+'scr'+'ipt type="text/javascr'+'ipt" src="/'+ad_tag+'"><\/scr'+'ipt'+'>');
-						} else {
-							console.info('disable DFP (dfp_tags.tt)');
-						}
-					}
-				}
-
-		    if (null !== window.location.search.match("adtest") && console !== undefined && typeof ad_tag != "undefined") console.log(ad_tag);
-		}
-
-
-
-</script><script type="text/javascript" src="/assets/.js"></script><script type="text/javascript">
-// version 2.2
-//GIRAFFE RELATED ONLY - START
-var giraffeParam = function(name) {
-  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
-}
-var giraffeFocus = function(){
-    parent.document.getElementsByTagName('body')[0].style.background = "#fff";
-    var ad_item = parent.document.getElementsByClassName('preview-' + giraffeParam('focus'))[0].up();
-    var ancestors = ad_item.ancestors();
-    ad_item.addClassName('focus');
-    for(var i=0; i<ancestors.length; i++){
-        ancestors[i].addClassName('focus');
-        var children = ancestors[i].children;
-        for(var n=0; n<children.length; n++){
-            if(!children[n].hasClassName('focus')){
-                children[n].style.opacity = '.2';
-            }
-        }
-    }
-}
-if(giraffeParam('focus')){ parent.onload = giraffeFocus; }
-//GIRAFFE RELATED ONLY - END
-if(typeof(parent.BF_DFP_REDIRECTS)=='undefined') { parent.BF_DFP_REDIRECTS={}; }
-parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%253DL%2526ai%253DBQ4wwONK5VJjmPMWrigb2qIHYCs2JjqQGAAAAEAEgADgAWKXp1-PwAWDJvquJkKToD4IBF2NhLXB1Yi0yNjAyNDQwMjMyMDQxODU4sgEQd3d3LmJ1enpmZWVkLmNvbboBCWdmcF9pbWFnZcgBCdoBHGh0dHA6Ly93d3cuYnV6emZlZWQuY29tL2J1enrAAgLgAgDqAg02NTU2L2JmZC9idXp6-AKF0h6AAwGQA6QDmAOkA6gDAeAEAaAGIA%2526num%253D0%2526sig%253DAOD64_3dmz6MjRNeF6rph1IJuEYNT2l4TA%2526client%253Dca-pub-2602440232041858%2526adurl%253D';
-if(typeof(parent.BF_DFP_CLICKS)=='undefined') { parent.BF_DFP_CLICKS={}; }
-
-
-var click_urls = ["http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=20&mc=click&pli=11976357&PluID=0&ord=1282270964"];
-parent.BF_DFP_CLICKS['13'] = click_urls[0];
-
-
-if(typeof(parent.BF_BUZZ_COUNTS)=='undefined') { parent.BF_BUZZ_COUNTS={}; }
-parent.BF_BUZZ_COUNTS['13']=1;
-parent.BF_WIDGET_PAGE_INIT_COUNT_13 = 0;
-
-(function(){
-var widget_init = function() {
-    var BF_WIDGET_DOMAIN = 'ct-ak.buzzfed.com';
-    if (typeof parent['BF_STATIC'] != 'undefined' && typeof parent.BF_STATIC['bf_env'] != 'undefined' && parent.BF_STATIC.bf_env == 'stage')
-        BF_WIDGET_DOMAIN = 'stagedr01.buzzfeed.com';
-
-    var BF_WIDGET_JS=document.createElement('script'); BF_WIDGET_JS.type="text/javascript"; BF_WIDGET_JS.async=true;
-    var BF_WIDGET_SRC="/http://" + BF_WIDGET_DOMAIN + "/wd/UserWidget?network=buzzfeed&uo=1&or=v&ct=1&cs=1&bids=3552888&u=buzz" + '&wid=13';
-    parent.document.getElementById("BF_WIDGET_13").appendChild(BF_WIDGET_JS);
-    if(typeof(parent.BF_MOBILE_PAGE_INIT) == 'undefined' || parent.BF_MOBILE_PAGE_INIT == true) {
-        BF_WIDGET_JS.src=BF_WIDGET_SRC;
-    } else {
-        parent.BF_WIDGET_PAGE_INIT_COUNT_13++;
-        if(parent.BF_WIDGET_PAGE_INIT_COUNT_13 < 40) {
-            setTimeout(widget_init,100);
-        }
-    }
-    parent.document.getElementById("BF_WIDGET_13").children[0].className += " preview-3552888";
-};setTimeout(widget_init,1);})();
-</script>
-
-
-<script type="text/javascript">
-    var impressions = ["http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=19&mc=imp&pli=11976357&PluID=0&ord=1282270964&rtu=-1"],
-        impression = [ ];
-    for( var i = 0, l = impressions.length; i < l; ++i ) {
-        impression = impressions[ i ];
-        var imp_pixel = new Image();
-        imp_pixel.src = impression;
-    }
-</script>
-
         </div>
 
     </div>
 
 
-    <div class="row" rel:gt_cat="[ttp]:feed/">
+    <div class="row">
 
 		<div class="span-8">
 			<div class="flow-container">
@@ -2305,7 +2191,7 @@ var widget_init = function() {
         <img src={{something.previewUrl}} width="125" height="83">
       </div>
     </a>
-    <div class="lede__body">
+    <div class="">
       <h2 class="lede__title lede__title--medium">
         <a class="lede__link" href={{something.url}} rel:gt_act="post/title">
           {{something.title}}
@@ -2415,7 +2301,7 @@ var widget_init = function() {
 
 
 
-<section class="vertical-section" rel:gt_cat="feed:buzz/trending">
+<section class="vertical-section">
 
 
   <h3 class="vertical-section-heading">
@@ -2434,7 +2320,7 @@ var widget_init = function() {
         <img src={{something.previewUrl}} width="336" height="119">
       </div>
     </a>
-    <div class="lede__body">
+    <div class="">
       <h2 class="lede__title lede__title--medium">
         <a class="lede__link" href={{something.url}} rel:gt_act="post/title">
           {{something.title}}
@@ -2604,31 +2490,6 @@ var widget_init = function() {
 
 
 
-<script type="text/javascript">
-	(function adobeTrack() {
-		if (typeof s != 'object' || s == null) {
-			setTimeout(function(){
-				adobeTrack();
-			}, 100);
-		} else {
-			var s_code = s.t();
-			if (s_code) document.write(s_code);
-		}
-	})()
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <script src="/assets/General_concat_footer.js" type="text/javascript" ref:jsconf="true"></script>
 
@@ -2648,11 +2509,7 @@ var widget_init = function() {
 
 
 
-  <script type="text/javascript">
 
-  (function(){window._fbds=window._fbds||{};_fbds.pixelId=224284281076687;var e=document.createElement("script");e.async=true;e.src=("https:"==document.location.protocol?"https:":"http:")+"//connect.facebook.net/en_US/fbds.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();window._fbq=window._fbq||[];window._fbq.push(["track","PixelInitialzed",{}])
-
-  </script>
   <noscript><img height="1" width="1" border="0" alt="" style="display:none" src="/https://www.facebook.com/tr?id=224284281076687&amp;ev=NoScript" /></noscript>
 
 
@@ -2668,21 +2525,7 @@ var widget_init = function() {
 
 
 
-<script>
-    if(typeof BF_DISABLE_SITEWIDEWEEKEND_PROMO !== 'undefined' && !BF_DISABLE_SITEWIDEWEEKEND_PROMO){
-      var $wkndPromo = $$('.wknd-promo').first();
-      var $nextOnUnit = $$('#next_on');
 
-      if(typeof $wkndPromo !== 'undefined' && typeof $wkndPromo.getAttribute('rel:gt_cat') !== 'undefined') {
-        var wkndGtrackCat = $wkndPromo.getAttribute('rel:gt_cat');
-        $wkndPromo.removeClassName('hidden');
-        bfjs.onPageLoad(gtrack.track_events(wkndGtrackCat, '[nc]imp', '', ''));
-
-        if($nextOnUnit.length) $nextOnUnit[0].addClassName('hidden');
-      }
-
-    }
-</script>
 
 
 
@@ -2691,7 +2534,7 @@ var widget_init = function() {
 
 
 <div id="buzz-body" style="display:none"></div>
-<script>try { bf_site_speed.dom_time_spent('Buzz Body Load');  } catch (err) { console.log(err); }</script>
+
 
 
 
@@ -2710,9 +2553,6 @@ var widget_init = function() {
 </div>
  <img class="BF_TARGET_PIXEL_IB" src="/assets/seg.gif" height="1" width="1">
 
-<script type="text/javascript">
-(function(){window._fbds=window._fbds||{};_fbds.pixelId=224284281076687;var e=document.createElement("script");e.async=true;e.src=("https:"==document.location.protocol?"https:":"http:")+"//connect.facebook.net/en_US/fbds.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();window._fbq=window._fbq||[];window._fbq.push(["track","PixelInitialzed",{}])
-</script>
 <noscript><img height="1" width="1" border="0" alt="" style="display:none" src="/https://www.facebook.com/tr?id=224284281076687&amp;ev=NoScript" /></noscript>
 
 

@@ -13,14 +13,14 @@ var findPictures = null;
 
 Flickr.tokenOnly(flickrOptions, function(error, flickr) {
   // we can now use "flickr" as our API object
-  findPictures = function(callback) {
+  findPictures = function(text, callback) {
     flickr.photos.search({
-      text: "spoon"
+      text: text
     }, function(err, result) {
       if(err) { return console.log(err); }
       var photos = result.photos.photo;
       var arr = [];
-      for (var i = photos.length - 1; i >= 0; i--) {
+      for (var i = 0; i < photos.length; i++) {
         var photo = photos[i];
         var url = "https://farm" + photo["farm"] + ".staticflickr.com/" + photo["server"] + "/" + photo["id"] + "_" + photo["secret"] + ".jpg";
         arr.push(url);
@@ -228,17 +228,44 @@ function createEntireArticle(author, callback){
       });
 
       if(gifs.data.length < article.num) {
-        return createEntireArticle(author, callback);
+        article.previewUrl = gifs.data[0].images.original_still.url;
+        var arr = [];
+        for (var i = 0; i < gifs.data.length; i++) {
+          arr.push({
+            imageUrl: gifs.data[i].images.original.url,
+            body: m.generate(rand(rand(0, 2),5),10, 2),
+            title: m.generate(1,10, 3)
+          });
+        }
+        findPictures(article.subj, function(allPics) {
+          var diffPictures = allPics.slice(0, article.num - gifs.data.length);
+          for (var i = 0; i < diffPictures.length; i++) {
+            arr.push({
+              imageUrl: diffPictures[i],
+              body: m.generate(rand(rand(rand(0, 2), 3),7),10, 5),
+              title: m.generate(1,10, 3)
+            });
+          }
+          arr = shuffle(arr);
+          article.elements = arr;
+          callback(article, author);
+        });
+        return;
+        // return createEntireArticle(author, callback);
       }
       article.previewUrl = gifs.data[0].images.original_still.url;
+      var arr = [];
       for (var i = 0; i < article.num; i++){
         if (i < gifs.data.length){
-          article.elements[i] = {};
-          article.elements[i].imageUrl = gifs.data[i].images.original.url;
-          article.elements[i].body = m.generate(rand(rand(0, 2),5),10, 2);
-          article.elements[i].title = m.generate(1,10, 3);
+          arr.push({
+            imageUrl: gifs.data[i].images.original.url,
+            body: m.generate(rand(rand(0, 2),5),10, 2),
+            title: m.generate(1,10, 3)
+          });
         } else break;
       }
+      arr = shuffle(arr);
+      article.elements = arr;
       callback(article, author);
     });
   });
@@ -257,6 +284,13 @@ function find(coll, el, f) {
   }
 
   return null;
+}
+
+function shuffle(o, func){
+  if(!func) func = Math.random;
+
+  for(var j, x, i = o.length; i; j = Math.floor(func() * i), x = o[--i], o[i] = o[j], o[j] = x);
+  return o;
 }
 
 module.exports = {

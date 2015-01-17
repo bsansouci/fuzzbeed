@@ -127,7 +127,7 @@ module.exports = function Markov () {
     			var $ = cheerio.load(html);
     			$('.mw-content-ltr').each(function() {
     				var data = $(this);
-	    			var paragraphs = data.find('p').text().trim().replace(/\[[a-zA-Z0-9]*\]|\(|\)/g, "");
+	    			var paragraphs = data.find('p').text().trim().replace(/\[.*?\]|\(.*?\)/g, "");
 	    			paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
 	    			train(paragraphs);
 	    			if(callback) callback();
@@ -136,7 +136,7 @@ module.exports = function Markov () {
 			} else {
 				$('.mw-content-ltr').each(function() {
 					var data = $(this);
-	  			var paragraphs = data.find('p').text().trim().replace(/\[[a-zA-Z0-9]*\]|\(|\)/g, "");
+	  			var paragraphs = data.find('p').text().trim().replace(/\[.*?\]|\(.*?\)/g, "");
 	  			paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
 	  			train(paragraphs);
 	  			if(callback) callback();

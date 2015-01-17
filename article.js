@@ -66,7 +66,9 @@ var templates = [
   "[[t-num]] [[p-subj]] Who Completely Screwed Up Their One Job",
   "[[t-num]] [[p-subj]] Who Are Having A Really Rough Day",
   "[[t-num]] [[subj]] That Scream World Domination",
-  "[[num]] Times [[subj]] Are The Worst And You Just Can't Even"
+  "[[num]] Times [[subj]] Are The Worst And You Just Can't Even",
+  "[[num]] Things [[p-subj]] Should Be Allowed To Complain About",
+  "[[num]] [[p-subj]] With Excellent New Year's Resolutions"
 ];
 
 
@@ -179,10 +181,11 @@ function newAuthor(){
   var author = {};
   author.name = id.firstName + " " + id.lastName;
   author.username= id.firstName.toLowerCase() + id.lastName.toLowerCase();
-  author.email = id.emailAddress;
+  author.email = id.firstName.toLowerCase()+[".","","-","_"][rand(0,3)]+id.lastName.toLowerCase() + "@" +
+    ["hotmail.com","gmail.com","fuzzbeed.com","yahoo.com","live.com","outlook.com"][rand(0,5)];
   author.profileUrl = "/users/" + author.username;
   author.authorProfilePicture = "/assets/userpics/" +
-    ((stringToIntHash(article.username)%274) + 1) + ".jpg";
+    ((stringToIntHash(author.username)%274) + 1) + ".jpg";
   return author;
 }
 
@@ -219,16 +222,16 @@ function createEntireArticle(author, callback){
   m.pretrainWikipediaSubject(article.subj, function() {
 
     findGifUrls(article.subj, function(gifs){
-      if(gifs.length < article.num) {
+      if(gifs.data.length < article.num) {
         return createEntireArticle(author, callback);
       }
-      article.previewUrl = response.data[i].images.original_still.url;
+      article.previewUrl = gifs.data[0].images.original_still.url;
       for (var i = 0; i < article.num; i++){
-        if (i < gifs.length){
+        if (i < gifs.data.length){
           article.elements[i] = {};
-          article.elements[i].imageUrl = response.data[i].images.original.url;
-          article.elements[i].body = m.generate(1,10);
-          article.elements[i].title = m.generate(rand(0,3),10);
+          article.elements[i].imageUrl = gifs.data[i].images.original.url;
+          article.elements[i].body = m.generate(rand(rand(0, 2),5),10);
+          article.elements[i].title = m.generate(1,10);
         } else break;
       }
       callback(article, author);

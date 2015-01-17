@@ -3,6 +3,7 @@ var app = express();
 var swig = require('swig');
 var Firebase = require("firebase");
 var articleGenerator = require("./article");
+var seed = require("seed-random");
 
 var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
 var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");
@@ -28,6 +29,8 @@ app.param('username', function(req, res, next, username) {
       req.profile = v;
       firebaseArticles.orderByChild("username").equalTo(username).once("value", function(snapshot) {
         var vv = snapshot.val();
+        if(!vv) return next();
+
         for (var prop in vv) {
           if(vv.hasOwnProperty(prop)) {
             vv[prop].timeAgo = timeAgo(vv[prop].timestamp);
@@ -74,12 +77,15 @@ app.get('/', function (req, res) {
   });
 });
 app.get('/users/:username/:articleName', function(req, res) {
-  console.log(req.article);
-  res.render('article-view', req.article);
+  injectSideStuff(req.article, function() {
+    res.render('article-view', req.article);
+  });
 });
 
 app.get('/users/:username', function(req, res) {
-  res.render('profile-view', req.profile);
+  injectSideStuff(req.profile, function() {
+    res.render('profile-view', addAwards(req.profile));
+  });
 });
 
 app.get('/write-article', function(req, res) {
@@ -110,6 +116,50 @@ function pushProfile(author, callback) {
   var obj = {};
   obj[author.username] = author;
   firebaseProfiles.update(obj, callback);
+}
+
+function shuffle(o, func){
+  if(!func) func = Math.random;
+
+  for(var j, x, i = o.length; i; j = Math.floor(func() * i), x = o[--i], o[i] = o[j], o[j] = x);
+  return o;
+}
+
+function stringToIntHash(str){
+  var hash = 0;
+  if (str.length === 0) return hash;
+  for (i = 0; i < str.length; i++) {
+    char = str.charCodeAt(i);
+    hash = ((hash<<5)-hash)+char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return (hash > 0)? hash : -hash;
+}
+
+var allAwards = ["/assets/classic_002.png", "/assets/post_wtf.png", "/assets/fail_002.png", "/assets/posts_silver.png", "/assets/collection.png", "/assets/reactions_bronze.png", "/assets/post_lol_bronze.png", "/assets/referrer_reddit_silver.png"];
+function addAwards(profile) {
+  profile.__awards = shuffle(allAwards, seed(profile.username));
+  return profile;
+}
+
+function injectSideStuff(obj, callback) {
+  firebaseArticles.once("value", function(snapshot) {
+    var v = snapshot.val();
+    var arr = [];
+    var allKeys = Object.keys(v);
+    var length = Object.keys(v).length >= 8 ? 8 : Object.keys(v).length;
+    for (var i = 0; i < length; i++) {
+      var r = rand(0, Object.keys(v).length);
+      arr.push(v[Object.keys(v)[r]]);
+      delete v[Object.keys(v)[r]];
+    }
+    obj.__sideArticles = arr;
+    callback();
+  });
+}
+
+function rand(min, max){
+  return Math.floor(Math.random() * (max-min))+min;
 }
 
 function generateArticle() {

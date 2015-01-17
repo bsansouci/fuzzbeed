@@ -1,5 +1,7 @@
 var fs = require('fs');
 var giphy = require("giphy")("dc6zaTOxFJmzC");
+var Identity = require('fake-identity');
+var Markov = require("./markov");
 
 
 //Syntax:
@@ -39,6 +41,7 @@ var templates = [
   "[[t-num]] [[p-subj]] Who Completely Screwed Up Their One Job",
   "[[t-num]] [[p-subj]] Who Are Having A Really Rough Day",
   "[[t-num]] [[subj]] That Scream World Domination",
+  "[[num]] Times [[subj]] Are The Worst And You Just Can't Even"
 ];
 
 
@@ -54,7 +57,7 @@ function loadData(callback){
       loadFile("subj", "wordlists/nouns.txt", function () {
         loadFile("people", "wordlists/people-nouns.txt", function () {
           loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-            callback();
+            callback(createEntireArticle);
           });
         });
       });
@@ -106,7 +109,7 @@ function genFromTemplate(template){
   return ret;
 }
 
-function generateArticleName(){ 
+function generateArticleName(){
   var template = templates[rand(0,templates.length)];
   var ret = genFromTemplate(template);
   ret.articleName = encodeURIComponent(ret.title.toLowerCase().replace(/ /g, "-"));
@@ -119,7 +122,7 @@ function rand(min, max){
 
 function replaceMatch(fullString, match, substitute){
   var start = fullString.indexOf(match);
-  var newStr = fullString.slice(0,start) + substitute + 
+  var newStr = fullString.slice(0,start) + substitute +
         fullString.slice(start + match.length, fullString.length);
   return newStr;
 }
@@ -130,19 +133,31 @@ function findGifUrls(string, callback){
       return console.error("ERROR: ", err);
     }
     var ret = [];
+    //console.log(response);
     for (var i = 0; i < response.data.length; i++){
-      ret.push(response.data[i].embed_url);
     }
-    callback(ret);
+    callback(response);
   });
 }
 
-function assignAuthor(article){
-  article.username = "alexalvares";
-  article.authorName = "Alex Alvarez";
+function assignAuthor(article, author){
+  author = author || newAuthor();
+  article.username = author.username;
+  article.authorName = author.name;
   article.profileUrl = "/users/" + article.username;
-  article.authorProfilePicture = "/assets/" +
+  article.authorProfilePicture = "/assets/userpics/" +
     ((stringToIntHash(article.username)%274) + 1) + ".jpg";
+  return author;
+}
+
+function newAuthor(){
+  var id = Identity.generate();
+  var author = {};
+  author.name = id.firstName + " " + id.lastName;
+  author.username= id.firstName.toLowerCase() + id.lastName.toLowerCase();
+  author.email = id.emailAddress;
+  author.profileUrl = "/users/" + author.username;
+  return author;
 }
 
 function stringToIntHash(str){
@@ -153,36 +168,47 @@ function stringToIntHash(str){
     hash = ((hash<<5)-hash)+char;
     hash = hash & hash; // Convert to 32bit integer
   }
-  return hash;
+  return (hash > 0)? hash : -hash;
 }
+
 
 /////////////////////////////////////
 // Entry point to Article Creation //
 /////////////////////////////////////
-function createEntireArticle(callback){
+function createEntireArticle(author, callback){
+  if(typeof author === "function") {
+    callback = author;
+    author = null;
+  }
   var article = generateArticleName();
-  assignAuthor(article);
+  author = assignAuthor(article, author);
+
   article.url = "/users/" + article.username + "/" + article.articleName;
-  article.responses = rand(10,600); 
+  article.responses = rand(10,600);
   article.elements = [];
+  article.timestamp = Date.now();
+
+  var m = new Markov();
+  m.pretrainBuzzfeedLists();
 
   findGifUrls(article.subj, function(gifs){
+    if(gifs.length < article.num) {
+      return createEntireArticle(author, callback);
+    }
+    article.previewUrl = response.data[i].images.original_still.url;
     for (var i = 0; i < article.num; i++){
       if (i < gifs.length){
         article.elements[i] = {};
-        article.elements[i].imageUrl = gifs[i];
-        article.elements[i].body = "Default item body.";
-        article.elements[i].title = "Default Item Title";
+        article.elements[i].imageUrl = response.data[i].images.original.url;
+        article.elements[i].body = m.generate(1,10);
+        article.elements[i].title = m.generate(rand(0,3),10);
       } else break;
     }
-    callback(article);
+    callback(article, author);
   });
 }
 
-//// Test function
-loadData(function () {
-  var f = function (article) {console.log(article);};
-  for (var i = 0; i < 5; i++){
-    createEntireArticle(f);
-  }
-});
+module.exports = {
+  loadArticleData: loadData,
+  newAuthor: newAuthor
+};

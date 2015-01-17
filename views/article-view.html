@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class=" js svg inlinesvg" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# buzzfeed: http://ogp.me/ns/fb/buzzfeed#">
 
-  <title>22 Confessions Shy People Will Never Tell You</title>
+  <title>{{title}}</title>
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <meta name="copyright" content="Copyright 2015 BuzzFeed, Inc. All rights reserved.">
   <meta name="description" content="*Converses with you in total silence.*..">
@@ -16,7 +16,7 @@
 
 
 
-  <meta name="author" content="Alex Alvarez">
+  <meta name="author" content="{{authorName}}">
 
 
   <meta name="news_keywords" content="shy, awkward, awkward people, quiet people, shy people">
@@ -148,8 +148,8 @@
 
 
 
-	<meta name="title" content="22 Confessions Shy People Will Never Tell You">
-	<meta property="og:title" content="22 Confessions Shy People Will Never Tell You">
+	<meta name="title" content="{{title}}">
+	<meta property="og:title" content="{{title}}">
 
 
 
@@ -249,7 +249,7 @@
 
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="22 Confessions Shy People Will Never Tell You">
+		<meta name="twitter:title" content="{{title}}">
 		<meta name="twitter:description" content="*Converses with you in total silence.*">
 		<meta name="twitter:image" content="http://s3-static-ak.buzzfed.com/static/2015-01/16/21/campaign_images/webdr02/22-confessions-shy-people-will-never-tell-you-2-11223-1421460693-9_big.jpg">
 
@@ -257,7 +257,7 @@
 
 	<meta name="twitter:site" content="@buzzfeed">
 	<meta name="twitter:url" content="http://www.buzzfeed.com/alexalvarez/quietly-judging-all-of-you">
-	<meta name="twitter:title" content="22 Confessions Shy People Will Never Tell You">
+	<meta name="twitter:title" content="{{title}}">
 	<meta name="twitter:description" content="*Converses with you in total silence.*">
 	<meta name="twitter:app:id:iphone" content="352969997">
 	<meta name="twitter:app:url:iphone" content="buzzfeed://buzz/alexalvarez/quietly-judging-all-of-you">
@@ -290,7 +290,7 @@
 
 
 
-	<link rel="alternate" type="application/rss+xml" title="Alex Alvarez's Buzz" href="http://www.buzzfeed.com/alexalvarez.xml"><link rel="alternate" type="application/rss+xml" title=" Buzz" href="http://www.buzzfeed.com/tag/.xml">
+	<link rel="alternate" type="application/rss+xml" title="{{authorName}}'s Buzz" href="http://www.buzzfeed.com/alexalvarez.xml"><link rel="alternate" type="application/rss+xml" title=" Buzz" href="http://www.buzzfeed.com/tag/.xml">
 
 	<link rel="stylesheet" href="/assets/front.css" type="text/css">
   <link rel="stylesheet" href="/assets/font-awesome.css" type="text/css">
@@ -666,7 +666,7 @@ var BF_STATIC = {
 	custom_ga_url: false,
 	BF_Beta_HP: false,
 	react_cam: true ,
-	buzz_name: "22 Confessions Shy People Will Never Tell You",
+	buzz_name: "{{title}}",
 	buzz_blurb: "<b>*Converses with you in total silence.*</b>",
 	vertical: "",
 	campaignid: "3577178",
@@ -2604,7 +2604,7 @@ var widget_init = function() {
 					document.write('<span class="title">' + sel_promo.title + '</span>');
 					document.write('<img src="http://s3-static-ak.buzzfed.com' + sel_promo.image +'" width="119" height="79" alt="" />');
 				</script>
-        
+
         <!--
         <span class="title">6 Truths Of People Who Can't Dance</span><img nopin="nopin" src="/assets/6-struggles-of-not-being-a-good-dancer-2-18603-1421460806-19.jpg" alt="" height="79" width="119">
         -->
@@ -3017,7 +3017,7 @@ var widget_init = function() {
 
 
   <div class="byline__body">
-    <a href="{{profileUrl}}" class="byline__author" rel:gt_act="user/username" rel:gt_label="editor/alexalvarez">{{authorName}}</a>
+    <a href="{{profileUrl}}" class="byline__author">{{authorName}}</a>
     <div class="byline__title">BuzzFeed Staff</div>
   </div>
 </div>
@@ -3220,7 +3220,7 @@ var widget_init = function() {
 
 
      <div id="buzz_sub_buzz" class="c suplist_dec_up suplist_list_show ">
-
+<!-- thisisthetemplate -->
 {% for something in elements %}
 <div class="buzz_superlist_item buzz_superlist_item_image  buzz_superlist_item_wide image_hit  " id="superlist_3577178_4688570" rel:buzz_num="1">
   <h2><span class="buzz_superlist_number_inline">{{loop.index}}.</span> {{something.title}}</h2>
@@ -3229,8 +3229,7 @@ var widget_init = function() {
       <img src="/assets/sharing2.png" />
     </div>
     <div class="rubbable-container">
-      <img src="{{something.imageUrl}}" rel:fake_photorow="1" style="width: 625px; height: 280px; left: 0px; top: 0px" rel:bf_image_src="http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif" rel:version="201501161526" class="bf_dom" rel:bf_bucket="progload" alt="{{something.title}}" height="280" width="625">
-      <a class="animatedgifs button-rubbable bf_dom" rel:gt_act="rub/list-item:1" rel:gt_label="/static/2015-01/16/13/enhanced/webdr03/anigif_enhanced-3238-1421434742-19.gif" rel:bf_bucket="animatedgifs"></a>
+      <img src="{{something.imageUrl}}" alt="{{something.title}}" height="280" width="625">
       <div class="pinit" style="left: 542px; top: 232px;">
         <a class="pin sub-buzz-pinterest-share bf_dom" href="javascript:;" rel:gt_act="share/pinterest/pin/list-item:1" rel:bf_bucket_data="{'pin-share':{'id':'3577178_4688570','not_a_sub':true}}" rel:sub_title="">
           <span class="icon"></span>
@@ -3936,7 +3935,7 @@ var widget_init = function() {
 
   <input name="parent_blurb" id="parent_blurb" value="&lt;b&gt;*Converses with you in total silence.*&lt;/b&gt;" type="hidden">
   <input name="title_is_excerpt" id="title_is_excerpt" value="0" type="hidden">
-  <input name="parent_name" id="parent_name" value="22 Confessions Shy People Will Never Tell You" type="hidden">
+  <input name="parent_name" id="parent_name" value="{{title}}" type="hidden">
   <input name="id" id="contribute-id" value="3577178" type="hidden">
   <input name="category" id="contribute-category" value="Culture" type="hidden">
   <input name="parent" id="contribute-parent-id" value="0" type="hidden">

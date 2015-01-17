@@ -135,9 +135,8 @@ function findGifUrls(string, callback){
     var ret = [];
     //console.log(response);
     for (var i = 0; i < response.data.length; i++){
-      ret.push(response.data[i].images.original.url);
     }
-    callback(ret);
+    callback(response);
   });
 }
 
@@ -196,10 +195,11 @@ function createEntireArticle(author, callback){
     if(gifs.length < article.num) {
       return createEntireArticle(author, callback);
     }
+    article.previewUrl = response.data[i].images.original_still.url;
     for (var i = 0; i < article.num; i++){
       if (i < gifs.length){
         article.elements[i] = {};
-        article.elements[i].imageUrl = gifs[i];
+        article.elements[i].imageUrl = response.data[i].images.original.url;
         article.elements[i].body = m.generate(1,10);
         article.elements[i].title = m.generate(rand(0,3),10);
       } else break;
@@ -212,11 +212,3 @@ module.exports = {
   loadArticleData: loadData,
   newAuthor: newAuthor
 };
-
-//// Test function
-// loadData(function () {
-//   var f = function (article) {console.log(article);};
-//   for (var i = 0; i < 1; i++){
-//     createEntireArticle(f);
-//   }
-// });

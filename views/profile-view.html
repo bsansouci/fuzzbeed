@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=" js svg inlinesvg" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# buzzfeed: http://ogp.me/ns/fb/feed#">
+<html class=" js svg inlinesvg" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# buzzfeed: http://ogp.me/ns/fb/buzzfeed#">
 
   <title>Alex Alvarez (alexalvarez) on BuzzFeed</title>
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
@@ -171,7 +171,7 @@
 	<link rel="stylesheet" href="/assets/sidebar_002.css" type="text/css">
 	<link rel="stylesheet" href="/assets/homepage2.css" type="text/css">
 	<link rel="stylesheet" href="/assets/vertical.css" type="text/css">
-	<link rel="stylesheet" href="/assets/feed3.css" type="text/css">
+	<link rel="stylesheet" href="/assets/buzzfeed3.css" type="text/css">
 	<link rel="stylesheet" href="/assets/header_buzz_hoton.css" type="text/css">
 	<link rel="stylesheet" href="/assets/bf_ui.css" type="text/css">
 	<link rel="stylesheet" href="/assets/yes_no_toggle.css" type="text/css">
@@ -187,8 +187,8 @@
 
 
 
-<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/feed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
-<!--[if lte IE 7]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/feed-ie.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
+<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
+<!--[if lte IE 7]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
 
 
 
@@ -512,16 +512,16 @@ var BF_STATIC = {
 };
 
 
-BF_STATIC.socket_server = "http://sockets.buzzfeed.com:80";
+BF_STATIC.socket_server = "http://buzzsockets.buzzfeed.com:80";
 
 
 var Cloud = {
 	"servers": ['newbuzz-collection-1925855828.us-east-1.elb.amazonaws.com'],
-	"report": 'http://wac.09fc.edgecastcdn.net/8009FC/dg-stats/_stats/',
+	"report": 'http://wac.09fc.edgecastcdn.net/8009FC/dg-stats/_stats/buzz',
 	"staging" : {server:'ec2-50-16-13-235.compute-1.amazonaws.com',sample:0}
 };
 
-BF_server = "/zfeed/";
+BF_server = "/buzzzfeed/";
 
 if (!window.console) {window.console = {};}
 
@@ -2138,11 +2138,56 @@ function QuantPageLoad() {
 
 
 
-<link rel="stylesheet" href="/assets/feed.css" type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+var fb_click = function(){
+	$$('.fb-post-share').each(function(el){
+		var lnk = el.getAttribute('rel:buzz_link');
+		$(el).observe('click',function(){
+			window.open('http://www.facebook.com/sharer.php?u='+lnk+'','_blank','width=600,height=400');
+		});
+	})
+}
+document.observe('dom:loaded',fb_click);
+</script>
+
+
+
+<link rel="stylesheet" href="/assets/buzzfeed.css" type="text/css">
 
  <div class="UserSection ">
 		<span class="admin-tools">
-			<a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="javascript:;" id="report_user-admin" username="alexalvarez" user_id="1745256" class="admin report_user-admin" style="display:none">Edit User</a>
+			<a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="javascript:;" id="report_user-admin" username="{{username}}" user_id="1745256" class="admin report_user-admin" style="display:none">Edit User</a>
 					</span>
 	<div class="user-messages-box" id="user-messages-box" style="display: none;"></div>
 
@@ -2152,7 +2197,7 @@ function QuantPageLoad() {
 	<div class="user_banner " id="user_banner_div">
 
 
-				<h1><a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="/users/alexalvarez" rel:gt_act="user-banner" rel:gt_label="alexalvarez"><img src="/assets/alexalvarez-20711-1405573737-2.jpg" alt="Alex Alvarez" height="155" width="1020"></a></h1>
+				<h1><a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="{{profileUrl}}"><div alt="{{name}}" style="background-image:url('{{bannerPhoto}}');background-size:cover;background-repeat:no-repeat;background-position:center;width:1020px;height:155px;background-position: 50% 50%;"></div></a></h1>
 
 
 

@@ -97,17 +97,27 @@ app.get('/write-article', function(req, res) {
 });
 
 app.get('/write-an-article', function(req, res) {
-  // Decide to create a new profile or not
-  articleGenerator.loadArticleData(function(createArticle) {
-    createArticle(function(article, author) {
+  // 75% chances of creating a new person
+  if(rand(0, 100) > 25) {
+    articleGenerator.createEntireArticle(function(article, author) {
       pushProfile(author, function() {
         firebaseArticles.push(article, function() {
-          console.log("PUSHED", article, author);
           res.redirect(article.url);
         });
       });
     });
-  });
+  } else {
+    firebaseProfiles.once("value", function(snapshot) {
+      var v = snapshot.val();
+      var allKeys = Object.keys(v);
+      var author = v[allKeys[rand(0, allKeys.length)]];
+      articleGenerator.createEntireArticle(author, function(article, author) {
+        firebaseArticles.push(article, function() {
+          res.redirect(article.url);
+        });
+      });
+    });
+  }
 });
 
 app.use(express.static(__dirname + "/views"));
@@ -149,6 +159,11 @@ function addAwards(profile) {
 function injectSideStuff(obj, callback) {
   firebaseArticles.once("value", function(snapshot) {
     var v = snapshot.val();
+    if(!v) {
+      obj.__sideArticles = [];
+      return callback();
+    }
+
     var arr = [];
     var allKeys = Object.keys(v);
     var length = Object.keys(v).length >= 8 ? 8 : Object.keys(v).length;

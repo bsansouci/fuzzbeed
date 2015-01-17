@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=" js svg inlinesvg" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# buzzfeed: http://ogp.me/ns/fb/buzzfeed#">
+<html class=" js svg inlinesvg" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# buzzfeed: http://ogp.me/ns/fb/feed#">
 
   <title>Alex Alvarez (alexalvarez) on BuzzFeed</title>
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
@@ -171,7 +171,7 @@
 	<link rel="stylesheet" href="/assets/sidebar_002.css" type="text/css">
 	<link rel="stylesheet" href="/assets/homepage2.css" type="text/css">
 	<link rel="stylesheet" href="/assets/vertical.css" type="text/css">
-	<link rel="stylesheet" href="/assets/buzzfeed3.css" type="text/css">
+	<link rel="stylesheet" href="/assets/feed3.css" type="text/css">
 	<link rel="stylesheet" href="/assets/header_buzz_hoton.css" type="text/css">
 	<link rel="stylesheet" href="/assets/bf_ui.css" type="text/css">
 	<link rel="stylesheet" href="/assets/yes_no_toggle.css" type="text/css">
@@ -187,8 +187,8 @@
 
 
 
-<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
-<!--[if lte IE 7]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/buzzfeed-ie.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
+<!--[if (IE 8)|(IE 9)]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/feed-ie89.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
+<!--[if lte IE 7]> <link rel="stylesheet" href="http://s3-ak.buzzfed.com/static/css/feed-ie.css?v=201501161526" type="text/css" charset="utf-8" /> <![endif]-->
 
 
 
@@ -512,16 +512,16 @@ var BF_STATIC = {
 };
 
 
-BF_STATIC.socket_server = "http://buzzsockets.buzzfeed.com:80";
+BF_STATIC.socket_server = "http://sockets.buzzfeed.com:80";
 
 
 var Cloud = {
 	"servers": ['newbuzz-collection-1925855828.us-east-1.elb.amazonaws.com'],
-	"report": 'http://wac.09fc.edgecastcdn.net/8009FC/dg-stats/_stats/buzz',
+	"report": 'http://wac.09fc.edgecastcdn.net/8009FC/dg-stats/_stats/',
 	"staging" : {server:'ec2-50-16-13-235.compute-1.amazonaws.com',sample:0}
 };
 
-BF_server = "/buzzzfeed/";
+BF_server = "/zfeed/";
 
 if (!window.console) {window.console = {};}
 
@@ -2027,7 +2027,7 @@ function QuantPageLoad() {
 							<span><a href="http://www.buzzfeed.com/news" rel:gt_act="news">News</a></span>
 						</div>
 						<div id="menu-buzz" class="menu-item ">
-							<span><a href="http://www.buzzfeed.com/buzz" rel:gt_act="buzz">Buzz</a></span>
+							<span><a href="/" rel:gt_act="buzz">Buzz</a></span>
 						</div>
 						<div id="menu-life" class="menu-item ">
 							<span><a href="http://www.buzzfeed.com/life" rel:gt_act="life">Life</a></span>
@@ -2183,7 +2183,7 @@ document.observe('dom:loaded',fb_click);
 
 
 
-<link rel="stylesheet" href="/assets/buzzfeed.css" type="text/css">
+<link rel="stylesheet" href="/assets/feed.css" type="text/css">
 
  <div class="UserSection ">
 		<span class="admin-tools">

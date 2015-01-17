@@ -9,23 +9,25 @@ var flickrOptions = {
     secret: "a0a649c7f8b8fd28"
   };
 
+var findPictures = null;
+
 Flickr.tokenOnly(flickrOptions, function(error, flickr) {
   // we can now use "flickr" as our API object
+  findPictures = function(callback) {
     flickr.photos.search({
       text: "spoon"
     }, function(err, result) {
       if(err) { return console.log(err); }
       var photos = result.photos.photo;
+      var arr = [];
       for (var i = photos.length - 1; i >= 0; i--) {
         var photo = photos[i];
         var url = "https://farm" + photo["farm"] + ".staticflickr.com/" + photo["server"] + "/" + photo["id"] + "_" + photo["secret"] + ".jpg";
-        console.log(url);
-
-        for (var j = Object.keys(photo).length - 1; j >= 0; j--) {
-          console.log(Object.keys(photo)[j] + ": " + photo[Object.keys(photo)[j]]);
-        };
-      };
-  })
+        arr.push(url);
+      }
+      callback(arr);
+    });
+  };
 });
 
 
@@ -77,21 +79,6 @@ var dicts = {};
 var minNum = 10;
 var maxNum = 42;
 
-function loadData(callback){
-  // Mmmm serial loading...
-  loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
-    loadFile("adj", "wordlists/adj.txt", function () {
-      loadFile("subj", "wordlists/nouns.txt", function () {
-        loadFile("people", "wordlists/people-nouns.txt", function () {
-          loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-            callback(createEntireArticle);
-          });
-        });
-      });
-    });
-  });
-}
-
 function loadFile(key, file, callback){
   fs.readFile(file, 'utf8', function (err,data) {
     if (err) {
@@ -101,6 +88,22 @@ function loadFile(key, file, callback){
     callback();
   });
 }
+
+function loadData(){
+  // Mmmm serial loading...
+  loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
+    loadFile("adj", "wordlists/adj.txt", function () {
+      loadFile("subj", "wordlists/nouns.txt", function () {
+        loadFile("people", "wordlists/people-nouns.txt", function () {
+          loadFile("crazy", "wordlists/crazy-adj.txt", function () {
+            // callback(createEntireArticle);
+          });
+        });
+      });
+    });
+  });
+}
+loadData();
 
 function genFromTemplate(template){
   var match;
@@ -168,12 +171,10 @@ function findGifUrls(string, callback){
 }
 
 function assignAuthor(article, author){
-  author = author || newAuthor();
   article.username = author.username;
   article.authorName = author.name;
   article.profileUrl = "/users/" + article.username;
   article.authorProfilePicture = author.authorProfilePicture;
-  return author;
 }
 
 function newAuthor(){
@@ -207,10 +208,10 @@ function stringToIntHash(str){
 function createEntireArticle(author, callback){
   if(typeof author === "function") {
     callback = author;
-    author = null;
+    author = newAuthor();
   }
   var article = generateArticleName();
-  author = assignAuthor(article, author);
+  assignAuthor(article, author);
 
   article.url = "/users/" + article.username + "/" + article.articleName;
   article.responses = rand(10,600);
@@ -242,6 +243,7 @@ function createEntireArticle(author, callback){
 }
 
 module.exports = {
-  loadArticleData: loadData,
-  newAuthor: newAuthor
+  createEntireArticle: createEntireArticle,
+  newAuthor: newAuthor,
+  findPictures: findPictures
 };

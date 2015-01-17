@@ -2235,15 +2235,7 @@ document.observe('dom:loaded',fb_click);
 		</div>
 
 		<div class="partner-sharing">
-			<span>SHARE THIS PAGE</span>
-
-			<a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="javascript:;" class="social-icon icon-facebook" onclick="window.open('http://facebook.com/sharer/sharer.php?s=100&amp;p[url]=/users/alexalvarez&amp;p[title]=' + encodeURIComponent('Alex Alvarez') + '&amp;p[summary]=LOL but also WTF.
-
-Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@buzzfeed.com.','_blank', 'width=600,height=300')" rel:gt_act="share/facebook/share">&nbsp;</a>
-			<a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="javascript:;" class="social-icon icon-twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Alex Alvarez - LOL but also WTF.
-
-Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@buzzfeed.com.') + '&amp;url=/users/alexalvarez','_blank','width=600,height=300');" rel:gt_act="share/twitter/share">&nbsp;</a>
-
+      <img src="/assets/share-page.png">
 		</div>
 
 	</div>
@@ -2265,8 +2257,8 @@ Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@b
 
       <li class="selected">
         <h2>
-          <a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="/users/alexalvarez">
-	            Posts (<span rel:data="{posts_count:175}" id="posts-count">175</span>)
+          <a href="/users/{{username}}">
+            Posts (<span id="posts-count">{{numArticles}}</span>)
           </a>
         </h2>
       </li>
@@ -2379,22 +2371,21 @@ Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@b
 						<ul class="flow post_list bf_dom" id="post_list" rel:bf_bucket="gtrack" rel:gt_cat="[ttp]:feed"><!--has-inline-posts-->
 
 {% for something in articles %}
-	<li id="post-3577178" class="post track   first  has-like-button bf_cts-- bf_cts   " rel:bf_cts="::3577178:buzz" rel:ptool="true" rel:ptool_code="0.0.1.2.0.0" rel:advertiser="0" rel:partner="0" rel:owner="alexalvarez" rel:data="{&quot;buzz_id&quot;:&quot;3577178&quot;,&quot;type&quot;:&quot;super-image&quot;,&quot;uri&quot;:&quot;quietly-judging-all-of-you&quot;,&quot;form_id&quot;:&quot;24&quot;,&quot;verticals&quot;:[&quot;&quot;],&quot;category&quot;:&quot;Culture&quot;,&quot;list_format_visual&quot;:&quot;dec_up&quot;}">
+	<li id="post-3577178" class="post track   first  has-like-button bf_cts-- bf_cts   " >
 		<article>
 			<header>
 				<div class="thumb-unit">
-					<a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" rel:gtrack_id="post/photo" rel:gt_act="post/thumb" rel:gt_label="editor/alexalvarez" rel:gt_click="1" href="{{something.url}}">
 						<div style="position:relative;">
-							<img class="thumb bf_dom " style="" rel:bf_bucket="progload" src="{{sometime.previewUrl}}" alt="" rel:bf_image_src="{{something.previewUrl}}" height="83" width="125">
+							<img class="thumb bf_dom " src="{{something.previewUrl}}" alt="" rel:bf_image_src="{{something.previewUrl}}" height="83" width="125">
 						</div>
 					</a>
 				</div>
 				<hgroup>
-					<a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" rel:gtrack_id="post/badges" rel:gt_act="post/badges" rel:gt_label="editor/alexalvarez" href="http://www.buzzfeed.com/classicfeed" class="badges classic_badge">
+					<a  href="http://www.buzzfeed.com/classicfeed" class="badges classic_badge">
 						<img src="/assets/classic.png" alt="classic" height="50" width="50">
 					</a>
 					<h2 class="" style="" id="test">
-						<a rel:gtrack_id="post/title" rel:gt_act="post/title" rel:gt_label="editor/alexalvarez" rel:gt_click="2" href={{something.url}}>
+						<a  href={{something.url}}>
 
 							{{something.title}}
 						</a>

@@ -33,6 +33,7 @@ app.param('username', function(req, res, next, username) {
           }
         }
         req.profile.articles = vv;
+        req.profile.numArticles = Object.keys(vv).length;
         next();
       });
     } else {

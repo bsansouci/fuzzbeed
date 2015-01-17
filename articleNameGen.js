@@ -35,6 +35,8 @@ var templates = [
   "[[t-num]] [[p-subj]] Who Will Make You Feel Like A Genius",
   "[[t-num]] [[subj]] That Scream World Domination",
   "[[t-num]] [[subj]] Who Are Clearly Being Raised [[adj]]",
+  "[[t-num]] [[subj]] Who Completely Screwed Up Their One Job",
+  "[[t-num]] [[subj]] Who Are Having A Really Rough Day",
 ];
 
 

@@ -145,8 +145,7 @@ function assignAuthor(article, author){
   article.username = author.username;
   article.authorName = author.name;
   article.profileUrl = "/users/" + article.username;
-  article.authorProfilePicture = "/assets/userpics/" +
-    ((stringToIntHash(article.username)%274) + 1) + ".jpg";
+  article.authorProfilePicture = author.authorProfilePicture;
   return author;
 }
 
@@ -157,6 +156,8 @@ function newAuthor(){
   author.username= id.firstName.toLowerCase() + id.lastName.toLowerCase();
   author.email = id.emailAddress;
   author.profileUrl = "/users/" + author.username;
+  author.authorProfilePicture = "/assets/userpics/" +
+    ((stringToIntHash(article.username)%274) + 1) + ".jpg";
   return author;
 }
 
@@ -190,22 +191,26 @@ function createEntireArticle(author, callback){
 
   var m = new Markov();
   m.pretrainBuzzfeedLists();
+  m.pretrainWikipediaSubject(article.subj, function() {
 
-  findGifUrls(article.subj, function(gifs){
-    if(gifs.length < article.num) {
-      return createEntireArticle(author, callback);
-    }
-    article.previewUrl = response.data[i].images.original_still.url;
-    for (var i = 0; i < article.num; i++){
-      if (i < gifs.length){
-        article.elements[i] = {};
-        article.elements[i].imageUrl = response.data[i].images.original.url;
-        article.elements[i].body = m.generate(1,10);
-        article.elements[i].title = m.generate(rand(0,3),10);
-      } else break;
-    }
-    callback(article, author);
+    findGifUrls(article.subj, function(gifs){
+      if(gifs.length < article.num) {
+        return createEntireArticle(author, callback);
+      }
+      article.previewUrl = response.data[i].images.original_still.url;
+      for (var i = 0; i < article.num; i++){
+        if (i < gifs.length){
+          article.elements[i] = {};
+          article.elements[i].imageUrl = response.data[i].images.original.url;
+          article.elements[i].body = m.generate(1,10);
+          article.elements[i].title = m.generate(rand(0,3),10);
+        } else break;
+      }
+      callback(article, author);
+    });
+
   });
+
 }
 
 module.exports = {

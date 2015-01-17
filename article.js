@@ -187,6 +187,11 @@ function newAuthor(){
   author.profileUrl = "/users/" + author.username;
   author.authorProfilePicture = "/assets/userpics/" +
     ((stringToIntHash(author.username)%274) + 1) + ".jpg";
+  var randomBannerSearchText = dicts["subj"][rand(0,dicts["subj"].length)];
+  findPictures(randomBannerSearchText, function(photos) {
+    author.bannerPhoto = photos[rand(0, photos.length)];
+    console.log("Banner URL: " + author.bannerPhoto);
+  });
   return author;
 }
 

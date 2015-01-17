@@ -1,6 +1,7 @@
 "use strict";
 var cheerio = require('cheerio');
 var request = require('request');
+var inflect = require('i')();
 module.exports = function Markov () {
 
 	var startWords = [];
@@ -102,7 +103,18 @@ module.exports = function Markov () {
 		}
 	};
 
+	var singularizeSubject = function(subject) {
+		var words = subject.split(/[ \t\n]+/).filter(function(x) {return x.length > 0;});
+		var singularizedSubject = "";
+		for (var i = 0; i < words.length; i++) {
+			singularizedSubject += inflect.singularize(words[i]);
+			if (i < words.length - 1) {singularizedSubject += " "};
+		}
+		return singularizedSubject;
+	}
+
 	this.pretrainWikipediaSubject = function(subject, callback) {
+		subject = singularizeSubject(subject);
 		var train = this.train;
 		request('https://en.wikipedia.org/wiki/Special:Search/'+subject, function(err, res, html) {
 	    	if (err) {return console.log(err)}
@@ -115,7 +127,7 @@ module.exports = function Markov () {
 	    			$('.mw-content-ltr').each(function() {
 	    				var data = $(this);
 		    			var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
-		    			paragraphs = paragraphs.split(/\. /).slice(0, 50).join(". ");
+		    			paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
 		    			train(paragraphs);
 		    		});	
 		    		if(callback) callback();
@@ -124,7 +136,7 @@ module.exports = function Markov () {
 	    		$('.mw-content-ltr').each(function() {
 	    			var data = $(this);
 	    			var paragraphs = data.find('p').text().trim().replace(/\[[0-9]*\]/g, "");
-	    			paragraphs = paragraphs.split(/\. /).slice(0, 50).join(". ");
+	    			paragraphs = paragraphs.split(/\. /).slice(0, 300).join(". ");
 	    			train(paragraphs);
 	    		});
 	    		if(callback) callback();
@@ -132,19 +144,20 @@ module.exports = function Markov () {
 		});
 	}
 };
-/*
+
+
+
+
 var markov = require("./markov");
 var m = new markov();
 
-// Ted Moseby
-//m.train("Ted is prone to socially questionable romantic gestures; in the pilot episode, for example, he steals a blue French horn (nicknamed \"The Smurf Penis\") that was a topic of conversation in his first date with Robin, and then scares Robin off by telling her he is in love with her. In a similar vein, he dresses up as a \"hanging chad\" every year for Halloween, in the hopes of meeting \"The Slutty Pumpkin,\" a woman dressed as a jack-o'-lantern (complete with strategically placed holes) whom he once met at a Halloween party. Ted describes himself as \"half-Jewish.\" He is seen cheering for the Cleveland Indians when they play the New York Yankees at a baseball game in the episode \"Where Were We?\". He and Marshall were randomly assigned as freshman year roommates at Wesleyan, and became best friends on a long, ill-fated road trip. This story was told in \"Arrivederci, Fiero\". In several episodes Ted's claim of being \"vomit-free since '93\" is mentioned, although it is untrue. Ted knows French and sign language, and has a strong tendency to correct everything that people around him say. As a child, he had a detective club called \"The Mosby Boys\". He also speaks and reads Spanish, albeit clumsily. Pablo Neruda is one of his favorite writers.");
 m.pretrainBuzzfeedLists();
 
-m.pretrainWikipediaSubject("Beyonce", function() {
+//m.pretrainHoroscope();
+m.pretrainWikipediaSubject("spoons", function() {
 	console.log(m.generate(10, 10, 4));
 });
-*/
-//console.log(m.generate(10, 10));
+
 
 
 

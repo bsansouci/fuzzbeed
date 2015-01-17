@@ -2,6 +2,31 @@ var fs = require('fs');
 var giphy = require("giphy")("dc6zaTOxFJmzC");
 var Identity = require('fake-identity');
 var Markov = require("./markov");
+var Flickr = require("flickrapi")
+
+var flickrOptions = {
+    api_key: "47f585c43e1ced1a1a3759da564fc143",
+    secret: "a0a649c7f8b8fd28"
+  };
+
+Flickr.tokenOnly(flickrOptions, function(error, flickr) {
+  // we can now use "flickr" as our API object
+    flickr.photos.search({
+      text: "spoon"
+    }, function(err, result) {
+      if(err) { return console.log(err); }
+      var photos = result.photos.photo;
+      for (var i = photos.length - 1; i >= 0; i--) {
+        var photo = photos[i];
+        var url = "https://farm" + photo["farm"] + ".staticflickr.com/" + photo["server"] + "/" + photo["id"] + "_" + photo["secret"] + ".jpg";
+        console.log(url);
+
+        for (var j = Object.keys(photo).length - 1; j >= 0; j--) {
+          console.log(Object.keys(photo)[j] + ": " + photo[Object.keys(photo)[j]]);
+        };
+      };
+  })
+});
 
 
 //Syntax:

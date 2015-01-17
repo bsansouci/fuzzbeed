@@ -1,50 +1,50 @@
-angriest
-biggest
-brightest
-busiest
-calmest
-cheapest
-coldest
-coolest
-curliest
-dirtiest
-driest
-earliest
-easiest
-fastest
-friendliest
-healthiest
-highest
-hottest
-hungriest
-largest
-longest
-loveliest
-most boring
-most comfortable
-most common
-most dangerous
-most difficult
-most expensive
-most famous
-most generous
-most immense
-most interesting
-most perfect
-most popular
-oldest
-prettiest
-quickest
-richest
-saddest
-safest
-shortest
-simplest
-slowest
-smallest
-smartest
-sunniest
-sweetest
-tallest
-thinnest
-wettest
+Angriest
+Biggest
+Brightest
+Busiest
+Calmest
+Cheapest
+Coldest
+Coolest
+Curliest
+Dirtiest
+Driest
+Earliest
+Easiest
+Fastest
+Friendliest
+Healthiest
+Highest
+Hottest
+Hungriest
+Largest
+Longest
+Loveliest
+Most boring
+Most comfortable
+Most common
+Most dangerous
+Most difficult
+Most expensive
+Most famous
+Most generous
+Most immense
+Most interesting
+Most perfect
+Most popular
+Oldest
+Prettiest
+Quickest
+Richest
+Saddest
+Safest
+Shortest
+Simplest
+Slowest
+Smallest
+Smartest
+Sunniest
+Sweetest
+Tallest
+Thinnest
+Wettest

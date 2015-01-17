@@ -1,21 +1,763 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'i' ]
-2 info using npm@1.4.9
-3 info using node@v0.10.28
-4 error install Couldn't read dependencies
-5 error Failed to parse json
-5 error Unexpected token <
-6 error File: /Users/benjamin/Desktop/fuzzbeed/package.json
-7 error Failed to parse package.json data.
-7 error package.json must be actual JSON, not just JavaScript.
-7 error
-7 error This is not a bug in npm.
-7 error Tell the package author to fix their package.json file. JSON.parse
-8 error System Darwin 14.0.0
-9 error command "node" "/usr/local/bin/npm" "i"
-10 error cwd /Users/benjamin/Desktop/fuzzbeed
-11 error node -v v0.10.28
-12 error npm -v 1.4.9
-13 error file /Users/benjamin/Desktop/fuzzbeed/package.json
-14 error code EJSONPARSE
-15 verbose exit [ 1, true ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/david/Documents/MHacks/fuzzbeed',
+5 verbose install   [ 'cheerio',
+5 verbose install     'express',
+5 verbose install     'fake-identity',
+5 verbose install     'firebase',
+5 verbose install     'flickrapi',
+5 verbose install     'giphy',
+5 verbose install     'i',
+5 verbose install     'request',
+5 verbose install     'swig' ] ]
+6 info preinstall fuzzbeed@0.0.0
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping cheerio@^0.18.0 /Users/david/Documents/MHacks/fuzzbeed
+9 verbose cache add [ 'express@^4.11.0', null ]
+10 verbose cache add name=undefined spec="express@^4.11.0" args=["express@^4.11.0",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'express@^4.11.0',
+11 verbose parsed url   path: 'express@^4.11.0',
+11 verbose parsed url   href: 'express@^4.11.0' }
+12 verbose cache add [ 'fake-identity@~1.0.6', null ]
+13 verbose cache add name=undefined spec="fake-identity@~1.0.6" args=["fake-identity@~1.0.6",null]
+14 verbose parsed url { protocol: null,
+14 verbose parsed url   slashes: null,
+14 verbose parsed url   auth: null,
+14 verbose parsed url   host: null,
+14 verbose parsed url   port: null,
+14 verbose parsed url   hostname: null,
+14 verbose parsed url   hash: null,
+14 verbose parsed url   search: null,
+14 verbose parsed url   query: null,
+14 verbose parsed url   pathname: 'fake-identity@~1.0.6',
+14 verbose parsed url   path: 'fake-identity@~1.0.6',
+14 verbose parsed url   href: 'fake-identity@~1.0.6' }
+15 verbose cache add [ 'firebase@^2.1.1', null ]
+16 verbose cache add name=undefined spec="firebase@^2.1.1" args=["firebase@^2.1.1",null]
+17 verbose parsed url { protocol: null,
+17 verbose parsed url   slashes: null,
+17 verbose parsed url   auth: null,
+17 verbose parsed url   host: null,
+17 verbose parsed url   port: null,
+17 verbose parsed url   hostname: null,
+17 verbose parsed url   hash: null,
+17 verbose parsed url   search: null,
+17 verbose parsed url   query: null,
+17 verbose parsed url   pathname: 'firebase@^2.1.1',
+17 verbose parsed url   path: 'firebase@^2.1.1',
+17 verbose parsed url   href: 'firebase@^2.1.1' }
+18 verbose already installed skipping flickrapi@^0.3.28 /Users/david/Documents/MHacks/fuzzbeed
+19 verbose cache add [ 'giphy@0.0.4', null ]
+20 verbose cache add name=undefined spec="giphy@0.0.4" args=["giphy@0.0.4",null]
+21 verbose parsed url { protocol: null,
+21 verbose parsed url   slashes: null,
+21 verbose parsed url   auth: null,
+21 verbose parsed url   host: null,
+21 verbose parsed url   port: null,
+21 verbose parsed url   hostname: null,
+21 verbose parsed url   hash: null,
+21 verbose parsed url   search: null,
+21 verbose parsed url   query: null,
+21 verbose parsed url   pathname: 'giphy@0.0.4',
+21 verbose parsed url   path: 'giphy@0.0.4',
+21 verbose parsed url   href: 'giphy@0.0.4' }
+22 verbose already installed skipping i@^0.3.2 /Users/david/Documents/MHacks/fuzzbeed
+23 verbose cache add name="express" spec="^4.11.0" args=["express","^4.11.0"]
+24 verbose parsed url { protocol: null,
+24 verbose parsed url   slashes: null,
+24 verbose parsed url   auth: null,
+24 verbose parsed url   host: null,
+24 verbose parsed url   port: null,
+24 verbose parsed url   hostname: null,
+24 verbose parsed url   hash: null,
+24 verbose parsed url   search: null,
+24 verbose parsed url   query: null,
+24 verbose parsed url   pathname: '^4.11.0',
+24 verbose parsed url   path: '^4.11.0',
+24 verbose parsed url   href: '^4.11.0' }
+25 verbose addNamed [ 'express', '^4.11.0' ]
+26 verbose addNamed [ null, '>=4.11.0-0 <5.0.0-0' ]
+27 verbose cache add name="fake-identity" spec="~1.0.6" args=["fake-identity","~1.0.6"]
+28 verbose parsed url { protocol: null,
+28 verbose parsed url   slashes: null,
+28 verbose parsed url   auth: null,
+28 verbose parsed url   host: null,
+28 verbose parsed url   port: null,
+28 verbose parsed url   hostname: null,
+28 verbose parsed url   hash: null,
+28 verbose parsed url   search: null,
+28 verbose parsed url   query: null,
+28 verbose parsed url   pathname: '~1.0.6',
+28 verbose parsed url   path: '~1.0.6',
+28 verbose parsed url   href: '~1.0.6' }
+29 verbose addNamed [ 'fake-identity', '~1.0.6' ]
+30 verbose addNamed [ null, '>=1.0.6-0 <1.1.0-0' ]
+31 verbose cache add name="firebase" spec="^2.1.1" args=["firebase","^2.1.1"]
+32 verbose parsed url { protocol: null,
+32 verbose parsed url   slashes: null,
+32 verbose parsed url   auth: null,
+32 verbose parsed url   host: null,
+32 verbose parsed url   port: null,
+32 verbose parsed url   hostname: null,
+32 verbose parsed url   hash: null,
+32 verbose parsed url   search: null,
+32 verbose parsed url   query: null,
+32 verbose parsed url   pathname: '^2.1.1',
+32 verbose parsed url   path: '^2.1.1',
+32 verbose parsed url   href: '^2.1.1' }
+33 verbose addNamed [ 'firebase', '^2.1.1' ]
+34 verbose addNamed [ null, '>=2.1.1-0 <3.0.0-0' ]
+35 verbose cache add name="giphy" spec="0.0.4" args=["giphy","0.0.4"]
+36 verbose parsed url { protocol: null,
+36 verbose parsed url   slashes: null,
+36 verbose parsed url   auth: null,
+36 verbose parsed url   host: null,
+36 verbose parsed url   port: null,
+36 verbose parsed url   hostname: null,
+36 verbose parsed url   hash: null,
+36 verbose parsed url   search: null,
+36 verbose parsed url   query: null,
+36 verbose parsed url   pathname: '0.0.4',
+36 verbose parsed url   path: '0.0.4',
+36 verbose parsed url   href: '0.0.4' }
+37 verbose addNamed [ 'giphy', '0.0.4' ]
+38 verbose addNamed [ '0.0.4', '0.0.4' ]
+39 verbose already installed skipping request@^2.51.0 /Users/david/Documents/MHacks/fuzzbeed
+40 verbose cache add [ 'swig@^1.4.2', null ]
+41 verbose cache add name=undefined spec="swig@^1.4.2" args=["swig@^1.4.2",null]
+42 verbose parsed url { protocol: null,
+42 verbose parsed url   slashes: null,
+42 verbose parsed url   auth: null,
+42 verbose parsed url   host: null,
+42 verbose parsed url   port: null,
+42 verbose parsed url   hostname: null,
+42 verbose parsed url   hash: null,
+42 verbose parsed url   search: null,
+42 verbose parsed url   query: null,
+42 verbose parsed url   pathname: 'swig@^1.4.2',
+42 verbose parsed url   path: 'swig@^1.4.2',
+42 verbose parsed url   href: 'swig@^1.4.2' }
+43 silly lockFile 33d17ca5-express-4-11-0 express@^4.11.0
+44 verbose lock express@^4.11.0 /Users/david/.npm/33d17ca5-express-4-11-0.lock
+45 silly lockFile ed4082bc-fake-identity-1-0-6 fake-identity@~1.0.6
+46 verbose lock fake-identity@~1.0.6 /Users/david/.npm/ed4082bc-fake-identity-1-0-6.lock
+47 silly lockFile 5f1d8cd9-firebase-2-1-1 firebase@^2.1.1
+48 verbose lock firebase@^2.1.1 /Users/david/.npm/5f1d8cd9-firebase-2-1-1.lock
+49 silly lockFile 32c4fba8-giphy-0-0-4 giphy@0.0.4
+50 verbose lock giphy@0.0.4 /Users/david/.npm/32c4fba8-giphy-0-0-4.lock
+51 verbose cache add name="swig" spec="^1.4.2" args=["swig","^1.4.2"]
+52 verbose parsed url { protocol: null,
+52 verbose parsed url   slashes: null,
+52 verbose parsed url   auth: null,
+52 verbose parsed url   host: null,
+52 verbose parsed url   port: null,
+52 verbose parsed url   hostname: null,
+52 verbose parsed url   hash: null,
+52 verbose parsed url   search: null,
+52 verbose parsed url   query: null,
+52 verbose parsed url   pathname: '^1.4.2',
+52 verbose parsed url   path: '^1.4.2',
+52 verbose parsed url   href: '^1.4.2' }
+53 verbose addNamed [ 'swig', '^1.4.2' ]
+54 verbose addNamed [ null, '>=1.4.2-0 <2.0.0-0' ]
+55 silly lockFile e3bb3c1a-swig-1-4-2 swig@^1.4.2
+56 verbose lock swig@^1.4.2 /Users/david/.npm/e3bb3c1a-swig-1-4-2.lock
+57 silly addNameRange { name: 'express', range: '>=4.11.0-0 <5.0.0-0', hasData: false }
+58 silly addNameRange { name: 'fake-identity',
+58 silly addNameRange   range: '>=1.0.6-0 <1.1.0-0',
+58 silly addNameRange   hasData: false }
+59 silly addNameRange { name: 'firebase', range: '>=2.1.1-0 <3.0.0-0', hasData: false }
+60 silly addNameRange { name: 'swig', range: '>=1.4.2-0 <2.0.0-0', hasData: false }
+61 verbose request where is /fake-identity
+62 verbose request registry https://registry.npmjs.org/
+63 verbose request id 86388233d3299b0a
+64 verbose url raw /fake-identity
+65 verbose url resolving [ 'https://registry.npmjs.org/', './fake-identity' ]
+66 verbose url resolved https://registry.npmjs.org/fake-identity
+67 verbose request where is https://registry.npmjs.org/fake-identity
+68 info trying registry request attempt 1 at 13:51:04
+69 http GET https://registry.npmjs.org/fake-identity
+70 verbose request where is /giphy
+71 verbose request registry https://registry.npmjs.org/
+72 verbose url raw /giphy
+73 verbose url resolving [ 'https://registry.npmjs.org/', './giphy' ]
+74 verbose url resolved https://registry.npmjs.org/giphy
+75 verbose request where is https://registry.npmjs.org/giphy
+76 info trying registry request attempt 1 at 13:51:04
+77 http GET https://registry.npmjs.org/giphy
+78 verbose request where is /swig
+79 verbose request registry https://registry.npmjs.org/
+80 verbose url raw /swig
+81 verbose url resolving [ 'https://registry.npmjs.org/', './swig' ]
+82 verbose url resolved https://registry.npmjs.org/swig
+83 verbose request where is https://registry.npmjs.org/swig
+84 info trying registry request attempt 1 at 13:51:04
+85 http GET https://registry.npmjs.org/swig
+86 verbose request where is /firebase
+87 verbose request registry https://registry.npmjs.org/
+88 verbose url raw /firebase
+89 verbose url resolving [ 'https://registry.npmjs.org/', './firebase' ]
+90 verbose url resolved https://registry.npmjs.org/firebase
+91 verbose request where is https://registry.npmjs.org/firebase
+92 info trying registry request attempt 1 at 13:51:04
+93 verbose etag "2F1RBXI5VA7AIATRUH85THU6X"
+94 http GET https://registry.npmjs.org/firebase
+95 verbose request where is /express
+96 verbose request registry https://registry.npmjs.org/
+97 verbose url raw /express
+98 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+99 verbose url resolved https://registry.npmjs.org/express
+100 verbose request where is https://registry.npmjs.org/express
+101 info trying registry request attempt 1 at 13:51:04
+102 verbose etag "EZ3CYFG54BUF9EI94SNCKFQTW"
+103 http GET https://registry.npmjs.org/express
+104 http 200 https://registry.npmjs.org/giphy
+105 silly registry.get cb [ 200,
+105 silly registry.get   { date: 'Sat, 17 Jan 2015 18:51:04 GMT',
+105 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+105 silly registry.get     etag: '"2M7E8SLRLF7MUOE2L3IVEMIPQ"',
+105 silly registry.get     'content-type': 'application/json',
+105 silly registry.get     'cache-control': 'max-age=60',
+105 silly registry.get     'content-length': '4314',
+105 silly registry.get     'accept-ranges': 'bytes',
+105 silly registry.get     via: '1.1 varnish',
+105 silly registry.get     age: '0',
+105 silly registry.get     'x-served-by': 'cache-dfw1829-DFW',
+105 silly registry.get     'x-cache': 'MISS',
+105 silly registry.get     'x-cache-hits': '0',
+105 silly registry.get     'x-timer': 'S1421520664.462760,VS0,VE192',
+105 silly registry.get     vary: 'Accept',
+105 silly registry.get     'keep-alive': 'timeout=10, max=50',
+105 silly registry.get     connection: 'Keep-Alive' } ]
+106 http 200 https://registry.npmjs.org/fake-identity
+107 silly registry.get cb [ 200,
+107 silly registry.get   { date: 'Sat, 17 Jan 2015 18:51:04 GMT',
+107 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+107 silly registry.get     etag: '"8TRNW7QQ3CAA2PRVPU4GQNSD"',
+107 silly registry.get     'content-type': 'application/json',
+107 silly registry.get     'cache-control': 'max-age=60',
+107 silly registry.get     'content-length': '10211',
+107 silly registry.get     'accept-ranges': 'bytes',
+107 silly registry.get     via: '1.1 varnish',
+107 silly registry.get     age: '0',
+107 silly registry.get     'x-served-by': 'cache-dfw1825-DFW',
+107 silly registry.get     'x-cache': 'MISS',
+107 silly registry.get     'x-cache-hits': '0',
+107 silly registry.get     'x-timer': 'S1421520664.465564,VS0,VE197',
+107 silly registry.get     vary: 'Accept',
+107 silly registry.get     'keep-alive': 'timeout=10, max=50',
+107 silly registry.get     connection: 'Keep-Alive' } ]
+108 silly lockFile 0d3ba5a1--npmjs-org-giphy-giphy-0-0-4-tgz https://registry.npmjs.org/giphy/-/giphy-0.0.4.tgz
+109 verbose lock https://registry.npmjs.org/giphy/-/giphy-0.0.4.tgz /Users/david/.npm/0d3ba5a1--npmjs-org-giphy-giphy-0-0-4-tgz.lock
+110 verbose addRemoteTarball [ 'https://registry.npmjs.org/giphy/-/giphy-0.0.4.tgz',
+110 verbose addRemoteTarball   '924e1e032664bd9886a27c228ffe64cb36d27470' ]
+111 silly addNameRange number 2 { name: 'fake-identity',
+111 silly addNameRange   range: '>=1.0.6-0 <1.1.0-0',
+111 silly addNameRange   hasData: true }
+112 silly addNameRange versions [ 'fake-identity', [ '1.0.3', '1.0.4', '1.0.5', '1.0.6' ] ]
+113 verbose addNamed [ 'fake-identity', '1.0.6' ]
+114 verbose addNamed [ '1.0.6', '1.0.6' ]
+115 silly lockFile 7ef794d3-fake-identity-1-0-6 fake-identity@1.0.6
+116 verbose lock fake-identity@1.0.6 /Users/david/.npm/7ef794d3-fake-identity-1-0-6.lock
+117 silly lockFile a85ad077-identity-fake-identity-1-0-6-tgz https://registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz
+118 verbose lock https://registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz /Users/david/.npm/a85ad077-identity-fake-identity-1-0-6-tgz.lock
+119 info retry fetch attempt 1 at 13:51:04
+120 verbose fetch to= /var/folders/b4/b48jsv916gqbr5zr90g2p1rh0000gq/T/npm-8467-oKnXbh21/registry.npmjs.org/giphy/-/giphy-0.0.4.tgz
+121 verbose addRemoteTarball [ 'https://registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz',
+121 verbose addRemoteTarball   '44b34cee9c3a043ef9235301272cc5c757126583' ]
+122 http GET https://registry.npmjs.org/giphy/-/giphy-0.0.4.tgz
+123 info retry fetch attempt 1 at 13:51:04
+124 verbose fetch to= /var/folders/b4/b48jsv916gqbr5zr90g2p1rh0000gq/T/npm-8467-oKnXbh21/registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz
+125 http GET https://registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz
+126 http 200 https://registry.npmjs.org/firebase
+127 silly registry.get cb [ 200,
+127 silly registry.get   { date: 'Sat, 17 Jan 2015 18:51:04 GMT',
+127 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+127 silly registry.get     etag: '"F3LRG40IVIMJ8XT1ZL2HMD9X5"',
+127 silly registry.get     'content-type': 'application/json',
+127 silly registry.get     'cache-control': 'max-age=60',
+127 silly registry.get     'content-length': '52844',
+127 silly registry.get     'accept-ranges': 'bytes',
+127 silly registry.get     via: '1.1 varnish',
+127 silly registry.get     age: '0',
+127 silly registry.get     'x-served-by': 'cache-dfw1825-DFW',
+127 silly registry.get     'x-cache': 'MISS',
+127 silly registry.get     'x-cache-hits': '0',
+127 silly registry.get     'x-timer': 'S1421520664.467082,VS0,VE146',
+127 silly registry.get     vary: 'Accept',
+127 silly registry.get     'keep-alive': 'timeout=10, max=50',
+127 silly registry.get     connection: 'Keep-Alive' } ]
+128 silly addNameRange number 2 { name: 'firebase', range: '>=2.1.1-0 <3.0.0-0', hasData: true }
+129 silly addNameRange versions [ 'firebase',
+129 silly addNameRange   [ '0.0.0',
+129 silly addNameRange     '0.5.0',
+129 silly addNameRange     '0.5.1',
+129 silly addNameRange     '0.5.2',
+129 silly addNameRange     '0.5.3',
+129 silly addNameRange     '0.5.4',
+129 silly addNameRange     '0.6.0',
+129 silly addNameRange     '0.6.1',
+129 silly addNameRange     '0.6.2',
+129 silly addNameRange     '0.6.3',
+129 silly addNameRange     '0.6.4',
+129 silly addNameRange     '0.6.5',
+129 silly addNameRange     '0.6.6',
+129 silly addNameRange     '0.6.7',
+129 silly addNameRange     '0.6.8',
+129 silly addNameRange     '0.6.9',
+129 silly addNameRange     '0.6.10',
+129 silly addNameRange     '0.6.11',
+129 silly addNameRange     '0.6.14',
+129 silly addNameRange     '0.6.15',
+129 silly addNameRange     '0.6.16',
+129 silly addNameRange     '0.6.17',
+129 silly addNameRange     '0.6.19',
+129 silly addNameRange     '0.6.21',
+129 silly addNameRange     '0.6.22',
+129 silly addNameRange     '1.0.1',
+129 silly addNameRange     '1.0.1-npm',
+129 silly addNameRange     '1.0.2',
+129 silly addNameRange     '1.0.3',
+129 silly addNameRange     '1.0.4',
+129 silly addNameRange     '1.0.5',
+129 silly addNameRange     '1.0.10',
+129 silly addNameRange     '1.0.10-2',
+129 silly addNameRange     '1.0.11',
+129 silly addNameRange     '1.0.12',
+129 silly addNameRange     '1.0.13',
+129 silly addNameRange     '1.0.14',
+129 silly addNameRange     '1.0.15',
+129 silly addNameRange     '1.0.15-2',
+129 silly addNameRange     '1.0.15-3',
+129 silly addNameRange     '1.0.17',
+129 silly addNameRange     '1.0.18',
+129 silly addNameRange     '1.0.19',
+129 silly addNameRange     '1.0.20',
+129 silly addNameRange     '1.0.21',
+129 silly addNameRange     '1.0.23',
+129 silly addNameRange     '1.0.24',
+129 silly addNameRange     '1.1.0',
+129 silly addNameRange     '1.1.1',
+129 silly addNameRange     '1.1.2',
+129 silly addNameRange     '1.2.0-beta.1-0',
+129 silly addNameRange     '1.2.0-beta.2',
+129 silly addNameRange     '1.1.3',
+129 silly addNameRange     '1.2.0-beta.3',
+129 silly addNameRange     '2.0.0',
+129 silly addNameRange     '2.0.1',
+129 silly addNameRange     '2.0.2',
+129 silly addNameRange     '2.0.3',
+129 silly addNameRange     '2.0.4',
+129 silly addNameRange     '2.0.5',
+129 silly addNameRange     '2.0.6',
+129 silly addNameRange     '2.1.0',
+129 silly addNameRange     '2.1.1' ] ]
+130 verbose addNamed [ 'firebase', '2.1.1' ]
+131 verbose addNamed [ '2.1.1', '2.1.1' ]
+132 silly lockFile 10a2d4f7-firebase-2-1-1 firebase@2.1.1
+133 verbose lock firebase@2.1.1 /Users/david/.npm/10a2d4f7-firebase-2-1-1.lock
+134 silly lockFile 59d22fc3--org-firebase-firebase-2-1-1-tgz https://registry.npmjs.org/firebase/-/firebase-2.1.1.tgz
+135 verbose lock https://registry.npmjs.org/firebase/-/firebase-2.1.1.tgz /Users/david/.npm/59d22fc3--org-firebase-firebase-2-1-1-tgz.lock
+136 verbose addRemoteTarball [ 'https://registry.npmjs.org/firebase/-/firebase-2.1.1.tgz',
+136 verbose addRemoteTarball   'c5f6c332a73fae00d6ac4a710cc7163dd93b4d39' ]
+137 info retry fetch attempt 1 at 13:51:04
+138 verbose fetch to= /var/folders/b4/b48jsv916gqbr5zr90g2p1rh0000gq/T/npm-8467-oKnXbh21/registry.npmjs.org/firebase/-/firebase-2.1.1.tgz
+139 http GET https://registry.npmjs.org/firebase/-/firebase-2.1.1.tgz
+140 http 200 https://registry.npmjs.org/swig
+141 silly registry.get cb [ 200,
+141 silly registry.get   { date: 'Sat, 17 Jan 2015 18:51:04 GMT',
+141 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+141 silly registry.get     etag: '"380ZLU2AMX01X8OU5IKHSD72J"',
+141 silly registry.get     'content-type': 'application/json',
+141 silly registry.get     'cache-control': 'max-age=60',
+141 silly registry.get     'content-length': '75841',
+141 silly registry.get     'accept-ranges': 'bytes',
+141 silly registry.get     via: '1.1 varnish',
+141 silly registry.get     age: '0',
+141 silly registry.get     'x-served-by': 'cache-dfw1821-DFW',
+141 silly registry.get     'x-cache': 'MISS',
+141 silly registry.get     'x-cache-hits': '0',
+141 silly registry.get     'x-timer': 'S1421520664.461000,VS0,VE254',
+141 silly registry.get     vary: 'Accept',
+141 silly registry.get     'keep-alive': 'timeout=10, max=50',
+141 silly registry.get     connection: 'Keep-Alive' } ]
+142 http 200 https://registry.npmjs.org/giphy/-/giphy-0.0.4.tgz
+143 http 200 https://registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz
+144 silly addNameRange number 2 { name: 'swig', range: '>=1.4.2-0 <2.0.0-0', hasData: true }
+145 silly addNameRange versions [ 'swig',
+145 silly addNameRange   [ '0.1.1',
+145 silly addNameRange     '0.1.2',
+145 silly addNameRange     '0.1.3',
+145 silly addNameRange     '0.1.5',
+145 silly addNameRange     '0.1.6',
+145 silly addNameRange     '0.1.7',
+145 silly addNameRange     '0.1.8',
+145 silly addNameRange     '0.1.9',
+145 silly addNameRange     '0.2.0',
+145 silly addNameRange     '0.2.1',
+145 silly addNameRange     '0.2.2',
+145 silly addNameRange     '0.2.3',
+145 silly addNameRange     '0.3.0',
+145 silly addNameRange     '0.4.0',
+145 silly addNameRange     '0.5.0',
+145 silly addNameRange     '0.6.0',
+145 silly addNameRange     '0.6.1',
+145 silly addNameRange     '0.7.0',
+145 silly addNameRange     '0.8.0',
+145 silly addNameRange     '0.9.0',
+145 silly addNameRange     '0.9.1',
+145 silly addNameRange     '0.9.2',
+145 silly addNameRange     '0.9.3',
+145 silly addNameRange     '0.9.4',
+145 silly addNameRange     '0.10.0',
+145 silly addNameRange     '0.11.0',
+145 silly addNameRange     '0.11.1',
+145 silly addNameRange     '0.11.2',
+145 silly addNameRange     '0.12.0',
+145 silly addNameRange     '0.12.1',
+145 silly addNameRange     '0.13.0',
+145 silly addNameRange     '0.13.1',
+145 silly addNameRange     '0.13.2',
+145 silly addNameRange     '0.13.3',
+145 silly addNameRange     '0.13.4',
+145 silly addNameRange     '0.13.5',
+145 silly addNameRange     '0.14.0',
+145 silly addNameRange     '1.0.0-pre1',
+145 silly addNameRange     '1.0.0-pre2',
+145 silly addNameRange     '1.0.0-pre3',
+145 silly addNameRange     '1.0.0-rc1',
+145 silly addNameRange     '1.0.0-rc2',
+145 silly addNameRange     '1.0.0-rc3',
+145 silly addNameRange     '1.0.0',
+145 silly addNameRange     '1.1.0',
+145 silly addNameRange     '1.2.0',
+145 silly addNameRange     '1.2.1',
+145 silly addNameRange     '1.2.2',
+145 silly addNameRange     '1.3.0',
+145 silly addNameRange     '1.3.2',
+145 silly addNameRange     '1.4.0',
+145 silly addNameRange     '1.4.1',
+145 silly addNameRange     '1.4.2' ] ]
+146 verbose addNamed [ 'swig', '1.4.2' ]
+147 verbose addNamed [ '1.4.2', '1.4.2' ]
+148 silly lockFile 63e83fc4-swig-1-4-2 swig@1.4.2
+149 verbose lock swig@1.4.2 /Users/david/.npm/63e83fc4-swig-1-4-2.lock
+150 silly lockFile 693b07fb-ry-npmjs-org-swig-swig-1-4-2-tgz https://registry.npmjs.org/swig/-/swig-1.4.2.tgz
+151 verbose lock https://registry.npmjs.org/swig/-/swig-1.4.2.tgz /Users/david/.npm/693b07fb-ry-npmjs-org-swig-swig-1-4-2-tgz.lock
+152 verbose addRemoteTarball [ 'https://registry.npmjs.org/swig/-/swig-1.4.2.tgz',
+152 verbose addRemoteTarball   '4085ca0453369104b5d483e2841b39b7ae1aaba5' ]
+153 info retry fetch attempt 1 at 13:51:04
+154 verbose fetch to= /var/folders/b4/b48jsv916gqbr5zr90g2p1rh0000gq/T/npm-8467-oKnXbh21/registry.npmjs.org/swig/-/swig-1.4.2.tgz
+155 http GET https://registry.npmjs.org/swig/-/swig-1.4.2.tgz
+156 silly lockFile 0d3ba5a1--npmjs-org-giphy-giphy-0-0-4-tgz https://registry.npmjs.org/giphy/-/giphy-0.0.4.tgz
+157 silly lockFile 0d3ba5a1--npmjs-org-giphy-giphy-0-0-4-tgz https://registry.npmjs.org/giphy/-/giphy-0.0.4.tgz
+158 silly lockFile 32c4fba8-giphy-0-0-4 giphy@0.0.4
+159 silly lockFile 32c4fba8-giphy-0-0-4 giphy@0.0.4
+160 http 200 https://registry.npmjs.org/firebase/-/firebase-2.1.1.tgz
+161 silly lockFile a85ad077-identity-fake-identity-1-0-6-tgz https://registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz
+162 silly lockFile a85ad077-identity-fake-identity-1-0-6-tgz https://registry.npmjs.org/fake-identity/-/fake-identity-1.0.6.tgz
+163 silly lockFile 7ef794d3-fake-identity-1-0-6 fake-identity@1.0.6
+164 silly lockFile 7ef794d3-fake-identity-1-0-6 fake-identity@1.0.6
+165 silly lockFile ed4082bc-fake-identity-1-0-6 fake-identity@~1.0.6
+166 silly lockFile ed4082bc-fake-identity-1-0-6 fake-identity@~1.0.6
+167 http 200 https://registry.npmjs.org/express
+168 silly registry.get cb [ 200,
+168 silly registry.get   { date: 'Sat, 17 Jan 2015 18:51:04 GMT',
+168 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+168 silly registry.get     etag: '"AF93FCRJSCRI0LQ1926JJZEXE"',
+168 silly registry.get     'content-type': 'application/json',
+168 silly registry.get     'cache-control': 'max-age=60',
+168 silly registry.get     'content-length': '457419',
+168 silly registry.get     'accept-ranges': 'bytes',
+168 silly registry.get     via: '1.1 varnish',
+168 silly registry.get     age: '0',
+168 silly registry.get     'x-served-by': 'cache-dfw1829-DFW',
+168 silly registry.get     'x-cache': 'HIT',
+168 silly registry.get     'x-cache-hits': '1',
+168 silly registry.get     'x-timer': 'S1421520664.501586,VS0,VE200',
+168 silly registry.get     vary: 'Accept',
+168 silly registry.get     'keep-alive': 'timeout=10, max=50',
+168 silly registry.get     connection: 'Keep-Alive' } ]
+169 silly addNameRange number 2 { name: 'express', range: '>=4.11.0-0 <5.0.0-0', hasData: true }
+170 silly addNameRange versions [ 'express',
+170 silly addNameRange   [ '0.14.0',
+170 silly addNameRange     '0.14.1',
+170 silly addNameRange     '1.0.0',
+170 silly addNameRange     '1.0.1',
+170 silly addNameRange     '1.0.2',
+170 silly addNameRange     '1.0.3',
+170 silly addNameRange     '1.0.4',
+170 silly addNameRange     '1.0.5',
+170 silly addNameRange     '1.0.6',
+170 silly addNameRange     '1.0.7',
+170 silly addNameRange     '1.0.8',
+170 silly addNameRange     '2.0.0',
+170 silly addNameRange     '2.1.0',
+170 silly addNameRange     '2.1.1',
+170 silly addNameRange     '2.2.0',
+170 silly addNameRange     '2.2.1',
+170 silly addNameRange     '2.2.2',
+170 silly addNameRange     '2.3.0',
+170 silly addNameRange     '2.3.1',
+170 silly addNameRange     '2.3.2',
+170 silly addNameRange     '2.3.3',
+170 silly addNameRange     '2.3.4',
+170 silly addNameRange     '2.3.5',
+170 silly addNameRange     '2.3.6',
+170 silly addNameRange     '2.3.7',
+170 silly addNameRange     '2.3.8',
+170 silly addNameRange     '2.3.9',
+170 silly addNameRange     '2.3.10',
+170 silly addNameRange     '2.3.11',
+170 silly addNameRange     '2.3.12',
+170 silly addNameRange     '2.4.0',
+170 silly addNameRange     '2.4.1',
+170 silly addNameRange     '2.4.2',
+170 silly addNameRange     '2.4.3',
+170 silly addNameRange     '2.4.4',
+170 silly addNameRange     '2.4.5',
+170 silly addNameRange     '2.4.6',
+170 silly addNameRange     '2.4.7',
+170 silly addNameRange     '2.5.0',
+170 silly addNameRange     '2.5.1',
+170 silly addNameRange     '2.5.2',
+170 silly addNameRange     '2.5.3',
+170 silly addNameRange     '2.5.4',
+170 silly addNameRange     '2.5.5',
+170 silly addNameRange     '2.5.6',
+170 silly addNameRange     '2.5.7',
+170 silly addNameRange     '2.5.8',
+170 silly addNameRange     '2.5.9',
+170 silly addNameRange     '2.5.10',
+170 silly addNameRange     '2.5.11',
+170 silly addNameRange     '3.0.0',
+170 silly addNameRange     '3.0.1',
+170 silly addNameRange     '3.0.2',
+170 silly addNameRange     '3.0.3',
+170 silly addNameRange     '3.0.4',
+170 silly addNameRange     '3.0.5',
+170 silly addNameRange     '3.0.6',
+170 silly addNameRange     '3.1.0',
+170 silly addNameRange     '3.1.1',
+170 silly addNameRange     '3.1.2',
+170 silly addNameRange     '3.2.0',
+170 silly addNameRange     '3.2.1',
+170 silly addNameRange     '3.2.2',
+170 silly addNameRange     '3.2.3',
+170 silly addNameRange     '3.2.4',
+170 silly addNameRange     '3.2.5',
+170 silly addNameRange     '3.2.6',
+170 silly addNameRange     '3.3.0',
+170 silly addNameRange     '3.3.1',
+170 silly addNameRange     '3.3.2',
+170 silly addNameRange     '3.3.3',
+170 silly addNameRange     '3.3.4',
+170 silly addNameRange     '3.3.5',
+170 silly addNameRange     '3.3.6',
+170 silly addNameRange     '1.0.0-beta',
+170 silly addNameRange     '1.0.0-beta2',
+170 silly addNameRange     '1.0.0-rc',
+170 silly addNameRange     '1.0.0-rc2',
+170 silly addNameRange     '1.0.0-rc3',
+170 silly addNameRange     '1.0.0-rc4',
+170 silly addNameRange     '2.0.0-beta',
+170 silly addNameRange     '2.0.0-beta2',
+170 silly addNameRange     '2.0.0-beta3',
+170 silly addNameRange     '2.0.0-rc',
+170 silly addNameRange     '2.0.0-rc2',
+170 silly addNameRange     '2.0.0-rc3',
+170 silly addNameRange     '3.0.0-alpha1',
+170 silly addNameRange     '3.0.0-alpha2',
+170 silly addNameRange     '3.0.0-alpha3',
+170 silly addNameRange     '3.0.0-alpha4',
+170 silly addNameRange     '3.0.0-alpha5',
+170 silly addNameRange     '3.0.0-beta1',
+170 silly addNameRange     '3.0.0-beta2',
+170 silly addNameRange     '3.0.0-beta3',
+170 silly addNameRange     '3.0.0-beta4',
+170 silly addNameRange     '3.0.0-beta6',
+170 silly addNameRange     '3.0.0-beta7',
+170 silly addNameRange     '3.0.0-rc1',
+170 silly addNameRange     '3.0.0-rc2',
+170 silly addNameRange     '3.0.0-rc3',
+170 silly addNameRange     '3.0.0-rc4',
+170 silly addNameRange     '3.0.0-rc5',
+170 silly addNameRange     '3.3.7',
+170 silly addNameRange     '3.3.8',
+170 silly addNameRange     '3.4.0',
+170 silly addNameRange     '3.4.1',
+170 silly addNameRange     '3.4.2',
+170 silly addNameRange     '3.4.3',
+170 silly addNameRange     '3.4.4',
+170 silly addNameRange     '3.4.5',
+170 silly addNameRange     '3.4.6',
+170 silly addNameRange     '3.4.7',
+170 silly addNameRange     '3.4.8',
+170 silly addNameRange     '4.0.0-rc1',
+170 silly addNameRange     '4.0.0-rc2',
+170 silly addNameRange     '3.5.0',
+170 silly addNameRange     '4.0.0-rc3',
+170 silly addNameRange     '4.0.0-rc4',
+170 silly addNameRange     '3.5.1',
+170 silly addNameRange     '4.0.0',
+170 silly addNameRange     '3.5.2',
+170 silly addNameRange     '4.1.0',
+170 silly addNameRange     '4.1.1',
+170 silly addNameRange     '3.5.3',
+170 silly addNameRange     '4.1.2',
+170 silly addNameRange     '3.6.0',
+170 silly addNameRange     '4.2.0',
+170 silly addNameRange     '3.7.0',
+170 silly addNameRange     '3.8.0',
+170 silly addNameRange     '4.3.0',
+170 silly addNameRange     '4.3.1',
+170 silly addNameRange     '3.8.1',
+170 silly addNameRange     '4.3.2',
+170 silly addNameRange     '3.9.0',
+170 silly addNameRange     '4.4.0',
+170 silly addNameRange     '4.4.1',
+170 silly addNameRange     '3.10.0',
+170 silly addNameRange     '3.10.1',
+170 silly addNameRange     '3.10.2',
+170 silly addNameRange     '3.10.3',
+170 silly addNameRange     '3.10.4',
+170 silly addNameRange     '4.4.2',
+170 silly addNameRange     '3.10.5',
+170 silly addNameRange     '4.4.3',
+170 silly addNameRange     '3.11.0',
+170 silly addNameRange     '4.4.4',
+170 silly addNameRange     '3.12.0',
+170 silly addNameRange     '3.12.1',
+170 silly addNameRange     '4.4.5',
+170 silly addNameRange     '3.13.0',
+170 silly addNameRange     '4.5.0',
+170 silly addNameRange     '4.5.1',
+170 silly addNameRange     '3.14.0',
+170 silly addNameRange     '4.6.0',
+170 silly addNameRange     '4.6.1',
+170 silly addNameRange     '3.15.0',
+170 silly addNameRange     '4.7.0',
+170 silly addNameRange     '3.15.1',
+170 silly addNameRange     '4.7.1',
+170 silly addNameRange     '3.15.2',
+170 silly addNameRange     '4.7.2',
+170 silly addNameRange     '4.7.3',
+170 silly addNameRange     '3.15.3',
+170 silly addNameRange     '4.7.4',
+170 silly addNameRange     '3.16.0',
+170 silly addNameRange     '4.8.0',
+170 silly addNameRange     '3.16.1',
+170 silly addNameRange     '4.8.1',
+170 silly addNameRange     '3.16.2',
+170 silly addNameRange     '4.8.2',
+170 silly addNameRange     '3.16.3',
+170 silly addNameRange     '3.16.4',
+170 silly addNameRange     '4.8.3',
+170 silly addNameRange     '3.16.5',
+170 silly addNameRange     '3.16.6',
+170 silly addNameRange     '4.8.4',
+170 silly addNameRange     '3.16.7',
+170 silly addNameRange     '4.8.5',
+170 silly addNameRange     '3.16.8',
+170 silly addNameRange     '4.8.6',
+170 silly addNameRange     '3.16.9',
+170 silly addNameRange     '4.8.7',
+170 silly addNameRange     '3.16.10',
+170 silly addNameRange     '4.8.8',
+170 silly addNameRange     '3.17.0',
+170 silly addNameRange     '3.17.1',
+170 silly addNameRange     '4.9.0',
+170 silly addNameRange     '3.17.2',
+170 silly addNameRange     '4.9.1',
+170 silly addNameRange     '4.9.2',
+170 silly addNameRange     '3.17.3',
+170 silly addNameRange     '4.9.3',
+170 silly addNameRange     '3.17.4',
+170 silly addNameRange     '4.9.4',
+170 silly addNameRange     '3.17.5',
+170 silly addNameRange     '4.9.5',
+170 silly addNameRange     '3.17.6',
+170 silly addNameRange     '3.17.7',
+170 silly addNameRange     '4.9.6',
+170 silly addNameRange     '4.9.7',
+170 silly addNameRange     '3.17.8',
+170 silly addNameRange     '4.9.8',
+170 silly addNameRange     '3.18.0',
+170 silly addNameRange     '3.18.1',
+170 silly addNameRange     '4.10.0',
+170 silly addNameRange     '3.18.2',
+170 silly addNameRange     '4.10.1',
+170 silly addNameRange     '5.0.0-alpha.1',
+170 silly addNameRange     '3.18.3',
+170 silly addNameRange     '4.10.2',
+170 silly addNameRange     '3.18.4',
+170 silly addNameRange     '4.10.3',
+170 silly addNameRange     '4.10.4',
+170 silly addNameRange     '4.10.5',
+170 silly addNameRange     '3.18.5',
+170 silly addNameRange     '3.18.6',
+170 silly addNameRange     '4.10.6',
+170 silly addNameRange     '4.10.7',
+170 silly addNameRange     '3.19.0',
+170 silly addNameRange     '4.10.8',
+170 silly addNameRange     '4.11.0' ] ]
+171 verbose addNamed [ 'express', '4.11.0' ]
+172 verbose addNamed [ '4.11.0', '4.11.0' ]
+173 silly lockFile d83478c8-express-4-11-0 express@4.11.0
+174 verbose lock express@4.11.0 /Users/david/.npm/d83478c8-express-4-11-0.lock
+175 silly lockFile 33d40286-s-org-express-express-4-11-0-tgz https://registry.npmjs.org/express/-/express-4.11.0.tgz
+176 verbose lock https://registry.npmjs.org/express/-/express-4.11.0.tgz /Users/david/.npm/33d40286-s-org-express-express-4-11-0-tgz.lock
+177 silly lockFile 59d22fc3--org-firebase-firebase-2-1-1-tgz https://registry.npmjs.org/firebase/-/firebase-2.1.1.tgz
+178 silly lockFile 59d22fc3--org-firebase-firebase-2-1-1-tgz https://registry.npmjs.org/firebase/-/firebase-2.1.1.tgz
+179 verbose addRemoteTarball [ 'https://registry.npmjs.org/express/-/express-4.11.0.tgz',
+179 verbose addRemoteTarball   'ad5b5157b74a95fc5c59442efad0306e7b1aeb99' ]
+180 silly lockFile 10a2d4f7-firebase-2-1-1 firebase@2.1.1
+181 silly lockFile 10a2d4f7-firebase-2-1-1 firebase@2.1.1
+182 silly lockFile 5f1d8cd9-firebase-2-1-1 firebase@^2.1.1
+183 silly lockFile 5f1d8cd9-firebase-2-1-1 firebase@^2.1.1
+184 info retry fetch attempt 1 at 13:51:05
+185 verbose fetch to= /var/folders/b4/b48jsv916gqbr5zr90g2p1rh0000gq/T/npm-8467-oKnXbh21/registry.npmjs.org/express/-/express-4.11.0.tgz
+186 http GET https://registry.npmjs.org/express/-/express-4.11.0.tgz
+187 http 200 https://registry.npmjs.org/express/-/express-4.11.0.tgz
+188 silly lockFile 33d40286-s-org-express-express-4-11-0-tgz https://registry.npmjs.org/express/-/express-4.11.0.tgz
+189 silly lockFile 33d40286-s-org-express-express-4-11-0-tgz https://registry.npmjs.org/express/-/express-4.11.0.tgz
+190 silly lockFile d83478c8-express-4-11-0 express@4.11.0
+191 silly lockFile d83478c8-express-4-11-0 express@4.11.0
+192 silly lockFile 33d17ca5-express-4-11-0 express@^4.11.0
+193 silly lockFile 33d17ca5-express-4-11-0 express@^4.11.0
+194 http 200 https://registry.npmjs.org/swig/-/swig-1.4.2.tgz
+195 silly lockFile 693b07fb-ry-npmjs-org-swig-swig-1-4-2-tgz https://registry.npmjs.org/swig/-/swig-1.4.2.tgz
+196 silly lockFile 693b07fb-ry-npmjs-org-swig-swig-1-4-2-tgz https://registry.npmjs.org/swig/-/swig-1.4.2.tgz
+197 silly lockFile 63e83fc4-swig-1-4-2 swig@1.4.2
+198 silly lockFile 63e83fc4-swig-1-4-2 swig@1.4.2
+199 silly lockFile e3bb3c1a-swig-1-4-2 swig@^1.4.2
+200 silly lockFile e3bb3c1a-swig-1-4-2 swig@^1.4.2
+201 error Error: EACCES, mkdir '/Users/david/.npm/firebase/2.1.1'
+201 error  { [Error: EACCES, mkdir '/Users/david/.npm/firebase/2.1.1']
+201 error   errno: 3,
+201 error   code: 'EACCES',
+201 error   path: '/Users/david/.npm/firebase/2.1.1',
+201 error   parent: 'fuzzbeed' }
+202 error Please try running this command again as root/Administrator.
+203 error System Darwin 13.4.0
+204 error command "node" "/usr/local/bin/npm" "install"
+205 error cwd /Users/david/Documents/MHacks/fuzzbeed
+206 error node -v v0.10.32
+207 error npm -v 1.4.28
+208 error path /Users/david/.npm/firebase/2.1.1
+209 error code EACCES
+210 error errno 3
+211 error stack Error: EACCES, mkdir '/Users/david/.npm/firebase/2.1.1'
+212 verbose exit [ 3, true ]

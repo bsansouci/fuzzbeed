@@ -58,6 +58,10 @@ module.exports = function Markov () {
 		}
 		if(addedWords < minWords) return generateSentence(maxWords, minWords)
 		sentence = sentence.slice(0,-1) + ".";
+		// If the first letter is lowercase, prefix with "..."
+		if (sentence.charAt(0) === sentence.charAt(0).toLowerCase()) {
+			sentence = "... " + sentence;
+		}
 		return sentence;
 	};
 

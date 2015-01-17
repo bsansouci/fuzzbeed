@@ -1,0 +1,60 @@
+.ytpl-sprite { background-image: url('/static/images/public/ytpl/sprite.png?v=201501161526'); position: relative; }
+.ytpl-sprite.ytpl-autoplay { background-position: 0px -20px; width: 18px; height: 14px; }
+.ytpl-sprite.ytpl-autoplay:hover { background-position: 0px -40px; }
+.ytpl-sprite.ytpl-autoplay.selected { background-position: 0px 0px; }
+.ytpl-sprite.ytpl-shuffle { background-position: -25px -20px; width: 21px; height: 14px; }
+.ytpl-sprite.ytpl-shuffle:hover { background-position: -25px -40px; }
+.ytpl-sprite.ytpl-shuffle.selected { background-position: -25px 0px; }
+.ytpl-sprite.ytpl-left { background-position: -50px -20px; width: 15px; height: 12px; }
+.ytpl-sprite.ytpl-left:hover { background-position: -50px -40px; }
+.ytpl-sprite.ytpl-left.selected { background-position: -50px 0px; }
+.ytpl-sprite.ytpl-right { background-position: -75px -20px; width: 15px; height: 12px; }
+.ytpl-sprite.ytpl-right:hover { background-position: -75px -40px; }
+.ytpl-sprite.ytpl-right.ytppl_selected { background-position: -75px 0px; }
+.ytpl-close {color: #ccc;}
+.ytpl-close:hover {color: #ccc;}
+
+.ytpl { position: relative; }
+.ytpl-pl { background: none repeat scroll 0 0 #2B2B2B; height: 303px; list-style: none outside none; margin: 0; overflow: hidden; padding: 0; position: relative; top: 30px; border-bottom: 27px solid #1B1B1B; }
+.ytpl-pl:hover { overflow: auto; }
+
+.ytpl-col { position: relative; }
+.ytpl-col.ytpl-col-left { float: left; z-index: 12; }
+.ytpl-col.ytpl-col-right { visibility: hidden; position: absolute; float: right; height: 100%; z-index: 11;}
+
+.ytpl-pl-slider { position: relative; background-color: #000000; }
+.ytpl-pl-overflow { display: none; padding-top: 4px; background-color: #000000; color: #707070; right: -23px; position: absolute; top: 0; width: 22px; cursor: pointer; text-align: center; font-size: 16px; }
+.ytpl-pl-overflow:hover { background-color: #0077EE; color: #FFFFFF; }
+
+.ytpl-pl li { text-align: left; cursor: pointer; margin: 0; border-top: 1px solid #393939; border-bottom: 1px solid #1d1d1d; padding-right: 13px; font-size: 13px; color: #6e6e6e; text-shadow: 0 1px 0 #000; display: list-item; }
+.ytpl-pl li:hover { background-color: #353535; border-color: #353535; }
+.ytpl-pl.ytpl-h:hover li { padding-right: 0px; }
+.ytpl-pl li.ytpl-playing { background-color: #4F4F4F; border-color: #4F4F4F; }
+.ytpl-pl li .ytpl-a { padding: 8px 0px 8px 13px; position: relative; display: block; overflow: hidden; color: #333; zoom: 1; }
+.ytpl-pl li .ytpl-thumb-wrap { margin-top: 4px; margin-bottom: 4px; float: left; margin: 4px 8px 4px 0; position: relative; display: inline-block; }
+.ytpl-pl li .ytpl-thumb { -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.5); box-shadow: 0 2px 4px rgba(0,0,0,0.5); position: relative; width: 96px; height: 66px; display: block; overflow:hidden; }
+.ytpl-pl li .ytpl-thumb span {display: inline;}
+.ytpl-pl li .ytpl-thumb-inner { position: relative; bottom: 6px; }
+.ytpl-pl li .ytpl-v-align { display: inline-block; height: 100%; position: relative; }
+.ytpl-pl li .ytpl-title { color: #FFFFFF; font-weight: bold; line-height: 15px; display: block; margin-bottom: 2px; }
+.ytpl-pl li .ytpl-stat { font-size: 11px; color: #666; display: block; line-height: 15px; }
+.ytpl-pl li.ytpl-playing .ytppl_stat { color: #FFFFFF; }
+.ytpl-pl li .ytpl-att { visibility: hidden; clear: both; }
+.ytpl-pl li .ytpl-att a { color: #ccc }
+.ytpl-pl li .ytpl-att a:hover { color: #ccc }
+.ytpl-pl li.ytpl-playing .ytpl-att { visibility: inherit; }
+
+.ytpl-pl li.ytpl-spinner { border-color: #000000; background-color: #000000; text-align: center; padding: 4px 0px 1px 0px; background-image: url('/static/images/public/ytpl/loading.gif?v=201501161526'); height: 35px; background-repeat: no-repeat; background-position: center; }
+
+.ytpl.ytpl-sml .ytpl-pl li .ytpl-a { padding-right: 38px; }
+.ytpl.ytpl-sml .ytpl-pl li .ytpl-stat { font-size: 10px; }
+.ytpl.ytpl-sml .ytpl-pl li .ytpl-title { font-size: 12px; }
+
+.ytpl-qnav { left: 12px; position: absolute; top: 7px; }
+.ytpl-qnav div { display: inline-block; color: #FFFFFF; font-size: 11px; }
+.ytpl-qnav .ytpl-summary { position: relative; bottom: 2px; margin: 0px 2px 0px 2px; width: 22px; }
+.ytpl-qnav .ytpl-btn { cursor: pointer; }
+
+.ytpl-qopts { position: absolute; right: 12px; top: 7px; }
+.ytpl-qopts div { display: inline-block; margin: 0px 4px; }
+.ytpl-qopts .ytpl-btn { cursor: pointer; }

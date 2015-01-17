@@ -1,0 +1,23 @@
+{
+  "name": "fuzzbeed",
+  "version": "0.0.0",
+  "description": "28 Painful Truths Only Disney Princesses Will Understand",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bsansouci/fuzzbeed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bsansouci/fuzzbeed/issues"
+  },
+  "homepage": "https://github.com/bsansouci/fuzzbeed",
+  "dependencies": {
+    "express": "^4.11.0",
+    "swig": "^1.4.2"
+  }
+}

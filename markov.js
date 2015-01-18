@@ -176,6 +176,8 @@ module.exports = function Markov () {
     		var a = $('.mw-search-results a');
     		var url = a.first().attr("href");
     		request('https://en.wikipedia.org' + url, function (err, res, html) {
+    			if(err) console.error("error: ", err);
+
     			var $ = cheerio.load(html);
     			checkDisambiguation($);
     		});

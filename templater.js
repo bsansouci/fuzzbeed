@@ -113,7 +113,7 @@ Choose a []
   };
 
   this.getRand = function(key) {
-    return dicts[key][rand(0,dicts.subj.length)];
+    return dicts[key][rand(0,dicts[key].length)];
   };
 
 

@@ -1,7 +1,16 @@
 var cheerio = require('cheerio');
 var request = require('request');
 
+
+
 module.exports = function QuizCreator () {
+
+	var quizTitleTemplates = [
+	"What Character From [showTitle] Are You?",
+	"Which [showTitle] Characters Are You?",
+	"Which [showTitle] Character Is Your Soulmate?",
+	"Which [showTitle] Character Is Your Kindred Spirit?"];
+
 
 
 	var scrapeImdb = function(callback) {
@@ -25,33 +34,43 @@ module.exports = function QuizCreator () {
 			var $ = cheerio.load(html);
 			var characters = $('.character a');
 			var links = [];
+			var returnLinks = [];
+			var showCover = $('.image a img');
+			console.log("Show cover", $(showCover).text());
 
 			for (var i = 0; i < characters.length; i++) {
-				links.push({url: $(characters.get(i)).attr("href"), name: $(characters.get(i)).text().trim()});
+				if ($(characters.get(i)).attr("href"))
+					links.push({url: $(characters.get(i)).attr("href"), name: $(characters.get(i)).text().trim()});
 			};
 
-			console.log(links);
+		//	console.log(links);
 
 			var index = 0;
-			function getImage(callback{
-				index++;
+			function getImage(callback){
 				if (index < links.length){
 					request('http://imdb.com' + links[index].url, function (err, res, html) {
 						var $ = cheerio.load(html);
 						var photos = $("a[name='headshot']");
 
 						console.log(links[index].name + ": " + $(photos).attr("href"));
-
-						request('http://imdb.com' + $(photos).attr("href"), function (err, res, html) {
-							var $ = cheerio.load(html);
-							var photo = $('#primary-img');
-
-							links[index].src = photo.attr('src');
-						});
-
-						getImage();
+						if ($(photos).attr("href")) {
+							request('http://imdb.com' + $(photos).attr("href"), function (err, res, html) {
+								var $ = cheerio.load(html);
+								var photo = $('#primary-img');
+								console.log("index: ", index, " list length: ", links.length);
+								links[index].src = photo.attr('src');
+								returnLinks.push(links[index]);
+								index++;
+								getImage(callback);
+							});
+						} else {
+							index++;
+							getImage(callback);
+						}
 					});
-				} else {callback({title: show.title, links:links);}
+				} else {
+					callback({title: show.title, links: returnLinks});
+				}
 			}
 			getImage(callback);
 
@@ -71,16 +90,24 @@ module.exports = function QuizCreator () {
 	}
 
 	this.create = function(callback) {
-		scrapeImdb(function(links) {
+		scrapeImdb(function(obj) {
+			var title = generateQuizTitle(obj.title);
+
+			console.log(title);
 			// Create quiz:
-			
+
 		});
+	}
+
+	var generateQuizTitle = function(showTitle) {
+		var template = quizTitleTemplates[Math.floor(Math.random() * quizTitleTemplates.length)];
+		return template.replace("[showTitle]", showTitle);
 	}
 }
 var QuizCreator = require('./quiz');
 
 
 var q = new QuizCreator();
-q.scrapeImdb();
+q.create();
 
 

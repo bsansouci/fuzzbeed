@@ -78,10 +78,11 @@ module.exports = new function () {
 				var links = [];
 				var returnLinks = [];
 				var showCover = $('.image a');
-
+				
+				// showCover.filter(function(el) { el. });
 				console.log("Show cover", $(showCover).attr("href"));
 				request('http://imdb.com' + $(showCover).attr("href"), function (err, res, html) {
-					var temp = cheerio.load(html);
+					var temp = cheerio.load(html); // crashed here, "Cannot read property 'parent' of undefined" with http://www.imdb.com/list/ls073461000/?ref_=tt_tt_edw_OscarNom_i_1#1
 					coverPhotoUrl = temp('#primary-img').attr("src");
 
 					for (var i = 0; i < characters.length; i++) {
@@ -134,7 +135,7 @@ module.exports = new function () {
 		});
 	};
 
-	this.create = function(author, templater, callback) {
+	function create(author, templater, callback) {
 		scrapeImdb(function(imdb) {
 
 			var quiz = {};
@@ -145,6 +146,7 @@ module.exports = new function () {
       var markov = new Markov();
       markov.pretrainPersonality();
       markov.pretrainHoroscope();
+			if (imdb.links.length === 0) return create(author, templater, callback);
 			for (var i = 0; i < imdb.links.length; i++) {
 				quiz.possibleResults.push({
           imageUrl: imdb.links[i].src, 
@@ -183,6 +185,8 @@ module.exports = new function () {
 			}
 		});
 	}
+
+	this.create = create;
 
 	var generatePhotoQuestion = function(templater, callback) {
 		var question = {};

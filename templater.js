@@ -185,6 +185,9 @@ Choose a []
         ret.subj = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, ret.subj);
       } else {
+        console.log("dicts: ", Object.keys(dicts));
+        console.log("inner: ", inner);
+
         template = replaceMatch(template, match, dicts[inner][rand(0,dicts[inner].length)]);
       }
     }

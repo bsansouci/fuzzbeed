@@ -152,7 +152,7 @@ module.exports = new function () {
 			var max = rand(5, 10);
 			var func = null;
 			for (var i = 0; i < max; i++) {
-				var r = ran(0, 100);
+				var r = rand(0, 100);
 				if(r > 33) {
 					if(r > 66) {
 						func = generatePhotoQuestion;
@@ -188,22 +188,38 @@ module.exports = new function () {
   		question.title = nameObj.title;
   		callback(question);
 		});
-	}
+	};
+
+	var generateYesNoQuestion = function(templater, callback) {
+		var question = {};
+		templater.loadQuizYesNoQuestions();
+		question.questionType = "yesNo";
+		var nameObj = templater.generateName();
+		question.title = nameObj.title;
+		callback(question);
+	};
 
 	var generateWordQuestion = function(templater, callback) {
 		var question = {};
 		if(rand(0, 100) < 50) {
 			templater.loadQuizNounQuestions();
+			question.possibleAnswers = [];
+			for (var i = 0; i < 6; i++) {
+				question.possibleAnswers.push(templater.getRand('sn-subj'));
+			}
 		} else {
 			templater.loadQuizPeopleQuestions();
+			question.possibleAnswers = [];
+			for (var i = 0; i < 6; i++) {
+				question.possibleAnswers.push(templater.getRand('people'));
+			}
 		}
 		question.questionType = "openEnded";
 		var nameObj = templater.generateName();
 
-		question.possibleAnswers = templater.getRand('sn-subj');
 		question.title = nameObj.title;
 		callback(question);
-	}
+	};
 
 	var generateQuizTitle = function(showTitle, templater) {
 		templater.loadQuizTitles();

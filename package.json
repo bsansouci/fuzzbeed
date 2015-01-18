@@ -2,7 +2,7 @@
   "name": "fuzzbeed",
   "version": "0.0.0",
   "description": "28 Painful Truths Only Disney Princesses Will Understand",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,4 +1,5 @@
 var fs = require('fs');
+var Inflect = require('i')();
 
 
 module.exports = function Templater () {
@@ -75,7 +76,7 @@ module.exports = function Templater () {
         loadFile("subj", "wordlists/nouns.txt", function () {
           loadFile("people", "wordlists/people-nouns.txt", function () {
             loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-              // callback(createEntireArticle);
+              dicts["sn-subj"] = dicts["subj"].map(function(x){Inflect.singularize(x);});
             });
           });
         });
@@ -107,6 +108,9 @@ module.exports = function Templater () {
         var n = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, n);
       } else if (inner === "subj"){
+        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
+        template = replaceMatch(template, match, ret.subj);
+      } else if (inner === "sn-subj"){
         ret.subj = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, ret.subj);
       } else if (inner === "p-subj"){

@@ -140,7 +140,7 @@ app.get('/write-article', function(req, res) {
 });
 
 app.get('/write-an-article', function(req, res) {
-  // 75% chances of creating a new person
+  // 50% chances of creating a new person
   if(rand(0, 100) > 25) {
     articleGenerator.createEntireArticle(function(article, author) {
       pushProfile(author, function() {

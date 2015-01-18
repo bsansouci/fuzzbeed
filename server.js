@@ -118,6 +118,10 @@ app.param('quizzName', function(req, res, next, articleName) {
 });
 
 app.get('/', function (req, res) {
+  if(!findPictures) {
+    res.send("<html><title>Pushing code...</title><body><h1>Down for a sec...</h1></body></html>")
+    return;
+  }
   firebaseArticles.orderByChild("timestamp").limitToFirst(20).once("value", function(snapshot) {
     var v = snapshot.val();
     var arr = [];

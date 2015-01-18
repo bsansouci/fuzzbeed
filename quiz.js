@@ -1,6 +1,55 @@
 var cheerio = require('cheerio');
 var request = require('request');
 var Templater = require('./templater');
+var Flickr = require("flickrapi");
+
+var flickrOptions = {
+    api_key: "47f585c43e1ced1a1a3759da564fc143",
+    secret: "a0a649c7f8b8fd28"
+  };
+
+var findPictures = null;
+var maxPhotos = 7;
+
+Flickr.tokenOnly(flickrOptions, function(error, flickr) {
+  // we can now use "flickr" as our API object
+  findPictures = function(text, callback) {
+    flickr.photos.search({
+      text: text
+    }, function(err, result) {
+      if(err) { return console.log(err); }
+      var photos = result.photos.photo;
+      var arr = [];
+      for (var i = 0; i < photos.length; i++) {
+        var photo = photos[i];
+        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
+        arr.push(url);
+      }
+      callback(arr);
+    });
+  };
+});
+
+function getQuizPhotos(subject, callback) {
+  findPictures(subject, function(photos) {
+    if (photos.length > maxPhotos) {
+      photos = photos.slice(0, maxPhotos);
+    }
+    callback(photos);
+  });
+}
+
+function assignAuthor(quiz, author){
+  quiz.username = author.username;
+  quiz.authorName = author.name;
+  quiz.profileUrl = "/users/" + quiz.username;
+  quiz.authorProfilePicture = author.authorProfilePicture;
+}
+
+function rand(min, max){
+return Math.floor(Math.random() * (max-min))+min;
+}
+
 
 
 module.exports = function QuizCreator () {
@@ -92,26 +141,51 @@ module.exports = function QuizCreator () {
 	}
 
 	this.create = function(callback) {
+		var templater = new Templater();
 		scrapeImdb(function(imdb) {
+
 			var quiz = {};
-			quiz.title = generateQuizTitle(imdb.title);
-			quiz.articleName = quiz.title.toLowercase().replace("\"", "").replace(" ", "-");
+			quiz.title = generateQuizTitle(imdb.title, templater);
+			quiz.articleName = quiz.title.toLowerCase().replace("\"", "").replace(" ", "-");
 			quiz.isQuiz = true;
 			quiz.possibleResults = [];
 			for (var i = 0; i < imdb.links.length; i++) {
 				quiz.possibleResults.push({imageUrl: imdb.links[i].url, title: "You Got "+imdb.links[i].name+"!", body: "body"}) // TODO generate body for this
 			}
 			quiz.previewUrl = imdb.coverPhoto;
-			
-			
 
-			console.log(title);
-
+			quiz.elements = [];
+			var max = rand(5, 10);
+			for (var i = 0; i < rand(5, 10); i++) {
+				generatePhotoQuestion(templater, function(q){
+					quiz.elements.push(q);
+					if(max <= quiz.elements.length) {
+						quiz.responses = rand(10, 800);
+						quiz.subtitle = "";
+						quiz.timestamp = Date.now();
+						quiz.url = "/quizzes/" + quiz.articleName;
+						return callback(quiz);
+					}
+				});
+			}
 		});
 	}
 
-	var generateQuizTitle = function(showTitle) {
-		var templater = new Templater();
+	var generatePhotoQuestion = function(templater, callback) {
+		var question = {};
+		templater.loadQuizQuestions();
+  		question.questionType = "openEnded";
+  		var nameObj = templater.generateName();
+  		getQuizPhotos(nameObj.subj, function(quizPhotos) {
+  			console.log(quizPhotos);
+	  		question.imageUrl = quizPhotos.pop();
+	  		question.possibleAnswers = quizPhotos.map(function(obj) {return {url: obj}});
+	  		question.title = nameObj.title;
+	  		callback(question);
+  		});
+  	}
+
+	var generateQuizTitle = function(showTitle, templater) {
 		templater.loadQuizTitles();
 		templater.loadKey("showTitle", [showTitle]);
 		return templater.generateName().title;

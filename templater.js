@@ -2,7 +2,7 @@ var fs = require('fs');
 var Inflect = require('i')();
 
 
-module.exports = function Templater () {
+module.exports = function Templater (callback) {
   //Syntax:
   //num:         Just a number
   //t-num:       Number optionally preceded by "The"
@@ -95,21 +95,19 @@ Choose a []
     dicts[key] = list;
   };
 
-  function loadData(){
-    // Mmmm serial loading...
-    loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
-      loadFile("adj", "wordlists/adj.txt", function () {
-        loadFile("subj", "wordlists/nouns.txt", function () {
-          loadFile("people", "wordlists/people-nouns.txt", function () {
-            loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-              dicts["sn-subj"] = dicts["subj"].map(function(x){Inflect.singularize(x);});
-            });
+  // Mmmm serial loading...
+  loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
+    loadFile("adj", "wordlists/adj.txt", function () {
+      loadFile("subj", "wordlists/nouns.txt", function () {
+        loadFile("people", "wordlists/people-nouns.txt", function () {
+          loadFile("crazy", "wordlists/crazy-adj.txt", function () {
+            dicts["sn-subj"] = dicts["subj"].map(function(x){ return Inflect.singularize(x); });
+            if (callback) callback();
           });
         });
       });
     });
-  }
-  loadData();
+  });
 
   function genFromTemplate(template){
     var match;
@@ -169,3 +167,12 @@ Choose a []
     return newStr;
   }
 };
+
+var Templater = require('./templater');
+
+
+var t = new Templater(function(){
+  t.loadQuizQuestions();
+  console.log(t.generateName());
+});
+

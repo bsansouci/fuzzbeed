@@ -177,6 +177,10 @@ function find(coll, el, f) {
   return null;
 }
 
+function rand(min, max){
+  return Math.floor(Math.random() * (max-min))+min;
+}
+
 function shuffle(o, func){
   if(!func) func = Math.random;
 

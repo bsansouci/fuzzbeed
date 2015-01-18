@@ -226,6 +226,14 @@ function rand(min, max){
   return Math.floor(Math.random() * (max-min))+min;
 }
 
+// firebaseQuizzes.orderByChild("articleName").equalTo("hey").once("value", function(snapshot) {
+//   var v = snapshot.val();
+//   v = v[Object.keys(v)[0]];
+//   v.elements[1] = JSON.parse(JSON.stringify(v.elements[0]));
+//   v.elements[1].possibleAnswers[0].text = "blablab words are important";
+//   firebaseQuizzes.push(v);
+// });
+
 // firebaseQuizzes.push({
 //   elements: [{
 //     title: "What do you usually do at parties?",

@@ -2532,7 +2532,7 @@ var pxhRnd = (Math.random()*100000000000000000);
 
 
 
-<header id="post-3577178" class="post2 super_format  bf_dom c" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7EWP7R7&quot;,&quot;u&quot;:&quot;779UKP7&quot;,&quot;buzz&quot;:&quot;quietly-judging-all-of-you&quot;,&quot;user&quot;:&quot;alexalvarez&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" rel:ptool="true" rel:ptool_code="0.0.1.2.0.0" rel:owner="alexalvarez" rel:advertiser="0" rel:partner="0" rel:data="{&quot;buzz_id&quot;:&quot;3577178&quot;,&quot;type&quot;:&quot;super-image&quot;,&quot;uri&quot;:&quot;quietly-judging-all-of-you&quot;,&quot;form_id&quot;:&quot;24&quot;,&quot;category&quot;:&quot;Culture&quot;}" rel:ptool_stats="{&quot;impressions&quot;:&quot;84,562&quot;,&quot;email_shares&quot;:&quot;4&quot;,&quot;pinterest_count&quot;:&quot;&quot;,&quot;twitter_count&quot;:&quot;123&quot;,&quot;viral_lift&quot;:&quot;1.1X&quot;,&quot;facebook_count&quot;:&quot;301&quot;}">
+<header id="post-3577178" class="post2 super_format  bf_dom c">
 
 
 	<div id="buzz_header" class=" no_custom_header_image" rel:gt_cat="[ttp]:header">
@@ -3075,8 +3075,33 @@ var initCanvas = function(src, color, c, callback) {
 	}
 };
 
-
 document.addEventListener("DOMContentLoaded", function(event) {
+	MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+	var observer = new MutationObserver(function(mutations, observer) {
+	  mutations.map(function(mut) {
+	    var nodes = mut.addedNodes;
+	    for(var j=0; j < nodes.length; j++) {
+	      if(nodes[j]) {
+	        var arr = nodes[j].getAttribute('id');
+	        if(arr === "bf_request_err") {
+	          nodes[j].style.display = "none";
+	        }
+	      }
+	    }
+	  });
+	});
+
+	observer.observe(document.getElementsByTagName("body")[0], {
+	  subtree: true,
+	  attributes: true,
+	  childList: true,
+	  characterData: true,
+	  attributeOldValue: true,
+	  characterDataOldValue: true
+	});
+
+
+
 	var text1 = "{{something.possibleAnswers[0].text}}";
 	var url1 = "{{something.possibleAnswers[0].url}}";
 
@@ -3102,7 +3127,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var c5 = document.getElementById("canvas5-{{loop.index}}");
 	var c6 = document.getElementById("canvas6-{{loop.index}}");
 
-	color = fnGetRandomColour(200, 120);
+	color = fnGetRandomColour(120, 200);
 	initCanvas(url1, color, c1, function(draw) {
 		draw(text1);
 	});
@@ -3433,7 +3458,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	</ul>
 
-	<span style="display:none;" class="alert_box popup_box update_related">
+	<!-- <span style="display:none;" class="alert_box popup_box update_related">
 		<form class="alert_form" id="related_links_form" method="post">
 			<div class="form_header">
                 <div class="headline-1">Related Links</div>
@@ -3459,7 +3484,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				<a class="button2 smaller grey bf_dom" rel:bf_bucket="related-cancel" onclick="return false" href="javascript:;">Cancel</a>
 			</div>
 		</form>
-	</span>
+	</span> -->
 
 </section>
 
@@ -3516,7 +3541,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	</ul>
 
-	<span style="display:none;" class="alert_box popup_box update_related">
+	<!-- <span style="display:none;" class="alert_box popup_box update_related">
 		<form class="alert_form" id="related_links_form" method="post">
 			<div class="form_header">
                 <div class="headline-1">Related Links</div>
@@ -3542,7 +3567,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				<a class="button2 smaller grey bf_dom" rel:bf_bucket="related-cancel" onclick="return false" href="javascript:;">Cancel</a>
 			</div>
 		</form>
-	</span>
+	</span> -->
 
 </section>
 
@@ -3838,7 +3863,7 @@ var widget_init = function() {
     </ul>
 
     <div class="what">
-      <form method="post" action="" id="contribute-form" class="v">
+      <!--<form method="post" action="" id="contribute-form" class="v">
         <p id="contribute-message" class="message" style="display:none;"></p>
 
 
@@ -3909,7 +3934,7 @@ var widget_init = function() {
         </fieldset>
 
         <input name="submit-mode" id="submit-mode" value="preview" type="hidden">
-      </form>
+      </form>-->
     </div>
 
 
@@ -4617,34 +4642,6 @@ parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%25
 </div>
 
 
-
-
-
-<script type="text/javascript">
-	(function adobeTrack() {
-		if (typeof s != 'object' || s == null) {
-			setTimeout(function(){
-				adobeTrack();
-			}, 100);
-		} else {
-			var s_code = s.t();
-			if (s_code) document.write(s_code);
-		}
-	})()
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="/assets/User_and_Buzz_concat_footer.js" type="text/javascript" ref:jsconf="true"></script>
 
 
@@ -4666,47 +4663,6 @@ parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%25
 
 <script src="/assets/bpage-pinterest-nopin.js" type="text/javascript"></script>
 
-
-<script type="text/javascript">
-        var uagent = this.agent = navigator.userAgent.toLowerCase();
-
-
-        var post_success_cookie = BFW_Util.getCookie('qp_post_success');
-        if (post_success_cookie && location.pathname.replace(/^\/bf2/, '').replace(/^\/h[\d]+\/h[A-Z0-9]+/i, '') == post_success_cookie) {
-            $('post_launch_success').show(); BFW_Util.deleteCookie('qp_post_success');
-        }
-
-
-	   var buzz_profile = {category:'Culture', badges:[], nsfw: 0};
-
-
-
-
-
-
-
-
-
-
-    sailthru_horizon = {"domain":"horizon.buzzfeed.com","tags":["Culture","--force-image-width-625","--primarykeyword-shy","awkward","awkward people","quiet people","shy people"]}; sailthru_horizon_track(sailthru_horizon);
-
-
-
-
-
-
-
-
-
-
-      if (typeof bf_contribute !== "undefined") {
-               bf_contribute.enableForm('contribute-text-form');
-        bf_contribute.buttonToggle('text-contribute-activate');
-             }
-
-
-
-</script>
 
 
 
@@ -4770,12 +4726,6 @@ parent.BF_DFP_REDIRECTS['13'] = 'http://adclick.g.doubleclick.net/aclk%253Fsa%25
 		var pixelDataLogix = new Image();
 		pixelDataLogix.src = 'http://h.nexac.com/e/a-1177/s-2113/c-386/g-1107.xgi?pkey=bijo15bijox40&chpcm=&chpsg=&chpcr=' + BF_STATIC.campaignid + '&chpck=&rand=' +  (Math.random()*100000000000000000) +'&chpth=';
 	</script>
-
-
-
-
-
-
 
 
 

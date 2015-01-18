@@ -114,7 +114,7 @@ module.exports = function QuizCreator () {
 var QuizCreator = require('./quiz');
 
 
-var q = new QuizCreator();
-q.create();
+// var q = new QuizCreator();
+// q.create();
 
 

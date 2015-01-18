@@ -1,6 +1,7 @@
 var cheerio = require('cheerio');
 var request = require('request');
 var Templater = require('./templater');
+var Markov = require('./markov');
 var Flickr = require("flickrapi");
 
 var flickrOptions = {
@@ -141,8 +142,14 @@ module.exports = new function () {
 			quiz.articleName = quiz.title.toLowerCase().replace(/[\"\?]/g, "").replace(/ /g, "-");
 			quiz.isQuiz = true;
 			quiz.possibleResults = [];
+      var markov = new Markov();
+      markov.pretrainPersonality();
+      markov.pretrainHoroscope();
 			for (var i = 0; i < imdb.links.length; i++) {
-				quiz.possibleResults.push({imageUrl: imdb.links[i].src, title: "You Got "+imdb.links[i].name+"!", body: "body"}) // TODO generate body for this
+				quiz.possibleResults.push({
+          imageUrl: imdb.links[i].src, 
+          title: "You Got "+imdb.links[i].name+"!", 
+          body: markov.generate(rand(10,15), 4)});
 			}
 			quiz.previewUrl = imdb.coverPhoto;
 
@@ -176,7 +183,7 @@ module.exports = new function () {
 	  		question.title = nameObj.title;
 	  		callback(question);
   		});
-  	}
+  	};
 
 	var generateQuizTitle = function(showTitle, templater) {
 		templater.loadQuizTitles();

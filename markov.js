@@ -56,7 +56,7 @@ module.exports = function Markov () {
 			prev = hashMap[hash(prev)][rand(hashMap[hash(prev)].length)];
 			if (addedWords++ > maxWords) return generateSentence(maxWords, minWords);
 		}
-		if(addedWords < minWords) return generateSentence(maxWords, minWords)
+		if(addedWords < minWords) return generateSentence(maxWords, minWords);
 		sentence = sentence.slice(0,-1) + ".";
 		// If the first letter is lowercase, prefix with "..."
 		if (sentence.charAt(0) === sentence.charAt(0).toLowerCase()) {
@@ -77,6 +77,23 @@ module.exports = function Markov () {
 		}
 		return allSentences;
 	};
+
+  this.pretrainPersonality = function() {
+    this.train(
+        "Your primary mode of living is focused internally, where you take things in via your five senses in a literal, concrete fashion. Your secondary mode is external, where you deal with things rationally and logically."+
+        "You are quiet and reserved individuals who are interested in security and peaceful living. They have a strongly-felt internal sense of duty, which lends them a serious air and the motivation to follow through on tasks. Organized and methodical in their approach, they can generally succeed at any task which they undertake."+
+        "You are very loyal, faithful, and dependable. They place great importance on honesty and integrity. They are good citizens who can be depended on to do the right thing for their families and communities. While they generally take things very seriously, they also usually have an offbeat sense of humor and can be a lot of fun - especially at family or work-related gatherings." +
+        "You tend to believe in laws and traditions, and expect the same from others. They're not comfortable with breaking laws or going against the rules. If they are able to see a good reason for stepping outside of the established mode of doing things, you will support that effort. However, you more often tend to believe that things should be done according to procedures and plans. If you have not developed their intuitive side sufficiently, they may become overly obsessed with structure, and insist on doing everything by the book."+
+        "You are extremely dependable on following through with things which he or she has promised. For this reason, they sometimes get more and more work piled on them. Because you has such a strong sense of duty, they may have a difficult time saying no when they are given more work than they can reasonably handle. For this reason, you often works long hours, and may be unwittingly taken advantage of."+
+        "You will work for long periods of time and put tremendous amounts of energy into doing any task which they see as important to fulfilling a goal. However, they will resist putting energy into things which don't make sense to them, or for which they can't see a practical application. They prefer to work alone, but work well in teams when the situation demands it. They like to be accountable for their actions, and enjoy being in positions of authority. You has little use for theory or abstract thinking, unless the practical application is clear."+
+        "You have tremendous respect for facts. They hold a tremendous store of facts within themselves, which they have gathered through their Sensing preference. They may have difficulty understanding a theory or idea which is different from their own perspective. However, if they are shown the importance or relevance of the idea to someone who they respect or care about, the idea becomes a fact, which you will internalize and support. Once you supports a cause or idea, he or she will stop at no lengths to ensure that they are doing their duty of giving support where support is needed."+
+        "You are not naturally in tune with their own feelings and the feelings of others. They may have difficulty picking up on emotional needs immediately, as they are presented. Being perfectionists themselves, they have a tendency to take other people's efforts for granted, like they take their own efforts for granted. They need to remember to pat people on the back once in a while."
+    );
+    this.train("You have a unique ability to intuit others' emotions and motivations, and will often know how someone else is feeling before that person knows it himself. They trust their insights about others and have strong faith in their ability to read people. Although they are sensitive, they are also reserved; a private sort, and are selective about sharing intimate thoughts and feelings.");
+    this.train("You often appear quiet, caring and sensitive, and may be found listening attentively to someone else's ideas or concerns. You are highly perceptive about people and want to help others achieve understanding. You are not afraid of complex personal problems; in fact, you are quite complex yourself, and have a rich inner life that few are privy to. You reflect at length on issues of ethics, and feel things deeply. Because you initially appear so gentle and reserved, you may surprise others with their intensity when one of their values is threatened or called into question. Your calm exterior belies the complexity of their inner worlds");
+    this.train("You are typically agile and expressive communicators, using their wit, humor, and mastery of language to create engaging stories. Imaginative and original, You often have a strong artistic side. You are drawn to art because of its ability to express inventive ideas and create a deeper understanding of human experience.");
+    this.train("You often seem unconventional, and may come off as scattered; you don’t tend to be in touch with your physical surroundings. They often overlook the details, as you are more likely to focus on connecting with other people or on exploring their own imagination and self-expression. You have little patience for the mundane and want to experience life with intensity and flair. You often have an artistic streak, and may be artistic in appearance. Many have developed a distinctive and quirky personal style.");
+  };
 
 	this.pretrainHoroscope = function() {
 		this.train("Intuition plays a large part in your work. You're apt to sense what others want or need and foresee the consequences of one course of action over another. This is definitely going to make a positive difference in what you accomplish. You're likely to be quite pleased with what you do. Exercise this intuition today so it will stay with you in the future.");

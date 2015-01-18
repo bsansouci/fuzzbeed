@@ -2832,7 +2832,7 @@ var pxhRnd = (Math.random()*100000000000000000);
 
 
 		<div class="quiz_img_and_source ">
-                        <canvas id="canvas-{loop.index}" class="quiz_img" src="{{something.imageUrl}}" width="625" height="417">
+                        <canvas id="canvas-{{loop.index}}" class="quiz_img" src="{{something.imageUrl}}" width="625" height="417">
 
                       </div>
                     </div>
@@ -3112,22 +3112,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 	var text1 = "{{something.possibleAnswers[0].text}}" === "undefined" ? "" : "{{something.possibleAnswers[0].text}}";
-	var url1 = "{{something.possibleAnswers[0].url}}";
+	var url1 = "{{something.possibleAnswers[0].url}}" === "undefined" ? "" : "{{something.possibleAnswers[0].url}}";
 
 	var text2 = "{{something.possibleAnswers[1].text}}" === "undefined" ? "" : "{{something.possibleAnswers[1].text}}";
-	var url2 = "{{something.possibleAnswers[1].url}}";
+	var url2 = "{{something.possibleAnswers[1].url}}" === "undefined" ? "" : "{{something.possibleAnswers[1].url}}";
 
 	var text3 = "{{something.possibleAnswers[2].text}}" === "undefined" ? "" : "{{something.possibleAnswers[2].text}}";
-	var url3 = "{{something.possibleAnswers[2].url}}";
+	var url3 = "{{something.possibleAnswers[2].url}}" === "undefined" ? "" : "{{something.possibleAnswers[2].url}}";
 
 	var text4 = "{{something.possibleAnswers[3].text}}" === "undefined" ? "" : "{{something.possibleAnswers[3].text}}";
-	var url4 = "{{something.possibleAnswers[3].url}}";
+	var url4 = "{{something.possibleAnswers[3].url}}" === "undefined" ? "" : "{{something.possibleAnswers[3].url}}";
 
 	var text5 = "{{something.possibleAnswers[4].text}}" === "undefined" ? "" : "{{something.possibleAnswers[4].text}}";
-	var url5 = "{{something.possibleAnswers[4].url}}";
+	var url5 = "{{something.possibleAnswers[4].url}}" === "undefined" ? "" : "{{something.possibleAnswers[4].url}}";
 
 	var text6 = "{{something.possibleAnswers[5].text}}" === "undefined" ? "" : "{{something.possibleAnswers[5].text}}";
-	var url6 = "{{something.possibleAnswers[5].url}}";
+	var url6 = "{{something.possibleAnswers[5].url}}" === "undefined" ? "" : "{{something.possibleAnswers[5].url}}";
 
 	var c0 = document.getElementById("canvas0-{{loop.index}}");
 	var c1 = document.getElementById("canvas1-{{loop.index}}");
@@ -3139,7 +3139,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	color = fnGetRandomColour(120, 200);
 	initCanvas("{{something.imageUrl}}", color, c0, 625, 298, function(draw) {
-		draw("{{something.title}}");
+		draw("{{something.title}}".replace(/&#39;/g, "'"));
 	});
 	initCanvas(url1, color, c1, 180, 180, function(draw) {
 		draw(text1);

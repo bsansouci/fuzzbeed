@@ -97,7 +97,7 @@ Choose a []
     templates = [
     "Choose Your Career",
     "Who Do You Hate The Most?",
-    "Pick The [[sub-adj]] Co-Worker",
+    "Pick The [[sup-adj]] Co-Worker",
     "Who Would You Rather [[verb]]?",
     "Who's The [[sup-adj]]",
     "What's Your Drunk Alter Ego?"];
@@ -127,7 +127,7 @@ Choose a []
       if (err) {
         return console.error(err);
       }
-      dicts[key] = data.split("\n");
+      dicts[key] = data.replace(/\r/g, "").split("\n");
       callback();
     });
   }

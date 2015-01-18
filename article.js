@@ -41,7 +41,6 @@ function getQuizPhotos(subject, maxPhotos) {
   });
 }
 
-
 function findGifUrls(string, callback){
   giphy.search({q:string}, function (err, response){
     if (err){

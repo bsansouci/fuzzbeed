@@ -20,6 +20,7 @@ module.exports = function QuizCreator () {
     	var $ = cheerio.load(html);
     	var titles = $('.title a');
     	var links = [];
+    	var coverPhotoUrl;
 
 
     	for (var i = 0; i < titles.length; i++) {
@@ -35,8 +36,14 @@ module.exports = function QuizCreator () {
 			var characters = $('.character a');
 			var links = [];
 			var returnLinks = [];
-			var showCover = $('.image a img');
-			console.log("Show cover", $(showCover).text());
+			var showCover = $('.image a');
+
+			console.log("Show cover", $(showCover).attr("href"));
+			request('http://imdb.com' + $(showCover).attr("href"), function (err, res, html) {
+				var $ = cheerio.load(html);
+				coverPhotoUrl = $('#primary-img').attr("src");
+			});
+
 
 			for (var i = 0; i < characters.length; i++) {
 				if ($(characters.get(i)).attr("href"))
@@ -52,12 +59,12 @@ module.exports = function QuizCreator () {
 						var $ = cheerio.load(html);
 						var photos = $("a[name='headshot']");
 
-						console.log(links[index].name + ": " + $(photos).attr("href"));
+//						console.log(links[index].name + ": " + $(photos).attr("href"));
 						if ($(photos).attr("href")) {
 							request('http://imdb.com' + $(photos).attr("href"), function (err, res, html) {
 								var $ = cheerio.load(html);
 								var photo = $('#primary-img');
-								console.log("index: ", index, " list length: ", links.length);
+//								console.log("index: ", index, " list length: ", links.length);
 								links[index].src = photo.attr('src');
 								returnLinks.push(links[index]);
 								index++;
@@ -69,7 +76,7 @@ module.exports = function QuizCreator () {
 						}
 					});
 				} else {
-					callback({title: show.title, links: returnLinks});
+					callback({title: show.title, coverPhoto: coverPhotoUrl, links: returnLinks});
 				}
 			}
 			getImage(callback);
@@ -92,7 +99,7 @@ module.exports = function QuizCreator () {
 	this.create = function(callback) {
 		scrapeImdb(function(obj) {
 			var title = generateQuizTitle(obj.title);
-
+			// obj.links.
 			console.log(title);
 			// Create quiz:
 

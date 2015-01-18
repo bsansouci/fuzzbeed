@@ -127,7 +127,7 @@ Choose a []
       if (err) {
         return console.error(err);
       }
-      dicts[key] = data.replace("\r", "").split("\n");
+      dicts[key] = data.replace(/\r/g, "").split("\n");
       callback();
     });
   }

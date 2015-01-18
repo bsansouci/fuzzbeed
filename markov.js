@@ -166,9 +166,7 @@ module.exports = function Markov () {
 	};
 };
 
-
-
-
+/*
  var markov = require("./markov");
  var m = new markov();
 
@@ -178,3 +176,4 @@ module.exports = function Markov () {
 // m.pretrainWikipediaSubject("pickle", function() {
  	console.log(m.generate(10, 10, 4));
 // });
+*/

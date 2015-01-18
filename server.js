@@ -109,7 +109,6 @@ app.param('quizzName', function(req, res, next, articleName) {
         req.quiz = v[prop];
         req.quiz.timestamp = new Date(req.quiz.timestamp).toGMTString();
         req.quiz.result = req.quiz.possibleResults[rand(0, req.quiz.possibleResults.length)];
-        console.log("--->", req.quiz.possibleResults);
         next();
         return;
       }
@@ -120,13 +119,23 @@ app.param('quizzName', function(req, res, next, articleName) {
 app.get('/', function (req, res) {
   firebaseArticles.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
     var v = snapshot.val();
+    var arr = [];
     for (var prop in v) {
       if(v.hasOwnProperty(prop)) {
         v[prop].timeAgo = timeAgo(v[prop].timestamp);
+        arr.push(v[prop]);
       }
     }
+    arr = arr.sort(function(a, b) {
+      if(a.timestamp < b.timestamp) {
+        return -1;
+      } else if(a.timestamp > b.timestamp) {
+        return 1;
+      }
+      return 0;
+    });
     var obj = {
-      articles: v
+      articles: arr
     };
     injectSideStuff(obj, firebaseArticles, function() {
       obj.topBuzz = obj.__sideArticles[0];

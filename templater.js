@@ -15,7 +15,7 @@ module.exports = function Templater (callback) {
   //p-subj:      same as people noun, but used instead of subj
   //crazy:       adjectives expressing craziness
   //pred:        mark question as true/false (replaced with "")
-  //
+  //verb         verb
   //Every template must contain [[subj]] or [[p-subj]]
   //  and either [[num]] or [[t-num]]
 
@@ -68,24 +68,48 @@ Choose a []
 */
   this.loadQuizQuestions = function(){
     templates = [
-    "What's your favorite [[sn-subj]]?",
-    "What's your dream [[sn-subj]]?",
-    "Which [[sn-subj]] resonates with you the most?",
-    "Pick a [[sn-subj]]",
-    "Which [[sn-subj]] is most attractive?",
-    "Choose a [[sn-subj]]"];
+    "What's Your Favorite [[sn-subj]]?",
+    "What's Your Dream [[sn-subj]]?",
+    "Which [[sn-subj]] Resonates With You The Most?",
+    "Pick A [[sn-subj]]",
+    "Which [[sn-subj]] Is Most Attractive?",
+    "Choose A [[sn-subj]]",
+    "What Type Of [[sn-subj]] Really Puts You In The Mood"];
   };
 
 
   this.loadQuizNounQuestions = function(){
     templates = [
     "Which Of The Following Would You Rather Eat?",
-    "Which One Is The [[sup-adj]] Of The Following?"];
+    "Which Looks The Most Appetizing?",
+    "Which One Is The [[sup-adj]] Of The Following?",
+    "Which Seems Like It Would Feel The Best?",
+    "Which Do You Value Most?",
+    "Which Is [[sup-adj]]?",
+    "Which Of The Following is Worth Your Life?",
+    "Which Of These Do You Have The Most Of?",
+    "Which Is The Best Aphrodisiac?",
+    "Choose A Synonym For [[noun]]",
+    "What's [[num]] + [[num]]?"];
   };
 
   this.loadQuizPeopleQuestions = function() {
     templates = [
-    "Choose Your Career"];
+    "Choose Your Career",
+    "Who Do You Hate The Most?",
+    "Pick The [[sub-adj]] Co-Worker",
+    "Who Would You Rather [[verb]]?",
+    "Who's The [[sup-adj]]",
+    "What's Your Drunk Alter Ego?"];
+  };
+
+  this.loadQuizYesNoQuestions = function() {
+    templates = [
+      "Do You Usually [[verb]] [[noun]] In The Morning?",
+      "Do You Hate [[people]]?",
+      "Is [[sn-subj]] Your Favorite Food",
+      "Would You Ever Eat [[sn-subj]]"
+    ];
   };
 
   this.getRand = function(key) {
@@ -118,8 +142,10 @@ Choose a []
       loadFile("subj", "wordlists/nouns.txt", function () {
         loadFile("people", "wordlists/people-nouns.txt", function () {
           loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-            dicts["sn-subj"] = dicts["subj"].map(function(x){ return Inflect.singularize(x); });
-            if (callback) callback();
+            loadFile("verb", "wordlists/verb.txt", function () {
+              dicts["sn-subj"] = dicts["subj"].map(function(x){ return Inflect.singularize(x); });
+              if (callback) callback();
+            });
           });
         });
       });

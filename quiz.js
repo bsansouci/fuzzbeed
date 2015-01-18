@@ -1,15 +1,10 @@
 var cheerio = require('cheerio');
 var request = require('request');
-
+var Templater = require('./templater');
 
 
 module.exports = function QuizCreator () {
 
-	var quizTitleTemplates = [
-	"What Character From [showTitle] Are You?",
-	"Which [showTitle] Characters Are You?",
-	"Which [showTitle] Character Is Your Soulmate?",
-	"Which [showTitle] Character Is Your Kindred Spirit?"];
 
 
 
@@ -97,20 +92,32 @@ module.exports = function QuizCreator () {
 	}
 
 	this.create = function(callback) {
-		scrapeImdb(function(obj) {
-			var title = generateQuizTitle(obj.title);
-			// obj.links.
+		scrapeImdb(function(imdb) {
+			var quiz = {};
+			quiz.title = generateQuizTitle(imdb.title);
+			quiz.articleName = quiz.title.toLowercase().replace("\"", "").replace(" ", "-");
+			quiz.isQuiz = true;
+			quiz.possibleResults = [];
+			for (var i = 0; i < imdb.links.length; i++) {
+				quiz.possibleResults.push({imageUrl: imdb.links[i].url, title: "You Got "+imdb.links[i].name+"!", body: "body"}) // TODO generate body for this
+			}
+			quiz.previewUrl = imdb.coverPhoto;
+			
+			
+
 			console.log(title);
-			// Create quiz:
 
 		});
 	}
 
 	var generateQuizTitle = function(showTitle) {
-		var template = quizTitleTemplates[Math.floor(Math.random() * quizTitleTemplates.length)];
-		return template.replace("[showTitle]", showTitle);
+		var templater = new Templater();
+		templater.loadQuizTitles();
+		templater.loadKey("showTitle", [showTitle]);
+		return templater.generateName().title;
 	}
 }
+
 var QuizCreator = require('./quiz');
 
 

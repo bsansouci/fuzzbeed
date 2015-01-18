@@ -4,7 +4,8 @@
   "description": "28 Painful Truths Only Disney Princesses Will Understand",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node server.js 1337",
+    "start": "node server.js 80"
   },
   "repository": {
     "type": "git",

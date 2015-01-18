@@ -118,7 +118,7 @@ app.param('quizzName', function(req, res, next, articleName) {
 });
 
 app.get('/', function (req, res) {
-  firebaseArticles.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
+  firebaseArticles.orderByChild("timestamp").limitToFirst(20).once("value", function(snapshot) {
     var v = snapshot.val();
     var arr = [];
     for (var prop in v) {
@@ -129,9 +129,9 @@ app.get('/', function (req, res) {
     }
     arr = arr.sort(function(a, b) {
       if(a.timestamp < b.timestamp) {
-        return -1;
-      } else if(a.timestamp > b.timestamp) {
         return 1;
+      } else if(a.timestamp > b.timestamp) {
+        return -1;
       }
       return 0;
     });

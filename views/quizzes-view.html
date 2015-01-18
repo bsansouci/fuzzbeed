@@ -2186,14 +2186,14 @@ function QuantPageLoad() {
 {% for something in articles %}
 <li class="posts-list__item">
   <div class="lede ">
-    <a class="lede__link" href={{something.url}} rel:gt_act="post/thumb">
+    <a class="lede__link" href="{{something.url}}" rel:gt_act="post/thumb">
       <div class="lede__media">
-        <img src={{something.previewUrl}} width="125" height="83">
+        <img src="{{something.previewUrl}}" width="125" height="83">
       </div>
     </a>
     <div class="">
       <h2 class="lede__title lede__title--medium">
-        <a class="lede__link" href={{something.url}} rel:gt_act="post/title">
+        <a class="lede__link" href="{{something.url}}" rel:gt_act="post/title">
           {{something.title}}
         </a>
       </h2>
@@ -2201,7 +2201,7 @@ function QuantPageLoad() {
       <div class="lede__meta">
         <div class="lede__meta__item">
           <span class="fa"><img style="position:relative;top:3px;" src="/assets/author-dude.png" /></span>
-          <a href={{something.profileUrl}} rel:gt_act="username">{{something.authorName}}</a>
+          <a href="{{something.profileUrl}}" rel:gt_act="username">{{something.authorName}}</a>
         </div>
         <div class="lede__meta__item lede__timestamp">
           <span class="fa"><img style="position:relative;top:3px;left:5px;" src="/assets/time-clock.png" /></span>

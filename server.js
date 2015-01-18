@@ -152,7 +152,7 @@ function stringToIntHash(str){
 
 var allAwards = ["/assets/classic_002.png", "/assets/post_wtf.png", "/assets/fail_002.png", "/assets/posts_silver.png", "/assets/collection.png", "/assets/reactions_bronze.png", "/assets/post_lol_bronze.png", "/assets/referrer_reddit_silver.png"];
 function addAwards(profile) {
-  profile.__awards = shuffle(allAwards, seed(profile.username));
+  profile.__awards = shuffle(allAwards, seed(profile.username)).slice(0, rand(2, allAwards.length));
   return profile;
 }
 

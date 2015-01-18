@@ -101,8 +101,10 @@ module.exports = function Markov () {
 			var json = jsonList[i];
 			for (var j = json.length - 1; j >= 0; j--) {
 				var listItem = json[j]["property1"];
-				listItem = listItem.replace(/^[0-9]+\./g, "");
-				this.train(listItem);
+				if (listItem) {
+					listItem = listItem.replace(/^[0-9]+\./g, "");
+					this.train(listItem);
+				}
 			}
 		}
 	};

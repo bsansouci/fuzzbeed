@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var swig = require('swig');
 var Firebase = require("firebase");
+var Identity = require('fake-identity');
 var articleGenerator = require("./article");
 var seed = require("seed-random");
 
@@ -141,8 +142,8 @@ app.get('/write-article', function(req, res) {
 
 app.get('/write-an-article', function(req, res) {
   // 50% chances of creating a new person
-  if(rand(0, 100) > 25) {
-    articleGenerator.createEntireArticle(function(article, author) {
+  if(rand(0, 100) > 50) {
+    articleGenerator.createEntireArticle(newAuthor(),function(article, author) {
       pushProfile(author, function() {
         firebaseArticles.push(article, function() {
           res.redirect(article.url);
@@ -225,6 +226,25 @@ function injectSideStuff(obj, db, callback) {
 function rand(min, max){
   return Math.floor(Math.random() * (max-min))+min;
 }
+
+function newAuthor(){
+  var id = Identity.generate();
+  var author = {};
+  author.name = id.firstName + " " + id.lastName;
+  author.username= id.firstName.toLowerCase() + id.lastName.toLowerCase();
+  author.email = id.firstName.toLowerCase()+[".","","-","_"][rand(0,3)]+id.lastName.toLowerCase() + "@" +
+    ["hotmail.com","gmail.com","fuzzbeed.com","yahoo.com","live.com","outlook.com"][rand(0,5)];
+  author.profileUrl = "/users/" + author.username;
+  author.authorProfilePicture = "/assets/userpics/" +
+    ((stringToIntHash(author.username)%274) + 1) + ".jpg";
+  var randomBannerSearchText = dicts.subj[rand(0,dicts.subj.length)];
+  findPictures(randomBannerSearchText, function(photos) {
+    author.bannerPhoto = photos[rand(0, photos.length)];
+    console.log("Banner URL: " + author.bannerPhoto);
+  });
+  return author;
+}
+
 
 // firebaseQuizzes.push({
 //   elements: [{

@@ -2,7 +2,7 @@ var fs = require('fs');
 var giphy = require("giphy")("dc6zaTOxFJmzC");
 var Identity = require('fake-identity');
 var Markov = require("./markov");
-var Flickr = require("flickrapi")
+var Flickr = require("flickrapi");
 
 var flickrOptions = {
     api_key: "47f585c43e1ced1a1a3759da564fc143",
@@ -22,7 +22,7 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
       var arr = [];
       for (var i = 0; i < photos.length; i++) {
         var photo = photos[i];
-        var url = "https://farm" + photo["farm"] + ".staticflickr.com/" + photo["server"] + "/" + photo["id"] + "_" + photo["secret"] + ".jpg";
+        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
         arr.push(url);
       }
       callback(arr);
@@ -42,11 +42,13 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
 //people:      plural noun describing a group of people (eg. "Children")
 //p-subj:      same as people noun, but used instead of subj
 //crazy:       adjectives expressing craziness
+//pred:        mark question as true/false (replaced with "")
 //
 //Every template must contain [[subj]] or [[p-subj]]
 //  and either [[num]] or [[t-num]]
 
-var templates = [
+var templates = {};
+templates.buzzTitle = [
   "The [[num]] [[sup-adj]] [[subj]] In The World",
   "The [[num]] [[sup-adj]] [[subj]] Of Last Summer",
   "The [[num]] [[sup-adj]] [[subj]] Of The 90's",
@@ -55,24 +57,29 @@ var templates = [
   "The [[num]] [[sup-adj]] [[subj]] Only [[people]] Will Understand",
   "The [[num]] [[sup-adj]] [[subj]] That Will Make You Laugh Every Time",
   "The [[num]] [[sup-adj]] [[subj]] You Probably Didn't Know",
-  "[[num]] [[noun]] For [[p-subj]] That Should Really Exist",
+  "[[num]] Things [[p-subj]] Should Be Allowed To Complain About",
+  "[[num]] Times [[subj]] Are The Worst And You Just Can't Even",
+  "[[num]] [[p-subj]] With Excellent New Year's Resolutions"
+  "[[num]] [[subj]] For [[people]] That Should Really Exist",
   "[[t-num]] Things [[p-subj]] Know To Be True",
   "[[t-num]] [[adj]] [[subj]] That Will Make You Ask \"Why?\"",
   "[[t-num]] [[adj]] [[subj]] You Probably Didn't Know",
   "[[t-num]] [[crazy]] Things [[p-subj]] Know To Be True",
+  "[[t-num]] [[p-subj]] Who Are Clearly Being Raised [[adj]]",
+  "[[t-num]] [[p-subj]] Who Are Having A Really Rough Day",
   "[[t-num]] [[p-subj]] Who Are Too Clever For Their Own Good",
+  "[[t-num]] [[p-subj]] Who Completely Screwed Up Their One Job",
   "[[t-num]] [[p-subj]] Who Have Performed For [[people]]",
   "[[t-num]] [[p-subj]] Who Need To Be Banned From Celebrating Halloween",
   "[[t-num]] [[p-subj]] Who Will Make You Feel Like A Genius",
-  "[[t-num]] [[p-subj]] Who Are Clearly Being Raised [[adj]]",
-  "[[t-num]] [[p-subj]] Who Completely Screwed Up Their One Job",
-  "[[t-num]] [[p-subj]] Who Are Having A Really Rough Day",
   "[[t-num]] [[subj]] That Scream World Domination",
-  "[[num]] Times [[subj]] Are The Worst And You Just Can't Even",
-  "[[num]] Things [[p-subj]] Should Be Allowed To Complain About",
-  "[[num]] [[p-subj]] With Excellent New Year's Resolutions"
 ];
-
+templates.quizTitle = [
+  "What "
+];
+templates.quizQuestion = [
+  "[[pred]]Do you like [[subj]] in the morning?"
+];
 
 
 var dicts = {};
@@ -120,6 +127,9 @@ function genFromTemplate(template){
       template = replaceMatch(template, match, "The "+ret.num);
     } else if (inner === "x-num"){
       template = replaceMatch(template, match, ""+rand(minNum,maxNum));
+    } else if (inner === "pred"){
+      ret.isPred = true;
+      template = replaceMatch(template, match, "");
     } else if (inner === "noun"){
       inner = "subj";
       var n = dicts[inner][rand(0,dicts[inner].length)];
@@ -139,8 +149,8 @@ function genFromTemplate(template){
   return ret;
 }
 
-function generateArticleName(){
-  var template = templates[rand(0,templates.length)];
+function generateName(key){
+  var template = templates[key][rand(0,templates[key].length)];
   var ret = genFromTemplate(template);
   ret.articleName = ret.title.toLowerCase().replace(/ /g, "-").replace(/[\"\']/g, "");
   return ret;
@@ -187,7 +197,7 @@ function newAuthor(){
   author.profileUrl = "/users/" + author.username;
   author.authorProfilePicture = "/assets/userpics/" +
     ((stringToIntHash(author.username)%274) + 1) + ".jpg";
-  var randomBannerSearchText = dicts["subj"][rand(0,dicts["subj"].length)];
+  var randomBannerSearchText = dicts.subj[rand(0,dicts.subj.length)];
   findPictures(randomBannerSearchText, function(photos) {
     author.bannerPhoto = photos[rand(0, photos.length)];
     console.log("Banner URL: " + author.bannerPhoto);
@@ -215,7 +225,7 @@ function createEntireArticle(author, callback){
     callback = author;
     author = newAuthor();
   }
-  var article = generateArticleName();
+  var article = generateName("buzzTitle");
   assignAuthor(article, author);
 
   article.url = "/users/" + article.username + "/" + article.articleName;
@@ -233,9 +243,10 @@ function createEntireArticle(author, callback){
 
       if(gifs.data.length > 0) article.previewUrl = gifs.data[0].images.original_still.url;
 
+      var arr = [];
+      var i;
       if(gifs.data.length < article.num) {
-        var arr = [];
-        for (var i = 0; i < gifs.data.length; i++) {
+        for (i = 0; i < gifs.data.length; i++) {
           arr.push({
             imageUrl: gifs.data[i].images.original.url,
             body: m.generate(rand(rand(0, 2),5),10, 2),
@@ -246,7 +257,7 @@ function createEntireArticle(author, callback){
           var diffPictures = allPics.slice(0, article.num - gifs.data.length);
           if(!article.previewUrl) article.previewUrl = diffPictures[0];
 
-          for (var i = 0; i < diffPictures.length; i++) {
+          for (i = 0; i < diffPictures.length; i++) {
             arr.push({
               imageUrl: diffPictures[i],
               body: m.generate(rand(rand(rand(0, 2), 3),7),10, 5),
@@ -258,8 +269,7 @@ function createEntireArticle(author, callback){
           callback(article, author);
         });
       } else {
-        var arr = [];
-        for (var i = 0; i < article.num; i++){
+        for (i = 0; i < article.num; i++){
           if (i < gifs.data.length){
             arr.push({
               imageUrl: gifs.data[i].images.original.url,

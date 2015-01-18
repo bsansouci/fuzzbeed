@@ -122,7 +122,7 @@ app.get('/write-an-article', function(req, res) {
 
 app.use(express.static(__dirname + "/views"));
 
-app.listen(1337);
+app.listen(parseInt(process.argv[2]));
 console.log('Application Started on http://localhost:1337/');
 
 

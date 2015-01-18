@@ -266,7 +266,7 @@ app.use(function(req, res, next) {
   });
 });
 
-app.listen(process.env.port || process.env.PORT || parseInt(process.argv[2]));
+app.listen(process.env.PORT || parseInt(process.argv[2]));
 console.log("Application Started on http://localhost:"+(process.env.port || parseInt(process.argv[2]))+"/");
 
 

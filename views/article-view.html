@@ -1618,6 +1618,34 @@ function QuantPageLoad() {
 <body data-twttr-rendered="true" class="bf_dom BuzzPage PermalinkPage TwoColumns list_format_dec_up en Culture"><iframe src="/assets/hub.html" style="position: absolute; top: -9999em; width: 10px; height: 10px;" name="twttrHubFrameSecure" tabindex="0" scrolling="no" allowtransparency="true" id="twttrHubFrameSecure" frameborder="0"></iframe><iframe src="/assets/hub_002.html" style="position: absolute; top: -9999em; width: 10px; height: 10px;" name="twttrHubFrame" tabindex="0" scrolling="no" allowtransparency="true" id="twttrHubFrame" frameborder="0"></iframe>
 <!--<![endif]-->
 
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1597946423760704',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1597946423760704&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
 <!--[if gte IE 9]><!-->
   <svg style="display:none" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
   <defs>
@@ -3197,7 +3225,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 									You got:
 								{{result.title}}
 							</div>
+							<div class="fb-share-button" data-href=document.URL data-layout="button_count"></div>
 							<h2>{{result.body}}</h2>
+							<div id="fb-root"></div>
 			 			<div class="headline-1 answer_response" style="display: none;"></div>
 								<div class="quiz_img_and_source">
 									<img class="result_img" src="{{result.imageUrl}}">

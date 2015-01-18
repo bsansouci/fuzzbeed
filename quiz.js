@@ -142,7 +142,7 @@ module.exports = new function () {
 			quiz.isQuiz = true;
 			quiz.possibleResults = [];
 			for (var i = 0; i < imdb.links.length; i++) {
-				quiz.possibleResults.push({imageUrl: imdb.links[i].url, title: "You Got "+imdb.links[i].name+"!", body: "body"}) // TODO generate body for this
+				quiz.possibleResults.push({imageUrl: imdb.links[i].src, title: "You Got "+imdb.links[i].name+"!", body: "body"}) // TODO generate body for this
 			}
 			quiz.previewUrl = imdb.coverPhoto;
 

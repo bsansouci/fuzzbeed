@@ -108,7 +108,8 @@ app.param('quizzName', function(req, res, next, articleName) {
       if(v.hasOwnProperty(prop)) {
         req.quiz = v[prop];
         req.quiz.timestamp = new Date(req.quiz.timestamp).toGMTString();
-        req.quiz.result = req.quiz.possibleResults[rand(0, Object.keys(req.quiz.possibleResults))];
+        req.quiz.result = req.quiz.possibleResults[rand(0, req.quiz.possibleResults.length)];
+        console.log("--->", req.quiz.possibleResults);
         next();
         return;
       }
@@ -153,18 +154,40 @@ app.get('/quizzes', function(req, res) {
 });
 
 app.get('/quizzes/:quizzName', function(req, res) {
+  if(!req.quiz) {
+    var obj = {};
+    injectSideStuff(obj, firebaseQuizzes, function() {
+      res.render('404', obj);
+    });
+    return;
+  }
   injectSideStuff(req.quiz, firebaseQuizzes, function() {
     res.render('article-view', req.quiz);
   });
 });
 
 app.get('/users/:username/:articleName', function(req, res) {
+  if(!req.article) {
+    var obj = {};
+    injectSideStuff(obj, firebaseArticles, function() {
+      res.render('404', obj);
+    });
+    return;
+  }
   injectSideStuff(req.article, firebaseArticles, function() {
     res.render('article-view', req.article);
   });
 });
 
 app.get('/users/:username', function(req, res) {
+  if(!req.profile) {
+    var obj = {};
+    injectSideStuff(obj, firebaseArticles, function() {
+      res.render('404', obj);
+    });
+    return;
+  }
+
   injectSideStuff(req.profile, firebaseArticles, function() {
     res.render('profile-view', addAwards(req.profile));
   });

@@ -2288,7 +2288,7 @@ var pxhRnd = (Math.random()*100000000000000000);
 							<span><a href="http://www.buzzfeed.com/videos" rel:gt_act="videos">Videos</a></span>
 						</div>
 						<div id="video-more" class="menu-item ">
-              <span><a href="/write-article" rel:gt_act="videos">Write an Article</a></span>
+              <span><a href="/write-article" rel:gt_act="videos">Write For Us</a></span>
             </div>
 
 
@@ -2876,7 +2876,7 @@ var pxhRnd = (Math.random()*100000000000000000);
 	<div class="quiz_question_header">
 		<div class="headline-1"></div>
 		<div class="quiz_img_and_source ">
-		<img class="quiz_img" src="{{something.imageUrl}}" width="625" height="298">
+		<canvas class="quiz_img"id="canvas0-{{loop.index}}" width="625" height="298"/>
 			<span class="sub_buzz_source_via buzz_attribution">Thinkstock</span>
 		</div>
 	</div>
@@ -2965,7 +2965,7 @@ function fnGetRandomColour(iDarkLuma, iLightLuma)
   }
   return "#" + sColour;
 }
-var initCanvas = function(src, color, c, callback) {
+var initCanvas = function(src, color, c, w, h, callback) {
 	var cachedImage = null,
 			image = null,
 			canvas = c,
@@ -2973,7 +2973,7 @@ var initCanvas = function(src, color, c, callback) {
 	var name = "";
 	var lineNumber = 0, fontSize = 20, prev = 0;
 
-	setCanvasDimensions(180, 180);
+	setCanvasDimensions(w, h);
 	// Convert it from a string
 	if (src && src.length > 0) {
 		image = new Image();
@@ -3004,7 +3004,7 @@ var initCanvas = function(src, color, c, callback) {
 		context.lineWidth = 2;
 		if(callback) {
 			callback(function(text) {
-				context.rect(0,0,180,180);
+				context.rect(0,0,w,h);
 				context.fillStyle = color;
 				context.fill();
 
@@ -3101,25 +3101,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 
 
-
-	var text1 = "{{something.possibleAnswers[0].text}}";
+	var text1 = "{{something.possibleAnswers[0].text}}" === "undefined" ? "" : "{{something.possibleAnswers[0].text}}";
 	var url1 = "{{something.possibleAnswers[0].url}}";
 
-	var text2 = "{{something.possibleAnswers[1].text}}";
+	var text2 = "{{something.possibleAnswers[1].text}}" === "undefined" ? "" : "{{something.possibleAnswers[1].text}}";
 	var url2 = "{{something.possibleAnswers[1].url}}";
 
-	var text3 = "{{something.possibleAnswers[2].text}}";
+	var text3 = "{{something.possibleAnswers[2].text}}" === "undefined" ? "" : "{{something.possibleAnswers[2].text}}";
 	var url3 = "{{something.possibleAnswers[2].url}}";
 
-	var text4 = "{{something.possibleAnswers[3].text}}";
+	var text4 = "{{something.possibleAnswers[3].text}}" === "undefined" ? "" : "{{something.possibleAnswers[3].text}}";
 	var url4 = "{{something.possibleAnswers[3].url}}";
 
-	var text5 = "{{something.possibleAnswers[4].text}}";
+	var text5 = "{{something.possibleAnswers[4].text}}" === "undefined" ? "" : "{{something.possibleAnswers[4].text}}";
 	var url5 = "{{something.possibleAnswers[4].url}}";
 
-	var text6 = "{{something.possibleAnswers[5].text}}";
+	var text6 = "{{something.possibleAnswers[5].text}}" === "undefined" ? "" : "{{something.possibleAnswers[5].text}}";
 	var url6 = "{{something.possibleAnswers[5].url}}";
 
+	var c0 = document.getElementById("canvas0-{{loop.index}}");
 	var c1 = document.getElementById("canvas1-{{loop.index}}");
 	var c2 = document.getElementById("canvas2-{{loop.index}}");
 	var c3 = document.getElementById("canvas3-{{loop.index}}");
@@ -3128,22 +3128,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var c6 = document.getElementById("canvas6-{{loop.index}}");
 
 	color = fnGetRandomColour(120, 200);
-	initCanvas(url1, color, c1, function(draw) {
+	initCanvas("{{something.imageUrl}}", color, c0, 625, 298, function(draw) {
+		draw("{{something.title}}");
+	});
+	initCanvas(url1, color, c1, 180, 180, function(draw) {
 		draw(text1);
 	});
-	initCanvas(url2, color, c2, function(draw) {
+	initCanvas(url2, color, c2, 180, 180, function(draw) {
 		draw(text2);
 	});
-	initCanvas(url3, color, c3, function(draw) {
+	initCanvas(url3, color, c3, 180, 180, function(draw) {
 		draw(text3);
 	});
-	initCanvas(url4, color, c4, function(draw) {
+	initCanvas(url4, color, c4, 180, 180, function(draw) {
 		draw(text4);
 	});
-	initCanvas(url5, color, c5, function(draw) {
+	initCanvas(url5, color, c5, 180, 180, function(draw) {
 		draw(text5);
 	});
-	initCanvas(url6, color, c6, function(draw) {
+	initCanvas(url6, color, c6, 180, 180, function(draw) {
 		draw(text6);
 	});
 	// loadToCanvas(c2, url2, text2);

@@ -52,11 +52,7 @@ return Math.floor(Math.random() * (max-min))+min;
 
 
 
-module.exports = function QuizCreator () {
-
-
-
-
+module.exports = new function () {
 	var scrapeImdb = function(callback) {
 		request('http://www.imdb.com/search/title?num_votes=5000,&sort=user_rating,desc&title_type=tv_series', function(err, res, html) {
     	if (err) return console.log(err);
@@ -74,79 +70,75 @@ module.exports = function QuizCreator () {
     		return el.url.indexOf("/title/") !== -1 && el.url.indexOf("/vote?v") === -1;
     	});
 
-		var show = links[Math.floor((Math.random() * links.length))];
-		request('http://imdb.com' + show.url, function (err, res, html) {
-			var $ = cheerio.load(html);
-			var characters = $('.character a');
-			var links = [];
-			var returnLinks = [];
-			var showCover = $('.image a');
-
-			console.log("Show cover", $(showCover).attr("href"));
-			request('http://imdb.com' + $(showCover).attr("href"), function (err, res, html) {
+			var show = links[Math.floor((Math.random() * links.length))];
+			request('http://imdb.com' + show.url, function (err, res, html) {
 				var $ = cheerio.load(html);
-				coverPhotoUrl = $('#primary-img').attr("src");
-			});
+				var characters = $('.character a');
+				var links = [];
+				var returnLinks = [];
+				var showCover = $('.image a');
 
+				console.log("Show cover", $(showCover).attr("href"));
+				request('http://imdb.com' + $(showCover).attr("href"), function (err, res, html) {
+					var temp = cheerio.load(html);
+					coverPhotoUrl = temp('#primary-img').attr("src");
 
-			for (var i = 0; i < characters.length; i++) {
-				if ($(characters.get(i)).attr("href"))
-					links.push({url: $(characters.get(i)).attr("href"), name: $(characters.get(i)).text().trim()});
-			};
+					for (var i = 0; i < characters.length; i++) {
+						if ($(characters.get(i)).attr("href"))
+							links.push({url: $(characters.get(i)).attr("href"), name: $(characters.get(i)).text().trim()});
+					}
 
-		//	console.log(links);
+				//	console.log(links);
 
-			var index = 0;
-			function getImage(callback){
-				if (index < links.length){
-					request('http://imdb.com' + links[index].url, function (err, res, html) {
-						var $ = cheerio.load(html);
-						var photos = $("a[name='headshot']");
-
-//						console.log(links[index].name + ": " + $(photos).attr("href"));
-						if ($(photos).attr("href")) {
-							request('http://imdb.com' + $(photos).attr("href"), function (err, res, html) {
+					var index = 0;
+					function getImage(callback){
+						if (index < links.length) {
+							request('http://imdb.com' + links[index].url, function (err, res, html) {
 								var $ = cheerio.load(html);
-								var photo = $('#primary-img');
-//								console.log("index: ", index, " list length: ", links.length);
-								links[index].src = photo.attr('src');
-								returnLinks.push(links[index]);
-								index++;
-								getImage(callback);
+								var photos = $("a[name='headshot']");
+								if ($(photos).attr("href")) {
+									request('http://imdb.com' + $(photos).attr("href"), function (err, res, html) {
+										var $ = cheerio.load(html);
+										var photo = $('#primary-img');
+										links[index].src = photo.attr('src');
+										returnLinks.push(links[index]);
+										index++;
+										getImage(callback);
+									});
+								} else {
+									index++;
+									getImage(callback);
+								}
 							});
 						} else {
-							index++;
-							getImage(callback);
+							callback({title: show.title, coverPhoto: coverPhotoUrl, links: returnLinks});
 						}
-					});
-				} else {
-					callback({title: show.title, coverPhoto: coverPhotoUrl, links: returnLinks});
-				}
-			}
-			getImage(callback);
+					}
+					getImage(callback);
+				});
 
-			// for (var j = 0; j < links.length; j++) {
-			// 	request('http://imdb.com' + links[j].url, function (err, res, html) {
-			// 		var $ = cheerio.load(html);
-			// 		var photos = $("a[name='headshot']");
-			// 		console.log(links[j].name + ": " + $(photos.first()).attr("href"));
-			// 	});
-			// }
 
-			//callback({showTitle: show.title, characters:})
 
+				// for (var j = 0; j < links.length; j++) {
+				// 	request('http://imdb.com' + links[j].url, function (err, res, html) {
+				// 		var $ = cheerio.load(html);
+				// 		var photos = $("a[name='headshot']");
+				// 		console.log(links[j].name + ": " + $(photos.first()).attr("href"));
+				// 	});
+				// }
+
+				//callback({showTitle: show.title, characters:})
+
+			});
 		});
-		});
+	};
 
-	}
-
-	this.create = function(callback) {
-		var templater = new Templater();
+	this.create = function(author, templater, callback) {
 		scrapeImdb(function(imdb) {
 
 			var quiz = {};
 			quiz.title = generateQuizTitle(imdb.title, templater);
-			quiz.articleName = quiz.title.toLowerCase().replace("\"", "").replace(" ", "-");
+			quiz.articleName = quiz.title.toLowerCase().replace(/[\"\?]/g, "").replace(/ /g, "-");
 			quiz.isQuiz = true;
 			quiz.possibleResults = [];
 			for (var i = 0; i < imdb.links.length; i++) {
@@ -155,8 +147,10 @@ module.exports = function QuizCreator () {
 			quiz.previewUrl = imdb.coverPhoto;
 
 			quiz.elements = [];
+
+			assignAuthor(quiz, author);
 			var max = rand(5, 10);
-			for (var i = 0; i < rand(5, 10); i++) {
+			for (var i = 0; i < max; i++) {
 				generatePhotoQuestion(templater, function(q){
 					quiz.elements.push(q);
 					if(max <= quiz.elements.length) {
@@ -177,7 +171,6 @@ module.exports = function QuizCreator () {
   		question.questionType = "openEnded";
   		var nameObj = templater.generateName();
   		getQuizPhotos(nameObj.subj, function(quizPhotos) {
-  			console.log(quizPhotos);
 	  		question.imageUrl = quizPhotos.pop();
 	  		question.possibleAnswers = quizPhotos.map(function(obj) {return {url: obj}});
 	  		question.title = nameObj.title;
@@ -189,13 +182,5 @@ module.exports = function QuizCreator () {
 		templater.loadQuizTitles();
 		templater.loadKey("showTitle", [showTitle]);
 		return templater.generateName().title;
-	}
-}
-
-var QuizCreator = require('./quiz');
-
-
-// var q = new QuizCreator();
-// q.create();
-
-
+	};
+};

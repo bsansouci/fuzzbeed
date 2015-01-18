@@ -4,7 +4,36 @@ var swig = require('swig');
 var Firebase = require("firebase");
 var Identity = require('fake-identity');
 var articleGenerator = require("./article");
+var quizGenerator = require("./quiz");
+var Templater = require("./templater");
+var Flickr = require("flickrapi");
 var seed = require("seed-random");
+
+var flickrOptions = {
+    api_key: "47f585c43e1ced1a1a3759da564fc143",
+    secret: "a0a649c7f8b8fd28"
+  };
+
+var findPictures = null;
+
+Flickr.tokenOnly(flickrOptions, function(error, flickr) {
+  // we can now use "flickr" as our API object
+  findPictures = function(text, callback) {
+    flickr.photos.search({
+      text: text
+    }, function(err, result) {
+      if(err) { return console.log(err); }
+      var photos = result.photos.photo;
+      var arr = [];
+      for (var i = 0; i < photos.length; i++) {
+        var photo = photos[i];
+        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
+        arr.push(url);
+      }
+      callback(arr);
+    });
+  };
+});
 
 var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
 var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");
@@ -23,6 +52,7 @@ swig.setDefaults({ cache: false });
 // NOTE: You should always cache templates in a production environment.
 // Don't leave both of these to `false` in production!
 
+var templater = new Templater();
 
 app.param('username', function(req, res, next, username) {
   firebaseProfiles.child(username).once("value", function(snapshot) {
@@ -43,7 +73,10 @@ app.param('username', function(req, res, next, username) {
         next();
       });
     } else {
-      console.error("HACKER");
+      var obj = {};
+      injectSideStuff(obj, firebaseArticles, function() {
+        res.render('404', obj);
+      });
       return;
     }
   });
@@ -68,6 +101,7 @@ app.param('articleName', function(req, res, next, articleName) {
 app.param('quizzName', function(req, res, next, articleName) {
   firebaseQuizzes.orderByChild("articleName").equalTo(articleName).once("value", function(snapshot) {
     var v = snapshot.val();
+    console.log(articleName, v);
     if(!v) return next();
 
     for (var prop in v) {
@@ -143,7 +177,8 @@ app.get('/write-article', function(req, res) {
 app.get('/write-an-article', function(req, res) {
   // 50% chances of creating a new person
   if(rand(0, 100) > 50) {
-    articleGenerator.createEntireArticle(newAuthor(),function(article, author) {
+    var author = newAuthor();
+    articleGenerator.createEntireArticle(author, templater, function(article) {
       pushProfile(author, function() {
         firebaseArticles.push(article, function() {
           res.redirect(article.url);
@@ -155,7 +190,7 @@ app.get('/write-an-article', function(req, res) {
       var v = snapshot.val();
       var allKeys = Object.keys(v);
       var author = v[allKeys[rand(0, allKeys.length)]];
-      articleGenerator.createEntireArticle(author, function(article, author) {
+      articleGenerator.createEntireArticle(author, templater, function(article) {
         firebaseArticles.push(article, function() {
           res.redirect(article.url);
         });
@@ -164,7 +199,39 @@ app.get('/write-an-article', function(req, res) {
   }
 });
 
+app.get('/write-a-quiz', function(req, res) {
+  // 50% chances of creating a new person
+  if(rand(0, 100) > 50) {
+    var author = newAuthor();
+    quizGenerator.create(author, templater, function(article) {
+      pushProfile(author, function() {
+        firebaseQuizzes.push(article, function() {
+          res.redirect(article.url);
+        });
+      });
+    });
+  } else {
+    firebaseProfiles.once("value", function(snapshot) {
+      var v = snapshot.val();
+      var allKeys = Object.keys(v);
+      var author = v[allKeys[rand(0, allKeys.length)]];
+      quizGenerator.create(author, templater, function(article) {
+        firebaseQuizzes.push(article, function() {
+          res.redirect(article.url);
+        });
+      });
+    });
+  }
+});
+
 app.use(express.static(__dirname + "/views"));
+
+app.use(function(req, res, next) {
+  var obj = {};
+  injectSideStuff(obj, firebaseArticles, function() {
+    res.render('404', obj);
+  });
+});
 
 app.listen(process.env.port || parseInt(process.argv[2]));
 console.log("Application Started on http://localhost:"+(process.env.port || parseInt(process.argv[2]))+"/");
@@ -245,7 +312,7 @@ function newAuthor(){
   author.profileUrl = "/users/" + author.username;
   author.authorProfilePicture = "/assets/userpics/" +
     ((stringToIntHash(author.username)%274) + 1) + ".jpg";
-  var randomBannerSearchText = dicts.subj[rand(0,dicts.subj.length)];
+  var randomBannerSearchText = templater.getRand('subj');
   findPictures(randomBannerSearchText, function(photos) {
     author.bannerPhoto = photos[rand(0, photos.length)];
     console.log("Banner URL: " + author.bannerPhoto);

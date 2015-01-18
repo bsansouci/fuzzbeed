@@ -50,7 +50,7 @@ module.exports = function Templater (callback) {
     ];
   };
 
-  this.loadQuizTitles = function(){ 
+  this.loadQuizTitles = function(){
     templates = [
     "What Character From [[showTitle]] Are You?",
     "Which [[showTitle]] Characters Are You?",
@@ -73,7 +73,11 @@ Choose a []
     "Pick a [[sn-subj]]",
     "Which [[sn-subj]] is most attractive?",
     "Choose a [[sn-subj]]"];
-  }
+  };
+
+  this.getRand = function(key) {
+    return dicts[key][rand(0,dicts.subj.length)];
+  };
 
 
 
@@ -167,12 +171,3 @@ Choose a []
     return newStr;
   }
 };
-
-var Templater = require('./templater');
-
-
-var t = new Templater(function(){
-  t.loadQuizQuestions();
-  console.log(t.generateName());
-});
-

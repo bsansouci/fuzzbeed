@@ -76,12 +76,12 @@ function stringToIntHash(str){
 /////////////////////////////////////
 // Entry point to Article Creation //
 /////////////////////////////////////
-function createEntireArticle(author, callback){
+function createEntireArticle(author, templater, callback){
   if(typeof author === "function") {
     callback = author;
     author = newAuthor();
   }
-  var templater = new Templater();
+
   templater.loadBuzzTitles();
   var article = templater.generateName();
   assignAuthor(article, author);
@@ -124,7 +124,7 @@ function createEntireArticle(author, callback){
           }
           arr = shuffle(arr);
           article.elements = arr;
-          callback(article, author);
+          callback(article);
         });
       } else {
         for (i = 0; i < article.num; i++){
@@ -138,7 +138,7 @@ function createEntireArticle(author, callback){
         }
         arr = shuffle(arr);
         article.elements = arr;
-        callback(article, author);
+        callback(article);
       }
     });
   });

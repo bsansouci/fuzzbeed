@@ -68,12 +68,24 @@ Choose a []
 */
   this.loadQuizQuestions = function(){
     templates = [
-    "What's your favorite [[sn-subj]]",
-    "What's your dream [[sn-subj]]",
+    "What's your favorite [[sn-subj]]?",
+    "What's your dream [[sn-subj]]?",
     "Which [[sn-subj]] resonates with you the most?",
     "Pick a [[sn-subj]]",
     "Which [[sn-subj]] is most attractive?",
     "Choose a [[sn-subj]]"];
+  };
+
+
+  this.loadQuizNounQuestions = function(){
+    templates = [
+    "Which Of The Following Would You Rather Eat?",
+    "Which One Is The [[sup-adj]] Of The Following?"];
+  };
+
+  this.loadQuizPeopleQuestions = function() {
+    templates = [
+    "Choose Your Career"];
   };
 
   this.getRand = function(key) {

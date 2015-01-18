@@ -150,8 +150,20 @@ module.exports = new function () {
 
 			assignAuthor(quiz, author);
 			var max = rand(5, 10);
+			var func = null;
 			for (var i = 0; i < max; i++) {
-				generatePhotoQuestion(templater, function(q){
+				var r = ran(0, 100);
+				if(r > 33) {
+					if(r > 66) {
+						func = generatePhotoQuestion;
+					} else {
+						func = generateWordQuestion;
+					}
+				} else {
+					func = generateYesNoQuestion;
+				}
+
+				func(templater, function(q){
 					quiz.elements.push(q);
 					if(max <= quiz.elements.length) {
 						quiz.responses = rand(10, 800);
@@ -168,15 +180,30 @@ module.exports = new function () {
 	var generatePhotoQuestion = function(templater, callback) {
 		var question = {};
 		templater.loadQuizQuestions();
-  		question.questionType = "openEnded";
-  		var nameObj = templater.generateName();
-  		getQuizPhotos(nameObj.subj, function(quizPhotos) {
-	  		question.imageUrl = quizPhotos.pop();
-	  		question.possibleAnswers = quizPhotos.map(function(obj) {return {url: obj}});
-	  		question.title = nameObj.title;
-	  		callback(question);
-  		});
-  	}
+		question.questionType = "openEnded";
+		var nameObj = templater.generateName();
+		getQuizPhotos(nameObj.subj, function(quizPhotos) {
+  		question.imageUrl = quizPhotos.pop();
+  		question.possibleAnswers = quizPhotos.map(function(obj) {return {url: obj}});
+  		question.title = nameObj.title;
+  		callback(question);
+		});
+	}
+
+	var generateWordQuestion = function(templater, callback) {
+		var question = {};
+		if(rand(0, 100) < 50) {
+			templater.loadQuizNounQuestions();
+		} else {
+			templater.loadQuizPeopleQuestions();
+		}
+		question.questionType = "openEnded";
+		var nameObj = templater.generateName();
+
+		question.possibleAnswers = templater.getRand('sn-subj');
+		question.title = nameObj.title;
+		callback(question);
+	}
 
 	var generateQuizTitle = function(showTitle, templater) {
 		templater.loadQuizTitles();

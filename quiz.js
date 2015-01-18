@@ -205,13 +205,17 @@ module.exports = new function () {
 			templater.loadQuizNounQuestions();
 			question.possibleAnswers = [];
 			for (var i = 0; i < 6; i++) {
-				question.possibleAnswers.push(templater.getRand('sn-subj'));
+				question.possibleAnswers.push({
+					text: templater.getRand('sn-subj')
+				});
 			}
 		} else {
 			templater.loadQuizPeopleQuestions();
 			question.possibleAnswers = [];
 			for (var i = 0; i < 6; i++) {
-				question.possibleAnswers.push(templater.getRand('people'));
+				question.possibleAnswers.push({
+					text: templater.getRand('people')
+				});
 			}
 		}
 		question.questionType = "openEnded";

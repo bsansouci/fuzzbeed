@@ -2816,137 +2816,7 @@ var pxhRnd = (Math.random()*100000000000000000);
 
 			</div>
 </header>
-   <div data-print="body" rel:gt_cat="[ttp]:content">
-     	<div id="buzz_sub_buzz" class="c suplist_dec_up suplist_list_show ">
-     	{% if isQuiz %}
-     	<div class="buzz_superlist_item buzz_superlist_item_quiz  buzz_superlist_item_wide">
-	     <div class="quiz numbered personality_quiz" rel:quiz_type="personality" rel:swap="1" rel:question_count="7" rel:id="93837" rel:pixel="" rel:result_verb=" checked off" rel:result_subject=" on this list!" rel:bff_clone="">
-  	   <ol>
-     {% endif %}
-<!-- thisisthetemplate -->
-{% for something in elements %}
-{% if something.questionType === "yesNo" %}
-	<li class="quiz_question image quiz_v2" rel:question_type="image" rel:id="3704493">
-	<div class="quiz_question_header">
-		<div class="headline-1"> {{loop.index}}. {{something.title}}</div>
-
-
-		<div class="quiz_img_and_source ">
-                        <img class="quiz_img" src="{{something.imageUrl}}" width="625" height="417">
-
-                      </div>
-                    </div>
-
-                    <!-- START LIST AS ROW -->
-                    <ol class="largeImgAnswers">
-
-                    	<li class="quiz_answer quiz_answer_el " onclick="incrementCounter();">
-
-                    		<div class="quiz_img_and_source">
-
-                    			<img src="http://s3-ak.buzzfeed.com/static/2015-01/17/1/enhanced/webdr02/enhanced-buzz-15224-1421476817-4.jpg">
-
-                    		</div>
-
-                    		<span class="quiz_checkbox_wrp">
-                    			<span class="quiz_checkbox fa">
-
-                    			</span>
-                    		</span>
-                    		<div class="clear"></div>
-                    	</li>
-                    	<li class="quiz_answer quiz_answer_el last " onclick="incrementCounter();">
-
-                    		<div class="quiz_img_and_source">
-
-                    			<img src="http://s3-ak.buzzfeed.com/static/2015-01/17/1/enhanced/webdr03/enhanced-buzz-28894-1421476830-0.jpg">
-                    		</div>
-                    		<span class="quiz_checkbox_wrp">
-                    			<span class="quiz_checkbox fa">
-
-                    			</span>
-                    		</span>
-                    		<div class="clear"></div>
-                    	</li>
-                    </ol><!-- END LIST AS ROW -->
-                    <!---->
-                  </li>
-{% elseif something.questionType === "openEnded" %}
-<li class="quiz_question image quiz_v2" rel:question_type="image" rel:id="3704084">
-	<div class="quiz_question_header">
-		<div class="headline-1"></div>
-		<div class="quiz_img_and_source ">
-		<canvas class="quiz_img" id="canvas0-{{loop.index}}" width="625" height="298"/>
-			<span class="sub_buzz_source_via buzz_attribution">Thinkstock</span>
-		</div>
-	</div>
-	<!-- START LIST AS ROW -->
-	<ol class="smallImgAnswers">
-		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="1" rel:id="3704085" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
-			<div class="quiz_img_and_source">
-				<canvas id="canvas1-{{loop.index}}" width="180" height="180"/>
-			</div>
-			<span class="quiz_checkbox_wrp">
-				<span class="quiz_checkbox fa">
-				</span>
-			</span>
-			<div class="clear"></div>
-		</li>
-		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="0" rel:id="3704086" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
-			<div class="quiz_img_and_source">
-				<canvas id="canvas2-{{loop.index}}" width="180" height="180"/>
-			</div>
-			<span class="quiz_checkbox_wrp">
-				<span class="quiz_checkbox fa">
-				</span>
-			</span>
-			<div class="clear"></div>
-		</li>
-		<li class="quiz_answer quiz_answer_el last " rel:correct="0" rel:personality_index="4" rel:id="3704087" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
-			<div class="quiz_img_and_source">
-				<canvas id="canvas3-{{loop.index}}" width="180" height="180"/>
-			</div>
-			<span class="quiz_checkbox_wrp">
-				<span class="quiz_checkbox fa">
-				</span>
-			</span>
-			<div class="clear"></div>
-		</li>
-	</ol><!-- END LIST AS ROW -->
-	<ol class="smallImgAnswers">
-		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="3" rel:id="3704088" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
-			<div class="quiz_img_and_source">
-				<canvas id="canvas4-{{loop.index}}" width="180" height="180"/>
-			</div>
-			<span class="quiz_checkbox_wrp">
-				<span class="quiz_checkbox fa">
-				</span>
-			</span>
-			<div class="clear"></div>
-		</li>
-		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="0" rel:id="3704089" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
-			<div class="quiz_img_and_source">
-				<canvas id="canvas5-{{loop.index}}" width="180" height="180"/>
-			</div>
-			<span class="quiz_checkbox_wrp">
-				<span class="quiz_checkbox fa">
-				</span>
-			</span>
-			<div class="clear"></div>
-		</li>
-		<li class="quiz_answer quiz_answer_el last " rel:correct="0" rel:personality_index="0" rel:id="3704090" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
-			<div class="quiz_img_and_source">
-				<canvas id="canvas6-{{loop.index}}" width="180" height="180"/>
-			</div>
-			<span class="quiz_checkbox_wrp">
-				<span class="quiz_checkbox fa">
-				</span>
-			</span>
-			<div class="clear"></div>
-		</li>
-	</ol><!-- END LIST AS ROW -->
-</li>
-<script type="text/javascript">
+<script>
 function fnGetRandomColour(iDarkLuma, iLightLuma)
 {
   for (var i=0;i<20;i++)
@@ -3100,6 +2970,141 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	  characterDataOldValue: true
 	});
 
+</script>
+   <div data-print="body" rel:gt_cat="[ttp]:content">
+     	<div id="buzz_sub_buzz" class="c suplist_dec_up suplist_list_show ">
+     	{% if isQuiz %}
+     	<div class="buzz_superlist_item buzz_superlist_item_quiz  buzz_superlist_item_wide">
+	     <div class="quiz numbered personality_quiz" rel:quiz_type="personality" rel:swap="1" rel:question_count="7" rel:id="93837" rel:pixel="" rel:result_verb=" checked off" rel:result_subject=" on this list!" rel:bff_clone="">
+  	   <ol>
+     {% endif %}
+<!-- thisisthetemplate -->
+{% for something in elements %}
+{% if something.questionType === "yesNo" %}
+	<li class="quiz_question image quiz_v2" rel:question_type="image" rel:id="3704493">
+	<div class="quiz_question_header">
+		<div class="headline-1"> {{loop.index}}. {{something.title}}</div>
+
+
+		<div class="quiz_img_and_source ">
+                        <canvas id="canvas1-{{loop.index}}" class="quiz_img" src="{{something.imageUrl}}" width="625" height="417">
+
+                      </div>
+                    </div>
+
+                    <!-- START LIST AS ROW -->
+                    <ol class="largeImgAnswers">
+
+                    	<li class="quiz_answer quiz_answer_el " onclick="incrementCounter();">
+
+                    		<div class="quiz_img_and_source">
+
+                    			<img src="http://s3-ak.buzzfeed.com/static/2015-01/17/1/enhanced/webdr02/enhanced-buzz-15224-1421476817-4.jpg">
+
+                    		</div>
+
+                    		<span class="quiz_checkbox_wrp">
+                    			<span class="quiz_checkbox fa">
+
+                    			</span>
+                    		</span>
+                    		<div class="clear"></div>
+                    	</li>
+                    	<li class="quiz_answer quiz_answer_el last " onclick="incrementCounter();">
+
+                    		<div class="quiz_img_and_source">
+
+                    			<img src="http://s3-ak.buzzfeed.com/static/2015-01/17/1/enhanced/webdr03/enhanced-buzz-28894-1421476830-0.jpg">
+                    		</div>
+                    		<span class="quiz_checkbox_wrp">
+                    			<span class="quiz_checkbox fa">
+
+                    			</span>
+                    		</span>
+                    		<div class="clear"></div>
+                    	</li>
+                    </ol><!-- END LIST AS ROW -->
+                    <!---->
+                  </li>
+<script type="file/javascript">
+
+</script>
+{% elseif something.questionType === "openEnded" %}
+<li class="quiz_question image quiz_v2" rel:question_type="image" rel:id="3704084">
+	<div class="quiz_question_header">
+		<div class="headline-1"></div>
+		<div class="quiz_img_and_source ">
+		<canvas class="quiz_img" id="canvas0-{{loop.index}}" width="625" height="298"/>
+			<span class="sub_buzz_source_via buzz_attribution">Thinkstock</span>
+		</div>
+	</div>
+	<!-- START LIST AS ROW -->
+	<ol class="smallImgAnswers">
+		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="1" rel:id="3704085" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+			<div class="quiz_img_and_source">
+				<canvas id="canvas1-{{loop.index}}" width="180" height="180"/>
+			</div>
+			<span class="quiz_checkbox_wrp">
+				<span class="quiz_checkbox fa">
+				</span>
+			</span>
+			<div class="clear"></div>
+		</li>
+		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="0" rel:id="3704086" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+			<div class="quiz_img_and_source">
+				<canvas id="canvas2-{{loop.index}}" width="180" height="180"/>
+			</div>
+			<span class="quiz_checkbox_wrp">
+				<span class="quiz_checkbox fa">
+				</span>
+			</span>
+			<div class="clear"></div>
+		</li>
+		<li class="quiz_answer quiz_answer_el last " rel:correct="0" rel:personality_index="4" rel:id="3704087" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+			<div class="quiz_img_and_source">
+				<canvas id="canvas3-{{loop.index}}" width="180" height="180"/>
+			</div>
+			<span class="quiz_checkbox_wrp">
+				<span class="quiz_checkbox fa">
+				</span>
+			</span>
+			<div class="clear"></div>
+		</li>
+	</ol><!-- END LIST AS ROW -->
+	<ol class="smallImgAnswers">
+		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="3" rel:id="3704088" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+			<div class="quiz_img_and_source">
+				<canvas id="canvas4-{{loop.index}}" width="180" height="180"/>
+			</div>
+			<span class="quiz_checkbox_wrp">
+				<span class="quiz_checkbox fa">
+				</span>
+			</span>
+			<div class="clear"></div>
+		</li>
+		<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="0" rel:id="3704089" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+			<div class="quiz_img_and_source">
+				<canvas id="canvas5-{{loop.index}}" width="180" height="180"/>
+			</div>
+			<span class="quiz_checkbox_wrp">
+				<span class="quiz_checkbox fa">
+				</span>
+			</span>
+			<div class="clear"></div>
+		</li>
+		<li class="quiz_answer quiz_answer_el last " rel:correct="0" rel:personality_index="0" rel:id="3704090" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+			<div class="quiz_img_and_source">
+				<canvas id="canvas6-{{loop.index}}" width="180" height="180"/>
+			</div>
+			<span class="quiz_checkbox_wrp">
+				<span class="quiz_checkbox fa">
+				</span>
+			</span>
+			<div class="clear"></div>
+		</li>
+	</ol><!-- END LIST AS ROW -->
+</li>
+<script type="text/javascript">
 
 	var text1 = "{{something.possibleAnswers[0].text}}" === "undefined" ? "" : "{{something.possibleAnswers[0].text}}";
 	var url1 = "{{something.possibleAnswers[0].url}}";

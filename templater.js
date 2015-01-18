@@ -34,6 +34,7 @@ module.exports = function Templater (callback) {
       "[[num]] Things [[p-subj]] Should Be Allowed To Complain About",
       "[[num]] Times [[subj]] Are The Worst And You Just Can't Even",
       "[[num]] [[p-subj]] With Excellent New Year's Resolutions",
+      "[[num]] [[people]] With [[crazy]] [[subj]]",
       "[[num]] [[subj]] For [[people]] That Should Really Exist",
       "[[t-num]] Things [[p-subj]] Know To Be True",
       "[[t-num]] [[adj]] [[subj]] That Will Make You Ask \"Why?\"",
@@ -46,7 +47,7 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[p-subj]] Who Have Performed For [[people]]",
       "[[t-num]] [[p-subj]] Who Need To Be Banned From Celebrating Halloween",
       "[[t-num]] [[p-subj]] Who Will Make You Feel Like A Genius",
-      "[[t-num]] [[subj]] That Scream World Domination"
+      "[[t-num]] [[subj]] That Scream World Domination",
     ];
   };
 

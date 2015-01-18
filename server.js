@@ -108,6 +108,7 @@ app.param('quizzName', function(req, res, next, articleName) {
       if(v.hasOwnProperty(prop)) {
         req.quiz = v[prop];
         req.quiz.timestamp = new Date(req.quiz.timestamp).toGMTString();
+        console.log(req.quiz);
         req.quiz.result = req.quiz.possibleResults[rand(0, req.quiz.possibleResults.length)];
         next();
         return;

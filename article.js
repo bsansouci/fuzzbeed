@@ -1,9 +1,8 @@
 var fs = require('fs');
 var giphy = require("giphy")("dc6zaTOxFJmzC");
-var Identity = require('fake-identity');
 var Markov = require("./markov");
-var quizCreator = require("./quiz")
-var Templater = require("./templater")
+var quizCreator = require("./quiz");
+var Templater = require("./templater");
 var Flickr = require("flickrapi");
 
 var flickrOptions = {
@@ -61,23 +60,6 @@ function assignAuthor(article, author){
   article.authorProfilePicture = author.authorProfilePicture;
 }
 
-function newAuthor(){
-  var id = Identity.generate();
-  var author = {};
-  author.name = id.firstName + " " + id.lastName;
-  author.username= id.firstName.toLowerCase() + id.lastName.toLowerCase();
-  author.email = id.firstName.toLowerCase()+[".","","-","_"][rand(0,3)]+id.lastName.toLowerCase() + "@" +
-    ["hotmail.com","gmail.com","fuzzbeed.com","yahoo.com","live.com","outlook.com"][rand(0,5)];
-  author.profileUrl = "/users/" + author.username;
-  author.authorProfilePicture = "/assets/userpics/" +
-    ((stringToIntHash(author.username)%274) + 1) + ".jpg";
-  var randomBannerSearchText = dicts.subj[rand(0,dicts.subj.length)];
-  findPictures(randomBannerSearchText, function(photos) {
-    author.bannerPhoto = photos[rand(0, photos.length)];
-    console.log("Banner URL: " + author.bannerPhoto);
-  });
-  return author;
-}
 
 function stringToIntHash(str){
   var hash = 0;
@@ -177,6 +159,10 @@ function find(coll, el, f) {
   return null;
 }
 
+function rand(min, max){
+  return Math.floor(Math.random() * (max-min))+min;
+}
+
 function shuffle(o, func){
   if(!func) func = Math.random;
 
@@ -186,6 +172,5 @@ function shuffle(o, func){
 
 module.exports = {
   createEntireArticle: createEntireArticle,
-  newAuthor: newAuthor,
   findPictures: findPictures
 };

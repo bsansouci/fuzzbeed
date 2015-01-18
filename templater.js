@@ -1,7 +1,8 @@
 var fs = require('fs');
+var Inflect = require('i')();
 
 
-module.exports = function Templater () {
+module.exports = function Templater (callback) {
   //Syntax:
   //num:         Just a number
   //t-num:       Number optionally preceded by "The"
@@ -21,7 +22,7 @@ module.exports = function Templater () {
   var templates = {};
 
   this.loadBuzzTitles = function(){
-    var templates = [
+    templates = [
       "The [[num]] [[sup-adj]] [[subj]] In The World",
       "The [[num]] [[sup-adj]] [[subj]] Of Last Summer",
       "The [[num]] [[sup-adj]] [[subj]] Of The 90's",
@@ -49,6 +50,32 @@ module.exports = function Templater () {
     ];
   };
 
+  this.loadQuizTitles = function(){ 
+    templates = [
+    "What Character From [[showTitle]] Are You?",
+    "Which [[showTitle]] Characters Are You?",
+    "Which [[showTitle]] Character Is Your Soulmate?",
+    "Which [[showTitle]] Character Is Your Kindred Spirit?"];
+  }
+/*
+what's your favorite []?
+What's your dream []?
+Which [] resonates with you the most?
+Pick a []
+Which [] is the most attractive?
+Choose a []
+*/
+  this.loadQuizQuestions = function(){
+    templates = [
+    "What's your favorite [[sn-subj]]",
+    "What's your dream [[sn-subj]]",
+    "Which [[sn-subj]] resonates with you the most?",
+    "Pick a [[sn-subj]]",
+    "Which [[sn-subj]] is most attractive?",
+    "Choose a [[sn-subj]]"];
+  }
+
+
 
   var dicts = {};
   var minNum = 10;
@@ -68,21 +95,19 @@ module.exports = function Templater () {
     dicts[key] = list;
   };
 
-  function loadData(){
-    // Mmmm serial loading...
-    loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
-      loadFile("adj", "wordlists/adj.txt", function () {
-        loadFile("subj", "wordlists/nouns.txt", function () {
-          loadFile("people", "wordlists/people-nouns.txt", function () {
-            loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-              // callback(createEntireArticle);
-            });
+  // Mmmm serial loading...
+  loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
+    loadFile("adj", "wordlists/adj.txt", function () {
+      loadFile("subj", "wordlists/nouns.txt", function () {
+        loadFile("people", "wordlists/people-nouns.txt", function () {
+          loadFile("crazy", "wordlists/crazy-adj.txt", function () {
+            dicts["sn-subj"] = dicts["subj"].map(function(x){ return Inflect.singularize(x); });
+            if (callback) callback();
           });
         });
       });
     });
-  }
-  loadData();
+  });
 
   function genFromTemplate(template){
     var match;
@@ -107,6 +132,9 @@ module.exports = function Templater () {
         var n = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, n);
       } else if (inner === "subj"){
+        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
+        template = replaceMatch(template, match, ret.subj);
+      } else if (inner === "sn-subj"){
         ret.subj = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, ret.subj);
       } else if (inner === "p-subj"){
@@ -139,3 +167,12 @@ module.exports = function Templater () {
     return newStr;
   }
 };
+
+var Templater = require('./templater');
+
+
+var t = new Templater(function(){
+  t.loadQuizQuestions();
+  console.log(t.generateName());
+});
+

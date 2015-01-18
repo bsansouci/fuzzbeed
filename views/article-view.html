@@ -2980,7 +2980,7 @@ var initCanvas = function(src, color, c, w, h, callback) {
 		image.src = src;
 		image.onload = function() {
 			// Draw the image
-			context.drawImage(image, 0, 0);
+			context.drawImage(image, 0, 0, w, h);
 
 
 			// Set up text variables
@@ -2991,7 +2991,7 @@ var initCanvas = function(src, color, c, w, h, callback) {
 			cachedImage = image;
 			if(callback) {
 				callback(function(text) {
-					context.drawImage(image, 0, 0);
+					context.drawImage(image, 0, 0, w, h);
 
 					var arr = getFontSize(text);
 
@@ -3044,7 +3044,7 @@ var initCanvas = function(src, color, c, w, h, callback) {
 		context.font = fontSize + 'px Impact';
 		arr.map(function(val, i) {
       context.fillText(val.text, val.x, 40 + fontSize * (i + 1), val.width);
-			// context.strokeText(val.text, val.x, 40 + fontSize * (i + 1), val.width);
+			context.strokeText(val.text, val.x, 40 + fontSize * (i + 1), val.width);
 		});
 	}
 
@@ -3149,26 +3149,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	initCanvas(url6, color, c6, 180, 180, function(draw) {
 		draw(text6);
 	});
-	// loadToCanvas(c2, url2, text2);
-	// loadToCanvas(c3, url3, text3);
-	// loadToCanvas(c4, url4, text4);
-	// loadToCanvas(c5, url5, text5);
-	// loadToCanvas(c6, url6, text6);
-
-	// function loadToCanvas(canvas, url, text) {
-	// 	var ctx = canvas.getContext("2d");
-	// 	if(!url || url.length === 0) {
-
-	// 		ctx.font = "40pt Calibri";
- //      ctx.fillText(text, 80, 20);
-	// 		return;
-	// 	}
-	// 	var img = new Image();      // First create the image...
-	// 	img.onload = function(){  // ...then set the onload handler...
-	// 	  ctx.drawImage(img,0,0);
-	// 	};
-	// 	img.src = url;
-	// }
 });
 
 </script>

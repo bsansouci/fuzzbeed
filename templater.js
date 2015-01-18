@@ -22,7 +22,7 @@ module.exports = function Templater () {
   var templates = {};
 
   this.loadBuzzTitles = function(){
-    var templates = [
+    templates = [
       "The [[num]] [[sup-adj]] [[subj]] In The World",
       "The [[num]] [[sup-adj]] [[subj]] Of Last Summer",
       "The [[num]] [[sup-adj]] [[subj]] Of The 90's",
@@ -49,6 +49,32 @@ module.exports = function Templater () {
       "[[t-num]] [[subj]] That Scream World Domination"
     ];
   };
+
+  this.loadQuizTitles = function(){ 
+    templates = [
+    "What Character From [[showTitle]] Are You?",
+    "Which [[showTitle]] Characters Are You?",
+    "Which [[showTitle]] Character Is Your Soulmate?",
+    "Which [[showTitle]] Character Is Your Kindred Spirit?"];
+  }
+/*
+what's your favorite []?
+What's your dream []?
+Which [] resonates with you the most?
+Pick a []
+Which [] is the most attractive?
+Choose a []
+*/
+  this.loadQuizQuestions = function(){
+    templates = [
+    "What's your favorite [[sn-subj]]",
+    "What's your dream [[sn-subj]]",
+    "Which [[sn-subj]] resonates with you the most?",
+    "Pick a [[sn-subj]]",
+    "Which [[sn-subj]] is most attractive?",
+    "Choose a [[sn-subj]]"];
+  }
+
 
 
   var dicts = {};

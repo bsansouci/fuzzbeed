@@ -7,6 +7,7 @@ var seed = require("seed-random");
 
 var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
 var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");
+var firebaseQuizzes = new Firebase("https://fuzzbeed.firebaseio.com/quizzes");
 
 // This is where all the magic happens!
 app.engine('html', swig.renderFile);
@@ -63,6 +64,23 @@ app.param('articleName', function(req, res, next, articleName) {
   });
 });
 
+app.param('quizzName', function(req, res, next, articleName) {
+  firebaseQuizzes.orderByChild("articleName").equalTo(articleName).once("value", function(snapshot) {
+    var v = snapshot.val();
+    if(!v) return next();
+
+    for (var prop in v) {
+      if(v.hasOwnProperty(prop)) {
+        req.quiz = v[prop];
+        req.quiz.timestamp = new Date(req.quiz.timestamp).toGMTString();
+        req.quiz.result = req.quiz.possibleResults[rand(0, Object.keys(req.quiz.possibleResults))];
+        next();
+        return;
+      }
+    }
+  });
+});
+
 app.get('/', function (req, res) {
   firebaseArticles.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
     var v = snapshot.val();
@@ -74,20 +92,45 @@ app.get('/', function (req, res) {
     var obj = {
       articles: v
     };
-    injectSideStuff(obj, function() {
+    injectSideStuff(obj, firebaseArticles, function() {
       obj.topBuzz = obj.__sideArticles[0];
       res.render('index', obj);
     });
   });
 });
+
+app.get('/quizzes', function(req, res) {
+  firebaseQuizzes.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
+    var v = snapshot.val();
+    for (var prop in v) {
+      if(v.hasOwnProperty(prop)) {
+        v[prop].timeAgo = timeAgo(v[prop].timestamp);
+      }
+    }
+    var obj = {
+      articles: v
+    };
+    injectSideStuff(obj, firebaseQuizzes, function() {
+      obj.topBuzz = obj.__sideArticles[0];
+      res.render('index', obj);
+    });
+  });
+});
+
+app.get('/quizzes/:quizzName', function(req, res) {
+  injectSideStuff(req.quiz, firebaseQuizzes, function() {
+    res.render('article-view', req.quiz);
+  });
+});
+
 app.get('/users/:username/:articleName', function(req, res) {
-  injectSideStuff(req.article, function() {
+  injectSideStuff(req.article, firebaseArticles, function() {
     res.render('article-view', req.article);
   });
 });
 
 app.get('/users/:username', function(req, res) {
-  injectSideStuff(req.profile, function() {
+  injectSideStuff(req.profile, firebaseArticles, function() {
     res.render('profile-view', addAwards(req.profile));
   });
 });
@@ -97,7 +140,7 @@ app.get('/write-article', function(req, res) {
 });
 
 app.get('/write-an-article', function(req, res) {
-  // 75% chances of creating a new person
+  // 50% chances of creating a new person
   if(rand(0, 100) > 25) {
     articleGenerator.createEntireArticle(function(article, author) {
       pushProfile(author, function() {
@@ -156,10 +199,10 @@ function addAwards(profile) {
   return profile;
 }
 
-function injectSideStuff(obj, callback) {
+function injectSideStuff(obj, db, callback) {
   if(!obj) return console.error("injectSideStuff obj was null");
 
-  firebaseArticles.once("value", function(snapshot) {
+  db.once("value", function(snapshot) {
     var v = snapshot.val();
     if(!v) {
       obj.__sideArticles = [];
@@ -183,40 +226,64 @@ function rand(min, max){
   return Math.floor(Math.random() * (max-min))+min;
 }
 
-function generateArticle() {
-  // firebaseArticles.push({
-  //   elements: [{
-  //     num: 1,
-  //     title: "You should know that being quiet doesn’t mean we’re judging you.",
-  //     imageUrl: "http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif",
-  //     body: "I mean. Unless we are."
-  //   }],
-  //   username: "alexalvarez",
-  //   title: "22 Confessions Shy People Will Never Tell You",
-  //   subtitle: "*Converses with you in total silence.*",
-  //   authorName: "Alex Alvarez",
-  //   profileUrl: "/users/alexalvarez",
-  //   authorProfilePicture: "/article-view_files/alexalvarez-3154-1405446917-2_large.jpg",
-  //   timestamp: Date.now(),
-  //   responses: Math.floor(Math.random() * 1000),
-  //   previewUrl: "/BuzzFeed%20Buzz_files/22-confessions-shy-people-will-never-tell-you-2-11223-142146.jpg",
-  //   articleName: "quietly-judging-all-of-you",
-  //   url: "/users/alexalvarez/quietly-judging-all-of-you"
-  // });
-}
+// firebaseQuizzes.push({
+//   elements: [{
+//     title: "What do you usually do at parties?",
+//     imageUrl: "http://s3-ec.buzzfed.com/static/2015-01/16/13/imagebuzz/webdr03/anigif_optimized-3238-1421434742-18.gif",
+//     possibleAnswers: [{
+//         text: "------",
+//         url: "http://s3-ak.buzzfeed.com/static/2015-01/16/17/enhanced/webdr12/enhanced-buzz-23510-1421448289-3.jpg"
+//       },{
+//         text: "--------",
+//         url: "http://s3-ak.buzzfeed.com/static/2015-01/16/17/enhanced/webdr06/enhanced-buzz-23520-1421448297-0.jpg"
+//       },{
+//         text: "----------",
+//         url: "http://s3-ak.buzzfeed.com/static/2015-01/16/17/enhanced/webdr06/enhanced-buzz-23523-1421448306-0.jpg"
+//       },{
+//         text: "------------",
+//         url: "http://s3-ak.buzzfeed.com/static/2015-01/16/17/enhanced/webdr06/enhanced-buzz-24219-1421448323-0.jpg"
+//       },{
+//         text: "--------------",
+//         url: "http://s3-ak.buzzfeed.com/static/2015-01/16/17/enhanced/webdr10/enhanced-buzz-6635-1421448333-0.jpg"
+//       },{
+//         text: "-----------------",
+//         url: "http://s3-ak.buzzfeed.com/static/2015-01/16/17/enhanced/webdr07/enhanced-buzz-1607-1421448344-0.jpg"
+//       }
+//     ],
+//     body: "I mean. Unless we are."
+//   }],
+//   possibleResults: [{
+//     title: "title1",
+//     body: "body1",
+//     randomWord: "penis"
+//   }],
+//   isQuiz: true,
+//   questionType: "openEnded",
+//   username: "alexalvarez",
+//   title: "khlja;kfh fas;kj asdsa?",
+//   subtitle: "*Bob*",
+//   authorName: "Alex Alvarez",
+//   profileUrl: "/users/alexalvarez",
+//   authorProfilePicture: "/article-view_files/alexalvarez-3154-1405446917-2_large.jpg",
+//   timestamp: Date.now(),
+//   responses: Math.floor(Math.random() * 1000),
+//   previewUrl: "/BuzzFeed%20Buzz_files/22-confessions-shy-people-will-never-tell-you-2-11223-142146.jpg",
+//   articleName: "quietly-judging-all-of-you",
+//   url: "/users/alexalvarez/quietly-judging-all-of-you"
+// });
 
-function generateProfile() {
-  // var profile1 = {
-  //   authorName: "Alex Alvarez",
-  //   authorDescription: "LOL but also WTF. Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@buzzfeed.com.",
-  //   authorEmail: "alex.alvarez@buzzfeed.com",
-  //   profileUrl: "/users/alexalvarez",
-  //   username: "alexalvarez"
-  // };
-  // var obj = {};
-  // obj[profile1.username] = profile1;
-  // firebaseProfiles.update(obj);
-}
+
+
+// var profile1 = {
+//   authorName: "Alex Alvarez",
+//   authorDescription: "LOL but also WTF. Send pitches, tips, chisme, and Pitbull/Alex genderswap fanfic to alex.alvarez@buzzfeed.com.",
+//   authorEmail: "alex.alvarez@buzzfeed.com",
+//   profileUrl: "/users/alexalvarez",
+//   username: "alexalvarez"
+// };
+// var obj = {};
+// obj[profile1.username] = profile1;
+// firebaseProfiles.update(obj);
 
 function timeAgo(time){
   var units = [

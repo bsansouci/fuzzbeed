@@ -58,6 +58,10 @@ function assignAuthor(article, author){
   article.authorName = author.name;
   article.profileUrl = "/users/" + article.username;
   article.authorProfilePicture = author.authorProfilePicture;
+
+  // TODO: remove this at some point... This is just to convert old authors to
+  // have a title
+  if(!author.authorTitle) author.authorTitle = Math.random() > 0.5 ? "FuzzBeed Staff" : "FuzzBeed News Reporter";
   article.authorTitle = author.authorTitle;
 }
 

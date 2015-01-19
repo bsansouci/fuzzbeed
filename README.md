@@ -4,3 +4,8 @@
 40 Superheroes Who Are Having A Really Rough Day
 
 36 News Anchors Who Completely Screwed Up Their One Job
+
+## More Info:
+This was written in 36 hours at MHacks V
+
+The site is visible here: http://fuzzzbeed.herokuapp.com/ 

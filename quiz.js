@@ -46,6 +46,7 @@ function assignAuthor(quiz, author){
   quiz.authorName = author.name;
   quiz.profileUrl = "/users/" + quiz.username;
   quiz.authorProfilePicture = author.authorProfilePicture;
+  quiz.authorTitle = author.authorTitle;
 }
 
 function rand(min, max){

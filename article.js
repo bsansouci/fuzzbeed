@@ -58,6 +58,7 @@ function assignAuthor(article, author){
   article.authorName = author.name;
   article.profileUrl = "/users/" + article.username;
   article.authorProfilePicture = author.authorProfilePicture;
+  article.authorTitle = author.authorTitle;
 }
 
 

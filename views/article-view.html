@@ -1517,7 +1517,7 @@
 																										</div>
 																										<!-- START LIST AS ROW -->
 																										<ol class="largeImgAnswers">
-																											<li class="quiz_answer quiz_answer_el " onclick="incrementCounter();">
+																											<li class="quiz_answer quiz_answer_el " onclick="incrementCounter(this);">
 																												<div class="quiz_img_and_source">
 																													<img src="http://s3-ak.buzzfeed.com/static/2015-01/17/1/enhanced/webdr02/enhanced-buzz-15224-1421476817-4.jpg">
 																												</div>
@@ -1528,7 +1528,7 @@
 																												<div class="clear">
 																												</div>
 																											</li>
-																											<li class="quiz_answer quiz_answer_el last " onclick="incrementCounter();">
+																											<li class="quiz_answer quiz_answer_el last " onclick="incrementCounter(this);">
 																												<div class="quiz_img_and_source">
 																													<img src="http://s3-ak.buzzfeed.com/static/2015-01/17/1/enhanced/webdr03/enhanced-buzz-28894-1421476830-0.jpg">
 																												</div>
@@ -1567,7 +1567,7 @@
 																								</div>
 																								<!-- START LIST AS ROW -->
 																								<ol class="smallImgAnswers">
-																									<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="1" rel:id="3704085" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+																									<li class="quiz_answer quiz_answer_el  " onclick="incrementCounter(this);">
 																										<div class="quiz_img_and_source">
 																											<canvas id="canvas1-{{loop.index}}" width="180" height="180"/>
 																										</div>
@@ -1578,7 +1578,7 @@
 																										<div class="clear">
 																										</div>
 																									</li>
-																									<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="0" rel:id="3704086" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+																									<li class="quiz_answer quiz_answer_el  " onclick="incrementCounter(this);">
 																										<div class="quiz_img_and_source">
 																											<canvas id="canvas2-{{loop.index}}" width="180" height="180"/>
 																										</div>
@@ -1589,7 +1589,7 @@
 																										<div class="clear">
 																										</div>
 																									</li>
-																									<li class="quiz_answer quiz_answer_el last " rel:correct="0" rel:personality_index="4" rel:id="3704087" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+																									<li class="quiz_answer quiz_answer_el last " onclick="incrementCounter(this);">
 																										<div class="quiz_img_and_source">
 																											<canvas id="canvas3-{{loop.index}}" width="180" height="180"/>
 																										</div>
@@ -1603,7 +1603,7 @@
 																								</ol>
 																								<!-- END LIST AS ROW -->
 																								<ol class="smallImgAnswers">
-																									<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="3" rel:id="3704088" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+																									<li class="quiz_answer quiz_answer_el  " onclick="incrementCounter(this);">
 																										<div class="quiz_img_and_source">
 																											<canvas id="canvas4-{{loop.index}}" width="180" height="180"/>
 																										</div>
@@ -1614,7 +1614,7 @@
 																										<div class="clear">
 																										</div>
 																									</li>
-																									<li class="quiz_answer quiz_answer_el  " rel:correct="0" rel:personality_index="0" rel:id="3704089" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+																									<li class="quiz_answer quiz_answer_el  " onclick="incrementCounter(this);">
 																										<div class="quiz_img_and_source">
 																											<canvas id="canvas5-{{loop.index}}" width="180" height="180"/>
 																										</div>
@@ -1625,7 +1625,7 @@
 																										<div class="clear">
 																										</div>
 																									</li>
-																									<li class="quiz_answer quiz_answer_el last " rel:correct="0" rel:personality_index="0" rel:id="3704090" rel:gtrack_id="quiz-answer" rel:gt_act="quiz-answer">
+																									<li class="quiz_answer quiz_answer_el last " onclick="incrementCounter(this);">
 																										<div class="quiz_img_and_source">
 																											<canvas id="canvas6-{{loop.index}}" width="180" height="180"/>
 																										</div>
@@ -1884,7 +1884,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 {% endif %}
 <script type="text/javascript">
 	var counter = {{elements.length}};
-	function incrementCounter() {
+	var answers = [];
+	function incrementCounter(e) {
+		var neighbours = e.parentElement.parentElement.getElementsByClassName("quiz_answer");
+		for(var i=0;i<answers.length;i++) {
+			for(var j=0;j<neighbours.length;j++) {
+				if(answers[i] === neighbours[j]) return;
+			}
+		}
+		for(var j=0;j<neighbours.length;j++) {
+			answers.push(neighbours[j]);
+		}
+		e.className += " selected";
 		counter--;
 		if(counter <= 0) {
 			$("result").show();

@@ -119,13 +119,15 @@ app.param('quizzName', function(req, res, next, articleName) {
 
 function checkIfLoaded(req, res, next) {
   if(!findPictures) {
-    res.send("<html><title>Pushing code...</title><body><h1>Down for a sec...</h1></body></html>")
+    res.send("<html><title>Pushing code...</title><body><h1>Down for a sec...</h1></body></html>");
     return;
   }
   next();
 }
 
-app.get('/', checkIfLoaded, function (req, res) {
+app.use(checkIfLoaded);
+
+app.get('/', function (req, res) {
   firebaseArticles.limitToLast(20).once("value", function(snapshot) {
     var v = snapshot.val();
     var arr = [];
@@ -148,7 +150,7 @@ app.get('/', checkIfLoaded, function (req, res) {
   });
 });
 
-app.get('/quizzes', checkIfLoaded, function(req, res) {
+app.get('/quizzes', function(req, res) {
   firebaseQuizzes.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
     var v = snapshot.val();
     for (var prop in v) {
@@ -165,7 +167,7 @@ app.get('/quizzes', checkIfLoaded, function(req, res) {
   });
 });
 
-app.get('/quizzes/:quizzName', checkIfLoaded, function(req, res) {
+app.get('/quizzes/:quizzName', function(req, res) {
   if(!req.quiz) {
     var obj = {};
     injectSideStuff(obj, firebaseQuizzes, function() {
@@ -178,7 +180,7 @@ app.get('/quizzes/:quizzName', checkIfLoaded, function(req, res) {
   });
 });
 
-app.get('/users/:username/:articleName', checkIfLoaded, function(req, res) {
+app.get('/users/:username/:articleName', function(req, res) {
   if(!req.article) {
     var obj = {};
     injectSideStuff(obj, firebaseArticles, function() {
@@ -191,7 +193,7 @@ app.get('/users/:username/:articleName', checkIfLoaded, function(req, res) {
   });
 });
 
-app.get('/users/:username', checkIfLoaded, function(req, res) {
+app.get('/users/:username', function(req, res) {
   if(!req.profile) {
     var obj = {};
     injectSideStuff(obj, firebaseArticles, function() {
@@ -205,11 +207,11 @@ app.get('/users/:username', checkIfLoaded, function(req, res) {
   });
 });
 
-app.get('/write-article', checkIfLoaded, function(req, res) {
+app.get('/write-article', function(req, res) {
   res.render('write-article-view', {});
 });
 
-app.get('/write-an-article', checkIfLoaded, function(req, res) {
+app.get('/write-an-article', function(req, res) {
   // 50% chances of creating a new person
   if(rand(0, 100) > 50) {
     var author = newAuthor();
@@ -234,7 +236,7 @@ app.get('/write-an-article', checkIfLoaded, function(req, res) {
   }
 });
 
-app.get('/write-a-quiz', checkIfLoaded, function(req, res) {
+app.get('/write-a-quiz', function(req, res) {
   // 50% chances of creating a new person
   if(rand(0, 100) > 50) {
     var author = newAuthor();

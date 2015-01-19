@@ -46,6 +46,10 @@ function assignAuthor(quiz, author){
   quiz.authorName = author.name;
   quiz.profileUrl = "/users/" + quiz.username;
   quiz.authorProfilePicture = author.authorProfilePicture;
+
+  // TODO: remove this at some point... This is just to convert old authors to
+  // have a title
+  if(!author.authorTitle) author.authorTitle = Math.random() > 0.5 ? "FuzzBeed Staff" : "FuzzBeed News Reporter";
   quiz.authorTitle = author.authorTitle;
 }
 

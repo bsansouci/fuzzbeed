@@ -226,7 +226,7 @@ module.exports = new function () {
 			question.possibleAnswers = [];
 			for (var i = 0; i < 6; i++) {
 				question.possibleAnswers.push({
-					text: templater.getRand('sn-subj')
+					text: templater.getRand('noun')
 				});
 			}
 		} else {

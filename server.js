@@ -365,7 +365,7 @@ function newAuthor(){
   author.authorTitle = Math.random() > 0.5 ? "FuzzBeed Staff" : "FuzzBeed News Reporter";
   author.authorProfilePicture = "/assets/userpics/" +
     ((stringToIntHash(author.username)%274) + 1) + ".jpg";
-  var randomBannerSearchText = templater.getRand('subj');
+  var randomBannerSearchText = templater.getRand('noun');
   findPictures(randomBannerSearchText, function(photos) {
     author.bannerPhoto = photos[rand(0, photos.length)];
   });

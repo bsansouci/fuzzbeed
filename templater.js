@@ -10,12 +10,18 @@ module.exports = function Templater (callback) {
   // E.g. "cats" should be in "nouns"
   //      "cat" should be in "noun"
   // Every template should include an s- key.
+  // OPTIONALS:
+  // {{first|second|...}}
   // SPECIAL CASES:
   // num:        Just a number
   // tnum:       Number optionally preceded by "The"
   // xnum:       Random number that the system doesn't care about
 
   var templates = {};
+
+  this.loadTestTitles = function(){
+    templates = ["Test [[s-noun]] {{one option|two option}}"];
+  };
 
   this.loadBuzzTitles = function(){
     templates = [
@@ -36,7 +42,7 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[adj]] [[s-nouns]] That Will Make You Ask \"Why?\"",
       "[[t-num]] [[adj]] [[s-nouns]] You Probably Didn't Know",
       "[[t-num]] [[crazy]] Things [[s-people]] Know To Be True",
-      "[[t-num]] [[s-people]] Who Are Clearly Being Raised [[x+adj]]",
+      "[[t-num]] [[s-people]] Who Are Clearly Being Raised [[x-adj]]",
       "[[t-num]] [[s-people]] Who Are Having A Really Rough Day",
       "[[t-num]] [[s-people]] Who Are Too Clever For Their Own Good",
       "[[t-num]] [[s-people]] Who Completely Screwed Up Their One Job",
@@ -197,6 +203,13 @@ module.exports = function Templater (callback) {
         template = replaceMatch(template, match, repl2);
       }
     }
+    
+    while (!!(match = template.match(/{{[^}]+}}/))){
+      match = match[0];
+      inner = match.substr(2, match.length-4);
+      var opts = inner.split("|");
+      template = replaceMatch(template, match, opts[rand(0,opts.length)]);
+    }
     ret.title = template;
     return ret;
   }
@@ -220,11 +233,11 @@ module.exports = function Templater (callback) {
   }
 };
 
-var Templater = require("./templater");
-var temp = new Templater(function () {
-  console.log("loaded");
-  temp.loadBuzzTitles();
-  for (var i = 0; i < 5; i++){
-    console.log(temp.generateName());
-  }
-});
+// var Templater = require("./templater");
+// var temp = new Templater(function () {
+//   console.log("loaded");
+//   temp.loadTestTitles();
+//   for (var i = 0; i < 5; i++){
+//     console.log(temp.generateName());
+//   }
+// });

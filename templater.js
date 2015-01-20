@@ -53,7 +53,7 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To _[[famous-person]]_",
       "If [[s-tv-show-character]] Had Instagram",
       "[[t-num]] Times [[s-tv-show-character]] Summed Up You And Your BFF",
-      "[[s-famous-person]] Receives A [[s-noun]], Is Overcome With Joy",
+      "[[s-famous-person]] Receives A _[[noun]]_, Is Overcome With Joy",
       "[[t-num]] [[s-people]] You Actually Cannot Resist _Kissing_"
     ];
   };
@@ -201,7 +201,7 @@ module.exports = function Templater (callback) {
         template = replaceMatch(template, match, repl2);
       }
     }
-    
+
     while (!!(match = template.match(/{{[^}]+}}/))){
       match = match[0];
       inner = match.substr(2, match.length-4);
@@ -243,7 +243,8 @@ module.exports = function Templater (callback) {
 // var temp = new Templater(function () {
 //   console.log("loaded");
 //   temp.loadTestTitles();
-//   for (var i = 0; i < 5; i++){
+//   temp.loadBuzzTitles();
+//   for (var i = 0; i < 100; i++){
 //     console.log(temp.generateName());
 //   }
 // });

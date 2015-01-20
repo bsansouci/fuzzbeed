@@ -223,7 +223,18 @@ app.get('/write-an-article', function(req, res) {
   } else {
     firebaseProfiles.once("value", function(snapshot) {
       var v = snapshot.val();
-      if(!v) v = [newAuthor()];
+      // If there are no authors
+      if(!v) {
+        var author = newAuthor();
+        articleGenerator.createEntireArticle(author, templater, function(article) {
+          pushProfile(author, function() {
+            firebaseArticles.push(article, function() {
+              res.redirect(article.url);
+            });
+          });
+        });
+        return;
+      }
       var allKeys = Object.keys(v);
       var author = v[allKeys[rand(0, allKeys.length)]];
       articleGenerator.createEntireArticle(author, templater, function(article) {

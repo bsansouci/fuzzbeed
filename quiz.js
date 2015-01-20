@@ -153,7 +153,7 @@ module.exports = new function () {
 
 			var quiz = {};
 			quiz.title = generateQuizTitle(imdb.title, templater);
-			quiz.articleName = quiz.title.toLowerCase().replace(/[\"\?]/g, "").replace(/ /g, "-");
+			quiz.articleName = quiz.title.toLowerCase().replace(/[\"\'\?]/g, "").replace(/ /g, "-");
 			quiz.isQuiz = true;
 			quiz.possibleResults = [];
       var markov = new Markov();

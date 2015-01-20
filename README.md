@@ -9,3 +9,5 @@
 This was written in 36 hours at MHacks V
 
 The site is visible here: http://fuzzzbeed.herokuapp.com/ 
+
+Even more info: http://challengepost.com/software/fuzzbeed

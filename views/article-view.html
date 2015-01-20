@@ -19,56 +19,8 @@
 	<meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read">
 	<meta property="fb:app_id" content="45075597673">
 	<meta property="og:site_name" content="FuzzBeed">
-	<meta property="fb:admins" content="707356852">
-	<meta property="fb:admins" content="689300683">
-	<meta property="fb:admins" content="1065534095">
-	<meta property="fb:admins" content="583832663">
-	<meta property="fb:admins" content="749455540">
-	<meta property="fb:admins" content="560468108">
-	<meta property="fb:admins" content="731012743">
-	<meta property="fb:admins" content="560468108">
-	<meta property="fb:admins" content="731012743">
-	<meta property="fb:admins" content="616026830">
-	<meta property="fb:admins" content="824863">
-	<meta property="fb:admins" content="620379299">
-	<meta property="fb:admins" content="509245189">
-	<meta property="fb:admins" content="10903550">
-	<meta property="fb:admins" content="14231094">
-	<meta property="fb:admins" content="108943">
-	<meta property="fb:admins" content="1806923">
-	<meta property="fb:admins" content="100002364203584">
-	<meta property="fb:admins" content="100002299253787">
-	<meta property="fb:admins" content="1554635003">
-	<meta property="fb:admins" content="835967">
-	<meta property="fb:admins" content="1234380730">
-	<meta property="fb:admins" content="743137474">
-	<meta property="fb:admins" content="27102414">
-	<meta property="fb:admins" content="22502598">
-	<meta property="fb:admins" content="2208604">
-	<meta property="fb:admins" content="28518">
-	<meta property="fb:admins" content="1479030030">
-	<meta property="fb:admins" content="15920947">
-	<meta property="fb:admins" content="100003945960605">
-	<meta property="fb:admins" content="578226154">
-	<meta property="fb:admins" content="502418534">
-	<meta property="fb:admins" content="5515474">
-	<meta property="fb:admins" content="5525520">
-	<meta property="fb:admins" content="5205449">
-	<meta property="fb:admins" content="648659743">
-	<meta property="fb:admins" content="705370117">
-	<meta property="fb:admins" content="1351920148">
-	<meta property="fb:admins" content="8370474">
-	<meta property="fb:admins" content="1387300103">
-	<meta property="fb:admins" content="1572780204">
-	<meta property="fb:admins" content="100003824101586">
-	<meta property="fb:admins" content="1026583096">
-	<meta property="fb:admins" content="1014086">
-	<meta property="fb:admins" content="626540352">
-	<meta property="fb:admins" content="1338210367">
-	<meta property="fb:admins" content="43102791">
-	<meta property="fb:admins" content="100005241975163">
-	<meta property="fb:admins" content="1617218809">
-	<meta name="title" content="{{title}}">
+	<meta name="title" content="{{title}}" />
+	<meta name="og:url" content="https://fuzzzbeed.herokuapp.com{{url}}" />
 	<meta property="og:title" content="{{title}}">
 	<meta property="og:description" content="*Converses with you in total silence.*">
 	<meta property="og:url" content="/alexalvarez/quietly-judging-all-of-you">
@@ -1401,8 +1353,8 @@
 																					</div>
 																				</div>
 																				<div id="share_control" class="bf_dom square_shares shown" rel:bf_bucket="abtest" rel:ab_test="fwd_linkedin" rel:gt_cat="Buzz">
-																			<div class="fb-share-button" data-href=document.URL data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
-																			<div class="horizontal-share-buttons upper-share-buttons c bf_dom fb-share-button" data-href=document.URL data-layout="button">
+																			<div class="fb-share-button" data-href="https://fuzzzbeed.herokuapp.com{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
+																			<div class="horizontal-share-buttons upper-share-buttons c bf_dom">
 																						<img src="/assets/sharing.png"/>
 																					</div>
 																				</div>
@@ -1842,6 +1794,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				</div>
 				<h2>{{result.body}}
 				</h2>
+				<div class="fb-share-button" data-href="https://fuzzzbeed.herokuapp.com{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
 				<div class="headline-1 answer_response" style="display: none;">
 				</div>
 				<div class="quiz_img_and_source">
@@ -1856,7 +1809,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </div>
 </div>
 {% else %}
-<div class="fb-share-button" data-href=document.URL data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
+<div class="fb-share-button" data-href="https://fuzzzbeed.herokuapp.com{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
 </div>
 {% endif %}
 <script type="text/javascript">

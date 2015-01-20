@@ -4,8 +4,8 @@ var Inflect = require('i')();
 
 module.exports = function Templater (callback) {
   // SYNTAX:
-  // Add s- to a word to make it the subject
-  // Add x- to a word to add it to the extra search terms
+  // Add s- to a key to make it the subject
+  // Surround something with _ to add it to the extra search terms
   // Convention: plural things have plural keys
   // E.g. "cats" should be in "nouns"
   //      "cat" should be in "noun"
@@ -20,41 +20,41 @@ module.exports = function Templater (callback) {
   var templates = {};
 
   this.loadTestTitles = function(){
-    templates = ["Test [[s-noun]] {{one option|two option}}"];
+    templates = ["_Test_ [[s-noun]] _{{one option|two option}}_"];
   };
 
   this.loadBuzzTitles = function(){
     templates = [
       "The [[num]] [[sup-adj]] [[s-nouns]] In The World",
-      "The [[num]] [[sup-adj]] [[s-nouns]] Of Last Summer",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Of Last _Summer_",
       "The [[num]] [[sup-adj]] [[s-nouns]] Of The 90's",
       "The [[num]] [[sup-adj]] [[s-nouns]] Of The Last [[x-num]] Years",
       "The [[num]] [[sup-adj]] [[s-nouns]] Of This Century",
-      "The [[num]] [[sup-adj]] [[s-nouns]] Only [[people]] Will Understand",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Only _[[people]]_ Will Understand",
       "The [[num]] [[sup-adj]] [[s-nouns]] That Will Make You Laugh Every Time",
       "The [[num]] [[sup-adj]] [[s-nouns]] You Probably Didn't Know",
       "[[num]] Things [[s-people]] Should Be Allowed To Complain About",
       "[[num]] Times [[s-nouns]] Are The Worst And You Just Can't Even",
       "[[num]] [[s-people]] With Excellent New Year's Resolutions",
-      "[[num]] [[x-people]] With [[crazy]] [[s-nouns]]",
-      "[[num]] [[s-nouns]] For [[x-people]] That Should Really Exist",
+      "[[num]] _[[people]]_ With [[crazy]] [[s-nouns]]",
+      "[[num]] [[s-nouns]] For _[[people]]_ That Should Really Exist",
       "[[t-num]] Things [[s-people]] Know To Be True",
       "[[t-num]] [[adj]] [[s-nouns]] That Will Make You Ask \"Why?\"",
       "[[t-num]] [[adj]] [[s-nouns]] You Probably Didn't Know",
       "[[t-num]] [[crazy]] Things [[s-people]] Know To Be True",
-      "[[t-num]] [[s-people]] Who Are Clearly Being Raised [[x-adj]]",
+      "[[t-num]] [[s-people]] Who Are Clearly Being Raised _[[adj]]_",
       "[[t-num]] [[s-people]] Who Are Having A Really Rough Day",
       "[[t-num]] [[s-people]] Who Are Too Clever For Their Own Good",
       "[[t-num]] [[s-people]] Who Completely Screwed Up Their One Job",
-      "[[t-num]] [[s-people]] Who Have Performed For [[x-people]]",
-      "[[t-num]] [[s-people]] Who Need To Be Banned From Celebrating Halloween",
+      "[[t-num]] [[s-people]] Who Have Performed For _[[people]]_",
+      "[[t-num]] [[s-people]] Who Need To Be Banned From Celebrating _Halloween_",
       "[[t-num]] [[s-people]] Who Will Make You Feel Like A Genius",
-      "[[t-num]] [[s-nouns]] That Scream World Domination",
-      "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To [[x-famous-person]]",
+      "[[t-num]] [[s-nouns]] That Scream _World Domination_",
+      "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To _[[famous-person]]_",
       "If [[s-tv-show-character]] Had Instagram",
       "[[t-num]] Times [[s-tv-show-character]] Summed Up You And Your BFF",
       "[[s-famous-person]] Receives A [[s-noun]], Is Overcome With Joy",
-      "[[t-num]] [[s-people]] You Actually Cannot Resist Kissing"
+      "[[t-num]] [[s-people]] You Actually Cannot Resist _Kissing_"
     ];
   };
 
@@ -126,8 +126,6 @@ module.exports = function Templater (callback) {
   this.getRand = function(key) {
     return dicts[key][rand(0,dicts[key].length)];
   };
-
-
 
   var dicts = {};
   var minNum = 7;
@@ -210,6 +208,14 @@ module.exports = function Templater (callback) {
       var opts = inner.split("|");
       template = replaceMatch(template, match, opts[rand(0,opts.length)]);
     }
+
+    while (!!(match = template.match(/_[^_]+_/))){
+      match = match[0];
+      inner = match.substr(1, match.length-2);
+      ret.extra.push(inner);
+      template = replaceMatch(template, match, inner);
+    }
+
     ret.title = template;
     return ret;
   }

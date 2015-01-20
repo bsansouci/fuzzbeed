@@ -184,10 +184,6 @@
       "src": "http://ia.media-imdb.com/images/M/MV5BNTE5OTI0OTA0OV5BMl5BanBnXkFtZTcwODczOTAzOQ@@._V1_SX640_SY720_.jpg"
     }]
   }, {
-    "title": "The World at War",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTYyMzQ0NDk4OF5BMl5BanBnXkFtZTcwOTAwNjYyMQ@@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
     "title": "The Wire",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BNjc1NzYwODEyMV5BMl5BanBnXkFtZTcwNTcxMzU1MQ@@._V1_SX640_SY720_.jpg",
     "links": [{
@@ -376,10 +372,6 @@
       "src": "http://ia.media-imdb.com/images/M/MV5BNjI2MTA0NjMzMl5BMl5BanBnXkFtZTgwMTg2MjQ4MDE@._V1_SX640_SY720_.jpg"
     }]
   }, {
-    "title": "Last Week Tonight with John Oliver",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BNTgyMzIzNDAyM15BMl5BanBnXkFtZTgwMTE1Mzg0MTE@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
     "title": "The Sopranos",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTIxMjc4NTA2Nl5BMl5BanBnXkFtZTYwNTU2MzU5._V1_SX640_SY720_.jpg",
     "links": [{
@@ -442,11 +434,28 @@
   }, {
     "title": "Rick and Morty",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTQxNDEwNTE0Nl5BMl5BanBnXkFtZTgwMzQ1MTg3MDE@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
-    "title": "Leyla and Mecnun",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMjIzMjA1NjU0MF5BMl5BanBnXkFtZTcwMDcwOTExNw@@._V1_SX640_SY720_.jpg",
-    "links": []
+    "links": [{
+        "url": "",
+        "name": "Rick Sanchez",
+        "src": ""
+      },{
+        "url": "",
+        "name": "Jerry Smith",
+        "src": ""
+      },{
+        "url": "",
+        "name": "Morty Smith",
+        "src": ""
+      },{
+        "url": "",
+        "name": "Beth Smith",
+        "src": ""
+      },{
+        "url": "",
+        "name": "Summer Smith",
+        "src": ""
+      }
+    ]
   }, {
     "title": "Firefly",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTIzNzQ5MjMxN15BMl5BanBnXkFtZTcwNzgxMzE2MQ@@._V1_SX640_SY720_.jpg",
@@ -674,15 +683,7 @@
       "url": "/character/ch0016524/?ref_=tt_cl_t1",
       "name": "Spike Spiegel",
       "src": "http://ia.media-imdb.com/images/M/MV5BNTY5OTM3MDEzNl5BMl5BanBnXkFtZTgwODk4ODE1MDE@._V1_SX640_SY720_.jpg"
-    }, {
-      "url": "/character/ch0016524/?ref_=tt_cl_t4",
-      "name": "Spike Spiegel",
-      "src": "http://ia.media-imdb.com/images/M/MV5BNTY5OTM3MDEzNl5BMl5BanBnXkFtZTgwODk4ODE1MDE@._V1_SX640_SY720_.jpg"
-    }, {
-      "url": "/character/ch0016527/?ref_=tt_cl_t8",
-      "name": "Edward Wong Hau Pepelu Tivruski IV",
-      "src": "http://ia.media-imdb.com/images/M/MV5BNjU2NDYyODAyNV5BMl5BanBnXkFtZTgwMzk4ODE1MDE@._V1_SX640_SY720_.jpg"
-    }, {
+    },{
       "url": "/character/ch0016527/?ref_=tt_cl_t10",
       "name": "Edward Wong Hau Pepelu Tivruski IV",
       "src": "http://ia.media-imdb.com/images/M/MV5BNjU2NDYyODAyNV5BMl5BanBnXkFtZTgwMzk4ODE1MDE@._V1_SX640_SY720_.jpg"
@@ -695,21 +696,9 @@
       "name": "Edward Elric",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTg2MDE3OTMxNF5BMl5BanBnXkFtZTgwMTI2Mzc0MDE@._V1_SX640_SY720_.jpg"
     }, {
-      "url": "/character/ch0025552/?ref_=tt_cl_t3",
-      "name": "Edward Elric",
-      "src": "http://ia.media-imdb.com/images/M/MV5BMTg2MDE3OTMxNF5BMl5BanBnXkFtZTgwMTI2Mzc0MDE@._V1_SX640_SY720_.jpg"
-    }, {
-      "url": "/character/ch0025557/?ref_=tt_cl_t5",
-      "name": "Alphonse Elric",
-      "src": "http://ia.media-imdb.com/images/M/MV5BMTU5MDM5MjUwMF5BMl5BanBnXkFtZTgwNzE1ODM2MjE@._V1_SX640_SY720_.jpg"
-    }, {
       "url": "/character/ch0025557/?ref_=tt_cl_t6",
       "name": "Alphonse Elric",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTU5MDM5MjUwMF5BMl5BanBnXkFtZTgwNzE1ODM2MjE@._V1_SX640_SY720_.jpg"
-    }, {
-      "url": "/character/ch0025556/?ref_=tt_cl_t7",
-      "name": "Roy Mustang",
-      "src": "http://ia.media-imdb.com/images/M/MV5BMTc5Mjg1NDg3NV5BMl5BanBnXkFtZTgwMDE2NTM2MjE@._V1_SX640_SY720_.jpg"
     }, {
       "url": "/character/ch0025556/?ref_=tt_cl_t8",
       "name": "Roy Mustang",
@@ -738,14 +727,6 @@
       "url": "/character/ch0025299/?ref_=tt_cl_t1",
       "name": "Light Yagami",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTM1MTE3Njc3NV5BMl5BanBnXkFtZTcwOTkyNTAwMg@@._V1_SX640_SY720_.jpg"
-    }, {
-      "url": "/character/ch0025299/?ref_=tt_cl_t2",
-      "name": "Light Yagami",
-      "src": "http://ia.media-imdb.com/images/M/MV5BMTM1MTE3Njc3NV5BMl5BanBnXkFtZTcwOTkyNTAwMg@@._V1_SX640_SY720_.jpg"
-    }, {
-      "url": "/character/ch0025298/?ref_=tt_cl_t10",
-      "name": "L",
-      "src": "http://ia.media-imdb.com/images/M/MV5BMTQ3MjM1MDYwNl5BMl5BanBnXkFtZTcwODkyNTAwMg@@._V1_SX640_SY720_.jpg"
     }, {
       "url": "/character/ch0025298/?ref_=tt_cl_t12",
       "name": "L",
@@ -784,14 +765,6 @@
       "src": "http://ia.media-imdb.com/images/M/MV5BMTQxOTI4NTgyOF5BMl5BanBnXkFtZTgwODE0OTM0MDE@._V1_SX640_SY720_.jpg"
     }]
   }, {
-    "title": "Twilight Zone",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTQ0MTIzNDA0Ml5BMl5BanBnXkFtZTcwODQ2MzcyMQ@@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
-    "title": "Monty Python's Flying Circus",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTYxMDYzMDkwN15BMl5BanBnXkFtZTcwMzg0ODYzMQ@@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
     "title": "Freaks and Geeks",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMjA0MTkwNDYwM15BMl5BanBnXkFtZTcwOTM4MDUyMQ@@._V1_SX640_SY720_.jpg",
     "links": [{
@@ -824,10 +797,6 @@
       "src": "http://ia.media-imdb.com/images/M/MV5BMjMwOTk2NjczN15BMl5BanBnXkFtZTgwMjM4MTY0MDE@._V1_SX640_SY720_.jpg"
     }]
   }, {
-    "title": "Attack on Titan",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTY5ODk1NzUyMl5BMl5BanBnXkFtZTgwMjUyNzEyMTE@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
     "title": "Seinfeld",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTQ2MDYyNDYyNl5BMl5BanBnXkFtZTgwNDQ4OTkwMDE@._V1_SX640_SY720_.jpg",
     "links": [{
@@ -846,14 +815,6 @@
       "url": "/character/ch0010180/?ref_=tt_cl_t4",
       "name": "George Costanza",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTQzNDI3NDUyM15BMl5BanBnXkFtZTYwODY0NzM3._V1_SX640_SY720_.jpg"
-    }]
-  }, {
-    "title": "Top Gear",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTU0NzU2ODU4NV5BMl5BanBnXkFtZTcwMTM4OTI0Mg@@._V1_SX640_SY720_.jpg",
-    "links": [{
-      "url": "/character/ch0048484/?ref_=tt_cl_t4",
-      "name": "The Stig",
-      "src": "http://ia.media-imdb.com/images/M/MV5BMjI0Mzk3MzIyMl5BMl5BanBnXkFtZTcwMjI5Njg1NA@@._V1_SX640_SY720_.jpg"
     }]
   }, {
     "title": "Twin Peaks",
@@ -1068,14 +1029,6 @@
       "src": "http://ia.media-imdb.com/images/M/MV5BMjM2NTg4MjM5Ml5BMl5BanBnXkFtZTgwNzg0MDU1MjE@._V1_SX640_SY720_.jpg"
     }]
   }, {
-    "title": "Undercover",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTEwODUwNjEwMDBeQTJeQWpwZ15BbWU3MDczMDAzODU@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
-    "title": "Only Fools and Horses....",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTQ5MTIzNDMwMl5BMl5BanBnXkFtZTYwMDI3NjA5._V1._CR48,36,233,341_SX640_SY720_.jpg",
-    "links": []
-  }, {
     "title": "Oz",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BOTAxOTg2ODM3MF5BMl5BanBnXkFtZTgwMjIyMzgwMzE@._V1_SX640_SY720_.jpg",
     "links": [{
@@ -1139,10 +1092,6 @@
       "name": "Bulma",
       "src": "http://ia.media-imdb.com/images/M/MV5BMjA2NDIzMTQwNl5BMl5BanBnXkFtZTcwOTE1NjI0Mg@@._V1_SX640_SY720_.jpg"
     }, {
-      "url": "/character/ch0041165/?ref_=tt_cl_t16",
-      "name": "Bulma",
-      "src": "http://ia.media-imdb.com/images/M/MV5BMjA2NDIzMTQwNl5BMl5BanBnXkFtZTcwOTE1NjI0Mg@@._V1_SX640_SY720_.jpg"
-    }, {
       "url": "/character/ch0026892/?ref_=tt_cl_t18",
       "name": "Goku",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTcxNDc3NDM1OV5BMl5BanBnXkFtZTgwMTMzMjIyMjE@._V1_SX640_SY720_.jpg"
@@ -1151,14 +1100,6 @@
       "name": "Chi-Chi",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTkxODE1NDc5Nl5BMl5BanBnXkFtZTcwMDc2MjAyMg@@._V1_SX640_SY720_.jpg"
     }]
-  }, {
-    "title": "Impractical Jokers",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTQ4ODA4MTQ3Ml5BMl5BanBnXkFtZTcwMDgwMDE2Nw@@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
-    "title": "One Piece",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BNTcxMjEzNjc3NV5BMl5BanBnXkFtZTcwODg4MTU0MQ@@._V1_SX640_SY720_.jpg",
-    "links": []
   }, {
     "title": "Blackadder Goes Forth",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BNDIyNDY5OTI3OF5BMl5BanBnXkFtZTcwNDgxMzUxMQ@@._V1_SX640_SY720_.jpg",
@@ -1179,14 +1120,6 @@
       "name": "Captain Kevin Darling",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTg3MTg1MTMyMl5BMl5BanBnXkFtZTgwODI0NTkwMzE@._V1_SX640_SY720_.jpg"
     }]
-  }, {
-    "title": "QI",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTMwMDUyMzA1OF5BMl5BanBnXkFtZTcwNzg0MTA0MQ@@._V1_SX640_SY720_.jpg",
-    "links": []
-  }, {
-    "title": "Through the Wormhole",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTc2Mzc0MDM4OV5BMl5BanBnXkFtZTcwNDg1MzczNQ@@._V1_SX640_SY720_.jpg",
-    "links": []
   }, {
     "title": "Doctor Who",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMjI2MTc4MjMzMV5BMl5BanBnXkFtZTgwNDIyNzkwMjE@._V1_SX640_SY720_.jpg",
@@ -1223,10 +1156,6 @@
       "name": "Martha Jones",
       "src": "http://ia.media-imdb.com/images/M/MV5BMjE2MTMwMjkyMV5BMl5BanBnXkFtZTgwODcwNzcyMDE@._V1_SX640_SY720_.jpg"
     }]
-  }, {
-    "title": "The Daily Show with Jon Stewart",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BNTg0MzEzMjQ4OV5BMl5BanBnXkFtZTcwNjk5NzkyMQ@@._V1_SX640_SY720_.jpg",
-    "links": []
   }, {
     "title": "Fawlty Towers",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTI4NzkxNzE2NV5BMl5BanBnXkFtZTcwNTc0OTQyMQ@@._V1_SX640_SY720_.jpg",
@@ -1303,10 +1232,6 @@
       "name": "Chef",
       "src": "http://ia.media-imdb.com/images/M/MV5BMTQyNzc5NTEwN15BMl5BanBnXkFtZTgwODY0Njg0MjE@._V1_SX640_SY720_.jpg"
     }]
-  }, {
-    "title": "Steins;Gate",
-    "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BODE2NDg1NzQyM15BMl5BanBnXkFtZTgwMzA3ODcwMzE@._V1._CR203,47,284,372_SX640_SY720_.jpg",
-    "links": []
   }, {
     "title": "Gravity Falls",
     "coverPhoto": "http://ia.media-imdb.com/images/M/MV5BMTEzNDc3MDQ2NzNeQTJeQWpwZ15BbWU4MDYzMzUwMDIx._V1_SX640_SY720_.jpg",

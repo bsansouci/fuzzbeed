@@ -48,16 +48,22 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[p-subj]] Who Need To Be Banned From Celebrating Halloween",
       "[[t-num]] [[p-subj]] Who Will Make You Feel Like A Genius",
       "[[t-num]] [[subj]] That Scream World Domination",
+      "[[t-num]] [[p-subj]] You Must Do In Your [[age]] According To [[famous-people-subj]]",
+      "If [[tv-show-characters-subj]] Had Instagram",
+      "[[t-num]] Times [[tv-show-characters-subj]] Summed Up You And Your BFF",
+      "[[famous-people-subj]] Receives A [[p-subj]], Is Overcome With Joy",
+      "[[t-num]] [[p-subj]] You Actually Cannot Resist Kissing"
     ];
   };
 
   this.loadQuizTitles = function(){
     templates = [
-    "What Character From [[showTitle]] Are You?",
-    "Which [[showTitle]] Characters Are You?",
-    "Which [[showTitle]] Character Is Your Soulmate?",
-    "Which [[showTitle]] Character Is Your Kindred Spirit?"];
-  }
+      "What Character From [[showTitle]] Are You?",
+      "Which [[showTitle]] Characters Are You?",
+      "Which [[showTitle]] Character Is Your Soulmate?",
+      "Which [[showTitle]] Character Is Your Kindred Spirit?"
+    ];
+  };
 /*
 what's your favorite []?
 What's your dream []?
@@ -66,41 +72,48 @@ Pick a []
 Which [] is the most attractive?
 Choose a []
 */
-  this.loadQuizQuestions = function(){
+  this.loadQuizPhotoQuestions = function(){
     templates = [
-    "What's Your Favorite [[sn-subj]]?",
-    "What's Your Dream [[sn-subj]]?",
-    "Which [[sn-subj]] Resonates With You The Most?",
-    "Pick A [[sn-subj]]",
-    "Which [[sn-subj]] Is Most Attractive?",
-    "Choose A [[sn-subj]]",
-    "What Type Of [[sn-subj]] Really Puts You In The Mood"];
+      "What's Your Favorite [[sn-subj]]?",
+      "What's Your Dream [[sn-subj]]?",
+      "Which [[sn-subj]] Resonates With You The Most?",
+      "Pick A [[sn-subj]]",
+      "Which [[sn-subj]] Is Most Attractive?",
+      "Choose A [[sn-subj]]",
+      "What Type Of [[sn-subj]] Really Puts You In The Mood",
+      "Pick What Represents Your [[sup-adj]] [[sn-subj]] The Best"
+    ];
   };
 
 
   this.loadQuizNounQuestions = function(){
     templates = [
-    "Which Of The Following Would You Rather Eat?",
-    "Which Looks The Most Appetizing?",
-    "Which One Is The [[sup-adj]] Of The Following?",
-    "Which Seems Like It Would Feel The Best?",
-    "Which Do You Value Most?",
-    "Which Is [[sup-adj]]?",
-    "Which Of The Following is Worth Your Life?",
-    "Which Of These Do You Have The Most Of?",
-    "Which Is The Best Aphrodisiac?",
-    "Choose A Synonym For [[noun]]",
-    "What's [[num]] + [[num]]?"];
+      "Which Of The Following Would You Rather Eat?",
+      "Which Looks The Most Appetizing?",
+      "Which One Is The [[sup-adj]] Of The Following?",
+      "Which Seems Like It Would Feel The Best?",
+      "Which Do You Value Most?",
+      "Which Is [[sup-adj]]?",
+      "Which Of The Following is Worth Your Life?",
+      "Which Of These Do You Have The Most Of?",
+      "Which Is The Best Aphrodisiac?",
+      "Choose A Synonym For [[noun]]",
+      "What's [[num]] + [[num]]?",
+      "What Are Your Thoughts On [[sn-subj]]?",
+      "Is [[sn-subj]] A Childhood Dream?",
+    ];
   };
 
   this.loadQuizPeopleQuestions = function() {
     templates = [
-    "Choose Your Career",
-    "Who Do You Hate The Most?",
-    "Pick The [[sup-adj]] Co-Worker",
-    "Who Would You Rather [[verb]]?",
-    "Who's The [[sup-adj]]",
-    "What's Your Drunk Alter Ego?"];
+      "Choose Your Future Career",
+      "Who Do You Hate The Most?",
+      "Pick The [[sup-adj]] Co-Worker",
+      "Who Would You Rather [[verb]]?",
+      "Who's The [[sup-adj]]?",
+      "What's Your Drunk Alter Ego?",
+      "What's [[tv-show-characters-subj]]'s Real Job?"
+    ];
   };
 
   this.loadQuizYesNoQuestions = function() {
@@ -108,7 +121,8 @@ Choose a []
       "Do You Usually [[verb]] [[noun]] In The Morning?",
       "Do You Hate [[people]]?",
       "Is [[sn-subj]] Your Favorite Food",
-      "Would You Ever Eat [[sn-subj]]"
+      "Would You Ever Eat [[subj]]",
+      "Is [[famous-people-subj]] Actually [[adj]]"
     ];
   };
 
@@ -119,8 +133,8 @@ Choose a []
 
 
   var dicts = {};
-  var minNum = 10;
-  var maxNum = 42;
+  var minNum = 5;
+  var maxNum = 30;
 
   function loadFile(key, file, callback){
     fs.readFile(file, 'utf8', function (err,data) {
@@ -140,11 +154,17 @@ Choose a []
   loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
     loadFile("adj", "wordlists/adj.txt", function () {
       loadFile("subj", "wordlists/nouns.txt", function () {
+        dicts["sn-subj"] = dicts["subj"].map(function(x){ return Inflect.singularize(x); });
         loadFile("people", "wordlists/people-nouns.txt", function () {
           loadFile("crazy", "wordlists/crazy-adj.txt", function () {
             loadFile("verb", "wordlists/verb.txt", function () {
-              dicts["sn-subj"] = dicts["subj"].map(function(x){ return Inflect.singularize(x); });
-              if (callback) callback();
+              loadFile("famous-people", "wordlists/famous-people.txt", function () {
+                loadFile("tv-show-characters", "wordlists/tv-show-characters.txt", function () {
+                  loadFile("age", "wordlists/age.txt", function () {
+                    if (callback) callback();
+                  });
+                });
+              });
             });
           });
         });
@@ -182,6 +202,14 @@ Choose a []
         template = replaceMatch(template, match, ret.subj);
       } else if (inner === "p-subj"){
         inner = "people";
+        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
+        template = replaceMatch(template, match, ret.subj);
+      } else if (inner === "tv-show-characters-subj") {
+        inner = "tv-show-characters";
+        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
+        template = replaceMatch(template, match, ret.subj);
+      } else if (inner === "famous-people-subj") {
+        inner = "famous-people";
         ret.subj = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, ret.subj);
       } else {

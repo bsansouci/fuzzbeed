@@ -101,14 +101,12 @@ app.param('articleName', function(req, res, next, articleName) {
 app.param('quizzName', function(req, res, next, articleName) {
   firebaseQuizzes.orderByChild("articleName").equalTo(articleName).once("value", function(snapshot) {
     var v = snapshot.val();
-    console.log(articleName, v);
     if(!v) return next();
 
     for (var prop in v) {
       if(v.hasOwnProperty(prop)) {
         req.quiz = v[prop];
         req.quiz.timestamp = new Date(req.quiz.timestamp).toGMTString();
-        console.log("Quiz: ", req.quiz);
         req.quiz.result = req.quiz.possibleResults[rand(0, req.quiz.possibleResults.length)];
         next();
         return;
@@ -225,6 +223,7 @@ app.get('/write-an-article', function(req, res) {
   } else {
     firebaseProfiles.once("value", function(snapshot) {
       var v = snapshot.val();
+      if(!v) v = [newAuthor()];
       var allKeys = Object.keys(v);
       var author = v[allKeys[rand(0, allKeys.length)]];
       articleGenerator.createEntireArticle(author, templater, function(article) {
@@ -354,7 +353,6 @@ function newAuthor(){
   var randomBannerSearchText = templater.getRand('subj');
   findPictures(randomBannerSearchText, function(photos) {
     author.bannerPhoto = photos[rand(0, photos.length)];
-    console.log("Banner URL: " + author.bannerPhoto);
   });
   return author;
 }

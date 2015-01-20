@@ -1136,9 +1136,8 @@
 									<li class="posts-list__item">
 										<div class="lede ">
 											<a class="lede__link" href={{something.url}} rel:gt_act="post/thumb">
-												<div class="lede__media">
-													<img src={{something.previewUrl}} width="125" height="83">
-												</div>
+											<div class="lede__media" style="width: 125px;height: 83px;background-image: url('{{something.previewUrl}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%; position:relative;">
+																					</div>
 											</a>
 											<div class="">
 												<h2 class="lede__title lede__title--medium">
@@ -1226,11 +1225,10 @@
 									{% for something in __sideArticles %}
 									<li class="posts-list__item">
 										<div class="lede ">
-											<a class="lede__link" href={{something.url}} rel:gt_act="post/thumb">
-												<div class="lede__media">
-													<img src={{something.previewUrl}} width="336" height="119">
-												</div>
-											</a>
+											<a href="{{something.url}}">
+					<div style="width: 336px;height: 150px;background-image: url('{{something.previewUrl}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%; position:relative;">
+					</div>
+				</a>
 											<div class="">
 												<h2 class="lede__title lede__title--medium">
 													<a class="lede__link" href={{something.url}} rel:gt_act="post/title">

@@ -2198,7 +2198,8 @@ document.observe('dom:loaded',fb_click);
 	<div class="user_banner " id="user_banner_div">
 
 
-				<h1><a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="{{profileUrl}}"><div alt="{{name}}" style="background-image:url('{{bannerPhoto}}');background-size:cover;background-repeat:no-repeat;background-position:center;width:1020px;height:155px;background-position: 50% 50%;"></div></a></h1>
+				<h1><a track="{&quot;c&quot;:&quot;7EWVN57&quot;,&quot;u&quot;:&quot;71S6GQ7&quot;,&quot;buzz&quot;:&quot;15-play-sets-from-the-80s-that-are-now-worth-bank&quot;,&quot;user&quot;:&quot;briangalindo&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}" href="{{profileUrl}}"><div alt="{{name}}" style="width: 1020px;height: 155px;background-image: url('{{bannerPhoto}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%">
+				</div></a></h1>
 
 
 
@@ -2376,8 +2377,7 @@ document.observe('dom:loaded',fb_click);
 		<article>
 			<header>
 				<div class="thumb-unit">
-						<div style="position:relative;">
-							<img class="thumb bf_dom " src="{{something.previewUrl}}" alt="" rel:bf_image_src="{{something.previewUrl}}" height="83" width="125">
+						<div style="width: 125px;height: 83px;background-image: url('{{something.previewUrl}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%; position:relative;">
 						</div>
 					</a>
 				</div>
@@ -2572,7 +2572,10 @@ document.observe('dom:loaded',fb_click);
   <!-- thisisthetemplate -->
   {% for something in __sideArticles %}
     <div class="post sidebar-post sidebar-post-wide  top bf_dom" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7EWLE37&quot;,&quot;u&quot;:&quot;75B3M87&quot;,&quot;buzz&quot;:&quot;whats-the-best-relationship-advice-youve-ever-gotten&quot;,&quot;user&quot;:&quot;jessicaprobus&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}">
-		<a href="{{something.url}}" rel:gt_act="post/thumb" rel:buzz_id="3576470"><img nopin="nopin" src="{{something.previewUrl}}" class="bf_dom thumb" rel:bf_bucket="progload" alt=""></a>
+		<a href="{{something.url}}">
+					<div style="width: 336px;height: 150px;background-image: url('{{something.previewUrl}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%; position:relative;">
+					</div>
+				</a>
     <h2><a href="{{something.url}}" rel:gt_act="post/title" rel:buzz_id="3576470">{{something.title}}</a></h2>
 
    </div>

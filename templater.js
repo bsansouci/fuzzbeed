@@ -51,7 +51,7 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[p-subj]] You Must Do In Your [[age]] According To [[famous-people-subj]]",
       "If [[tv-show-characters-subj]] Had Instagram",
       "[[t-num]] Times [[tv-show-characters-subj]] Summed Up You And Your BFF",
-      "[[famous-people-subj]] Receives A [[sn-subj]], Is Overcome With Joy",
+      "[[famous-people-subj]] Receives A [[sn-noun]], Is Overcome With Joy",
       "[[t-num]] [[p-subj]] You Actually Cannot Resist Kissing"
     ];
   };

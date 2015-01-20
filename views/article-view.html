@@ -1324,7 +1324,8 @@
 																				<a class="thumbbb bf_dom" href="{{something.url}}">
 																					<span class="title">{{something.title}}
 																					</span>
-																					<img nopin="nopin" src="{{something.previewUrl}}" alt="" height="79" width="119">
+																					<div style="width: 119px;height: 79px;background-image: url('{{something.previewUrl}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%; position:relative;">
+																					</div>
 																					<span class="video-play-icon">
 																					</span>
 																				</a>
@@ -1400,8 +1401,9 @@
 																					</div>
 																				</div>
 																				<div id="share_control" class="bf_dom square_shares shown" rel:bf_bucket="abtest" rel:ab_test="fwd_linkedin" rel:gt_cat="Buzz">
-																			<div class="fb-share-button" data-href=document.URL data-layout="button"></div>																					<div class="horizontal-share-buttons upper-share-buttons c bf_dom" rel:gt_cat="[ttp]:sharing-upper" rel:bf_bucket="gtrack">
-																						<img src="/assets/sharing.png" />
+																			<div class="fb-share-button" data-href=document.URL data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
+																			<div class="horizontal-share-buttons upper-share-buttons c bf_dom fb-share-button" data-href=document.URL data-layout="button">
+																						<img src="/assets/sharing.png"/>
 																					</div>
 																				</div>
 																				<div class="hidden square_shares " id="pin_ref">
@@ -1854,32 +1856,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </div>
 </div>
 {% else %}
-<div class="quiz_result_area" id="result" style="display: none;">
-	<div class="quiz_tally_results" rel:tweet_via="buzzfeed">
-		<h2>{{title}}
-		</h2>
-		<div class="headline-1 quiz_tally" style="display: none;">
-		</div>
-		<ol>
-			<li class="quiz_result has_result_image">
-				<div class="headline-1">
-					You got:
-					{{result.title}}
-				</div>
-				<h2>{{result.body}}
-				</h2>
-				<div class="headline-1 answer_response" style="display: none;">
-				</div>
-				<div class="quiz_img_and_source">
-					<img class="result_img" src="{{result.imageUrl}}">{{result.randomWord}}
-				</span>
-			</div>
-		</li>
-	</ol>
-</div>
-<div class="hr">
-</div>
-</div>
+<div class="fb-share-button" data-href=document.URL data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
 </div>
 {% endif %}
 <script type="text/javascript">
@@ -1922,8 +1899,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		<div class="bf-widget partner-area bf_cts bf_cts-4-1 bf_dom script" rel:bf_cts="4:13:0:adslot" style="display: block;" id="BF_WIDGET_13" rel:bf_ad_position="30">
 			<div id="bf-item-13-1" class="bf-item lede lede--stacked f_other">
 				<a rel:gt_act="dfp/thumb" href="{{topBuzz.url}}" class="bf-url lede__link">
-					<div class="lede__media">
-						<img nopin="nopin" class="flex-wide-thumb bf-image-bigstory media__object campaign-wide-thumb" src="{{topBuzz.previewUrl}}" height="200" width="300">
+					<div class="lede__media" style="width: 336px;height: 200px;background-image: url('{{topBuzz.previewUrl}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%; position:relative;">
 					</div>
 				</a>
 				<h2 class="bf-item-title lede__title">
@@ -1937,7 +1913,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				<div class="media">
 					<div class="pull-left">
 						<a rel:gt_act="dfp/avatar" href="{{topBuzz.profileUrl}}" class="bf-user-url media__object pull-left">
-							<img nopin="nopin" class="bf-user_image_large media__object" src="{{topBuzz.previewUrl}}" height="35" width="35">
+							<img nopin="nopin" class="bf-user_image_large media__object" src="{{topBuzz.authorProfilePicture}}" height="35" width="35">
 						</a>
 					</div>
 					<div class="media__body">
@@ -2025,8 +2001,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			<!-- thisisthetemplate -->
 			{% for something in __sideArticles %}
 			<div class="post sidebar-post sidebar-post-wide  top bf_dom" rel:bf_bucket="track" track="{&quot;c&quot;:&quot;7EWLE37&quot;,&quot;u&quot;:&quot;75B3M87&quot;,&quot;buzz&quot;:&quot;whats-the-best-relationship-advice-youve-ever-gotten&quot;,&quot;user&quot;:&quot;jessicaprobus&quot;,&quot;types&quot;:[100],&quot;queries&quot;:[]}">
-				<a href="{{something.url}}" rel:gt_act="post/thumb" rel:buzz_id="3576470">
-					<img nopin="nopin" src="{{something.previewUrl}}" class="bf_dom thumb" rel:bf_bucket="progload" alt="">
+				<a href="{{something.url}}">
+					<div style="width: 336px;height: 150px;background-image: url('{{something.previewUrl}}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%; position:relative;">
+					</div>
 				</a>
 				<h2>
 					<a href="{{something.url}}" rel:gt_act="post/title" rel:buzz_id="3576470">{{something.title}}

@@ -160,7 +160,7 @@ app.get('/quizzes', function(req, res) {
       articles: v
     };
     injectSideStuff(obj, firebaseQuizzes, function() {
-      res.render('index', obj);
+      res.render('quizzes-view', obj);
     });
   });
 });

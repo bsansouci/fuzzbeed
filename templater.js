@@ -53,7 +53,7 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To [[x-famous-person]]",
       "If [[s-tv-show-character]] Had Instagram",
       "[[t-num]] Times [[s-tv-show-character]] Summed Up You And Your BFF",
-      "[[s-famous-person]] Receives A [[s-noun]], Is Overcome With Joy",
+      "[[s-famous-person]] Receives A [[x-noun]], Is Overcome With Joy",
       "[[t-num]] [[s-people]] You Actually Cannot Resist Kissing"
     ];
   };
@@ -203,7 +203,7 @@ module.exports = function Templater (callback) {
         template = replaceMatch(template, match, repl2);
       }
     }
-    
+
     while (!!(match = template.match(/{{[^}]+}}/))){
       match = match[0];
       inner = match.substr(2, match.length-4);

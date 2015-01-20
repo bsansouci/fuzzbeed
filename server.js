@@ -206,7 +206,11 @@ app.get('/users/:username', function(req, res) {
 });
 
 app.get('/write-article', function(req, res) {
-  res.render('write-article-view', {});
+  var obj = {};
+  injectSideStuff(obj, firebaseArticles, function() {
+    res.render('write-article-view', obj);
+  });
+
 });
 
 app.get('/write-an-article', function(req, res) {

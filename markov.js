@@ -176,7 +176,11 @@ module.exports = function Markov () {
     		var a = $('.mw-search-results a');
     		var url = a.first().attr("href");
     		request('https://en.wikipedia.org' + url, function (err, res, html) {
-    			if(err) console.error("error: ", err);
+    			if(err) {
+    				console.error("error at", url, " with subject ", subject, " ---> ", err);
+    				if(callback) return callback();
+    				else return;
+    			}
 
     			var $ = cheerio.load(html);
     			checkDisambiguation($);

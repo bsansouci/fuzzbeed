@@ -1,4 +1,5 @@
 var fs = require('fs');
+var async = require("async");
 var Inflect = require('i')();
 
 
@@ -145,29 +146,25 @@ module.exports = function Templater (callback) {
     dicts[key] = list;
   };
 
-  // Mmmm serial loading...
-  loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
-    loadFile("adj", "wordlists/adj.txt", function () {
-      loadFile("nouns", "wordlists/nouns.txt", function () {
-        loadFile("noun", "wordlists/noun.txt", function () {
-          loadFile("people", "wordlists/people.txt", function () {
-            loadFile("crazy", "wordlists/crazy.txt", function () {
-              loadFile("verb", "wordlists/verb.txt", function () {
-                loadFile("famous-person", "wordlists/famous-person.txt", function () {
-                  loadFile("tv-show-character", "wordlists/tv-show-character.txt", function () {
-                    loadFile("age", "wordlists/age.txt", function () {
-                      if (callback) callback();
-                    });
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-  });
+  var __listsToLoad = [
+    ["sup-adj", "wordlists/sup-adj.txt"],
+    ["adj", "wordlists/adj.txt"],
+    ["nouns", "wordlists/nouns.txt"],
+    ["noun", "wordlists/noun.txt"],
+    ["people", "wordlists/people.txt"],
+    ["crazy", "wordlists/crazy.txt"],
+    ["verb", "wordlists/verb.txt"],
+    ["famous-person", "wordlists/famous-person.txt"],
+    ["tv-show-character", "wordlists/tv-show-character.txt"],
+    ["age", "wordlists/age.txt"],
+  ];
 
+  async.mapLimit(__listsToLoad, 5, function(arr, callback) {
+    loadFile(arr[0], arr[1], callback);
+  }, function(err) {
+    if(err) return console.error(err);
+    if(callback) callback();
+  });
 
   function genFromTemplate(template){
     var match;

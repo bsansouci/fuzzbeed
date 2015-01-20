@@ -3,85 +3,76 @@ var Inflect = require('i')();
 
 
 module.exports = function Templater (callback) {
-  //Syntax:
-  //num:         Just a number
-  //t-num:       Number optionally preceded by "The"
-  //x-num:       Random number that the system doesn't care about
-  //sup-adj:     Superlative adjective
-  //adj:         Regular adjective
-  //subj:        plural noun
-  //noun:        plural noun not used as subject
-  //people:      plural noun describing a group of people (eg. "Children")
-  //p-subj:      same as people noun, but used instead of subj
-  //crazy:       adjectives expressing craziness
-  //pred:        mark question as true/false (replaced with "")
-  //verb         verb
-  //Every template must contain [[subj]] or [[p-subj]]
-  //  and either [[num]] or [[t-num]]
+  // SYNTAX:
+  // Add s- to a word to make it the subject
+  // Add x- to a word to add it to the extra search terms
+  // Convention: plural things have plural keys
+  // E.g. "cats" should be in "nouns"
+  //      "cat" should be in "noun"
+  // Every template should include an s- key.
+  // SPECIAL CASES:
+  // num:        Just a number
+  // tnum:       Number optionally preceded by "The"
+  // xnum:       Random number that the system doesn't care about
 
   var templates = {};
 
   this.loadBuzzTitles = function(){
     templates = [
-      "The [[num]] [[sup-adj]] [[subj]] In The World",
-      "The [[num]] [[sup-adj]] [[subj]] Of Last Summer",
-      "The [[num]] [[sup-adj]] [[subj]] Of The 90's",
-      "The [[num]] [[sup-adj]] [[subj]] Of The Last [[x-num]] Years",
-      "The [[num]] [[sup-adj]] [[subj]] Of This Century",
-      "The [[num]] [[sup-adj]] [[subj]] Only [[people]] Will Understand",
-      "The [[num]] [[sup-adj]] [[subj]] That Will Make You Laugh Every Time",
-      "The [[num]] [[sup-adj]] [[subj]] You Probably Didn't Know",
-      "[[num]] Things [[p-subj]] Should Be Allowed To Complain About",
-      "[[num]] Times [[subj]] Are The Worst And You Just Can't Even",
-      "[[num]] [[p-subj]] With Excellent New Year's Resolutions",
-      "[[num]] [[people]] With [[crazy]] [[subj]]",
-      "[[num]] [[subj]] For [[people]] That Should Really Exist",
-      "[[t-num]] Things [[p-subj]] Know To Be True",
-      "[[t-num]] [[adj]] [[subj]] That Will Make You Ask \"Why?\"",
-      "[[t-num]] [[adj]] [[subj]] You Probably Didn't Know",
-      "[[t-num]] [[crazy]] Things [[p-subj]] Know To Be True",
-      "[[t-num]] [[p-subj]] Who Are Clearly Being Raised [[adj]]",
-      "[[t-num]] [[p-subj]] Who Are Having A Really Rough Day",
-      "[[t-num]] [[p-subj]] Who Are Too Clever For Their Own Good",
-      "[[t-num]] [[p-subj]] Who Completely Screwed Up Their One Job",
-      "[[t-num]] [[p-subj]] Who Have Performed For [[people]]",
-      "[[t-num]] [[p-subj]] Who Need To Be Banned From Celebrating Halloween",
-      "[[t-num]] [[p-subj]] Who Will Make You Feel Like A Genius",
-      "[[t-num]] [[subj]] That Scream World Domination",
-      "[[t-num]] [[p-subj]] You Must Do In Your [[age]] According To [[famous-people-subj]]",
-      "If [[tv-show-characters-subj]] Had Instagram",
-      "[[t-num]] Times [[tv-show-characters-subj]] Summed Up You And Your BFF",
-      "[[famous-people-subj]] Receives A [[sn-noun]], Is Overcome With Joy",
-      "[[t-num]] [[p-subj]] You Actually Cannot Resist Kissing"
+      "The [[num]] [[sup-adj]] [[s-nouns]] In The World",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Of Last Summer",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Of The 90's",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Of The Last [[x-num]] Years",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Of This Century",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Only [[people]] Will Understand",
+      "The [[num]] [[sup-adj]] [[s-nouns]] That Will Make You Laugh Every Time",
+      "The [[num]] [[sup-adj]] [[s-nouns]] You Probably Didn't Know",
+      "[[num]] Things [[s-people]] Should Be Allowed To Complain About",
+      "[[num]] Times [[s-nouns]] Are The Worst And You Just Can't Even",
+      "[[num]] [[s-people]] With Excellent New Year's Resolutions",
+      "[[num]] [[x-people]] With [[crazy]] [[s-nouns]]",
+      "[[num]] [[s-nouns]] For [[x-people]] That Should Really Exist",
+      "[[t-num]] Things [[s-people]] Know To Be True",
+      "[[t-num]] [[adj]] [[s-nouns]] That Will Make You Ask \"Why?\"",
+      "[[t-num]] [[adj]] [[s-nouns]] You Probably Didn't Know",
+      "[[t-num]] [[crazy]] Things [[s-people]] Know To Be True",
+      "[[t-num]] [[s-people]] Who Are Clearly Being Raised [[x+adj]]",
+      "[[t-num]] [[s-people]] Who Are Having A Really Rough Day",
+      "[[t-num]] [[s-people]] Who Are Too Clever For Their Own Good",
+      "[[t-num]] [[s-people]] Who Completely Screwed Up Their One Job",
+      "[[t-num]] [[s-people]] Who Have Performed For [[x-people]]",
+      "[[t-num]] [[s-people]] Who Need To Be Banned From Celebrating Halloween",
+      "[[t-num]] [[s-people]] Who Will Make You Feel Like A Genius",
+      "[[t-num]] [[s-nouns]] That Scream World Domination",
+      "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To [[x-famous-person]]",
+      "If [[s-tv-show-character]] Had Instagram",
+      "[[t-num]] Times [[s-tv-show-character]] Summed Up You And Your BFF",
+      "[[s-famous-person]] Receives A [[s-noun]], Is Overcome With Joy",
+      "[[t-num]] [[s-people]] You Actually Cannot Resist Kissing"
     ];
   };
 
   this.loadQuizTitles = function(){
     templates = [
-      "What Character From [[showTitle]] Are You?",
-      "Which [[showTitle]] Characters Are You?",
-      "Which [[showTitle]] Character Is Your Soulmate?",
-      "Which [[showTitle]] Character Is Your Kindred Spirit?"
+      "What Character From [[s-showTitle]] Are You?",
+      "Which [[s-showTitle]] Characters Are You?",
+      "Which [[s-showTitle]] Character Is Your Soulmate?",
+      "Which [[s-showTitle]] Character Is Your Kindred Spirit?"
     ];
   };
-/*
-what's your favorite []?
-What's your dream []?
-Which [] resonates with you the most?
-Pick a []
-Which [] is the most attractive?
-Choose a []
-*/
+
+
+
   this.loadQuizPhotoQuestions = function(){
     templates = [
-      "What's Your Favorite [[sn-subj]]?",
-      "What's Your Dream [[sn-subj]]?",
-      "Which [[sn-subj]] Resonates With You The Most?",
-      "Pick A [[sn-subj]]",
-      "Which [[sn-subj]] Is Most Attractive?",
-      "Choose A [[sn-subj]]",
-      "What Type Of [[sn-subj]] Really Puts You In The Mood",
-      "Pick What Represents Your [[sup-adj]] [[sn-subj]] The Best"
+      "What's Your Favorite [[s-noun]]?",
+      "What's Your Dream [[s-noun]]?",
+      "Which [[s-noun]] Resonates With You The Most?",
+      "Pick A [[s-noun]]",
+      "Which [[s-noun]] Is Most Attractive?",
+      "Choose A [[s-noun]]",
+      "What Type Of [[s-noun]] Really Puts You In The Mood",
+      "Pick What Represents Your [[sup-adj]] [[s-noun]] The Best"
     ];
   };
 
@@ -99,8 +90,8 @@ Choose a []
       "Which Is The Best Aphrodisiac?",
       "Choose A Synonym For [[noun]]",
       "What's [[num]] + [[num]]?",
-      "What Are Your Thoughts On [[sn-subj]]?",
-      "Is [[sn-subj]] A Childhood Dream?",
+      "What Are Your Thoughts On [[s-noun]]?",
+      "Is [[s-noun]] A Childhood Dream?",
     ];
   };
 
@@ -112,17 +103,17 @@ Choose a []
       "Who Would You Rather [[verb]]?",
       "Who's The [[sup-adj]]?",
       "What's Your Drunk Alter Ego?",
-      "What's [[tv-show-characters-subj]]'s Real Job?"
+      "What's [[s-tv-show-character]]'s Real Job?"
     ];
   };
 
   this.loadQuizYesNoQuestions = function() {
     templates = [
-      "Do You Usually [[verb]] [[noun]] In The Morning?",
-      "Do You Hate [[people]]?",
-      "Is [[sn-subj]] Your Favorite Food",
-      "Would You Ever Eat [[subj]]",
-      "Is [[famous-people-subj]] Actually [[adj]]"
+      "Do You Usually [[verb]] [[s-noun]] In The Morning?",
+      "Do You Hate [[s-people]]?",
+      "Is [[s-noun]] Your Favorite Food",
+      "Would You Ever Eat [[s-nouns]]",
+      "Is [[s-famous-person]] Actually [[adj]]"
     ];
   };
 
@@ -133,7 +124,7 @@ Choose a []
 
 
   var dicts = {};
-  var minNum = 5;
+  var minNum = 7;
   var maxNum = 30;
 
   function loadFile(key, file, callback){
@@ -153,16 +144,16 @@ Choose a []
   // Mmmm serial loading...
   loadFile("sup-adj", "wordlists/sup-adj.txt", function () {
     loadFile("adj", "wordlists/adj.txt", function () {
-      loadFile("subj", "wordlists/nouns.txt", function () {
-        dicts["sn-subj"] = dicts["subj"].map(function(x){ return Inflect.singularize(x); });
-        dicts["sn-noun"] = dicts["sn-subj"];
-        loadFile("people", "wordlists/people-nouns.txt", function () {
-          loadFile("crazy", "wordlists/crazy-adj.txt", function () {
-            loadFile("verb", "wordlists/verb.txt", function () {
-              loadFile("famous-people", "wordlists/famous-people.txt", function () {
-                loadFile("tv-show-characters", "wordlists/tv-show-characters.txt", function () {
-                  loadFile("age", "wordlists/age.txt", function () {
-                    if (callback) callback();
+      loadFile("nouns", "wordlists/nouns.txt", function () {
+        loadFile("noun", "wordlists/noun.txt", function () {
+          loadFile("people", "wordlists/people.txt", function () {
+            loadFile("crazy", "wordlists/crazy.txt", function () {
+              loadFile("verb", "wordlists/verb.txt", function () {
+                loadFile("famous-person", "wordlists/famous-person.txt", function () {
+                  loadFile("tv-show-character", "wordlists/tv-show-character.txt", function () {
+                    loadFile("age", "wordlists/age.txt", function () {
+                      if (callback) callback();
+                    });
                   });
                 });
               });
@@ -173,11 +164,13 @@ Choose a []
     });
   });
 
+
   function genFromTemplate(template){
     var match;
     var inner;
     var ret = {};
     ret.num = rand(minNum, maxNum);
+    ret.extra = [];
     while (!!(match = template.match(/\[\[[^\]]+]]/))){
       match = match[0];
       inner = match.substr(2, match.length-4);
@@ -189,33 +182,19 @@ Choose a []
         template = replaceMatch(template, match, "The "+ret.num);
       } else if (inner === "x-num"){
         template = replaceMatch(template, match, ""+rand(minNum,maxNum));
-      } else if (inner === "pred"){
-        ret.isPred = true;
-        template = replaceMatch(template, match, "");
-      } else if (inner === "noun"){
-        inner = "subj";
-        var n = dicts[inner][rand(0,dicts[inner].length)];
-        template = replaceMatch(template, match, n);
-      } else if (inner === "subj"){
+      } else  if (inner.indexOf("s-") === 0){
+        inner = inner.substring(2,inner.length);
         ret.subj = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, ret.subj);
-      } else if (inner === "sn-subj"){
-        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
-        template = replaceMatch(template, match, ret.subj);
-      } else if (inner === "p-subj"){
-        inner = "people";
-        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
-        template = replaceMatch(template, match, ret.subj);
-      } else if (inner === "tv-show-characters-subj") {
-        inner = "tv-show-characters";
-        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
-        template = replaceMatch(template, match, ret.subj);
-      } else if (inner === "famous-people-subj") {
-        inner = "famous-people";
-        ret.subj = dicts[inner][rand(0,dicts[inner].length)];
-        template = replaceMatch(template, match, ret.subj);
+      } else if (inner.indexOf("x-") === 0){
+        inner = inner.substring(2,inner.length);
+        var repl = dicts[inner][rand(0,dicts[inner].length)];
+        ret.extra.push(repl);
+        template = replaceMatch(template, match, repl);
       } else {
-        template = replaceMatch(template, match, dicts[inner][rand(0,dicts[inner].length)]);
+        console.log(inner);
+        var repl2 = dicts[inner][rand(0,dicts[inner].length)];
+        template = replaceMatch(template, match, repl2);
       }
     }
     ret.title = template;
@@ -240,3 +219,12 @@ Choose a []
     return newStr;
   }
 };
+
+var Templater = require("./templater");
+var temp = new Templater(function () {
+  console.log("loaded");
+  temp.loadBuzzTitles();
+  for (var i = 0; i < 5; i++){
+    console.log(temp.generateName());
+  }
+});

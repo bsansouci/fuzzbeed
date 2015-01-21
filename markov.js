@@ -147,7 +147,7 @@ module.exports = function Markov () {
 				var a = $('#mw-content-text ul a');
 	    	var url = a.first().attr("href");
 
-	    	request('https://en.wikipedia.org' + url, function (err, res, html) {
+	    	request('https://simple.wikipedia.org' + url, function (err, res, html) {
     			var $ = cheerio.load(html);
     			$('.mw-content-ltr').each(function() {
     				var data = $(this);

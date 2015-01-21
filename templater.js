@@ -1,6 +1,7 @@
 var fs = require('fs');
 var async = require("async");
 var Inflect = require('i')();
+var Article = require('indefinite-article');
 
 
 module.exports = function Templater (callback) {
@@ -8,9 +9,15 @@ module.exports = function Templater (callback) {
   // Add s- to a key to make it the subject
   // Surround something with _ to add it to the extra search terms
   // Convention: plural things have plural keys
-  // E.g. "cats" should be in "nouns"
-  //      "cat" should be in "noun"
+  // E.g. [[nouns]] -> cats
+  //      [[noun]] -> cat
   // Every template should include an s- key.
+  // PREDICTIVE INDEFINITE ARTICLES:
+  // *A* tries to add an appropriate indefinite article.
+  // E.g. *A* [[s-noun]] -> A Cat
+  //      *A* [[a s-noun]] -> An Apple
+  //
+  //
   // OPTIONALS:
   // {{first|second|...}}
   // SPECIAL CASES:
@@ -21,7 +28,7 @@ module.exports = function Templater (callback) {
   var templates = {};
 
   this.loadTestTitles = function(){
-    templates = ["_Test_ [[s-noun]] _{{one option|two option}}_"];
+    templates = ["_Test_ *A* [[s-noun]] _{{one option|two option}}_"];
   };
 
   this.loadBuzzTitles = function(){
@@ -44,17 +51,17 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[adj]] [[s-nouns]] You Probably Didn't Know",
       "[[t-num]] [[crazy]] Things [[s-people]] Know To Be True",
       "[[t-num]] [[s-people]] Who Are Clearly Being Raised _[[adj]]_",
-      "[[t-num]] [[s-people]] Who Are Having A Really Rough Day",
+      "[[t-num]] [[s-people]] Who Are Having *A* Really Rough Day",
       "[[t-num]] [[s-people]] Who Are Too Clever For Their Own Good",
       "[[t-num]] [[s-people]] Who Completely Screwed Up Their One Job",
       "[[t-num]] [[s-people]] Who Have Performed For _[[people]]_",
       "[[t-num]] [[s-people]] Who Need To Be Banned From Celebrating _Halloween_",
-      "[[t-num]] [[s-people]] Who Will Make You Feel Like A Genius",
+      "[[t-num]] [[s-people]] Who Will Make You Feel Like *A* Genius",
       "[[t-num]] [[s-nouns]] That Scream _World Domination_",
       "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To _[[famous-person]]_",
       "If [[s-tv-show-character]] Had Instagram",
       "[[t-num]] Times [[s-tv-show-character]] Summed Up You And Your BFF",
-      "[[s-famous-person]] Receives A _[[noun]]_, Is Overcome With Joy",
+      "[[s-famous-person]] Receives *A* _[[noun]]_, Is Overcome With Joy",
       "[[t-num]] [[s-people]] You Actually Cannot Resist _Kissing_"
     ];
   };
@@ -75,9 +82,9 @@ module.exports = function Templater (callback) {
       "What's Your Favorite [[s-noun]]?",
       "What's Your Dream [[s-noun]]?",
       "Which [[s-noun]] Resonates With You The Most?",
-      "Pick A [[s-noun]]",
+      "Pick *A* [[s-noun]]",
       "Which [[s-noun]] Is Most Attractive?",
-      "Choose A [[s-noun]]",
+      "Choose *A* [[s-noun]]",
       "What Type Of [[s-noun]] Really Puts You In The Mood",
       "Pick What Represents Your [[sup-adj]] [[s-noun]] The Best"
     ];
@@ -95,10 +102,10 @@ module.exports = function Templater (callback) {
       "Which Of The Following is Worth Your Life?",
       "Which Of These Do You Have The Most Of?",
       "Which Is The Best Aphrodisiac?",
-      "Choose A Synonym For [[noun]]",
+      "Choose *A* Synonym For [[noun]]",
       "What's [[num]] + [[num]]?",
       "What Are Your Thoughts On [[s-noun]]?",
-      "Is [[s-noun]] A Childhood Dream?",
+      "Is [[s-noun]] *A* Childhood Dream?",
     ];
   };
 
@@ -213,6 +220,13 @@ module.exports = function Templater (callback) {
       template = replaceMatch(template, match, inner);
     }
 
+    var index;
+    while ((index = template.indexOf("*A*")) !== -1){
+      match = template.substring(index+3);
+      inner = Inflect.titleize(Article(match));
+      template = template.slice(0,index) + inner + template.slice(index + 3);
+    }
+
     ret.title = template;
     return ret;
   }
@@ -240,8 +254,8 @@ module.exports = function Templater (callback) {
 // var temp = new Templater(function () {
 //   console.log("loaded");
 //   temp.loadTestTitles();
-//   temp.loadBuzzTitles();
+//   //temp.loadBuzzTitles();
 //   for (var i = 0; i < 100; i++){
-//     console.log(temp.generateName());
+//     console.log(temp.generateName().title);
 //   }
 // });

@@ -28,6 +28,7 @@
     "i": "^0.3.2",
     "request": "^2.51.0",
     "seed-random": "^2.2.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "indefinite-article": "0.0.2"
   }
 }

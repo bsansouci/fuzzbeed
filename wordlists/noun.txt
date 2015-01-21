@@ -1,4 +1,3 @@
-Acoustic
 Action
 Activity
 Actor
@@ -7,13 +6,13 @@ Airport
 Alarm
 Animal
 Answer
-Apparel
 Apple
 Appliance
 Baking Tray
 Ball
 Balloon
 Banana
+Bandaid
 Baseball
 Basket
 Basketball
@@ -24,11 +23,13 @@ Bean
 Bed
 Bedroom
 Beetle
+Bicycle
 Bike
 Bird
-Blind
 Bomb
+Booger
 Book
+Bottle
 Bowl
 Box
 Brick
@@ -39,6 +40,8 @@ Bubble
 Bucket
 Bun
 Bush
+Button
+BuzzFeed Article
 CD
 Cabbage
 Cactus
@@ -46,6 +49,7 @@ Cake
 Cake Tin
 Calculator
 Calendar
+Camera
 Camp
 Can
 Cannon
@@ -58,6 +62,9 @@ Cattle
 Cemetery
 Cherry
 Chicken
+Chopstick
+Churro
+Cigarette
 Circle
 Class
 Clock
@@ -73,12 +80,14 @@ Crow
 Crowd
 Crown
 Cup
+Cup of Coffee
 Curtain
 Cushion
 DVD
 DVD player
 Day
 Desk
+Diary
 Dinner
 Dog
 Doll
@@ -100,27 +109,33 @@ Father
 Faucet
 Feast
 Feather
+Feeling
 Feet
+Flashlight
 Flavor
 Food
 Fork
 Frog
 Fruit
 Fruit Bowl
+FuzzBeed Article
 Game
 Garbage
-Goose
 Ghost
 Giraffe
 Girl
 Glass
 Goldfish
+Goose
+Government
 Gun
 Haircut
+Headphones
 Hen
 Hobby
 Holiday
 Hook
+Hula Hoop
 Icicle
 Island
 Jail
@@ -140,7 +155,9 @@ Lamp
 Language
 Laptop
 Light
+Light Bulb
 Locket
+Love Lesson
 Lunchroom
 Mailbox
 Map
@@ -149,12 +166,17 @@ Mask
 Mirror
 Mitten
 Mixing Bowl
+Motorcycle
+Movie
 Mug
 Notebook
 Ocean
+Octopus
 Owl
+Packet of Chewing Gum
 Pancake
 Paper
+Passport
 Peg
 Pen
 Pencil
@@ -170,11 +192,15 @@ Plantation
 Plate
 Playground
 Poison
+Postcard
 Py
 Quilt
 Rabbit
+Rhino
+Rhinoplasty
 Riddle
 Rifle
+Rite Of Passage
 River
 Road
 Rock
@@ -183,6 +209,7 @@ Rubbish Bin
 Rug
 Saucepan
 Scarecrow
+Scissor
 Seashore
 Shape
 Sheet
@@ -190,11 +217,16 @@ Shelf
 Shoe
 Shop
 Show
+Shower
 Sidewalk
 Sink
+Smartphone
+Smartwatch
+Smile
 Snail
 Snake
 Soap
+Sock
 Soda
 Song
 Spatula
@@ -209,6 +241,7 @@ Suit
 Sweater
 TV
 Table
+Telephone
 Tent
 Texture
 Tiger
@@ -222,14 +255,21 @@ Towel
 Toy
 Treatment
 Tree
+Tube of Chapstick
 Turkey
 Tweet
 Twig
+Umbrella
 Vaccum
 Vase
+Vegan
 Vegetable
+Video Game
 Volcano
 Volleyball
+Wallet
 Washing Powder
-Ways To Eat A Burrito
+Watch
+Way To Eat A Burrito
 Zebra
+iWatche

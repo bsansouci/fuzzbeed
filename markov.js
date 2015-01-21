@@ -137,7 +137,8 @@ module.exports = function Markov () {
 		return singularizedSubject;
 	};
 
-	this.pretrainWikipediaSubject = function(subject, callback) {
+	this.pretrainWikipediaSubject = function(article, callback) {
+		var subject = article.subj;
 		subject = singularizeSubject(subject);
 		var train = this.train;
 

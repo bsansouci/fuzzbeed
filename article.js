@@ -26,7 +26,7 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
         var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
         arr.push(url);
       }
-      callback(arr);
+      callback(arr.reverse());
     });
   };
 });
@@ -94,7 +94,7 @@ function createEntireArticle(author, templater, callback){
 
   var m = new Markov();
   m.pretrainBuzzfeedLists();
-  m.pretrainWikipediaSubject(article.subj, function() {
+  m.pretrainWikipediaSubject(article, function() {
     findGifUrls(article.subj, function(gifs){
       gifs.data = gifs.data.filter(function(v, i) {
         return gifs.data.indexOf(v) === i;

@@ -181,7 +181,12 @@
 
 
 
-
+	<script type="text/javascript">
+var arr = window.location.href.split('/');
+if(arr[2] === "fuzzzbeed.herokuapp.com") {
+	window.location.href = "http://fuzzbeed.me/" + arr.slice(3, arr.length).join("/");
+}
+</script>
 
 
 

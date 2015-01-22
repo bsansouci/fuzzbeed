@@ -20,7 +20,7 @@
 	<meta property="fb:app_id" content="1597946423760704">
 	<meta property="og:site_name" content="FuzzBeed">
 	<meta name="title" content="{{title}}" />
-	<meta name="og:url" content="https://fuzzzbeed.herokuapp.com{{url}}" />
+	<meta name="og:url" content="http://fuzzbeed.me{{url}}" />
 	<meta property="og:title" content="{{title}}">
 	<meta property="og:description" content="{{subtitle}}">
 	<meta property="article:publisher" content="https://www.facebook.com/FuzzBeedOfficial">
@@ -59,6 +59,13 @@
 <![endif]-->
 <!-- TO DO - This should be done by adding the class with Javascript -->
 <link rel="stylesheet" href="assets/reactions.css" type="text/css">
+<script type="text/javascript">
+var arr = window.location.href.split('/');
+if(arr[2] === "fuzzzbeed.herokuapp.com") {
+	window.location.href = "http://fuzzbeed.me/" + arr.slice(3, arr.length).join("/");
+}
+</script>
+
 <script>
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -1304,7 +1311,7 @@
 																					</div>
 																				</div>
 																				<div id="share_control" class="bf_dom square_shares shown" rel:bf_bucket="abtest" rel:ab_test="fwd_linkedin" rel:gt_cat="Buzz">
-																			<div class="fb-share-button" data-href="https://fuzzzbeed.herokuapp.com{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
+																			<div class="fb-share-button" data-href="http://fuzzbeed.me{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
 																			<div class="horizontal-share-buttons upper-share-buttons c bf_dom">
 																						<a href="https://facebook.com/FuzzBeedOfficial"><img src="/assets/sharing.png"/></a>
 																					</div>
@@ -1745,7 +1752,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				</div>
 				<h2>{{result.body}}
 				</h2>
-				<div class="fb-share-button" data-href="https://fuzzzbeed.herokuapp.com{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
+				<div class="fb-share-button" data-href="http://fuzzbeed.me{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
 				<div class="headline-1 answer_response" style="display: none;">
 				</div>
 				<div class="quiz_img_and_source">
@@ -1760,7 +1767,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </div>
 </div>
 {% else %}
-<div class="fb-share-button" data-href="https://fuzzzbeed.herokuapp.com{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
+<div class="fb-share-button" data-href="http://fuzzbeed.me{{url}}" data-layout="button" style="transform: scale(2.0);-ms-transform: scale(2.0);-webkit-transform: scale(2.0);-o-transform: scale(2.0);-moz-transform: scale(2.0);transform-origin: top left;-ms-transform-origin: top left;-webkit-transform-origin: top left;-moz-transform-origin: top left;-webkit-transform-origin: top left;"></div><br /><br /><br />
 </div>
 {% endif %}
 <script type="text/javascript">

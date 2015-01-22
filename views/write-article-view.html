@@ -106,6 +106,13 @@
   <link rel="canonical" href="http://www.buzzfeed.com/">
   <link rel="alternate" href="http://www.buzzfeed.com/?s=mobile">
   <link rel="alternate" href="android-app://com.buzzfeed.android/http/www.buzzfeed.com/?utm_source=google&amp;utm_medium=appindex&amp;utm_campaign=appindex">
+  <script type="text/javascript">
+var arr = window.location.href.split('/');
+if(arr[2] === "fuzzzbeed.herokuapp.com") {
+  window.location.href = "http://fuzzbeed.me/" + arr.slice(3, arr.length).join("/");
+}
+</script>
+
   <script type="text/javascript">//
     <![CDATA[
     if(null !== window.location.search.match("adtest")) {

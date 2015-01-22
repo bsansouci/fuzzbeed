@@ -563,6 +563,13 @@
     <link rel="stylesheet" href="/assets/header.css" type="text/css">
     <link rel="stylesheet" href="/assets/screen.css" type="text/css">
     <link rel="stylesheet" href="/assets/metaverticals.css" type="text/css">
+
+  <script type="text/javascript">
+var arr = window.location.href.split('/');
+if(arr[2] === "fuzzzbeed.herokuapp.com") {
+  window.location.href = "http://fuzzbeed.me/" + arr.slice(3, arr.length).join("/");
+}
+</script>
   </head>
   <body data-twttr-rendered="true" class="bf_dom">
   <!--[if gte IE 9]>

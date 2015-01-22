@@ -17,17 +17,24 @@
 	<meta property="og:type" content="website">
 	<meta property="og:description" content="The best pop culture, viral stories, and trends on the web. Everything you need to see and share.">
 	<meta property="og:title" content="FuzzBeed">
-	<meta property="og:image" content="https://fuzzzbeed.herokuapp.com{{topBuzz.previewUrl}}">
+	<meta property="og:image" content="http://fuzzbeed.me{{topBuzz.previewUrl}}">
 	<meta property="og:url" content="/">
 	<meta name="title" content="FuzzBeed">
 	<meta name="description" content="The best pop culture, viral stories, and trends on the web. Everything you need to see and share.">
-	<link rel="image_src" href="https://fuzzzbeed.herokuapp.com{{topBuzz.previewUrl}}">
+	<link rel="image_src" href="http://fuzzbeed.me{{topBuzz.previewUrl}}">
 	<link rel="shortcut icon" crossorigin="" href="/assets/favicon.ico?v=201501161526" type="image/x-icon">
-	<link rel="canonical" href="https://fuzzzbeed.herokuapp.com">
+	<link rel="canonical" href="http://fuzzbeed.me">
     <link rel="stylesheet" href="/assets/front.css" type="text/css">
     <link rel="stylesheet" href="/assets/header.css" type="text/css">
     <link rel="stylesheet" href="/assets/screen.css" type="text/css">
     <link rel="stylesheet" href="/assets/metaverticals.css" type="text/css">
+
+  <script type="text/javascript">
+var arr = window.location.href.split('/');
+if(arr[2] === "fuzzzbeed.herokuapp.com") {
+	window.location.href = "http://fuzzbeed.me/" + arr.slice(3, arr.length).join("/");
+}
+</script>
   </head>
   <body data-twttr-rendered="true" class="bf_dom">
 	<svg style="display:none" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">

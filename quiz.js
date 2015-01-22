@@ -359,11 +359,11 @@ var RUNME = function(start, toScrape, callback) {
 	});
 };
 
-RUNME("http://www.imdb.com/chart/top?ref_=nv_ch_250_4", ".titleColumn a", function(arr) {
-	fs.writeFile("allMovies.json", JSON.stringify({data: arr}), function() {
-		console.log("DONE");
-	});
-});
+// RUNME("http://www.imdb.com/chart/top?ref_=nv_ch_250_4", ".titleColumn a", function(arr) {
+// 	fs.writeFile("allMovies.json", JSON.stringify({data: arr}), function() {
+// 		console.log("DONE");
+// 	});
+// });
 
 
 // fs.readFile("allShows.json", 'utf8', function(err, data) {

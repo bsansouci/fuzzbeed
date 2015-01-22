@@ -255,115 +255,115 @@ module.exports = new function () {
 
 
 
-// var RUNME = function(callback) {
-// 	request('http://www.imdb.com/search/title?num_votes=5000,&sort=user_rating,desc&title_type=tv_series', function(err, res, html) {
-//   	if (err) return console.log(err);
+var RUNME = function(start, toScrape, callback) {
+	request(start, function(err, res, html) {
+  	if (err) return console.log(err);
 
-//   	var $ = cheerio.load(html);
-//   	var titles = $('.title a');
-//   	var links = [];
-//   	var coverPhotoUrl;
-
-
-//   	for (var i = 0; i < titles.length; i++) {
-//   		links.push({url: $(titles.get(i)).attr("href"), title: $(titles.get(i)).text().trim()});
-//   	}
-//   	links = links.filter(function(el) {
-//   		return el.url.indexOf("/title/") !== -1 && el.url.indexOf("/vote?v") === -1;
-//   	});
-
-// 		// var show = links[Math.floor((Math.random() * links.length))];
-// 		var allShows = [];
-// 		var loop = function(i) {
-// 			console.log(i + 1, "/", links.length);
-// 			if(i >= links.length) {
-// 				return callback(allShows);
-// 			}
-// 			var show = links[i];
-// 			request('http://imdb.com' + show.url, function (err, res, html) {
-// 				var $ = cheerio.load(html);
-// 				var characters = $('.character a');
-// 				var links = [];
-// 				var returnLinks = [];
-// 				var showCover = $('.image a');
-
-// 				// showCover.filter(function(el) { el. });
-// 				console.log("Show cover", $(showCover).attr("href"));
-// 				request('http://imdb.com' + $(showCover).attr("href"), function (err, res, html) {
-// 					if(!html) {
-// 						return loop(i+1);
-// 					}
-// 					var temp = cheerio.load(html); // crashed here, "Cannot read property 'parent' of undefined" with http://www.imdb.com/list/ls073461000/?ref_=tt_tt_edw_OscarNom_i_1#1
-// 					coverPhotoUrl = temp('#primary-img').attr("src");
-
-// 					for (var j = 0; j < characters.length; j++) {
-// 						if ($(characters.get(j)).attr("href"))
-// 							links.push({url: $(characters.get(j)).attr("href"), name: $(characters.get(j)).text().trim()});
-// 					}
-
-// 				//	console.log(links);
-
-// 					var index = 0;
-// 					function getImage(callback){
-// 						if (index < links.length) {
-// 							request('http://imdb.com' + links[index].url, function (err, res, html) {
-// 								var $ = cheerio.load(html);
-// 								var photos = $("a[name='headshot']");
-// 								if ($(photos).attr("href")) {
-// 									request('http://imdb.com' + $(photos).attr("href"), function (err, res, html) {
-// 										var $ = cheerio.load(html);
-// 										var photo = $('#primary-img');
-// 										links[index].src = photo.attr('src');
-// 										returnLinks.push(links[index]);
-// 										index++;
-// 										getImage(callback);
-// 									});
-// 								} else {
-// 									index++;
-// 									getImage(callback);
-// 								}
-// 							});
-// 						} else {
-// 							var s = {title: show.title, coverPhoto: coverPhotoUrl, links: returnLinks};
-// 							allShows.push(s);
-// 							// request(s.coverPhoto).pipe(fs.createWriteStream("./imdb/coverPhoto-"+s.title+".jpg")).on('close', function() {
-// 							// 	console.log("Done Cover");
-// 							// });
-// 							// s.links.map(function(v) {
-// 							// 	request(v.src).pipe(fs.createWriteStream("./imdb/"+s.title+"-"+v.name + ".jpg")).on('close', function() {
-// 							// 		console.log("done");
-// 							// 	});
-// 							// });
-// 							loop(i+1);
-// 						}
-// 					}
-// 					getImage(callback);
-// 				});
+  	var $ = cheerio.load(html);
+  	var titles = $(toScrape);
+  	var links = [];
+  	var coverPhotoUrl;
 
 
+  	for (var i = 0; i < titles.length; i++) {
+  		links.push({url: $(titles.get(i)).attr("href"), title: $(titles.get(i)).text().trim()});
+  	}
+  	links = links.filter(function(el) {
+  		return el.url.indexOf("/title/") !== -1 && el.url.indexOf("/vote?v") === -1;
+  	});
 
-// 				// for (var j = 0; j < links.length; j++) {
-// 				// 	request('http://imdb.com' + links[j].url, function (err, res, html) {
-// 				// 		var $ = cheerio.load(html);
-// 				// 		var photos = $("a[name='headshot']");
-// 				// 		console.log(links[j].name + ": " + $(photos.first()).attr("href"));
-// 				// 	});
-// 				// }
+		// var show = links[Math.floor((Math.random() * links.length))];
+		var allShows = [];
+		var loop = function(i) {
+			console.log(i + 1, "/", links.length);
+			if(i >= links.length) {
+				return callback(allShows);
+			}
+			var show = links[i];
+			request('http://imdb.com' + show.url, function (err, res, html) {
+				var $ = cheerio.load(html);
+				var characters = $('.character a');
+				var links = [];
+				var returnLinks = [];
+				var showCover = $('.image a');
 
-// 				//callback({showTitle: show.title, characters:})
+				// showCover.filter(function(el) { el. });
+				console.log("Show cover", $(showCover).attr("href"));
+				request('http://imdb.com' + $(showCover).attr("href"), function (err, res, html) {
+					if(!html) {
+						return loop(i+1);
+					}
+					var temp = cheerio.load(html); // crashed here, "Cannot read property 'parent' of undefined" with http://www.imdb.com/list/ls073461000/?ref_=tt_tt_edw_OscarNom_i_1#1
+					coverPhotoUrl = temp('#primary-img').attr("src");
 
-// 			});
-// 		};
+					for (var j = 0; j < characters.length; j++) {
+						if ($(characters.get(j)).attr("href"))
+							links.push({url: $(characters.get(j)).attr("href"), name: $(characters.get(j)).text().trim()});
+					}
 
-// 		loop(0);
-// 	});
-// };
+				//	console.log(links);
 
-// RUNME(function(arr) {
-// 	fs.writeFile("allShows.json", JSON.stringify({data: arr}), function() {
-// 		console.log("DONE");
-// 	});
-// });
+					var index = 0;
+					function getImage(callback){
+						if (index < links.length) {
+							request('http://imdb.com' + links[index].url, function (err, res, html) {
+								var $ = cheerio.load(html);
+								var photos = $("a[name='headshot']");
+								if ($(photos).attr("href")) {
+									request('http://imdb.com' + $(photos).attr("href"), function (err, res, html) {
+										var $ = cheerio.load(html);
+										var photo = $('#primary-img');
+										links[index].src = photo.attr('src');
+										returnLinks.push(links[index]);
+										index++;
+										getImage(callback);
+									});
+								} else {
+									index++;
+									getImage(callback);
+								}
+							});
+						} else {
+							var s = {title: show.title, coverPhoto: coverPhotoUrl, links: returnLinks};
+							allShows.push(s);
+							// request(s.coverPhoto).pipe(fs.createWriteStream("./imdb/coverPhoto-"+s.title+".jpg")).on('close', function() {
+							// 	console.log("Done Cover");
+							// });
+							// s.links.map(function(v) {
+							// 	request(v.src).pipe(fs.createWriteStream("./imdb/"+s.title+"-"+v.name + ".jpg")).on('close', function() {
+							// 		console.log("done");
+							// 	});
+							// });
+							loop(i+1);
+						}
+					}
+					getImage(callback);
+				});
+
+
+
+				// for (var j = 0; j < links.length; j++) {
+				// 	request('http://imdb.com' + links[j].url, function (err, res, html) {
+				// 		var $ = cheerio.load(html);
+				// 		var photos = $("a[name='headshot']");
+				// 		console.log(links[j].name + ": " + $(photos.first()).attr("href"));
+				// 	});
+				// }
+
+				//callback({showTitle: show.title, characters:})
+
+			});
+		};
+
+		loop(0);
+	});
+};
+
+RUNME("http://www.imdb.com/chart/top?ref_=nv_ch_250_4", ".titleColumn a", function(arr) {
+	fs.writeFile("allMovies.json", JSON.stringify({data: arr}), function() {
+		console.log("DONE");
+	});
+});
 
 
 // fs.readFile("allShows.json", 'utf8', function(err, data) {

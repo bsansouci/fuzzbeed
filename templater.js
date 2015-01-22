@@ -3,7 +3,6 @@ var async = require("async");
 var Inflect = require('i')();
 var Article = require('indefinite-article');
 
-
 module.exports = function Templater (callback) {
   // SYNTAX:
   // Add s- to a key to make it the subject

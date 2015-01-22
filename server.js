@@ -17,6 +17,8 @@ var flickrOptions = {
 var findPictures = null;
 
 Flickr.tokenOnly(flickrOptions, function(error, flickr) {
+  if(error) return console.error(error);
+
   // we can now use "flickr" as our API object
   findPictures = function(text, callback) {
     flickr.photos.search({
@@ -73,11 +75,7 @@ app.param('username', function(req, res, next, username) {
         next();
       });
     } else {
-      var obj = {};
-      injectSideStuff(obj, firebaseArticles, function() {
-        res.render('404', obj);
-      });
-      return;
+      return res.redirect("/");
     }
   });
 });
@@ -167,12 +165,9 @@ app.get('/quizzes', function(req, res) {
 
 app.get('/quizzes/:quizzName', function(req, res) {
   if(!req.quiz) {
-    var obj = {};
-    injectSideStuff(obj, firebaseQuizzes, function() {
-      res.render('404', obj);
-    });
-    return;
+    return res.redirect("/");
   }
+
   injectSideStuff(req.quiz, firebaseQuizzes, function() {
     res.render('article-view', req.quiz);
   });
@@ -180,12 +175,9 @@ app.get('/quizzes/:quizzName', function(req, res) {
 
 app.get('/users/:username/:articleName', function(req, res) {
   if(!req.article) {
-    var obj = {};
-    injectSideStuff(obj, firebaseArticles, function() {
-      res.render('404', obj);
-    });
-    return;
+    return res.redirect("/");
   }
+
   injectSideStuff(req.article, firebaseArticles, function() {
     res.render('article-view', req.article);
   });
@@ -193,11 +185,7 @@ app.get('/users/:username/:articleName', function(req, res) {
 
 app.get('/users/:username', function(req, res) {
   if(!req.profile) {
-    var obj = {};
-    injectSideStuff(obj, firebaseArticles, function() {
-      res.render('404', obj);
-    });
-    return;
+    return res.redirect("/");
   }
 
   injectSideStuff(req.profile, firebaseArticles, function() {
@@ -210,7 +198,6 @@ app.get('/write-article', function(req, res) {
   injectSideStuff(obj, firebaseArticles, function() {
     res.render('write-article-view', obj);
   });
-
 });
 
 app.get('/write-an-article', function(req, res) {
@@ -278,10 +265,7 @@ app.get('/write-a-quiz', function(req, res) {
 app.use(express.static(__dirname + "/views"));
 
 app.use(function(req, res, next) {
-  var obj = {};
-  injectSideStuff(obj, firebaseArticles, function() {
-    res.render('404', obj);
-  });
+  res.redirect('/');
 });
 
 app.listen(process.env.PORT || parseInt(process.argv[2]));

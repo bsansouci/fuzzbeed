@@ -19,7 +19,8 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
     flickr.photos.search({
       text: text
     }, function(err, result) {
-      if(err) { return console.log(err); }
+      if(err) return console.error(err);
+
       var photos = result.photos.photo;
       var arr = [];
       for (var i = 0; i < photos.length; i++) {
@@ -257,7 +258,7 @@ module.exports = new function () {
 
 var RUNME = function(start, toScrape, callback) {
 	request(start, function(err, res, html) {
-  	if (err) return console.log(err);
+  	if (err) return console.error(err);
 
   	var $ = cheerio.load(html);
   	var titles = $(toScrape);

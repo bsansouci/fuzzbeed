@@ -24,7 +24,8 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
     flickr.photos.search({
       text: text
     }, function(err, result) {
-      if(err) { return console.log(err); }
+      if(err) return console.error(err);
+
       var photos = result.photos.photo;
       var arr = [];
       for (var i = 0; i < photos.length; i++) {

@@ -170,7 +170,7 @@ module.exports = function Markov () {
 		};
 
 		request('https://en.wikipedia.org/wiki/Special:Search/'+subject, function(err, res, html) {
-    	if (err) return console.log(err);
+    	if (err) return console.error(err);
 
     	var $ = cheerio.load(html);
     	if(res.request.path.indexOf("Special:Search") !== -1) {

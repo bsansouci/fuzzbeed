@@ -18,7 +18,8 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
     flickr.photos.search({
       text: text
     }, function(err, result) {
-      if(err) { return console.log(err); }
+      if(err) return console.error(err);
+
       var photos = result.photos.photo;
       var arr = [];
       for (var i = 0; i < photos.length; i++) {
@@ -42,9 +43,8 @@ function getQuizPhotos(subject, maxPhotos) {
 
 function findGifUrls(string, callback){
   giphy.search({q:string}, function (err, response){
-    if (err){
-      return console.error("ERROR: ", err);
-    }
+    if (err) return console.error("Giphy: ", err);
+
     var ret = [];
     //console.log(response);
     for (var i = 0; i < response.data.length; i++){

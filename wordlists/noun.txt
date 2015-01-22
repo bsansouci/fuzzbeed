@@ -103,6 +103,7 @@ Easter Egg
 Eggnog
 Elbow
 Emoji
+Eyeball
 Fake Id
 Family
 Father
@@ -129,6 +130,7 @@ Goldfish
 Goose
 Government
 Gun
+Hair Extension
 Haircut
 Headphones
 Hen
@@ -139,6 +141,7 @@ Hula Hoop
 Icicle
 Island
 Jail
+Javelin
 Jeans
 Jellyfish
 Joke
@@ -272,4 +275,4 @@ Washing Powder
 Watch
 Way To Eat A Burrito
 Zebra
-iWatche
+iWatch

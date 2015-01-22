@@ -122,31 +122,6 @@ function checkIfLoaded(req, res, next) {
   next();
 }
 
-app.use(checkIfLoaded);
-
-app.get('/', function (req, res) {
-  firebaseArticles.limitToLast(20).once("value", function(snapshot) {
-    var v = snapshot.val();
-    var arr = [];
-    for (var prop in v) {
-      if(v.hasOwnProperty(prop)) {
-        v[prop].timeAgo = timeAgo(v[prop].timestamp);
-        arr.push(v[prop]);
-      }
-    }
-    arr.sort(function(a, b) {
-      return b.timestamp - a.timestamp;
-    });
-    var obj = {
-      articles: arr
-    };
-    injectSideStuff(obj, firebaseArticles, function() {
-      obj.topBuzz = obj.__sideArticles.pop();
-      res.render('index', obj);
-    });
-  });
-});
-
 app.get('/quizzes', function(req, res) {
   firebaseQuizzes.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
     var v = snapshot.val();
@@ -261,6 +236,31 @@ app.get('/write-a-quiz', function(req, res) {
       });
     });
   }
+});
+
+app.use(checkIfLoaded);
+
+app.get('/', function (req, res) {
+  firebaseArticles.limitToLast(20).once("value", function(snapshot) {
+    var v = snapshot.val();
+    var arr = [];
+    for (var prop in v) {
+      if(v.hasOwnProperty(prop)) {
+        v[prop].timeAgo = timeAgo(v[prop].timestamp);
+        arr.push(v[prop]);
+      }
+    }
+    arr.sort(function(a, b) {
+      return b.timestamp - a.timestamp;
+    });
+    var obj = {
+      articles: arr
+    };
+    injectSideStuff(obj, firebaseArticles, function() {
+      obj.topBuzz = obj.__sideArticles.pop();
+      res.render('index', obj);
+    });
+  });
 });
 
 app.use(express.static(__dirname + "/views"));

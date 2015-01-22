@@ -326,6 +326,9 @@ var RUNME = function(start, toScrape, callback) {
 							});
 						} else {
 							var s = {title: show.title, coverPhoto: coverPhotoUrl, links: returnLinks};
+							fs.appendFile("allMovies.json", JSON.stringify(s), function() {
+								console.log("DONE ", index);
+							});
 							allShows.push(s);
 							// request(s.coverPhoto).pipe(fs.createWriteStream("./imdb/coverPhoto-"+s.title+".jpg")).on('close', function() {
 							// 	console.log("Done Cover");
@@ -361,9 +364,7 @@ var RUNME = function(start, toScrape, callback) {
 };
 
 // RUNME("http://www.imdb.com/chart/top?ref_=nv_ch_250_4", ".titleColumn a", function(arr) {
-// 	fs.writeFile("allMovies.json", JSON.stringify({data: arr}), function() {
-// 		console.log("DONE");
-// 	});
+
 // });
 
 

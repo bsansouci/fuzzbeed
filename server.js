@@ -10,9 +10,9 @@ var Flickr = require("flickrapi");
 var seed = require("seed-random");
 
 var flickrOptions = {
-    api_key: process.env.FLICKR_API_KEY,
-    secret: process.env.FLICKR_SECRET
-  };
+  api_key: process.env.FLICKR_API_KEY,
+  secret: process.env.FLICKR_SECRET
+};
 
 var findPictures = null;
 
@@ -114,14 +114,6 @@ app.param('quizzName', function(req, res, next, articleName) {
   });
 });
 
-function checkIfLoaded(req, res, next) {
-  if(!findPictures) {
-    res.send("<html><title>Pushing code...</title><body><h1>Down for a sec...</h1></body></html>");
-    return;
-  }
-  next();
-}
-
 app.get('/quizzes', function(req, res) {
   firebaseQuizzes.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
     var v = snapshot.val();
@@ -169,7 +161,34 @@ app.get('/users/:username', function(req, res) {
   });
 });
 
+app.get('/', function (req, res) {
+  firebaseArticles.limitToLast(20).once("value", function(snapshot) {
+    var v = snapshot.val();
+    var arr = [];
+    for (var prop in v) {
+      if(v.hasOwnProperty(prop)) {
+        v[prop].timeAgo = timeAgo(v[prop].timestamp);
+        arr.push(v[prop]);
+      }
+    }
+    arr.sort(function(a, b) {
+      return b.timestamp - a.timestamp;
+    });
+    var obj = {
+      articles: arr
+    };
+    injectSideStuff(obj, firebaseArticles, function() {
+      obj.topBuzz = obj.__sideArticles.pop();
+      res.render('index', obj);
+    });
+  });
+});
+
 app.get('/write-article', function(req, res) {
+  if(!findPictures) {
+    res.send("<html><title>Pushing code...</title><body><h1>Down for a sec...</h1></body></html>");
+    return;
+  }
   var obj = {};
   injectSideStuff(obj, firebaseArticles, function() {
     res.render('write-article-view', obj);
@@ -177,6 +196,11 @@ app.get('/write-article', function(req, res) {
 });
 
 app.get('/write-an-article', function(req, res) {
+  if(!findPictures) {
+    res.send("<html><title>Pushing code...</title><body><h1>Down for a sec...</h1></body></html>");
+    return;
+  }
+
   // 50% chances of creating a new person
   if(rand(0, 100) > 50) {
     var author = newAuthor();
@@ -214,6 +238,10 @@ app.get('/write-an-article', function(req, res) {
 });
 
 app.get('/write-a-quiz', function(req, res) {
+  if(!findPictures) {
+    res.send("<html><title>Pushing code...</title><body><h1>Down for a sec...</h1></body></html>");
+    return;
+  }
   // 50% chances of creating a new person
   if(rand(0, 100) > 50) {
     var author = newAuthor();
@@ -236,31 +264,6 @@ app.get('/write-a-quiz', function(req, res) {
       });
     });
   }
-});
-
-app.use(checkIfLoaded);
-
-app.get('/', function (req, res) {
-  firebaseArticles.limitToLast(20).once("value", function(snapshot) {
-    var v = snapshot.val();
-    var arr = [];
-    for (var prop in v) {
-      if(v.hasOwnProperty(prop)) {
-        v[prop].timeAgo = timeAgo(v[prop].timestamp);
-        arr.push(v[prop]);
-      }
-    }
-    arr.sort(function(a, b) {
-      return b.timestamp - a.timestamp;
-    });
-    var obj = {
-      articles: arr
-    };
-    injectSideStuff(obj, firebaseArticles, function() {
-      obj.topBuzz = obj.__sideArticles.pop();
-      res.render('index', obj);
-    });
-  });
 });
 
 app.use(express.static(__dirname + "/views"));

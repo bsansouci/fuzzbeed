@@ -10,8 +10,8 @@ var Flickr = require("flickrapi");
 var seed = require("seed-random");
 
 var flickrOptions = {
-    api_key: "47f585c43e1ced1a1a3759da564fc143",
-    secret: "a0a649c7f8b8fd28"
+    api_key: process.env.FLICKR_API_KEY,
+    secret: process.env.FLICKR_SECRET
   };
 
 var findPictures = null;

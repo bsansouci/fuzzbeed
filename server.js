@@ -6,37 +6,30 @@ var Identity = require('fake-identity');
 var articleGenerator = require("./article");
 var quizGenerator = require("./quiz");
 var Templater = require("./templater");
-var Flickr = require("flickrapi");
+// var Flickr = require("flickrapi");
 var seed = require("seed-random");
 
-var flickrOptions = {
-  api_key: process.env.FLICKR_API_KEY,
-  secret: process.env.FLICKR_SECRET
+// var flickrOptions = {
+//   api_key: process.env.FLICKR_API_KEY,
+//   secret: process.env.FLICKR_SECRET
+// };
+
+
+var flickr = new require("./flickr.js")({api_key: process.env.FLICKR_API_KEY});
+
+var findPictures = function(callback) {
+  flickr.get("photos.search", {"text":"spoons"}, function(data){
+    var photos = data.photos.photo;
+    var arr = [];
+    for (var i = 0; i < photos.length; i++) {
+      var photo = photos[i];
+      var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
+      arr.push(url);
+    }
+    callback(arr);
+  });
 };
 
-var findPictures = null;
-
-Flickr.tokenOnly(flickrOptions, function(error, flickr) {
-  if(error) return console.error(error);
-
-  // we can now use "flickr" as our API object
-  findPictures = function(text, callback) {
-    flickr.photos.search({
-      text: text
-    }, function(err, result) {
-      if(err) return console.error(err);
-
-      var photos = result.photos.photo;
-      var arr = [];
-      for (var i = 0; i < photos.length; i++) {
-        var photo = photos[i];
-        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
-        arr.push(url);
-      }
-      callback(arr);
-    });
-  };
-});
 
 var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
 var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");

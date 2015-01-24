@@ -8,21 +8,7 @@ var quizGenerator = require("./quiz");
 var Templater = require("./templater");
 var seed = require("seed-random");
 
-var flickr = new require("./flickr.js")({api_key: process.env.FLICKR_API_KEY});
-
-var findPictures = function(text, callback) {
-  flickr.get("photos.search", {"text":text}, function(data){
-    var photos = data.photos.photo;
-    var arr = [];
-    for (var i = 0; i < photos.length; i++) {
-      var photo = photos[i];
-      var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
-      arr.push(url);
-    }
-    callback(arr);
-  });
-};
-
+var findPictures = require("./flickr.js");
 
 var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
 var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");

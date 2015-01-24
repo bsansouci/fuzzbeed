@@ -2,37 +2,11 @@ var cheerio = require('cheerio');
 var request = require('request');
 var Templater = require('./templater');
 var Markov = require('./markov');
-var Flickr = require("flickrapi");
 var fs = require("fs");
 
-var flickrOptions = {
-    api_key: "47f585c43e1ced1a1a3759da564fc143",
-    secret: "a0a649c7f8b8fd28"
-  };
+var findPictures = require("./flickr.js");
 
-var findPictures = null;
 var maxPhotos = 7;
-var allShows = JSON.parse(fs.readFileSync("allShows.json", 'utf8')).data;
-Flickr.tokenOnly(flickrOptions, function(error, flickr) {
-  // we can now use "flickr" as our API object
-  findPictures = function(text, callback) {
-    flickr.photos.search({
-      text: text
-    }, function(err, result) {
-      if(err) return console.error(err);
-
-      var photos = result.photos.photo;
-      var arr = [];
-      for (var i = 0; i < photos.length; i++) {
-        var photo = photos[i];
-        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
-        arr.push(url);
-      }
-      callback(arr);
-    });
-  };
-});
-
 function getQuizPhotos(subject, callback) {
   findPictures(subject, function(photos) {
     if (photos.length > maxPhotos) {

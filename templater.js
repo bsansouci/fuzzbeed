@@ -33,35 +33,34 @@ module.exports = function Templater (callback) {
   this.loadBuzzTitles = function(){
     templates = [
       "The [[num]] [[sup-adj]] [[s-nouns]] In The World",
-      "The [[num]] [[sup-adj]] [[s-nouns]] Of Last _Summer_",
+      "The [[num]] [[sup-adj]] [[s-nouns]] Of Last _{{Summer|Winter|Fall|Spring}}_",
       "The [[num]] [[sup-adj]] [[s-nouns]] Of The 90's",
       "The [[num]] [[sup-adj]] [[s-nouns]] Of The Last [[x-num]] Years",
       "The [[num]] [[sup-adj]] [[s-nouns]] Of This Century",
       "The [[num]] [[sup-adj]] [[s-nouns]] Only _[[people]]_ Will Understand",
       "The [[num]] [[sup-adj]] [[s-nouns]] That Will Make You Laugh Every Time",
-      "The [[num]] [[sup-adj]] [[s-nouns]] You Probably Didn't Know",
       "[[num]] Things [[s-people]] Should Be Allowed To Complain About",
       "[[num]] Times [[s-nouns]] Are The Worst And You Just Can't Even",
       "[[num]] [[s-people]] With Excellent New Year's Resolutions",
       "[[num]] _[[people]]_ With [[crazy]] [[s-nouns]]",
-      "[[num]] [[s-nouns]] For _[[people]]_ That Should Really Exist",
-      "[[t-num]] Things [[s-people]] Know To Be True",
-      "[[t-num]] [[adj]] [[s-nouns]] That Will Make You Ask \"Why?\"",
-      "[[t-num]] [[adj]] [[s-nouns]] You Probably Didn't Know",
+      "[[num]] [[s-nouns]] For _[[people]]_ That {{Should Really|Really Shouldn't}} Exist",
+      "[[t-num]] Things [[s-people]] Know To Be {{True|False}}",
+      "[[t-num]] [[adj]] [[s-nouns]] That Will Make You Ask \"{{Why?|How?|What?|Where?|Who?}}\"",
+      "[[t-num]] {{[[adj]]|[[sup-adj]]}} [[s-nouns]] You {{Probably Didn't Know|Might've Encountered}}",
       "[[t-num]] [[crazy]] Things [[s-people]] Know To Be True",
       "[[t-num]] [[s-people]] Who Are Clearly Being Raised _[[adj]]_",
-      "[[t-num]] [[s-people]] Who Are Having *A* Really Rough Day",
+      "[[t-num]] [[s-people]] Who Are Having *A* Really {{Rough|Fun}} Day",
       "[[t-num]] [[s-people]] Who Are Too Clever For Their Own Good",
       "[[t-num]] [[s-people]] Who Completely Screwed Up Their One Job",
       "[[t-num]] [[s-people]] Who Have Performed For _[[people]]_",
-      "[[t-num]] [[s-people]] Who Need To Be Banned From Celebrating _Halloween_",
+      "[[t-num]] [[s-people]] Who Need To Be Banned From Celebrating _{{Halloween|Christmas|Easter|4th of July}}_",
       "[[t-num]] [[s-people]] Who Will Make You Feel Like *A* Genius",
       "[[t-num]] [[s-nouns]] That Scream _World Domination_",
       "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To _[[famous-person]]_",
       "If [[s-tv-show-character]] Had Instagram",
       "[[t-num]] Times [[s-tv-show-character]] Summed Up You And Your BFF",
       "[[s-famous-person]] Receives *A* _[[noun]]_, Is Overcome With Joy",
-      "[[t-num]] [[s-people]] You Actually Cannot Resist _Kissing_"
+      "[[t-num]] [[s-people]] You Actually Cannot Resist _{{Kissing|Hugging}}_"
     ];
   };
 

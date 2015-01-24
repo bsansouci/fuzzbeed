@@ -5,8 +5,10 @@ var Markov = require('./markov');
 var fs = require("fs");
 
 var findPictures = require("./flickr.js");
-
+var allShows = JSON.parse(fs.readFileSync("allShows.json", 'utf8')).data;
 var maxPhotos = 7;
+
+
 function getQuizPhotos(subject, callback) {
   findPictures(subject, function(photos) {
     if (photos.length > maxPhotos) {
@@ -163,11 +165,22 @@ module.exports = new function () {
 						quiz.subtitle = "";
 						quiz.timestamp = Date.now();
 						quiz.url = "/quizzes/" + quiz.articleName;
+						shuffle(quiz.elements);
 						return callback(quiz);
 					}
 				});
 			}
 		});
+	}
+
+	/**
+	 * Shuffles a given given inplace.
+	 * @param  {[a']} coll    array to be shuffled
+	 * @return {[a']}      shuffled array
+	 */
+	function shuffle(coll){
+	  for(var j, x, i = coll.length; i; j = Math.floor(Math.random() * i), x = coll[--i], coll[i] = coll[j], coll[j] = x);
+	  return coll;
 	}
 
 	this.create = create;

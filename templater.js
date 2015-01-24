@@ -41,7 +41,7 @@ module.exports = function Templater (callback) {
       "The [[num]] [[sup-adj]] [[s-nouns]] That Will Make You Laugh Every Time",
       "[[num]] Things [[s-people]] Should Be Allowed To Complain About",
       "[[num]] Times [[s-nouns]] Are The Worst And You Just Can't Even",
-      "[[num]] [[s-people]] With Excellent New Year's Resolutions",
+      "[[num]] [[s-people]] With Excellent _New Year_'s Resolutions",
       "[[num]] _[[people]]_ With [[crazy]] [[s-nouns]]",
       "[[num]] [[s-nouns]] For _[[people]]_ That {{Should Really|Really Shouldn't}} Exist",
       "[[t-num]] Things [[s-people]] Know To Be {{True|False}}",
@@ -57,7 +57,7 @@ module.exports = function Templater (callback) {
       "[[t-num]] [[s-people]] Who Will Make You Feel Like *A* Genius",
       "[[t-num]] [[s-nouns]] That Scream _World Domination_",
       "[[t-num]] [[s-people]] You Must Do In Your [[age]] According To _[[famous-person]]_",
-      "If [[s-tv-show-character]] Had Instagram",
+      "If [[s-tv-show-character]] Had _Instagram_",
       "[[t-num]] Times [[s-tv-show-character]] Summed Up You And Your BFF",
       "[[s-famous-person]] Receives *A* _[[noun]]_, Is Overcome With Joy",
       "[[t-num]] [[s-people]] You Actually Cannot Resist _{{Kissing|Hugging}}_"
@@ -96,9 +96,8 @@ module.exports = function Templater (callback) {
       "Which One Is The [[sup-adj]] Of The Following?",
       "Which Seems Like It Would Feel The Best?",
       "Which Do You Value Most?",
-      "Which Is [[sup-adj]]?",
+      "Which Is The [[sup-adj]]?",
       "Which Of The Following is Worth Your Life?",
-      "Which Of These Do You Have The Most Of?",
       "Which Is The Best Aphrodisiac?",
       "Choose *A* Synonym For [[noun]]",
       "What's [[num]] + [[num]]?",
@@ -198,7 +197,6 @@ module.exports = function Templater (callback) {
         ret.extra.push(repl);
         template = replaceMatch(template, match, repl);
       } else {
-        console.log(inner);
         var repl2 = dicts[inner][rand(0,dicts[inner].length)];
         template = replaceMatch(template, match, repl2);
       }

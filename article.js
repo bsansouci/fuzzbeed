@@ -1,29 +1,40 @@
 var fs = require('fs');
-var giphy = require("giphy")("dc6zaTOxFJmzC");
+var giphy = new require("giphy")("dc6zaTOxFJmzC");
 var Markov = require("./markov");
 var quizCreator = require("./quiz");
 var Templater = require("./templater");
-
+var async = require("async");
+var zip = require("lodash.zip");
+var flatten = require("lodash.flatten");
 var findPictures = require("./flickr.js");
 
-function getQuizPhotos(subject, maxPhotos) {
-  findPictures(subject, function(photos) {
-    if (photos.length > maxPhotos) {
-      photos = photos.slice(0, maxPhotos);
-    }
-    return photos;
-  });
-}
-
-function findGifUrls(string, callback){
-  giphy.search({q:string}, function (err, response){
+/**
+ * Will find gifs from Giphy given search tags.
+ * allWords: [String]  a list of all the keywords to search for seperately
+ * callback: () => ()  a callback
+ *
+ * This will also filter out the duplicates.
+ *
+ * callback := [{data: [...]}, ...]
+ * (look at the return type of giphy here: https://github.com/giphy/GiphyAPI)
+ */
+function findGifUrls(allWords, callback){
+  async.mapLimit(allWords, 5, function(str, cb) {
+    giphy.search({q:str}, function (err, response){
+      if (err) return cb(err);
+      // Filter for duplicates (simple filter using the URL of the gif)
+      response.data = response.data.filter(function(v, i) {
+        return response.data.indexOf(v) === i;
+      });
+      cb(null, response.data);
+    });
+  }, function(err, allData) {
     if (err) return console.error("Giphy: ", err);
-
-    var ret = [];
-    //console.log(response);
-    for (var i = 0; i < response.data.length; i++){
-    }
-    callback(response);
+    if(allData.length === 1) return callback(allData[0]);
+    var ret = allData = flatten(zip.apply(null, allData)).filter(function(v) {
+      return !!v;
+    });
+    callback(ret);
   });
 }
 
@@ -69,25 +80,34 @@ function createEntireArticle(author, templater, callback){
   var m = new Markov();
   m.pretrainBuzzfeedLists();
   m.pretrainWikipediaSubject(article, function() {
-    findGifUrls(article.subj, function(gifs){
-      gifs.data = gifs.data.filter(function(v, i) {
-        return gifs.data.indexOf(v) === i;
-      });
+    var searchWords = [article.subj];
+    if(article.extra.length > 0) {
+      searchWords = searchWords.concat(article.extra.map(function(v) {
+        return article.subj + ' ' + v;
+      })).concat(article.extra.map(function(v) {
+        return v;
+      }));
+    }
+    findGifUrls(searchWords, function(gifs) {
+      if(gifs.length > 0) article.previewUrl = gifs[0].images.original_still.url;
 
-      if(gifs.data.length > 0) article.previewUrl = gifs.data[0].images.original_still.url;
+      // TODO: find a smarter way to sort the gifs
+      // right now the order depends on the which get request arrives first
+      // when querying all the searchWords in parallel
+      shuffle(gifs);
 
       var arr = [];
       var i;
-      if(gifs.data.length < article.num) {
-        for (i = 0; i < gifs.data.length; i++) {
+      if(gifs.length < article.num) {
+        for (i = 0; i < gifs.length; i++) {
           arr.push({
-            imageUrl: gifs.data[i].images.original.url,
+            imageUrl: gifs[i].images.original.url,
             body: m.generate(rand(rand(0, 2),5),10, 2),
             title: m.generate(1,10, 3)
           });
         }
-        findPictures(article.subj, function(allPics) {
-          var diffPictures = allPics.slice(0, article.num - gifs.data.length);
+        findPictures(searchWords, function(allPics) {
+          var diffPictures = allPics.slice(0, article.num - gifs.length);
           if(!article.previewUrl) article.previewUrl = diffPictures[0];
 
           for (i = 0; i < diffPictures.length; i++) {
@@ -97,26 +117,30 @@ function createEntireArticle(author, templater, callback){
               title: m.generate(1,10, 3)
             });
           }
-          arr = shuffle(arr);
+          shuffle(arr);
           article.elements = arr;
           callback(article);
         });
       } else {
         for (i = 0; i < article.num; i++){
-          if (i < gifs.data.length){
+          if (i < gifs.length){
             arr.push({
-              imageUrl: gifs.data[i].images.original.url,
+              imageUrl: gifs[i].images.original.url,
               body: m.generate(rand(rand(0, 2),5),10, 2),
               title: m.generate(1,10, 3)
             });
           } else break;
         }
-        arr = shuffle(arr);
+        shuffle(arr);
         article.elements = arr;
         callback(article);
       }
     });
   });
+}
+
+function identity(v) {
+  return v;
 }
 
 function contains(coll, el, f) {
@@ -138,11 +162,14 @@ function rand(min, max){
   return Math.floor(Math.random() * (max-min))+min;
 }
 
-function shuffle(o, func){
-  if(!func) func = Math.random;
-
-  for(var j, x, i = o.length; i; j = Math.floor(func() * i), x = o[--i], o[i] = o[j], o[j] = x);
-  return o;
+/**
+ * Shuffles a given given inplace.
+ * @param  {[a']} coll    array to be shuffled
+ * @return {[a']}      shuffled array
+ */
+function shuffle(coll){
+  for(var j, x, i = coll.length; i; j = Math.floor(Math.random() * i), x = coll[--i], coll[i] = coll[j], coll[j] = x);
+  return coll;
 }
 
 module.exports = {

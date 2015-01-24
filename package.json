@@ -25,9 +25,10 @@
     "firebase": "^2.1.1",
     "giphy": "0.0.4",
     "i": "^0.3.2",
+    "indefinite-article": "0.0.2",
+    "lodash.flatten": "^2.4.1",
     "request": "^2.51.0",
     "seed-random": "^2.2.0",
-    "swig": "^1.4.2",
-    "indefinite-article": "0.0.2"
+    "swig": "^1.4.2"
   }
 }

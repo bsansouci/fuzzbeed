@@ -5,10 +5,10 @@ var quizCreator = require("./quiz");
 var Templater = require("./templater");
 var Flickr = require("flickrapi");
 
-vvar flickr = new require("./flickr.js")({api_key: process.env.FLICKR_API_KEY});
+var flickr = new require("./flickr.js")({api_key: process.env.FLICKR_API_KEY});
 
-var findPictures = function(callback) {
-  flickr.get("photos.search", {"text":"spoons"}, function(data){
+var findPictures = function(text, callback) {
+  flickr.get("photos.search", {"text":text}, function(data){
     var photos = data.photos.photo;
     var arr = [];
     for (var i = 0; i < photos.length; i++) {

@@ -5,32 +5,20 @@ var quizCreator = require("./quiz");
 var Templater = require("./templater");
 var Flickr = require("flickrapi");
 
-var flickrOptions = {
-    api_key: "47f585c43e1ced1a1a3759da564fc143",
-    secret: "a0a649c7f8b8fd28"
-  };
+vvar flickr = new require("./flickr.js")({api_key: process.env.FLICKR_API_KEY});
 
-var findPictures = null;
-
-Flickr.tokenOnly(flickrOptions, function(error, flickr) {
-  // we can now use "flickr" as our API object
-  findPictures = function(text, callback) {
-    flickr.photos.search({
-      text: text
-    }, function(err, result) {
-      if(err) return console.error(err);
-
-      var photos = result.photos.photo;
-      var arr = [];
-      for (var i = 0; i < photos.length; i++) {
-        var photo = photos[i];
-        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
-        arr.push(url);
-      }
-      callback(arr.reverse());
-    });
-  };
-});
+var findPictures = function(callback) {
+  flickr.get("photos.search", {"text":"spoons"}, function(data){
+    var photos = data.photos.photo;
+    var arr = [];
+    for (var i = 0; i < photos.length; i++) {
+      var photo = photos[i];
+      var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
+      arr.push(url);
+    }
+    callback(arr);
+  });
+};
 
 function getQuizPhotos(subject, maxPhotos) {
   findPictures(subject, function(photos) {

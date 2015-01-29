@@ -30,6 +30,7 @@
     "lodash.zip": "^2.4.1",
     "request": "^2.51.0",
     "seed-random": "^2.2.0",
+    "seedrandom": "^2.3.11",
     "swig": "^1.4.2"
   }
 }

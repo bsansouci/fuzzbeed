@@ -3,12 +3,13 @@ var app = express();
 var swig = require('swig');
 var Firebase = require("firebase");
 var Identity = require('fake-identity');
+var seed = require("seed-random");
+var seedrandom = require("seedrandom");
+
 var articleGenerator = require("./article");
 var quizGenerator = require("./quiz");
 var Templater = require("./templater");
-var seed = require("seed-random");
-
-var findPictures = require("./flickr.js");
+var findPictures = require("./flickr");
 
 var firebaseArticles = new Firebase("https://fuzzbeed.firebaseio.com/articles");
 var firebaseProfiles = new Firebase("https://fuzzbeed.firebaseio.com/profiles");
@@ -19,13 +20,7 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
-// Swig will cache templates for you, but you can disable
-// that and use Express's caching instead, if you like:
-app.set('view cache', false);
-// To disable Swig's cache, do the following:
-swig.setDefaults({ cache: false });
-// NOTE: You should always cache templates in a production environment.
-// Don't leave both of these to `false` in production!
+swig.setDefaults({ cache: 'memory' });
 
 var templater = new Templater();
 
@@ -86,6 +81,17 @@ app.param('quizzName', function(req, res, next, articleName) {
   });
 });
 
+app.param('test', function(req, res, next, seed) {
+  var f = seedrandom(seed);
+  Math.random = f;
+  var id = Identity.generate();
+  var author = newAuthor();
+  articleGenerator.createEntireArticle(author, templater, function(article) {
+    req.article = article;
+    next();
+  });
+});
+
 app.get('/quizzes', function(req, res) {
   firebaseQuizzes.orderByChild("timestamp").limitToFirst(10).once("value", function(snapshot) {
     var v = snapshot.val();
@@ -110,6 +116,16 @@ app.get('/quizzes/:quizzName', function(req, res) {
 
   injectSideStuff(req.quiz, firebaseQuizzes, function() {
     res.render('article-view', req.quiz);
+  });
+});
+
+app.get('/test/:test', function(req, res) {
+  if(!req.article) {
+    return res.redirect("/");
+  }
+
+  injectSideStuff(req.article, firebaseArticles, function() {
+    res.render('article-view', req.article);
   });
 });
 
@@ -314,7 +330,7 @@ function rand(min, max){
 //   firebaseQuizzes.push(v);
 // });
 
-function newAuthor(){
+function newAuthor(randFunc){
   var id = Identity.generate();
   var author = {};
   author.name = id.firstName + " " + id.lastName;
